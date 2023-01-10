@@ -1,9 +1,10 @@
 # 2023-ISP-ModelScheduler
+# This is the main release branch, do not push directly to this branch. Please use 'development' instead.
 
 ## Project Members:
 * Logan-Rohlfs - Software Engineer
 https://codermerlin.com/users/logan-rohlfs/Digital%20Portfolio/index.html
-* Muq2 - Software Engineer https://codermerlin.com/users/muqadam-sabir/Digital%20Portfolio/index.html
+* [Muq2](https://github.com/IsaacDaKing) - Software Engineer https://codermerlin.com/users/muqadam-sabir/Digital%20Portfolio/index.html
 * KrabbiePatty - QA Engineer
 https://www.codermerlin.com/users/jonathan-gateley/Digital%20Portfolio/home.html
 * [brett-k-cs](https://github.com/brett-k-cs) | Software Development Engineer
