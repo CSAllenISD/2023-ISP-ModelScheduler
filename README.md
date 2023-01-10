@@ -10,3 +10,4 @@ https://www.codermerlin.com/users/jonathan-gateley/Digital%20Portfolio/home.html
 [https://www.codermerlin.com/users/brett-kaplan/Digital%20Portfolio/index.html](https://www.codermerlin.com/users/brett-kaplan/Digital%20Portfolio/index.html)
 * [IsaacDaKing](https://github.com/IsaacDaKing) | QA Engineer
 https://www.codermerlin.com/users/isaac-pandyan/Digital%20Portfolio/index.html
+* Jacob-Jershin - Software Engineer https://codermerlin.com/users/jacob-jershin/Digital%20Portfolio/index.html
