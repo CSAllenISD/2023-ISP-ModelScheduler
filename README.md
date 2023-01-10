@@ -1,5 +1,5 @@
 # 2023-ISP-ModelScheduler
-# This is the development branch, directly all experimental changes to this branch. Do not use 'main'.
+# This is the development branch, direct all experimental changes to this branch. Do not use 'main'.
 
 ## Project Members:
 * Logan-Rohlfs - Software Engineer
