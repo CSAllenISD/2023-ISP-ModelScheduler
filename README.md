@@ -17,7 +17,7 @@
 * [Sahil Patel](https://github.com/sap786) | Release Engineer - [Digital Portfolio](https://codermerlin.com/users/sahil-patil/Digital%20Portfolio/index.html)
 * Software Engineers:
 * [Logan Rohlfs](https://github.com/Logan-Rohlfs) | Software Engineer - [Digital Portfolio](https://codermerlin.com/users/logan-rohlfs/Digital%20Portfolio/index.html)
-* [Muqadam Sabir](https://github.com/Muq2) | Software Engineer - [Digital Portfolio](https://codermerlin.com/users/muqadam-sabir/Digital%20Portfolio/index.html)
+* [Muqadam Sabir](https://github.com/Muq2) | Project Manager - [Digital Portfolio](https://codermerlin.com/users/muqadam-sabir/Digital%20Portfolio/index.html)
 * [Brett Kaplan](https://github.com/brett-k-cs) | Software Engineer - [Digital Portfolio](https://www.codermerlin.com/users/brett-kaplan/Digital%20Portfolio/index.html)
 * [Jacob Jershin](https://github.com/JacobJershin) | Software Engineer - [Digital Portfolio](https://codermerlin.com/users/jacob-jershin/Digital%20Portfolio/index.html)
 * [Tahmid Rahman](https://github.com/TahmidR2456) | Software Engineer - [Digital Portfolio](https://codermerlin.com/users/tahmid-rahman/Digital%20Portfolio/index.html)
