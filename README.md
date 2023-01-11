@@ -23,3 +23,4 @@
 * [Tahmid Rahman](https://github.com/TahmidR2456) | Software Engineer - [Digital Portfolio](https://codermerlin.com/users/tahmid-rahman/Digital%20Portfolio/index.html)
 * [Kevin Li](https://github.com/KodingKevin) | Software Engineer  - [Digital Portfolio](https://codermerlin.com/users/kevin-li/Digital%20Portfolio/index.html)
 * [LayneY](https://github.com/LayneY) | Software Engineer - [Digital Portfolio](https://codermerlin.com/users/layne-yarbrough/Digital%20Portfolio/index.html)
+* [Avanish](https://github.com/AJ789456) | Software Engineer - [Digital Portfolio](https://codermerlin.com/users/avanish-jeendru/Digital%20Portfolio/index.html)
