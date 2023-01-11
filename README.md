@@ -1,5 +1,5 @@
 # 2023-ISP-ModelScheduler
-# This is the development branch, direct all experimental changes to this branch. Do not use 'main'.
+# This is the main release branch, do not push directly to this branch. Please use 'development' instead.
 
 ## Project Members:
 * Product Manager:
