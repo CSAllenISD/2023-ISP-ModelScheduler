@@ -15,12 +15,11 @@ https://codermerlin.com/users/muqadam-sabir/Digital%20Portfolio/index.html
 * [MD Raeed](https://github.com/mdraeed) | Software Development Engineer  - [Digital Portfolio](https://codermerlin.com/users/md-raeed/Digital%20Portfolio/CS-II/index.html)
 https://www.codermerlin.com/users/isaac-pandyan/Digital%20Portfolio/index.html
 * [Reynard Gunawan](https://github.com/Reynard-G) | Release Engineer & Software Engineer
-* [Sahil Patel](https://github.com/sap786) | Release Engineer
+* [Sahil Patel](https://github.com/sap786) | Release Engineer https://codermerlin.com/users/sahil-patil/Digital%20Portfolio/index.html
 * [Jonathan Gateley](https://github.com/KrabbiePatty) | QA Engineer
 https://www.codermerlin.com/users/jonathan-gateley/Digital%20Portfolio/home.html
 * [Isaac Pandyan](https://github.com/IsaacDaKing) | QA Engineer
 https://codermerlin.com/users/tahmid-rahman/Digital%20Portfolio/index.html
-* [Dylan Pettijohn](https://github.com/nalyd1369) | Product Manager https://codermerlin.com/users/dylan-pettijohn/Digital%20Portfolio/index.html
-https://codermerlin.com/users/sahil-patil/Digital%20Portfolio/index.html
+* [Dylan Pettijohn](https://github.com/nalyd1369) | Project Manager https://codermerlin.com/users/dylan-pettijohn/Digital%20Portfolio/index.html
 * [Brayden Edington](https://github.com/GetJumpedOn95) - Product manager  - [Digital Portfolio](https://codermerlin.com/users/brayden-edington/Digital%20Portfolio/index.html)
 
