@@ -14,5 +14,6 @@
 * [Isaac Pandyan](https://github.com/IsaacDaKing) | QA Engineer - [Digital Portfolio](https://www.codermerlin.com/users/isaac-pandyan/Digital%20Portfolio/index.html)
 * [Dylan Pettijohn](https://github.com/nalyd1369) | Project Manager - [Digital Portfolio](https://codermerlin.com/users/dylan-pettijohn/Digital%20Portfolio/index.html)
 * [Brayden Edington](https://github.com/GetJumpedOn95) | Product manager  - [Digital Portfolio](https://codermerlin.com/users/brayden-edington/Digital%20Portfolio/index.html)
+* [Kevin Li](https://github.com/KodingKevin) | Software Engineer  - [Digital Portfolio](https://codermerlin.com/users/kevin-li/Digital%20Portfolio/index.html)
 * [June3333](https://github.com/June3333) | QA Engineer - [Digital Portfolio](https://codermerlin.com/users/juneyoung-hwang/Digital%20Portfolio/index.html)
 * [LayneY](https://github.com/LayneY) | Software Engineer - [Digital Portfolio](https://codermerlin.com/users/layne-yarbrough/Digital%20Portfolio/index.html)
