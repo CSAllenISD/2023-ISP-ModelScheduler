@@ -21,3 +21,4 @@ https://codermerlin.com/users/tahmid-rahman/Digital%20Portfolio/index.html
 * [Dylan-P](https://github.com/nalyd1369) | Product Manager https://codermerlin.com/users/dylan-pettijohn/Digital%20Portfolio/index.html
 * [sap786](https://github.com/sap786) | Release Engineer
 https://codermerlin.com/users/sahil-patil/Digital%20Portfolio/index.html
+* [GetJumpedOn95](https://github.com/GetJumpedOn95) - Product manager  - [Digital Portfolio](https://codermerlin.com/users/brayden-edington/Digital%20Portfolio/index.html)
