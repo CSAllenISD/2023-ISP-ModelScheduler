@@ -22,4 +22,4 @@ https://codermerlin.com/users/tahmid-rahman/Digital%20Portfolio/index.html
 * [sap786](https://github.com/sap786) | Release Engineer
 https://codermerlin.com/users/sahil-patil/Digital%20Portfolio/index.html
 * [GetJumpedOn95](https://github.com/GetJumpedOn95) - Product manager  - [Digital Portfolio](https://codermerlin.com/users/brayden-edington/Digital%20Portfolio/index.html)
-* [mdraeed](https://github.com/mdraeed) | Software Development Engineer  - [Digital Portfolio](https://codermerlin.com/users/md-raeed/Digital%20Portfolio/CS-II/index.html) - MD Raeed
+* [MD Raeed](https://github.com/mdraeed) | Software Development Engineer  - [Digital Portfolio](https://codermerlin.com/users/md-raeed/Digital%20Portfolio/CS-II/index.html)
