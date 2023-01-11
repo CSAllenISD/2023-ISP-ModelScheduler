@@ -4,7 +4,7 @@
 ## Project Members:
 
 #### Product Manager:
-* [Brayden Edington](https://github.com/GetJumpedOn95) | Product manager  - [Digital Portfolio](https://codermerlin.com/users/brayden-edington/Digital%20Portfolio/index.html)
+* [Brayden Edington](https://github.com/GetJumpedOn95) | Product Manager  - [Digital Portfolio](https://codermerlin.com/users/brayden-edington/Digital%20Portfolio/index.html)
 
 #### Project Manager:
 * [Dylan Pettijohn](https://github.com/nalyd1369) | Project Manager - [Digital Portfolio](https://codermerlin.com/users/dylan-pettijohn/Digital%20Portfolio/index.html)
