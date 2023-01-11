@@ -13,4 +13,4 @@ https://www.codermerlin.com/users/jonathan-gateley/Digital%20Portfolio/home.html
 https://www.codermerlin.com/users/isaac-pandyan/Digital%20Portfolio/index.html
 * [JacobJershin](https://github.com/JacobJershin) | Software Development Engineer https://codermerlin.com/users/jacob-jershin/Digital%20Portfolio/index.html
 * [Reynard-G](https://github.com/Reynard-G) | Release Engineer & Software Engineer https://codermerlin.com/users/reynard-gunawan/Digital%20Portfolio/index.html
-* [GetJumpedOn95](https://github.com/GetJumpedOn95) | Product manager https://codermerlin.com/users/brayden-edington/Digital%20Portfolio/index.html
+* [Dylan-P](https://github.com/nalyd1369) | Product Manager https://codermerlin.com/users/dylan-pettijohn/Digital%20Portfolio/index.html
