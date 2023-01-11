@@ -16,7 +16,7 @@ https://www.codermerlin.com/users/isaac-pandyan/Digital%20Portfolio/index.html
 https://codermerlin.com/users/jacob-jershin/Digital%20Portfolio/index.html
 * [Reynard-G](https://github.com/Reynard-G) | Release Engineer & Software Engineer
 https://codermerlin.com/users/reynard-gunawan/Digital%20Portfolio/index.html
-* [TahmidR2456](https://github.com/TahmidR2456) - Software Engineer |
+* [TahmidR2456](https://github.com/TahmidR2456) | Software Engineer -
 https://codermerlin.com/users/tahmid-rahman/Digital%20Portfolio/index.html
 * [sap786](https://github.com/sap786) | Release Engineer
 https://codermerlin.com/users/sahil-patil/Digital%20Portfolio/index.html
