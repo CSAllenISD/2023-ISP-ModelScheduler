@@ -10,7 +10,7 @@ QA Engineers:
 * [Jonathan Gateley](https://github.com/KrabbiePatty) | QA Engineer - [Digital Portfolio](https://www.codermerlin.com/users/jonathan-gateley/Digital%20Portfolio/home.html)
 * [Isaac Pandyan](https://github.com/IsaacDaKing) | QA Engineer - [Digital Portfolio](https://www.codermerlin.com/users/isaac-pandyan/Digital%20Portfolio/index.html)
 * [Juneyoung Hwang](https://github.com/June3333) | QA Engineer - [Digital Portfolio](https://codermerlin.com/users/juneyoung-hwang/Digital%20Portfolio/index.html)
-* * [June3333](https://github.com/June3333) | QA Engineer - [Digital Portfolio](https://codermerlin.com/users/juneyoung-hwang/Digital%20Portfolio/index.html)
+* [June3333](https://github.com/June3333) | QA Engineer - [Digital Portfolio](https://codermerlin.com/users/juneyoung-hwang/Digital%20Portfolio/index.html)
 Release Engineers:
 * [MD Raeed](https://github.com/mdraeed) | Release Engineer & Software Engineer  - [Digital Portfolio](https://codermerlin.com/users/md-raeed/Digital%20Portfolio/CS-II/index.html)
 * [Reynard Gunawan](https://github.com/Reynard-G) | Release Engineer & Software Engineer - [Digital Portfolio](https://codermerlin.com/users/reynard-gunawan/Digital%20Portfolio/index.html)
