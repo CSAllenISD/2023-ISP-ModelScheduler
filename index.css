@@ -1,0 +1,53 @@
+:root {
+    --primary-background: #3498DB;
+    --secondary-background: #FFFFFF;
+    --tertiary-background: #FFFFFF;
+    --primary-text: #000000;
+    --button-unfocused: #FFFFFF;
+    --button-focused: #3498DB;
+}
+
+.banner {
+    background-color: var(--secondary-background);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+body {
+    background-color: var(--primary-background);
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+h1 {
+    color: var(--primary-text);
+    font-size: 32px;
+    font-weight: 900;
+    margin: 0;
+    padding: 20px;
+}
+
+h2 {
+    color: var(--primary-text);
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    padding: 20px;
+}
+
+h3 {
+    color: var(--primary-text);
+    font-size: 18px;
+    font-weight: 300;
+    margin: 0;
+    padding: 20px;
+}
+
+p {
+    color: var(--primary-text);
+    font-size: 14px;
+    font-weight: 100;
+    margin: 0;
+    padding: 20px;
+}
