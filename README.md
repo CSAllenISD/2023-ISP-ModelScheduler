@@ -37,4 +37,3 @@
 * [Aaron Berdecia](https://github.com/AaronB432) | Software Engineer - [Digital Protfolio](https://codermerlin.com/users/aaron-berdecia/Digital%20Portfolio/index.html)
 * [Devin Wingfield](https://github.com/devw45) | Software Engineer - [Digital Portfolio](https://codermerlin.com/users/devin-wingfield/Digital%20Portfolio/CS-II/htmls/index.html)
 * [Boden C](https://github.com/Boden-C) | To Be Determined - [Digital Portfolio](https://boden-c.github.io)
->>>>>>> refs/remotes/origin/main
