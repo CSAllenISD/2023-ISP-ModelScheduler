@@ -30,3 +30,4 @@
 * [LayneY](https://github.com/LayneY) | Software Engineer - [Digital Portfolio](https://codermerlin.com/users/layne-yarbrough/Digital%20Portfolio/index.html)
 * [Avanish](https://github.com/AJ789456) | Software Engineer - [Digital Portfolio](https://codermerlin.com/users/avanish-jeendru/Digital%20Portfolio/index.html)
 * [Devon Leerssen](https://github.com/IFEELLIKEIMGOKU) | Software Engineer - [Digital Portfolio](https://codermerlin.com/users/devon-leerssen/Digital%20Portfolio/index.html)
+* [Aaron Berdecia](https://github.com/AaronB432) | Software Engineer - [Digital Protfolio](https://codermerlin.com/users/aaron-berdecia/Digital%20Portfolio/index.html)
