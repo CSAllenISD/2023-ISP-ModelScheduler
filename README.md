@@ -18,7 +18,7 @@
 * [Jonathan Gateley](https://github.com/KrabbiePatty) | QA Engineer - [Digital Portfolio](https://www.codermerlin.com/users/jonathan-gateley/Digital%20Portfolio/home.html)
 * [Isaac Pandyan](https://github.com/IsaacDaKing) | QA Engineer - [Digital Portfolio](https://www.codermerlin.com/users/isaac-pandyan/Digital%20Portfolio/index.html)
 * [Juneyoung Hwang](https://github.com/June3333) | QA Engineer - [Digital Portfolio](https://codermerlin.com/users/juneyoung-hwang/Digital%20Portfolio/index.html)
-* [June3333](https://github.com/June3333) | QA Engineer - [Digital Portfolio](https://codermerlin.com/users/juneyoung-hwang/Digital%20Portfolio/index.html)
+* [Caysen Mayo](https://github.com/lumen-novum) | QA Engineer - [Digital Portfolio](https://www.codermerlin.com/users/caysen-mayo/Digital%20Portfolio/index.html)
 
 #### Software Engineers:
 * [Logan Rohlfs](https://github.com/Logan-Rohlfs) | Software Engineer - [Digital Portfolio](https://codermerlin.com/users/logan-rohlfs/Digital%20Portfolio/index.html)
