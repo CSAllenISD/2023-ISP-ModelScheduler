@@ -13,5 +13,5 @@ https://www.codermerlin.com/users/jonathan-gateley/Digital%20Portfolio/home.html
 https://www.codermerlin.com/users/isaac-pandyan/Digital%20Portfolio/index.html
 * Jacob-Jershin - Software Engineer https://codermerlin.com/users/jacob-jershin/Digital%20Portfolio/index.html
 * [Reynard-G](https://github.com/Reynard-G) | Release Engineer & Software Engineer https://codermerlin.com/users/reynard-gunawan/Digital%20Portfolio/index.html
-* devw45 - Unknown
+* devw45 - Software Engineer
 	https://codermerlin.com/users/devin-wingfield/Digital%20Portfolio/CS-II/htmls/index.html
