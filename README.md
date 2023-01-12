@@ -1,7 +1,7 @@
 # 2023-ISP-ModelScheduler
 [Task Management](https://github.com/users/CSAllenISD/projects/1/views/13)
 
-## This is the mian release branch, do not push directly to this branch.
+## This is the main release branch, do not push directly to this branch.
 
 
 ## Project Members:
