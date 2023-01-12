@@ -12,9 +12,6 @@
 #### Project Manager:
 * [Dylan Pettijohn](https://github.com/nalyd1369) | Project Manager - [Digital Portfolio](https://codermerlin.com/users/dylan-pettijohn/Digital%20Portfolio/index.html)
 
-#### Project Manager:
-* [Dylan Pettijohn](https://github.com/nalyd1369) | Project Manager - [Digital Portfolio](https://codermerlin.com/users/dylan-pettijohn/Digital%20Portfolio/index.html)
-
 #### Release Engineers:
 * [MD Raeed](https://github.com/mdraeed) | Release Engineer & Software Engineer  - [Digital Portfolio](https://codermerlin.com/users/md-raeed/Digital%20Portfolio/CS-II/index.html)
 * [Reynard Gunawan](https://github.com/Reynard-G) | Release Engineer & Software Engineer - [Digital Portfolio](https://codermerlin.com/users/reynard-gunawan/Digital%20Portfolio/index.html)
