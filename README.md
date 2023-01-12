@@ -1,7 +1,7 @@
 # 2023-ISP-ModelScheduler
 [Task Management](https://github.com/users/CSAllenISD/projects/1/views/13)
 
-##This is the main release branch, do not push directly to this branch. Please use 'development' instead.
+## This is the main release branch, do not push directly to this branch. Please use 'development' instead.
 
 
 ## Project Members:
@@ -12,13 +12,10 @@
 #### Project Manager:
 * [Dylan Pettijohn](https://github.com/nalyd1369) | Project Manager - [Digital Portfolio](https://codermerlin.com/users/dylan-pettijohn/Digital%20Portfolio/index.html)
 
-####Product Manager:
-* [Brayden Edington](https://github.com/GetJumpedOn95) | Product Manager  - [Digital Portfolio](https://codermerlin.com/users/brayden-edington/Digital%20Portfolio/index.html)
-
-####Project Manager:
+#### Project Manager:
 * [Dylan Pettijohn](https://github.com/nalyd1369) | Project Manager - [Digital Portfolio](https://codermerlin.com/users/dylan-pettijohn/Digital%20Portfolio/index.html)
 
-####Release Engineers:
+#### Release Engineers:
 * [MD Raeed](https://github.com/mdraeed) | Release Engineer & Software Engineer  - [Digital Portfolio](https://codermerlin.com/users/md-raeed/Digital%20Portfolio/CS-II/index.html)
 * [Reynard Gunawan](https://github.com/Reynard-G) | Release Engineer & Software Engineer - [Digital Portfolio](https://codermerlin.com/users/reynard-gunawan/Digital%20Portfolio/index.html)
 * [Sahil Patel](https://github.com/sap786) | Release Engineer - [Digital Portfolio](https://codermerlin.com/users/sahil-patil/Digital%20Portfolio/index.html)
