@@ -20,7 +20,7 @@
 ### Release Engineers
 * [Reynard Gunawan](https://github.com/Reynard-G) | Reynard-G - [Digital Portfolio](https://codermerlin.com/users/reynard-gunawan/Digital%20Portfolio/index.html)
 * [MD Raeed](https://github.com/mdraeed) | mdraeed - [Digital Portfolio](https://codermerlin.com/users/md-raeed/Digital%20Portfolio/index.html)
-* [Sahil Patil](https://github.com/sap786) | sap786 - [Digital Portfolio](https://codermerlin.com/users/sahil-patil/Digital%20Portfolio/index.html)2
+* [Sahil Patil](https://github.com/sap786) | sap786 - [Digital Portfolio](https://codermerlin.com/users/sahil-patil/Digital%20Portfolio/index.html)
 ### Software Engineers
 * [Aaron Berdecia](https://github.com/AaronB432) | AaronB432 - [Digital Portfolio](https://codermerlin.com/users/aaron-berdecia/Digital%20Portfolio/index.html)
 * [Logan Rohlfs](https://github.com/Logan-Rohlfs) | Logan-Rohlfs - [Digital Portfolio](https://codermerlin.com/users/logan-rohlfs/Digital%20Portfolio/index.html)
