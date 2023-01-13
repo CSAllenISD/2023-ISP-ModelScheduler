@@ -34,4 +34,4 @@ extension User {
         self.init(name: string)
     }
 }
-Footer
+
