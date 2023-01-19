@@ -1,0 +1,10 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = true
+	symlinks = true
+	usebuiltinfsmonitor = false
+[remote "origin"]
+	url = https://github.com/apple/swift-atomics.git
+	fetch = +refs/*:refs/*
+	mirror = true

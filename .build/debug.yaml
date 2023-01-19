@@ -1,0 +1,147 @@
+client:
+  name: basic
+tools: {}
+targets:
+  "Atomics-debug.module": ["<Atomics-debug.module>"]
+  "CBase32-debug.module": ["<CBase32-debug.module>"]
+  "CVaporBcrypt-debug.module": ["<CVaporBcrypt-debug.module>"]
+  "ModelScheduler-debug.exe": ["<ModelScheduler-debug.exe>"]
+  "ModelScheduler-debug.module": ["<ModelScheduler-debug.module>"]
+  "PackageStructure": ["<PackageStructure>"]
+  "_AtomicsShims-debug.module": ["<_AtomicsShims-debug.module>"]
+  "main": ["<CBase32-debug.module>","<CVaporBcrypt-debug.module>","<ModelScheduler-debug.exe>","<ModelScheduler-debug.module>"]
+  "test": ["<CBase32-debug.module>","<CVaporBcrypt-debug.module>","<ModelScheduler-debug.exe>","<ModelScheduler-debug.module>"]
+default: "main"
+nodes:
+  "/home/muqadam-sabir/ModelScheduler/Sources/CBase32/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+  "/home/muqadam-sabir/ModelScheduler/Sources/CVaporBcrypt/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+  "/home/muqadam-sabir/ModelScheduler/Sources/ModelScheduler/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+commands:
+  "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/Atomics.swiftmodule.o":
+    tool: shell
+    inputs: ["/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.swiftmodule"]
+    outputs: ["/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/Atomics.swiftmodule.o"]
+    description: "Wrapping AST for Atomics for debugging"
+    args: ["/usr/bin/swiftc","-modulewrap","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.swiftmodule","-o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/Atomics.swiftmodule.o","-target","x86_64-unknown-linux-gnu"]
+
+  "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/CBase32.build/cbase32.c.o":
+    tool: clang
+    inputs: ["/home/muqadam-sabir/ModelScheduler/Sources/CBase32/cbase32.c"]
+    outputs: ["/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/CBase32.build/cbase32.c.o"]
+    description: "Compiling CBase32 cbase32.c"
+    args: ["/usr/bin/clang","-target","x86_64-unknown-linux-gnu","-g","-O0","-DSWIFT_PACKAGE=1","-DDEBUG=1","-fblocks","-fmodules","-fmodule-name=CBase32","-I","/home/muqadam-sabir/ModelScheduler/Sources/CBase32/include","-fmodules-cache-path=/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModuleCache","-fPIC","-MD","-MT","dependencies","-MF","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/CBase32.build/cbase32.c.d","-c","/home/muqadam-sabir/ModelScheduler/Sources/CBase32/cbase32.c","-o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/CBase32.build/cbase32.c.o"]
+    deps: "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/CBase32.build/cbase32.c.d"
+
+  "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/CVaporBcrypt.build/bcrypt.c.o":
+    tool: clang
+    inputs: ["/home/muqadam-sabir/ModelScheduler/Sources/CVaporBcrypt/bcrypt.c"]
+    outputs: ["/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/CVaporBcrypt.build/bcrypt.c.o"]
+    description: "Compiling CVaporBcrypt bcrypt.c"
+    args: ["/usr/bin/clang","-target","x86_64-unknown-linux-gnu","-g","-O0","-DSWIFT_PACKAGE=1","-DDEBUG=1","-fblocks","-fmodules","-fmodule-name=CVaporBcrypt","-I","/home/muqadam-sabir/ModelScheduler/Sources/CVaporBcrypt/include","-fmodules-cache-path=/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModuleCache","-fPIC","-MD","-MT","dependencies","-MF","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/CVaporBcrypt.build/bcrypt.c.d","-c","/home/muqadam-sabir/ModelScheduler/Sources/CVaporBcrypt/bcrypt.c","-o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/CVaporBcrypt.build/bcrypt.c.o"]
+    deps: "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/CVaporBcrypt.build/bcrypt.c.d"
+
+  "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/CVaporBcrypt.build/blf.c.o":
+    tool: clang
+    inputs: ["/home/muqadam-sabir/ModelScheduler/Sources/CVaporBcrypt/blf.c"]
+    outputs: ["/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/CVaporBcrypt.build/blf.c.o"]
+    description: "Compiling CVaporBcrypt blf.c"
+    args: ["/usr/bin/clang","-target","x86_64-unknown-linux-gnu","-g","-O0","-DSWIFT_PACKAGE=1","-DDEBUG=1","-fblocks","-fmodules","-fmodule-name=CVaporBcrypt","-I","/home/muqadam-sabir/ModelScheduler/Sources/CVaporBcrypt/include","-fmodules-cache-path=/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModuleCache","-fPIC","-MD","-MT","dependencies","-MF","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/CVaporBcrypt.build/blf.c.d","-c","/home/muqadam-sabir/ModelScheduler/Sources/CVaporBcrypt/blf.c","-o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/CVaporBcrypt.build/blf.c.o"]
+    deps: "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/CVaporBcrypt.build/blf.c.d"
+
+  "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/ModelScheduler.swiftmodule.o":
+    tool: shell
+    inputs: ["/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.swiftmodule"]
+    outputs: ["/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/ModelScheduler.swiftmodule.o"]
+    description: "Wrapping AST for ModelScheduler for debugging"
+    args: ["/usr/bin/swiftc","-modulewrap","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.swiftmodule","-o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/ModelScheduler.swiftmodule.o","-target","x86_64-unknown-linux-gnu"]
+
+  "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/_AtomicsShims.build/src/_AtomicsShims.c.o":
+    tool: clang
+    inputs: ["/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/_AtomicsShims/src/_AtomicsShims.c"]
+    outputs: ["/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/_AtomicsShims.build/src/_AtomicsShims.c.o"]
+    description: "Compiling _AtomicsShims src/_AtomicsShims.c"
+    args: ["/usr/bin/clang","-target","x86_64-unknown-linux-gnu","-g","-O0","-DSWIFT_PACKAGE=1","-DDEBUG=1","-fblocks","-fmodules","-fmodule-name=_AtomicsShims","-I","/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/_AtomicsShims/include","-fmodules-cache-path=/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModuleCache","-fPIC","-MD","-MT","dependencies","-MF","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/_AtomicsShims.build/src/_AtomicsShims.c.d","-c","/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/_AtomicsShims/src/_AtomicsShims.c","-o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/_AtomicsShims.build/src/_AtomicsShims.c.o"]
+    deps: "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/_AtomicsShims.build/src/_AtomicsShims.c.d"
+
+  "<Atomics-debug.module>":
+    tool: phony
+    inputs: ["/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/AtomicInteger.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/AtomicMemoryOrderings.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/AtomicOptional.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/AtomicRawRepresentable.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/AtomicStrongReference.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/AtomicValue.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/DoubleWord.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/autogenerated/AtomicBool.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/autogenerated/AtomicLazyReference.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/autogenerated/HighLevelTypes.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/autogenerated/IntegerConformances.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/autogenerated/PointerConformances.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.swiftmodule"]
+    outputs: ["<Atomics-debug.module>"]
+
+  "<CBase32-debug.module>":
+    tool: phony
+    inputs: ["/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/CBase32.build/cbase32.c.o"]
+    outputs: ["<CBase32-debug.module>"]
+
+  "<CVaporBcrypt-debug.module>":
+    tool: phony
+    inputs: ["/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/CVaporBcrypt.build/bcrypt.c.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/CVaporBcrypt.build/blf.c.o"]
+    outputs: ["<CVaporBcrypt-debug.module>"]
+
+  "<ModelScheduler-debug.exe>":
+    tool: phony
+    inputs: ["/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler"]
+    outputs: ["<ModelScheduler-debug.exe>"]
+
+  "<ModelScheduler-debug.module>":
+    tool: phony
+    inputs: ["/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/Controllers/SchedulerController.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/Models/Scheduler.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/configure.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/routes.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/Run/main.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.swiftmodule"]
+    outputs: ["<ModelScheduler-debug.module>"]
+
+  "<_AtomicsShims-debug.module>":
+    tool: phony
+    inputs: ["/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/_AtomicsShims.build/src/_AtomicsShims.c.o"]
+    outputs: ["<_AtomicsShims-debug.module>"]
+
+  "C.Atomics-debug.module":
+    tool: swift-compiler
+    inputs: ["/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/Atomics/AtomicInteger.swift","/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/Atomics/AtomicMemoryOrderings.swift","/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/Atomics/AtomicOptional.swift","/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/Atomics/AtomicRawRepresentable.swift","/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/Atomics/AtomicStrongReference.swift","/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/Atomics/AtomicValue.swift","/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/Atomics/DoubleWord.swift","/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/Atomics/autogenerated/AtomicBool.swift","/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/Atomics/autogenerated/AtomicLazyReference.swift","/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/Atomics/autogenerated/HighLevelTypes.swift","/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/Atomics/autogenerated/IntegerConformances.swift","/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/Atomics/autogenerated/PointerConformances.swift","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/_AtomicsShims.build/src/_AtomicsShims.c.o"]
+    outputs: ["/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/AtomicInteger.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/AtomicMemoryOrderings.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/AtomicOptional.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/AtomicRawRepresentable.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/AtomicStrongReference.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/AtomicValue.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/DoubleWord.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/autogenerated/AtomicBool.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/autogenerated/AtomicLazyReference.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/autogenerated/HighLevelTypes.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/autogenerated/IntegerConformances.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/autogenerated/PointerConformances.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.swiftmodule"]
+    executable: "/usr/bin/swiftc"
+    module-name: "Atomics"
+    module-output-path: "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.swiftmodule"
+    import-paths: ["/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug"]
+    temps-path: "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build"
+    objects: ["/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/AtomicInteger.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/AtomicMemoryOrderings.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/AtomicOptional.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/AtomicRawRepresentable.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/AtomicStrongReference.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/AtomicValue.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/DoubleWord.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/autogenerated/AtomicBool.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/autogenerated/AtomicLazyReference.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/autogenerated/HighLevelTypes.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/autogenerated/IntegerConformances.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/autogenerated/PointerConformances.swift.o"]
+    other-args: ["-target","x86_64-unknown-linux-gnu","-swift-version","5","-enable-batch-mode","-index-store-path","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/index/store","-Onone","-enable-testing","-g","-j8","-DSWIFT_PACKAGE","-DDEBUG","-Xcc","-fmodule-map-file=/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/_AtomicsShims/include/module.modulemap","-Xcc","-I","-Xcc","/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/_AtomicsShims/include","-module-cache-path","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModuleCache","-parseable-output","-parse-as-library","-color-diagnostics","-I","/usr/local/lib/merlin/VaporLibrary-4.66.1/VaporLibrary/.build/debug","-L","/usr/local/lib/merlin/VaporLibrary-4.66.1/VaporLibrary/.build/debug","-lVaporLibrary","-suppress-warnings"]
+    sources: ["/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/Atomics/AtomicInteger.swift","/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/Atomics/AtomicMemoryOrderings.swift","/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/Atomics/AtomicOptional.swift","/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/Atomics/AtomicRawRepresentable.swift","/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/Atomics/AtomicStrongReference.swift","/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/Atomics/AtomicValue.swift","/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/Atomics/DoubleWord.swift","/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/Atomics/autogenerated/AtomicBool.swift","/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/Atomics/autogenerated/AtomicLazyReference.swift","/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/Atomics/autogenerated/HighLevelTypes.swift","/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/Atomics/autogenerated/IntegerConformances.swift","/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/Atomics/autogenerated/PointerConformances.swift"]
+    is-library: true
+    enable-whole-module-optimization: false
+    num-threads: 8
+
+  "C.ModelScheduler-debug.exe":
+    tool: shell
+    inputs: ["/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/AtomicInteger.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/AtomicMemoryOrderings.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/AtomicOptional.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/AtomicRawRepresentable.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/AtomicStrongReference.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/AtomicValue.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/Atomics.swiftmodule.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/DoubleWord.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/autogenerated/AtomicBool.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/autogenerated/AtomicLazyReference.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/autogenerated/HighLevelTypes.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/autogenerated/IntegerConformances.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.build/autogenerated/PointerConformances.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/CBase32.build/cbase32.c.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/CVaporBcrypt.build/bcrypt.c.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/CVaporBcrypt.build/blf.c.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/Controllers/SchedulerController.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/Models/Scheduler.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/configure.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/routes.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/ModelScheduler.swiftmodule.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/Run/main.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/_AtomicsShims.build/src/_AtomicsShims.c.o"]
+    outputs: ["/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler"]
+    description: "Linking ./.build/x86_64-unknown-linux-gnu/debug/ModelScheduler"
+    args: ["/usr/bin/swiftc","-L","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug","-o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler","-module-name","ModelScheduler","-emit-executable","-Xlinker","--defsym","-Xlinker","main=ModelScheduler_main","-Xlinker","-rpath=$ORIGIN","@/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.product/Objects.LinkFileList","-target","x86_64-unknown-linux-gnu","-I","/usr/local/lib/merlin/VaporLibrary-4.66.1/VaporLibrary/.build/debug","-L","/usr/local/lib/merlin/VaporLibrary-4.66.1/VaporLibrary/.build/debug","-lVaporLibrary","-L","/usr/lib"]
+
+  "C.ModelScheduler-debug.module":
+    tool: swift-compiler
+    inputs: ["/home/muqadam-sabir/ModelScheduler/Sources/ModelScheduler/App/Controllers/SchedulerController.swift","/home/muqadam-sabir/ModelScheduler/Sources/ModelScheduler/App/Models/Scheduler.swift","/home/muqadam-sabir/ModelScheduler/Sources/ModelScheduler/App/configure.swift","/home/muqadam-sabir/ModelScheduler/Sources/ModelScheduler/App/routes.swift","/home/muqadam-sabir/ModelScheduler/Sources/ModelScheduler/Run/main.swift","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/CBase32.build/cbase32.c.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/CVaporBcrypt.build/bcrypt.c.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/CVaporBcrypt.build/blf.c.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/Atomics.swiftmodule"]
+    outputs: ["/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/Controllers/SchedulerController.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/Models/Scheduler.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/configure.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/routes.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/Run/main.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.swiftmodule"]
+    executable: "/usr/bin/swiftc"
+    module-name: "ModelScheduler"
+    module-output-path: "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.swiftmodule"
+    import-paths: ["/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug"]
+    temps-path: "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build"
+    objects: ["/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/Controllers/SchedulerController.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/Models/Scheduler.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/configure.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/routes.swift.o","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/Run/main.swift.o"]
+    other-args: ["-target","x86_64-unknown-linux-gnu","-swift-version","5","-enable-batch-mode","-index-store-path","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/index/store","-Onone","-enable-testing","-g","-j8","-DSWIFT_PACKAGE","-DDEBUG","-Xcc","-fmodule-map-file=/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/_AtomicsShims/include/module.modulemap","-Xcc","-I","-Xcc","/home/muqadam-sabir/ModelScheduler/.build/checkouts/swift-atomics/Sources/_AtomicsShims/include","-Xcc","-fmodule-map-file=/home/muqadam-sabir/ModelScheduler/Sources/CVaporBcrypt/include/module.modulemap","-Xcc","-I","-Xcc","/home/muqadam-sabir/ModelScheduler/Sources/CVaporBcrypt/include","-Xcc","-fmodule-map-file=/home/muqadam-sabir/ModelScheduler/Sources/CBase32/include/module.modulemap","-Xcc","-I","-Xcc","/home/muqadam-sabir/ModelScheduler/Sources/CBase32/include","-module-cache-path","/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModuleCache","-parseable-output","-Xfrontend","-entry-point-function-name","-Xfrontend","ModelScheduler_main","-color-diagnostics","-I","/usr/local/lib/merlin/VaporLibrary-4.66.1/VaporLibrary/.build/debug","-L","/usr/local/lib/merlin/VaporLibrary-4.66.1/VaporLibrary/.build/debug","-lVaporLibrary"]
+    sources: ["/home/muqadam-sabir/ModelScheduler/Sources/ModelScheduler/App/Controllers/SchedulerController.swift","/home/muqadam-sabir/ModelScheduler/Sources/ModelScheduler/App/Models/Scheduler.swift","/home/muqadam-sabir/ModelScheduler/Sources/ModelScheduler/App/configure.swift","/home/muqadam-sabir/ModelScheduler/Sources/ModelScheduler/App/routes.swift","/home/muqadam-sabir/ModelScheduler/Sources/ModelScheduler/Run/main.swift"]
+    is-library: false
+    enable-whole-module-optimization: false
+    num-threads: 8
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/home/muqadam-sabir/ModelScheduler/Sources/CBase32/","/home/muqadam-sabir/ModelScheduler/Sources/CVaporBcrypt/","/home/muqadam-sabir/ModelScheduler/Sources/ModelScheduler/","/home/muqadam-sabir/ModelScheduler/Package.swift","/home/muqadam-sabir/ModelScheduler/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+

@@ -1,0 +1,35 @@
+{
+  "": {
+    "swift-dependencies": "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/master.swiftdeps"
+  },
+  "/home/muqadam-sabir/ModelScheduler/Sources/ModelScheduler/App/Controllers/SchedulerController.swift": {
+    "dependencies": "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/Controllers/SchedulerController.d",
+    "object": "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/Controllers/SchedulerController.swift.o",
+    "swiftmodule": "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/Controllers/SchedulerController~partial.swiftmodule",
+    "swift-dependencies": "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/Controllers/SchedulerController.swiftdeps"
+  },
+  "/home/muqadam-sabir/ModelScheduler/Sources/ModelScheduler/App/Models/Scheduler.swift": {
+    "dependencies": "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/Models/Scheduler.d",
+    "object": "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/Models/Scheduler.swift.o",
+    "swiftmodule": "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/Models/Scheduler~partial.swiftmodule",
+    "swift-dependencies": "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/Models/Scheduler.swiftdeps"
+  },
+  "/home/muqadam-sabir/ModelScheduler/Sources/ModelScheduler/App/configure.swift": {
+    "dependencies": "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/configure.d",
+    "object": "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/configure.swift.o",
+    "swiftmodule": "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/configure~partial.swiftmodule",
+    "swift-dependencies": "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/configure.swiftdeps"
+  },
+  "/home/muqadam-sabir/ModelScheduler/Sources/ModelScheduler/App/routes.swift": {
+    "dependencies": "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/routes.d",
+    "object": "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/routes.swift.o",
+    "swiftmodule": "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/routes~partial.swiftmodule",
+    "swift-dependencies": "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/App/routes.swiftdeps"
+  },
+  "/home/muqadam-sabir/ModelScheduler/Sources/ModelScheduler/Run/main.swift": {
+    "dependencies": "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/Run/main.d",
+    "object": "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/Run/main.swift.o",
+    "swiftmodule": "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/Run/main~partial.swiftmodule",
+    "swift-dependencies": "/home/muqadam-sabir/ModelScheduler/.build/x86_64-unknown-linux-gnu/debug/ModelScheduler.build/Run/main.swiftdeps"
+  }
+}
