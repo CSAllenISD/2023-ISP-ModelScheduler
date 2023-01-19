@@ -25,8 +25,16 @@ func routes(_ app: Application) throws {
     app.get("") {req in
         req.view.render("welcome.html")
     }
+
+    app.get("welcome.html") {req in
+        req.view.render("welcome.html")
+    }
+
+    app.get("FAQ.html") {req in
+        req.view.render("FAQ.html")
+    }
     
-    app.get("FAQ"){ req in
+    app.get("Views/FAQ.html"){ req in
         req.view.render("FAQ.html")
     }
 
