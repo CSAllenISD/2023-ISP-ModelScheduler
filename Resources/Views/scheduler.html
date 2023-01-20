@@ -1,17 +1,98 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>ModelScheduler</title>
-
-	<link rel="stylesheet" href="styles/app.css">
-</head>
-<body>
-	<div class="wrapper">
-		<h1><a href="FAQ.html">Test</a></h1>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/scheduler.css">
+    <title>Scheduler | Model Scheduler</title>
+  </head>
+  <body>
+    <nav>
+      <div>
+	<a href="index.html">Home</a>
+      </div>
+      <div>
+	<a href="#" class="selected">Scheduler</a>
+      </div>
+      <div>
+	<a href="FAQ.html">FAQ</a>
+      </div>
+    </nav>
+    <main>
+      <div class="leftside" id="courseSelect">
+	<h1>Courses</h1>
+	<!-- <a class="course">Computer Science II</a> -->
+      </div>
+      <div class="rightside" id="schedules">
+	<div id="scheduleViewer">
+	  <div class="header" id="topLeft">
+	    <span>2023-2024</span>
+	  </div>
+	  <div class="header topHeader">
+	    <span>Fall Semester</span>
+	  </div>
+	  <div class="header topHeader">
+	    <span>Spring Semester</span>
+	  </div>
+	  <div class="header aDay">
+	    <span>A Day</span>
+	  </div>
+	  <div class="header bDay">
+	    <span>B Day</span>
+	  </div>
+	  <div class="header aDay">
+	    <span>A Day</span>
+	  </div>
+	  <div class="header bDay">
+	    <span>B Day</span>
+	  </div>
+	  <div class="header period" id="period0Container">
+	    <span>Period 0</span>
+	  </div>
+	  <div class="class"></div>
+	  <div class="class"></div>
+	  <div class="class"></div>
+	  <div class="class"></div>
+	  <div class="header period" id="period1Container">
+	    <span>Period 1</span>
+	  </div>
+	  <div class="class"></div>
+	  <div class="class"></div>
+	  <div class="class"></div>
+	  <div class="class"></div>
+	  <div class="header period" id="period2Container">
+	    <span>Period 2/5</span>
+	  </div>
+	  <div class="class"></div>
+	  <div class="class"></div>
+	  <div class="class"></div>
+	  <div class="class"></div>
+	  <div class="header period" id="period3Container">
+	    <span>Period 3/6</span>
+	  </div>
+	  <div class="class"></div>
+	  <div class="class"></div>
+	  <div class="class"></div>
+	  <div class="class"></div>
+	  <div class="header period" id="period4Container">
+	    <span>Period 4/7</span>
+	  </div>
+	  <div class="class"></div>
+	  <div class="class"></div>
+	  <div class="class"></div>
+	  <div class="class"></div>
+	  <div class="header period" id="period8Container">
+	    <span>Period 8</span>
+	  </div>
+	  <div class="class"></div>
+	  <div class="class"></div>
+	  <div class="class"></div>
+	  <div class="class"></div>
 	</div>
-	
-	<footer class="main">
-		<p>Powered by Swift.</p>
-	</footer>
-</body>
+      </div>
+    </main>
+
+    <script src="js/scheduler.js"></script>
+  </body>
 </html>
