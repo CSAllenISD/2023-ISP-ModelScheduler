@@ -23,11 +23,7 @@ let schedulerController = SchedulerController()
 func routes(_ app: Application) throws {
 
     app.get("") {req in
-        req.view.render("welcome.html")
-    }
-
-    app.get("welcome.html") {req in
-        req.view.render("welcome.html")
+        req.view.render("index.html")
     }
 
     app.get("FAQ.html") {req in
@@ -36,6 +32,38 @@ func routes(_ app: Application) throws {
     
     app.get("Views/FAQ.html"){ req in
         req.view.render("FAQ.html")
+    }
+    
+    app.get("index.html") {req in
+        req.view.render("index.html")
+    }
+    
+    app.get("Views/index.html"){ req in
+        req.view.render("index.html")
+    }
+    
+    app.get("scheduler.html") {req in
+        req.view.render("scheduler.html")
+    }
+    
+    app.get("Views/scheduler.html"){ req in
+        req.view.render("scheduler.html")
+    }
+    
+    app.get("final.html") {req in
+        req.view.render("final.html")
+    }
+    
+    app.get("Views/final.html"){ req in
+        req.view.render("final.html")
+    }
+    
+    app.get("login.html") {req in
+        req.view.render("login.html")
+    }
+    
+    app.get("Views/login.html"){ req in
+        req.view.render("login.html")
     }
 
     // Find an employee with the specified ID
