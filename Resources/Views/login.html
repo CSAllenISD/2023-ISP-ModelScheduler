@@ -23,12 +23,23 @@
 
 
       <div class="right">
-	<h5>Login</h5>
-	<p>Don't have an account? <a href="#">Creat Your Account</a> it takes less than a day maybe</p>
+	<h5>AHS</h5>
+	<p>Don't have an account? <a href="#">Create Your Account</a> it takes less than a day maybe</p>
 	<div class="inputs">
-	  <input type="text" placeholder="user name">
-	  <br>
-	  <input type="password" placeholder="password">
+	  <form action="./createuser" method="post">
+
+	    <label for="email"><b>Username</b></label>
+	    <input type="email" placeholder="Enter Email" name="email" required>
+
+	    <label for="password"><b>Password</b></label>
+	    <input type="password" placeholder="Enter Password" name="password" required>
+	    
+	    <label for="confirmPassword"><b>Confirm Password</b></label>
+	    <input type="password" placeholder="Confirm Password" name="confirmPassword" required>
+	    
+	    <button type="submit">Login</button>
+
+	  </form>
 	</div>
 
 	<br><br>
@@ -43,7 +54,6 @@
 	</div>
 
 	<br>
-	<button>Login</button>
       </div>
 
     </div>
