@@ -18,6 +18,8 @@ html {
 
 body {
     /*background-image: linear-gradient(rgba(193,58,43,100), rgba(21,26,97,100))*/
+    height: 100%;
+    width: 100%;
 }
 
 .navbar {
@@ -55,6 +57,41 @@ img {
 .navbar a :hover {
     color: red;
     transition: ease 1s;
+}
+#tables {
+    display: inline-block;
+    width: 100%;
+    height: 70%;
+    margin: none;
+    padding: none;
+}
+#scheduler {
+    float: right;
+    width: 70%;
+    height: 100%;
+    margin: 5% 5% 0 5%;
+}
+
+#classes {
+    float: left;
+    width: 15%;
+    margin-left: 5%;
+    margin-top: 5%;
+}
+
+table .grayBox {
+    background-color: gray;
+    color: black;
+}
+
+table .redBox {
+    background-color: red;
+    color: white;
+}
+
+table .blueBox {
+    background-color: blue;
+    color: white;
 }
 
 .box-1 img {
