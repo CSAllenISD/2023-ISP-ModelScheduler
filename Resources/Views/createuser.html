@@ -2,7 +2,7 @@
 <html lang="en" >
   <head>
     <meta charset="UTF-8">
-    <title>Login Page</title>
+    <title>Create User Page</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
 
@@ -24,13 +24,18 @@
 
       <div class="right">
 	<h5>AHS</h5>
-	<p>Don't have an account? <a href="createuser.html">Create Your Account</a> it takes less than a day maybe</p>
+	<p>Already have an account? <a href="login.html">Login</a></p>
 	<div class="inputs">
-	  <form method="POST" action="./login">
+	  <form method="POST" action="./createuser">
 	    <label for="email">Email</label>
-	    <input type="text" id="username" placeholder="Username" name="username" autocomplete="username" required autofocus>
+	    <input type="text" id="email" placeholder="Email" name="email" autocomplete="email" required autofocus>
+
 	    <label for="password">Password</label>
-	    <input type="password" id="password" placeholder="Password" name="password" autocomplete="current-password" required>
+	    <input type="password" id="password" placeholder="Password" name="password" required>
+
+	    <label for="confirmPassword">Confirm Password</label>
+	    <input type="password" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword" required>
+
 	    <input type="submit" value="Sign In">    
 	  </form>
 	</div>

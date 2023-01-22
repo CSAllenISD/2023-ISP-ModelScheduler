@@ -1,5 +1,5 @@
 body {
-    background-image: linear-gradient(135deg, #FAB2FF 10%, #1904E5 100%);
+    background-image: linear-gradient(135deg, #3e3e3e3e 10%, #5a5a5a5a 100%);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -145,20 +145,4 @@ label:hover::before {
     color: #fff;
     cursor: pointer;
     background: #70F570;
-}
-
-label:hover::before .text-checkbox {
-    background: #70F570;
-}
-
-label span.text-checkbox {
-    display: inline-block;
-    height: auto;
-    position: relative;
-    cursor: pointer;
-    transition: all 0.2s linear;
-}
-
-label input[type="checkbox"] {
-    display: none;
 }
