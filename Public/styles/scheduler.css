@@ -340,14 +340,12 @@ a.semesterBtn.selected::before {
 }
 
 #scheduleViewer > .aDay {
-    height: 20px;
     color: white;
     background-color: var(--a-day-red);
     grid-row: span 1;
 }
 
 #scheduleViewer > .bDay {
-    height: 20px;
     color: white;
     background-color: var(--b-day-blue);
     grid-row: span 1;
