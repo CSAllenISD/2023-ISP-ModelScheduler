@@ -53,3 +53,19 @@ courseSelect.addEventListener('click', function (event) {
 	selectedCourse = null;
     }
 });
+
+const semesterSelecters = document.querySelectorAll('.semesterBtn');
+for (let i = 0; i < semesterSelecters.length; i++) {
+    const semesterSelecter = semesterSelecters[i];
+    semesterSelecter.addEventListener('click', function (event) {
+	if (event.target.classList.contains('semesterBtn')) {
+
+	    for (let l = 0; l < semesterSelecters.length; l++) {
+		const semesterSelecter = semesterSelecters[l];
+		semesterSelecter.classList.remove('selected');
+	    }
+
+	    event.target.classList.add('selected');
+	}
+    });
+}

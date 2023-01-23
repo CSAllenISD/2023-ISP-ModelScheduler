@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/scheduler.css">
+    <link rel="stylesheet" href="scheduler.css">
     <title>Scheduler | Model Scheduler</title>
   </head>
   <body>
@@ -22,18 +22,21 @@
     <main>
       <div class="leftside" id="courseSelect">
 	<h1>Courses</h1>
-	<!-- <a class="course">Computer Science II</a> -->
       </div>
       <div class="rightside" id="schedules">
+	<div style="width: 100%; display: flex; flex-direction: row; justify-content: space-around;">
+	  <a class="semesterBtn selected">Fall Semester</a>
+	  <a class="semesterBtn">Spring Semester</a>
+	</div>
 	<div id="scheduleViewer">
 	  <div class="header" id="topLeft">
 	    <span>2023-2024</span>
 	  </div>
 	  <div class="header topHeader">
-	    <span>Fall Semester</span>
+	    <span>High School Schedule</span>
 	  </div>
 	  <div class="header topHeader">
-	    <span>Spring Semester</span>
+	    <span>STEAM / CTC Schedule</span>
 	  </div>
 	  <div class="header aDay">
 	    <span>A Day</span>
@@ -47,13 +50,6 @@
 	  <div class="header bDay">
 	    <span>B Day</span>
 	  </div>
-	  <div class="header period" id="period0Container">
-	    <span>Period 0</span>
-	  </div>
-	  <div class="class"></div>
-	  <div class="class"></div>
-	  <div class="class"></div>
-	  <div class="class"></div>
 	  <div class="header period" id="period1Container">
 	    <span>Period 1</span>
 	  </div>
@@ -93,6 +89,6 @@
       </div>
     </main>
 
-    <script src="js/scheduler.js"></script>
+    <script src="scheduler.js"></script>
   </body>
-</html>
+  </html>

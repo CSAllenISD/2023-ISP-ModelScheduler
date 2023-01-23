@@ -1,3 +1,35 @@
+@media (prefers-color-scheme: dark) {
+    :root {
+	--main-bg-color: #2d2d2d;
+	--main-gradient-bg-color: #3a3a3a;
+	--nav-bg-color: #3a3a3a;
+	--nav-gradient-bg-color: #4a4a4a;
+	--content-bg-color: #707580;
+
+	--a-day-red: #bd2d28;
+	--b-day-blue: #151b66;
+
+	--main-text-color: white;
+	--lighter-text-color: #f1f1f1;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+	--main-bg-color: #dce9f8;
+	--main-gradient-bg-color: #a3bded;
+	--nav-bg-color: #f2f7fd;
+	--nav-gradient-bg-color: #f7f7f7;
+	--content-bg-color: #c2d1f0;
+
+	--a-day-red: #cb2823;
+	--b-day-blue: #11197f;
+
+	--main-text-color: black;
+	--lighter-text-color: #2d2d2d;
+    }
+}
+
 * {
     box-sizing: border-box;
 }
@@ -12,6 +44,7 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
+    color: var(--main-text-color);
 }
 
 body {
@@ -20,7 +53,11 @@ body {
     align-items: center;
     flex-direction: column;
     overflow-x: hidden;
-    background: linear-gradient(to top, #dce9f8 0%, #a3bded 90%);
+    background: linear-gradient(
+	to top,
+	var(--main-bg-color) 0%,
+	var(--main-gradient-bg-color) 90%
+    );
     background-position: center;
     background-size: cover;
 }
@@ -38,14 +75,18 @@ nav {
     padding: 0 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 10;
-    background-image: linear-gradient(53deg, #f2f7fd 0%, #f7f7f7 10%);
+    background-image: linear-gradient(
+	53deg,
+	var(--nav-bg-color) 0%,
+	var(--nav-gradient-bg-color) 10%
+    );
     border-end-end-radius: 20px;
     border-end-start-radius: 20px;
 }
 
 nav a {
     position: relative;
-    color: #000;
+    color: var(--main-text-color);
     font-size: 1.7rem;
     line-height: 32px;
     font-weight: bold;
@@ -54,7 +95,7 @@ nav a {
 	to right,
 	#54b3d6,
 	#54b3d6 50%,
-	#000 50%
+	var(--main-text-color) 50%
     );
     background-size: 200% 100%;
     background-position: -100%;
@@ -64,7 +105,7 @@ nav a {
 }
 
 nav a:before {
-    content: '';
+    content: "";
     background: #54b3d6;
     display: block;
     position: absolute;
@@ -104,7 +145,11 @@ main .leftside {
     position: relative;
     transition: all 300ms cubic-bezier(0.19, 1, 0.56, 1);
 
-    background-image: linear-gradient(53deg, #f2f7fd 0%, #f7f7f7 10%);
+    background-image: linear-gradient(
+	53deg,
+	var(--nav-bg-color) 0%,
+	var(--nav-gradient-bg-color) 10%
+    );
     border-radius: 1rem;
 
     min-height: 500px;
@@ -112,15 +157,20 @@ main .leftside {
 
 main .rightside {
     margin: 2rem;
+    padding-bottom: 1rem;
 
     flex: 2 1 0;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     position: relative;
     transition: all 300ms cubic-bezier(0.19, 1, 0.56, 1);
 
-    background-image: linear-gradient(53deg, #f2f7fd 0%, #f7f7f7 10%);
+    background-image: linear-gradient(
+	53deg,
+	var(--nav-bg-color) 0%,
+	var(--nav-gradient-bg-color) 10%
+    );
     border-radius: 1rem;
 }
 
@@ -131,21 +181,64 @@ a.course {
     width: 80%;
     padding: 8px;
     margin-bottom: 8px;
-    background-color: #dce9f8;
-    color: #2d2d2d;
+    background-color: var(--main-bg-color);
+    color: var(--lighter-text-color);
     text-align: center;
     border-radius: 10px;
     font-weight: 700;
 }
 
 a.course:hover {
-    background-color: #c2d1f0;
-    color: #000000;
+    background-color: var(--content-bg-color);
+    color: var(--main-text-color);
 }
 
 a.course.selected {
-    background-color: #c2d1f0;
-    color: #000000;
+    background-color: var(--content-bg-color);
+    color: var(--main-text-color);
+}
+
+a.semesterBtn {
+    border-radius: 20px;
+    border: 0;
+    background-color: var(--main-bg-color);
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+
+    position: relative;
+    color: var(--main-text-color);
+    font-size: 1.7rem;
+    line-height: 32px;
+    font-weight: bold;
+
+    transition: all 0.3s ease-in-out;
+}
+
+a.semesterBtn:before {
+    content: "";
+    background: #54b3d6;
+    display: block;
+    position: absolute;
+    bottom: 5px;
+    left: 15px;
+    width: 0;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
+    border-radius: 2px;
+}
+
+a.semesterBtn:hover {
+    background-position: 0;
+}
+
+a.semesterBtn:hover::before {
+    width: calc(100% - 30px);
+}
+
+a.semesterBtn.selected::before {
+    width: calc(100% - 30px);
+    background: #54d675;
 }
 
 #scheduleViewer {
@@ -158,10 +251,10 @@ a.course.selected {
     padding-top: 4px;
     padding-bottom: 4px;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 0.25fr 0.25fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    background-color: #c2d1f0;
+    grid-template-rows: 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr;
+    background-color: var(--content-bg-color);
     border-radius: 10px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
     font-size: 16px;
     gap: 5px;
 }
@@ -171,9 +264,9 @@ a.course.selected {
     padding: 1rem;
     text-align: center;
     display: table;
-    table-layout:fixed;
-    text-align: center;
+    table-layout: fixed;
     cursor: auto;
+    grid-row: span 2;
 }
 
 #scheduleViewer > div > span {
@@ -181,12 +274,22 @@ a.course.selected {
     vertical-align: middle;
 }
 
-#scheduleViewer > div:nth-child(n+2) {
+#scheduleViewer > div:nth-child(n + 2) {
     margin-left: -1px;
 }
 
-#scheduleViewer > div:nth-child(n+6) {
+#scheduleViewer > div:nth-child(n + 8) {
     margin-top: -1px;
+}
+
+#scheduleViewer > div:nth-child(2),
+#scheduleViewer > div:nth-child(5n) {
+    margin-right: 5px;
+}
+
+#scheduleViewer > div:nth-child(3),
+#scheduleViewer > div:nth-child(5n + 1) {
+    margin-left: 5px;
 }
 
 #scheduleViewer > .highlighted {
@@ -199,35 +302,55 @@ a.course.selected {
 }
 
 #scheduleViewer > .class {
-    background-color: #f2f7fd;
-    color: black;
+    background-color: var(--nav-bg-color);
+    color: var(--main-text-color);
+}
+
+#scheduleViewer > .shortened {
+    grid-row: span 1;
+}
+
+#scheduleViewer > .steam {
+    background-color: #d6cece;
+}
+
+#scheduleViewer > .steam-time-conflict {
+    grid-row: span 3;
 }
 
 #scheduleViewer > .header {
-    background-color: #dce9f8;
-    color: black;
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
     font-weight: bolder;
+}
+
+#scheduleViewer > .period {
+    grid-column: 1;
 }
 
 #scheduleViewer > #topLeft {
     grid-row: 1 / span 2;
+    margin-left: 0;
 }
 
 #scheduleViewer > .topHeader {
     grid-column: span 2;
+    grid-row: span 1;
     height: 0.25fr;
 }
 
 #scheduleViewer > .aDay {
     height: 20px;
     color: white;
-    background-color: #CB2823;
+    background-color: var(--a-day-red);
+    grid-row: span 1;
 }
 
 #scheduleViewer > .bDay {
     height: 20px;
     color: white;
-    background-color: #11197F;
+    background-color: var(--b-day-blue);
+    grid-row: span 1;
 }
 
 @media only screen and (max-width: 1200px) {
