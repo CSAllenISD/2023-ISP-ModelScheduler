@@ -1,24 +1,6 @@
-/*
-VaporShell provides a minimal framework for starting Igis projects.
-Copyright (C) 2021, 2022 CoderMerlin.com
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
- */
-
 import Vapor
-
 import Fluent
 import FluentMySQLDriver
-
-let schedulerController = SchedulerController()
 
 func routes(_ app: Application) throws {
 
@@ -55,7 +37,7 @@ func routes(_ app: Application) throws {
     }
     
     app.get("Views/final.html"){ req in
-        req.view.render("final.html")
+        req.view.render("inal.html")
     }
     
     app.get("login.html") {req in
@@ -66,15 +48,71 @@ func routes(_ app: Application) throws {
         req.view.render("login.html")
     }
 
-    // Find an employee with the specified ID
-    try schedulerController.getEmployeeById(app)
-
-    /// This API endpoint provides a list of all employees
-    /// Paging is supported
-    /// Endpoint URI: /employees
-    app.get("employees") { req -> Page<Scheduler>  in
-        let employees = try await Scheduler.query(on: req.db)
-          .paginate(for: req)
-        return employees
+    app.get("createuser.html") {req in
+        req.view.render("createuser.html")
     }
+    
+    app.get("Views/createuser.html"){ req in
+        req.view.render("createuser.html")
+    }
+
+    let redirectMiddleware = User.redirectMiddleware { req -> String in
+        return "/login?authRequired=true&next=\(req.url.path)"
+    }
+
+    // Endpoint for account creation
+    app.post("createuser") {req async throws -> User in
+        try User.Create.validate(content: req)
+        let create = try req.content.decode(User.Create.self)
+        guard create.password == create.confirmPassword else {
+            throw Abort(.badRequest, reason: "Passwords did not match")
+        }
+        let user = try User(
+          email: create.email,
+          passwordHash: Bcrypt.hash(create.password)
+        )
+        try await user.save(on: req.db)
+        return user
+    }
+    
+    // Endpoint for account login authentication
+    let passwordProtected = app.grouped(User.credentialsAuthenticator())
+    passwordProtected.post("login") { req -> User in
+        let user = try req.auth.require(User.self)
+        return user
+    }
+
+    // Endpoint for token authenticated users
+    //let protected = app.routes.grouped([app.sessions.middleware, UserSessionAuthenticator(), UserBearerAuthenticator(), User.guardMiddleware(),])
+    
+    passwordProtected.get("me") { req -> String in
+        try req.auth.require(User.self).email
+    }
+
+    passwordProtected.get("scheduler") {req -> UserSchedule in
+        let user = try req.auth.require(User.self)
+        if let schedule = try await UserSchedule.query(on: req.db).filter(\.$id == user.id!).first() {
+            return schedule
+        }
+        else {
+            let schedule = UserSchedule(
+              userId: user.id!,
+              periodZero: 0,
+              periodOne: 0,
+              periodTwo: 0,
+              periodThree: 0,
+              periodFour: 0,
+              periodFive: 0,
+              periodSix: 0,
+              periodSeven: 0,
+              periodEight: 0
+            )
+           
+            try await schedule.save(on: req.db)
+
+            return schedule
+        }
+       
+    }
+    
 }
