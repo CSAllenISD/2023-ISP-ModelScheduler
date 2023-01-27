@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+    <style>
+      body {
+          background-color: #f2f2f2;
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+      }
+
+      .container {
+          width: 80%;
+          margin: 0 auto;
+          text-align: center;
+      }
+
+      .digital-portfolio {
+          position: absolute;
+          top: 0;
+          left: 0;
+          padding: 10px;
+      }
+
+      .digital-portfolio a {
+          color: #333;
+          text-decoration: none;
+      }
+
+      h1 {
+          margin-top: 50px;
+          font-size: 48px;
+          color: #333;
+      }
+
+      form {
+          margin-top: 50px;
+          display: inline-block;
+          text-align: left;
+      }
+
+      label {
+          display: block;
+          margin-bottom: 10px;
+          font-size: 18px;
+          color: #333;
+      }
+
+      input[type="text"], input[type="password"] {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          box-sizing: border-box;
+          border: 2px solid #ccc;
+          border-radius: 4px;
+          font-size: 18px;
+      }
+
+      input[type="submit"] {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          box-sizing: border-box;
+          border: none;
+          border-radius: 4px;
+          font-size: 18px;
+          background-color: #E74C3C;
+          color: white;
+          cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+          background-color: #E74C3C;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="digital-portfolio">
+	<a href="https://codermerlin.com/users/sahil-patil/Digital%20Portfolio/index.html">Digital Portfolio</a>
+      </div>
+      <h1>Model Scheduler Login</h1>
+      <form action="/login" method="post">
+	<label for="username">Username:</label>
+	<input type="text" id="username" name="username">
+	<label for="password">Password:</label>
+	<input type="password" id="password" name="password">
+	<input type="submit" value="Submit">
+      </form>
+    </div>
+  </body>
+  </html>
