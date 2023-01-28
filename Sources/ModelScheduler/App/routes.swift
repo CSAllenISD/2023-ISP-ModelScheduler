@@ -4,95 +4,80 @@ import FluentMySQLDriver
 
 func routes(_ app: Application) throws {
 
+    app.get { req in
+        req.redirect(to: "./login")
+    }
+    
     app.get("") {req in
-        req.view.render("index.html")
+        req.redirect(to: "./login")
     }
 
-    app.get("FAQ.html") {req in
-        req.view.render("FAQ.html")
-    }
-    
-    app.get("Views/FAQ.html"){ req in
-        req.view.render("FAQ.html")
-    }
-    
+           
     app.get("index.html") {req in
         req.view.render("index.html")
     }
-    
-    app.get("Views/index.html"){ req in
-        req.view.render("index.html")
-    }
-    
+        
     app.get("scheduler.html") {req in
-        req.view.render("scheduler.html")
-    }
-    
-    app.get("Views/scheduler.html"){ req in
-        req.view.render("scheduler.html")
+        req.redirect(to: "./scheduler")
     }
     
     app.get("final.html") {req in
-        req.view.render("final.html")
+        req.redirect(to: "./scheduler")
     }
     
-    app.get("Views/final.html"){ req in
-        req.view.render("inal.html")
-    }
-    
-    app.get("login.html") {req in
-        req.view.render("login.html")
-    }
-    
-    app.get("Views/login.html"){ req in
+    app.get("login") {req in
         req.view.render("login.html")
     }
 
     app.get("createuser.html") {req in
+        req.redirect(to: "./createuser")
+    }
+    
+    app.get("createuser") {req in
         req.view.render("createuser.html")
     }
     
-    app.get("Views/createuser.html"){ req in
-        req.view.render("createuser.html")
-    }
-
-    let redirectMiddleware = User.redirectMiddleware { req -> String in
-        return "/login?authRequired=true&next=\(req.url.path)"
-    }
-
     // Endpoint for account creation
-    app.post("createuser") {req async throws -> User in
+    app.post("createuser") {req -> EventLoopFuture<Response> in
         try User.Create.validate(content: req)
         let create = try req.content.decode(User.Create.self)
         guard create.password == create.confirmPassword else {
             throw Abort(.badRequest, reason: "Passwords did not match")
         }
         let user = try User(
-          email: create.email,
+          email: Bcrypt.hash(create.email),
           passwordHash: Bcrypt.hash(create.password)
         )
-        try await user.save(on: req.db)
-        return user
+        return user.save(on: req.db).map {
+            req.auth.login(user)
+            return req.redirect(to: "./scheduler")
+        }
     }
     
     // Endpoint for account login authentication
-    let passwordProtected = app.grouped(User.credentialsAuthenticator())
-    passwordProtected.post("login") { req -> User in
+    let sessions = app.grouped([User.sessionAuthenticator(), User.credentialsAuthenticator()])
+    sessions.post("login") { req -> Response in
         let user = try req.auth.require(User.self)
-        return user
+        req.auth.login(user)
+        
+        return req.redirect(to: "./scheduler")
+        
     }
 
-    // Endpoint for token authenticated users
-    //let protected = app.routes.grouped([app.sessions.middleware, UserSessionAuthenticator(), UserBearerAuthenticator(), User.guardMiddleware(),])
+    // Create protected route group which requires user auth.
+    let protected = sessions.grouped(User.redirectMiddleware(path: "./login"))
     
-    passwordProtected.get("me") { req -> String in
+    protected.get("me") { req -> String in
         try req.auth.require(User.self).email
     }
-
-    passwordProtected.get("scheduler") {req -> UserSchedule in
+    
+    protected.get("scheduler") {req -> View in
         let user = try req.auth.require(User.self)
+        let context: ModelScheduler.SchedulerContext
         if let schedule = try await UserSchedule.query(on: req.db).filter(\.$id == user.id!).first() {
-            return schedule
+            context = ModelScheduler.SchedulerContext(schedule: schedule)
+            //print("UserID: \(user.id!)")
+            return try await req.view.render("scheduler.html", context)
         }
         else {
             let schedule = UserSchedule(
@@ -107,12 +92,26 @@ func routes(_ app: Application) throws {
               periodSeven: 0,
               periodEight: 0
             )
-           
-            try await schedule.save(on: req.db)
 
-            return schedule
+            //print("Could not find schedule for \(user.id!)")
+            try await schedule.save(on: req.db)
+            //print("Created schedule for \(user.id)")
+            
+            context = ModelScheduler.SchedulerContext(schedule: schedule)
+            return try await req.view.render("scheduler.html", context)
         }
        
     }
+
+     protected.get("FAQ.html") {req in
+         req.view.render("FAQ.html")
+    }
+
+    
+}
+
+struct SchedulerContext: Encodable {
+    
+    let schedule: UserSchedule
     
 }
