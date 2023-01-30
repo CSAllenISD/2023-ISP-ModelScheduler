@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <meta charset="UTF-8">
+    <title>Create User Page</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"><link rel="stylesheet" href="styles/login.css">
+
+  </head>
+  <body>
+    <!-- partial:index.partial.html -->
+    <div class="box-form">
+      <div class="left">
+	<div class="overlay">
+	  <h1>You suck.</h1>
+	  <p>
+	    dasfasdkl;gjkl;asdf gnjklsdanfsdamfiosdmalkf klsdamfdsamfkldasmfaf
+	  </p>
+	</div>
+      </div>
+
+
+      <div class="right">
+	<h5>AHS</h5>
+	<p>Already have an account? <a href="login.html">Login</a></p>
+	<div class="inputs">
+	  <form method="POST" action="./createuser">
+	    <label for="email">Email</label>
+	    <input type="text" id="email" placeholder="Email" name="email" autocomplete="email" required autofocus>
+
+	    <label for="password">Password</label>
+	    <input type="password" id="password" placeholder="Password" name="password" required>
+
+	    <label for="confirmPassword">Confirm Password</label>
+	    <input type="password" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword" required>
+
+	    <input type="submit" value="Sign In">    
+	  </form>
+	</div>
+
+	<br><br>
+
+	<div class="remember-me--forget-password">
+	  <!-- Angular -->
+	  <label>
+	    <input type="checkbox" name="item" checked/>
+	    <span class="text-checkbox">Remember me</span>
+	  </label>
+	  <p>forget password?</p>
+	</div>
+
+	<br>
+      </div>
+
+    </div>
+    <!-- partial -->
+
+  </body>
+  </html>
