@@ -6,14 +6,14 @@
 
 ## Project Members:
 
-#### Project Manager (TBD):
+#### Project Manager:
 * [Dylan Pettijohn](https://github.com/nalyd1369) | Project Manager - [Digital Portfolio](https://codermerlin.com/users/dylan-pettijohn/Digital%20Portfolio/index.html)
 
-#### Product Manager (TBD):
+#### Product Manager:
 * [Brayden Edington](https://github.com/GetJumpedOn95) | Product Manager  - [Digital Portfolio](https://codermerlin.com/users/brayden-edington/Digital%20Portfolio/index.html)
 * [Ryan Hallock](https://github.com/ryanhallock) | Product Manager - [Digital Portfolio](https://codermerlin.com/users/ryan-hallock/Digital%20Portfolio/index.html)
 
-#### Release Engineers (TBD):
+#### Release Engineers:
 * [MD Raeed](https://github.com/mdraeed) | Release Engineer & Software Engineer  - [Digital Portfolio](https://codermerlin.com/users/md-raeed/Digital%20Portfolio/CS-II/index.html)
 * [Reynard Gunawan](https://github.com/Reynard-G) | Release Engineer & Software Engineer - [Digital Portfolio](https://codermerlin.com/users/reynard-gunawan/Digital%20Portfolio/index.html)
 * [Sahil Patel](https://github.com/sap786) | Release Engineer - [Digital Portfolio](https://codermerlin.com/users/sahil-patil/Digital%20Portfolio/index.html)
