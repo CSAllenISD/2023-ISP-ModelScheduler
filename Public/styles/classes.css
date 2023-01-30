@@ -1,0 +1,103 @@
+body {
+    background-color: #250099;
+}
+
+.home {
+    text-align: center;
+/*    margin-left: auto;
+    margin-right: auto;**/
+}
+
+.title {
+    color: red;
+    font-family: Arial;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+li {
+    text-align: left;
+    font-size: 20px;
+    margin-bottom: 1%;
+}
+
+.addButton {
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+    height: 40%;
+    width: 20%;
+}
+
+.removeButton {
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+    height: 40%;
+    width: 30%;
+}
+
+.navBar {
+    width: 30%;
+    border-radius: 7px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1%;
+}
+
+.navButton {
+    background-color: #c3c3c3;
+    color: blue;
+    font-weight: bold;
+    font-family: Arial;
+    font-size: 20px;
+    width: 15%;
+    height: 20%;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    padding: 2%;
+}
+
+.navButton:hover {
+    background-color: #e0e0e0;
+}
+
+.classList {
+    background-color: white;
+    border-color: black;
+    border-weight: 50px;
+    border-style: solid;
+    border-radius: 7px;
+    width: 20%;
+    height: 85%;
+    margin-left: 25%;
+    position: absolute;
+    float: left;
+    display: flex-block;
+}
+
+.classList2 {
+    background-color: white;
+    border-color: black;
+    border-weight: 50px;
+    border-style: solid;
+    border-radius: 7px;
+    width: 20%;
+    height: 85%;
+    margin-left: 53%;
+    position: absolute;
+    display: flex-block;
+    float: left;
+}
