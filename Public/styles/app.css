@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 * {
 	box-sizing: border-box;
 }
@@ -74,4 +75,132 @@ footer.main p {
 
 footer.main p a {
 	color: #ccc;
+=======
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    margin: 50px auto;
+}
+
+body {
+    /*background-image: linear-gradient(white, white, rgba(21,26,97,50));*/
+    height: 100%;
+    width: 100%;
+}
+
+.navbar {
+    list-style-type: none;
+    width: 70%;
+    margin-left: 15%;
+    overflow: hidden;
+    height: 7%;
+    min-height: 150px;
+    display: inline-block;
+}
+
+img {
+    width: 125px;
+    height: 125px;
+    float: left;
+}
+
+.navbar li {
+    list-style-type: none;
+    margin-top: 25px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    float: right;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: black;
+}
+
+.navbar a :hover {
+    color: red;
+    transition: ease 1s;
+}
+#tables {
+    display: inline-block;
+    width: 100%;
+    height: 70%;
+    margin: none;
+    padding: none;
+}
+#scheduler {
+    float: right;
+    width: 70%;
+    height: 100%;
+    margin: 2% 3% 0 3%;
+}
+
+#period {
+    width: 20%;
+}
+#allen {
+    width: 40%;
+}
+#steam {
+    width: 40%;
+}
+
+#darkmode {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+#classes {
+    float: left;
+    height: 65%;
+    width: 15%;
+    margin-left: 5%;
+    margin-top: 2%;
+}
+
+th {
+    border-radius: 3%;
+    background-color: rgb(225,225,225);
+}
+
+table .grayBox {
+    background-color: rgb(200,200,200);
+    color: black;
+}
+
+table .redBox {
+    background-color: red;
+    color: white;
+}
+
+table .blueBox {
+    background-color: blue;
+    color: white;
+}
+
+.switch {
+    border: none;
+    background: rgb(225,225,225);
+    font-size: 14px;
+    width: 80%;
+    margin-left: 10%;
+    float: left;
+>>>>>>> edbd151e580505d63eaffa0b81274d571f8239ae
 }
