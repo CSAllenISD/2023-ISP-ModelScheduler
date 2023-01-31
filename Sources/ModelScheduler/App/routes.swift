@@ -22,7 +22,7 @@ func routes(_ app: Application) throws {
     }
     
     app.get("final.html") {req in
-        req.redirect(to: "./scheduler")
+        req.redirect(to: "./final")
     }
     
     app.get("login") {req in
@@ -79,31 +79,14 @@ func routes(_ app: Application) throws {
             //print("UserID: \(user.id!)")
             return try await req.view.render("scheduler.html", context)
         }
-        else {
-            let schedule = UserSchedule(
-              userId: user.id!,
-              periodZero: 0,
-              periodOne: 0,
-              periodTwo: 0,
-              periodThree: 0,
-              periodFour: 0,
-              periodFive: 0,
-              periodSix: 0,
-              periodSeven: 0,
-              periodEight: 0
-            )
-
-            //print("Could not find schedule for \(user.id!)")
-            try await schedule.save(on: req.db)
-            //print("Created schedule for \(user.id)")
-            
-            context = ModelScheduler.SchedulerContext(schedule: schedule)
-            return try await req.view.render("scheduler.html", context)
-        }
-       
+        return try await req.view.render("scheduler.html")
     }
 
-     protected.get("FAQ.html") {req in
+    protected.get("classes") { req in
+        req.view.render("classes.html")
+    }
+
+    protected.get("FAQ.html") {req in
          req.view.render("FAQ.html")
     }
 
