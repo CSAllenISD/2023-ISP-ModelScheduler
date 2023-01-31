@@ -50,7 +50,7 @@ func routes(_ app: Application) throws {
         )
         return user.save(on: req.db).map {
             req.auth.login(user)
-            return req.redirect(to: "./scheduler")
+            return req.redirect(to: "./classes")
         }
     }
     
@@ -60,7 +60,7 @@ func routes(_ app: Application) throws {
         let user = try req.auth.require(User.self)
         req.auth.login(user)
         
-        return req.redirect(to: "./scheduler")
+        return req.redirect(to: "./classes")
         
     }
 
