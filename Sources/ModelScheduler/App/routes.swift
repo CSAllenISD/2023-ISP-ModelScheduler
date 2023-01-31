@@ -14,17 +14,21 @@ func routes(_ app: Application) throws {
 
            
     app.get("index.html") {req in
-        req.view.render("index.html")
+        req.redirect(to: "./index")
     }
 
     app.get("classes.html") {req in
-        req.view.render("classes.html")
+        req.redirect(to: "./classes")
     }
     
     app.get("scheduler.html") {req in
         req.redirect(to: "./scheduler")
     }
-    
+
+    app.get("FAQ.html") {req in
+        req.redirect(to: "./FAQ")
+    }
+     
     app.get("final.html") {req in
         req.redirect(to: "./final")
     }
@@ -71,10 +75,6 @@ func routes(_ app: Application) throws {
     // Create protected route group which requires user auth.
     let protected = sessions.grouped(User.redirectMiddleware(path: "./login"))
     
-    protected.get("me") { req -> String in
-        try req.auth.require(User.self).email
-    }
-    
     protected.get("scheduler") {req -> View in
         let user = try req.auth.require(User.self)
         let context: ModelScheduler.SchedulerContext
@@ -86,12 +86,27 @@ func routes(_ app: Application) throws {
         return try await req.view.render("scheduler.html")
     }
 
+    protected.get("index") {req -> View in
+        let user = try req.auth.require(User.self)
+        let context: ModelScheduler.SchedulerContext
+        if let schedule = try await UserSchedule.query(on: req.db).filter(\.$id == user.id!).first() {
+            context = ModelScheduler.SchedulerContext(schedule: schedule)
+            //print("UserID: \(user.id!)")
+            return try await req.view.render("index.html", context)
+        }
+        return try await req.view.render("index.html")
+    }
+
     protected.get("classes") { req in
         req.view.render("classes.html")
     }
 
-    protected.get("FAQ.html") {req in
+    protected.get("FAQ") {req in
          req.view.render("FAQ.html")
+    }
+
+    protected.get("final") {req in
+         req.view.render("final.html")
     }
 
     
