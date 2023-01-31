@@ -16,7 +16,11 @@ func routes(_ app: Application) throws {
     app.get("index.html") {req in
         req.view.render("index.html")
     }
-        
+
+    app.get("classes.html") {req in
+        req.view.render("classes.html")
+    }
+    
     app.get("scheduler.html") {req in
         req.redirect(to: "./scheduler")
     }
