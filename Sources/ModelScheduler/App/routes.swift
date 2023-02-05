@@ -53,12 +53,11 @@ func routes(_ app: Application) throws {
             throw Abort(.badRequest, reason: "Passwords did not match")
         }
         let user = try User(
-          email: Bcrypt.hash(create.email),
+          email: create.email,
           passwordHash: Bcrypt.hash(create.password)
         )
         return user.save(on: req.db).map {
-            req.auth.login(user)
-            return req.redirect(to: "./classes")
+            return req.redirect(to: "./login")
         }
     }
     
@@ -66,8 +65,7 @@ func routes(_ app: Application) throws {
     let sessions = app.grouped([User.sessionAuthenticator(), User.credentialsAuthenticator()])
     sessions.post("login") { req -> Response in
         let user = try req.auth.require(User.self)
-        req.auth.login(user)
-        
+        req.auth.login(user)      
         return req.redirect(to: "./classes")
         
     }

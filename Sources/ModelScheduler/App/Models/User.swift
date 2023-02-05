@@ -49,8 +49,11 @@ extension User.Create: Validatable {
 extension User: ModelAuthenticatable {
     static let usernameKey = \User.$email 
     static let passwordHashKey = \User.$passwordHash 
-
-
+    /*
+    func verify(email: String) throws -> Bool {
+        try Bcrypt.verify(email, created: self.email)
+    }
+     */
     func verify(password: String) throws -> Bool {
         try Bcrypt.verify(password, created: self.passwordHash)
         
