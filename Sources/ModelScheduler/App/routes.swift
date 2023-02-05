@@ -46,8 +46,11 @@ func routes(_ app: Application) throws {
     app.get("createuser") {req in
         req.view.render("createuser.html")
     }
+
+
+    /// START LOGIN AND ACCOUNT CREATION ENDPOINTS
     
-    // Endpoint for account creation
+    // Create the user, save to database, and redirect to login page
     app.post("createuser") {req -> EventLoopFuture<Response> in
         try User.Create.validate(content: req)
         let create = try req.content.decode(User.Create.self)
@@ -65,7 +68,7 @@ func routes(_ app: Application) throws {
         }
     }
     
-    // Endpoint for account login authentication
+    // Authenticate the user and redirect to class selection page
     let sessions = app.grouped([User.sessionAuthenticator(), User.customAuthenticator()])
     sessions.post("login") { req -> Response in
         let user = try req.auth.require(User.self)
@@ -74,35 +77,55 @@ func routes(_ app: Application) throws {
         
     }
 
-    // Create protected route group which requires user auth.
+    /// END LOGIN AND ACCOUNT CREATION ENDPOINTS
+
+
+    /// START CORE SITE ENDPOINTS
+
+    // Create protected route group which requires user auth. 
     let protected = sessions.grouped(User.redirectMiddleware(path: "./login"))
+
     
     protected.get("scheduler") {req -> View in
         let user = try req.auth.require(User.self)
         let context: ModelScheduler.SchedulerContext
         if let schedule = try await UserSchedule.query(on: req.db).filter(\.$id == user.id!).first() {
             context = ModelScheduler.SchedulerContext(schedule: schedule)
-            //print("UserID: \(user.id!)")
             return try await req.view.render("scheduler.html", context)
         }
         return try await req.view.render("scheduler.html")
     }
 
+    
+    // Check if the user already has a saved schedule. If true, continue to scheduler page. If False, render class selection page
+    protected.get("classes") { req in
+        let user = try req.auth.require(User.self)
+   
+        if let schedule = try await UserScheduler.query(on: req.db).filter(\.$id == user.id!).first() {
+            req.redirect("./index")
+        }
+        else {
+            req.view.render("classes.html")
+        }
+    }
+
+    // Load the saved schedule if it exists. If not, continue normally.
     protected.get("index") {req -> View in
         let user = try req.auth.require(User.self)
         let context: ModelScheduler.SchedulerContext
         if let schedule = try await UserSchedule.query(on: req.db).filter(\.$id == user.id!).first() {
             context = ModelScheduler.SchedulerContext(schedule: schedule)
-            //print("UserID: \(user.id!)")
             return try await req.view.render("index.html", context)
         }
         return try await req.view.render("index.html")
     }
 
-    protected.get("classes") { req in
-        req.view.render("classes.html")
-    }
+    // After recieving user schedule from front end store it in db and redirect to the final/print page
+    protected.post("index") {req in
+        req.redirect(./final)
+    } 
 
+    
     protected.get("FAQ") {req in
          req.view.render("FAQ.html")
     }
@@ -111,6 +134,12 @@ func routes(_ app: Application) throws {
          req.view.render("final.html")
     }
 
+    protected.get("logout") { req -> Response in
+        req.auth.logout(User.self)
+        return req.redirect(to: "./login")
+    }
+
+    /// END CORE SITE ENDPOINTS
     
 }
 
