@@ -1,6 +1,7 @@
 import Vapor
 import Fluent
 import FluentMySQLDriver
+import Crypto
 
 final class User: Model, Content {
     static let schema = "users"
@@ -49,11 +50,20 @@ extension User.Create: Validatable {
 extension User: ModelAuthenticatable {
     static let usernameKey = \User.$email 
     static let passwordHashKey = \User.$passwordHash 
-    /*
+    
     func verify(email: String) throws -> Bool {
-        try Bcrypt.verify(email, created: self.email)
+        let emailData = Data(email.utf8)
+        let hashedEmail = SHA256.hash(data: emailData)
+        if (hashedEmail.hex == self.email){
+            print("HASHES MATCH! \n HASH: \(hashedEmail.hex) \n EXPECTED HASH: \(self.email)")
+            return true
+        }
+        else {
+            print("HASHES DO NOT MATCH! \n HASH: \(hashedEmail.hex) \n EXPECTED HASH: \(self.email)")
+            return false
+        }
     }
-     */
+     
     func verify(password: String) throws -> Bool {
         try Bcrypt.verify(password, created: self.passwordHash)
         
@@ -69,6 +79,6 @@ extension User: SessionAuthenticatable {
 
 // Make login sessionable
 extension User: ModelSessionAuthenticatable { }
-extension User: ModelCredentialsAuthenticatable {}
+extension User: ModelCustomAuthenticatable {}
 
 
