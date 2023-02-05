@@ -1,6 +1,8 @@
 import Vapor
 import Fluent
 import FluentMySQLDriver
+import Crypto
+
 
 func routes(_ app: Application) throws {
 
@@ -52,8 +54,10 @@ func routes(_ app: Application) throws {
         guard create.password == create.confirmPassword else {
             throw Abort(.badRequest, reason: "Passwords did not match")
         }
+        let emailData = Data(create.email.utf8)
+        let hashedEmail = SHA256.hash(data: emailData)
         let user = try User(
-          email: create.email,
+          email: hashedEmail.hex,
           passwordHash: Bcrypt.hash(create.password)
         )
         return user.save(on: req.db).map {
@@ -62,7 +66,7 @@ func routes(_ app: Application) throws {
     }
     
     // Endpoint for account login authentication
-    let sessions = app.grouped([User.sessionAuthenticator(), User.credentialsAuthenticator()])
+    let sessions = app.grouped([User.sessionAuthenticator(), User.customAuthenticator()])
     sessions.post("login") { req -> Response in
         let user = try req.auth.require(User.self)
         req.auth.login(user)      
