@@ -98,17 +98,24 @@ func routes(_ app: Application) throws {
 
     
     // Check if the user already has a saved schedule. If true, continue to scheduler page. If False, render class selection page
-    protected.get("classes") { req in
+    protected.get("classes") { req -> View in
         let user = try req.auth.require(User.self)
-   
-        if let schedule = try await UserScheduler.query(on: req.db).filter(\.$id == user.id!).first() {
-            req.redirect("./index")
+        let courses = try await Courses.query(on: req.db).paginate(for: req)
+        
+        if let schedule = try await UserSchedule.query(on: req.db).filter(\.$id == user.id!).first() {
+            req.redirect(to: "./index")
         }
-        else {
-            req.view.render("classes.html")
-        }
+        
+        return try await req.view.render("classes.html")
     }
 
+    // Endpoint for sending all classes
+    protected.get("classes", "data") {req -> Page<Courses> in
+        let courses = try await Courses.query(on: req.db).paginate(for: req)
+
+        return courses;
+    }
+    
     // Load the saved schedule if it exists. If not, continue normally.
     protected.get("index") {req -> View in
         let user = try req.auth.require(User.self)
@@ -122,7 +129,7 @@ func routes(_ app: Application) throws {
 
     // After recieving user schedule from front end store it in db and redirect to the final/print page
     protected.post("index") {req in
-        req.redirect(./final)
+        req.redirect(to: "./final")
     } 
 
     
@@ -131,7 +138,7 @@ func routes(_ app: Application) throws {
     }
 
     protected.get("final") {req in
-         req.view.render("final.html")
+        req.view.render("final.html")
     }
 
     protected.get("logout") { req -> Response in
