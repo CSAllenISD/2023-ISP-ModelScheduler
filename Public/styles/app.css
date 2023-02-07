@@ -64,15 +64,22 @@ img {
 
 #footer {
     position: absolute;
-    height: 10%;
+    height: 7%;
     bottom: 0;
+    margin-left: 15%;
+    width: 70%;
 }
 
-#back {
-    float: left;
+#navButton {
+    width: 10%;
+    height: 100%;
+    background-color: blue;
+    font-size: 24px;
+    color: white;
+    border-radius: 5px;
 }
 
-#next {
+.next {
     float: right;
 }
 
