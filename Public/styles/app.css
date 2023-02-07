@@ -24,12 +24,14 @@ body {
 
 .navbar {
     list-style-type: none;
-    width: 70%;
-    margin-left: 15%;
+    width: 100%;
+    padding-left: 15%;
+    padding-right: 15%;
     overflow: hidden;
     height: 7%;
     min-height: 150px;
     display: inline-block;
+    background-color: #BFD7EA;
 }
 
 img {
@@ -42,10 +44,11 @@ img {
     list-style-type: none;
     margin-top: 25px;
     text-align: center;
-    font-size: 32px;
+    font-size: 40px;
     font-weight: 600;
     float: right;
     padding: 10px;
+    color: white;
     text-decoration: none;
 }
 
@@ -58,6 +61,21 @@ img {
     color: red;
     transition: ease 1s;
 }
+
+#footer {
+    position: absolute;
+    height: 10%;
+    bottom: 0;
+}
+
+#back {
+    float: left;
+}
+
+#next {
+    float: right;
+}
+
 #tables {
     display: inline-block;
     width: 100%;
