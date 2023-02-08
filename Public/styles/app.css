@@ -29,27 +29,27 @@ body {
     padding-right: 15%;
     overflow: hidden;
     height: 7%;
-    min-height: 150px;
+    min-height: 100px;
     display: inline-block;
     background-color: #BFD7EA;
 }
 
-img {
-    width: 125px;
-    height: 125px;
+#logo {
+    width: 90px;
+    height: 90px;
+    margin-top: 5px;
     float: left;
 }
 
 .navbar li {
     list-style-type: none;
-    margin-top: 25px;
     text-align: center;
     font-size: 40px;
     font-weight: 600;
     float: right;
-    padding: 10px;
+    margin-right: 30px;
     color: white;
-    text-decoration: none;
+    line-height: 100px;
 }
 
 .navbar a {
@@ -110,7 +110,7 @@ img {
 #darkmode {
     width: 40px;
     height: 40px;
-    vertical-align: middle;
+    margin-top: 30px;
     cursor: pointer;
 }
 
