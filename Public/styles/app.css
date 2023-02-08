@@ -68,15 +68,16 @@ body {
     bottom: 0;
     margin-left: 15%;
     width: 70%;
+    margin-bottom: 25px;
 }
 
 #navButton {
     width: 10%;
     height: 100%;
-    background-color: blue;
+    background-color: #BFD7EA;
+    border-radius: 10px;
     font-size: 24px;
-    color: white;
-    border-radius: 5px;
+    color: black;
 }
 
 .next {
@@ -144,6 +145,7 @@ table .blueBox {
 
 .switch {
     border: none;
+    border-radius: 3px;
     background: rgb(225,225,225);
     font-size: 14px;
     width: 80%;
