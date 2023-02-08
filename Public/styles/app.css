@@ -56,10 +56,12 @@ body {
     text-decoration: none;
     color: black;
 }
-
-.navbar a :hover {
+.navbar .selected {
     color: red;
-    transition: ease 1s;
+}
+.navbar a:hover {
+    color: red;
+    transition: ease 0.2s;
 }
 
 #footer {
