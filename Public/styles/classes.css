@@ -27,6 +27,13 @@ li {
     margin-bottom: 1%;
 }
 
+input {
+    width: 100%;
+    height: 40px;
+    border: none;
+    font-size: 18px;
+}
+
 .addButton {
     background-color: blue;
     color: white;
@@ -100,5 +107,6 @@ li {
 .classList2 > h2 {
     background-color: rgb(200, 200, 200);
     width: 100%;
+    height: 40px;
     text-align: center;
 }
