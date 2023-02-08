@@ -251,7 +251,7 @@ a.semesterBtn.selected::before {
     padding-top: 4px;
     padding-bottom: 4px;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr;
+    grid-template-rows: 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr;
     background-color: var(--content-bg-color);
     border-radius: 10px;
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;

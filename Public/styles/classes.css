@@ -1,5 +1,5 @@
 body {
-    background-color: #250099;
+    background-color: white;
 }
 
 .home {
@@ -74,30 +74,31 @@ li {
     background-color: #e0e0e0;
 }
 
-.classList {
-    background-color: white;
+.classList,
+.classList2 {
+    background-color: rgb(225, 225, 225);
     border-color: black;
     border-weight: 50px;
     border-style: solid;
     border-radius: 7px;
     width: 20%;
     height: 85%;
-    margin-left: 25%;
     position: absolute;
-    float: left;
     display: flex-block;
+    float: left;
+}
+
+.classList {
+    margin-left: 25%;
 }
 
 .classList2 {
-    background-color: white;
-    border-color: black;
-    border-weight: 50px;
-    border-style: solid;
-    border-radius: 7px;
-    width: 20%;
-    height: 85%;
     margin-left: 53%;
-    position: absolute;
-    display: flex-block;
-    float: left;
+}
+
+.classList > h2,
+.classList2 > h2 {
+    background-color: rgb(200, 200, 200);
+    width: 100%;
+    text-align: center;
 }
