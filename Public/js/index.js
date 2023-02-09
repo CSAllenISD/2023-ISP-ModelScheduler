@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() { //Waits for HTML DOM content to load
-    const button = document.getElementById("darkMode");
+    const button = document.getElementById("darkmodeButton");
 
     if (button) { //Checks whether or not button was clicked for debug purposes
 	button.addEventListener("click", function() {
