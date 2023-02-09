@@ -71,7 +71,11 @@ li a {
 }
 
 li a:hover {
-    background-color: gray;
+    color: red;
+    transtion: ease.2s;
+}
+li .selected{
+    color: red;
 }
 
 div {
