@@ -116,6 +116,9 @@ body {
     margin-top: 30px;
     cursor: pointer;
 }
+#darkmodeButton {
+    all: unset;
+}
 
 #classes {
     float: left;
@@ -145,16 +148,6 @@ table .blueBox {
     color: white;
 }
 
-button {
-    background-color: gray;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    display: inline-block;
-    cursor: pointer;
-}
-
 .switch {
     border: none;
     border-radius: 3px;
@@ -168,7 +161,7 @@ button {
 /**Dark mode classes**/
 
 .dark-mode {
-    background-color: #1E1E24;
+    background-color: #7f7f7f;
     height: 100%;
     width: 100%;
 }
