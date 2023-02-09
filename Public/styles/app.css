@@ -145,7 +145,40 @@ table .blueBox {
     color: white;
 }
 
+button {
+    background-color: gray;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+}
+
 .switch {
+    border: none;
+    border-radius: 3px;
+    background: rgb(225,225,225);
+    font-size: 14px;
+    width: 80%;
+    margin-left: 10%;
+    float: left;
+}
+
+/**Dark mode classes**/
+
+.dark-mode {
+    background-color: #1E1E24;
+    height: 100%;
+    width: 100%;
+}
+
+table .dm-grayBox{
+    background-color: rgb(200,200,200);
+    color: #1E1E24;
+}
+
+.dm-switch {
     border: none;
     border-radius: 3px;
     background: rgb(225,225,225);
