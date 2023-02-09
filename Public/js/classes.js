@@ -3,7 +3,7 @@ function addCourse(id) {
     var courseItem = document.getElementById(id);
     var course = courseItem.innerText.replace("Add", "");
 
-    var selectList = document.getElementById("selectedCourses");
+    var selectedList = document.getElementById("selectedCourses");
     var newItem = document.createElement("li");
     newItem.appendChild(document.createTextNode(course));
 
@@ -14,13 +14,19 @@ function addCourse(id) {
 
     newItem.appendChild(removeButton);
     newItem.setAttribute("id", id);
-    selectList.appendChild(newItem);
+    selectedList.appendChild(newItem);
 
     availableList.removeChild(courseItem);
+
+    var courses = []
+    for (const child of selectedList.children) {
+	const course = child.innerText.replace("Remove", "")
+	courses.push(course)
+    }
+    localStorage.setItem("courses", courses)
 }
 
 function removeCourse(id) {
-    console.log("ID: " + id)
     var selectedList = document.getElementById("selectedCourses");
     var courseItem = document.getElementById(id);
     var course = courseItem.innerText.replace("Remove", "");
@@ -40,6 +46,25 @@ function removeCourse(id) {
 
     selectedList.removeChild(courseItem);
 
+    var courses = []
+    for (const child of selectedList.children) {
+	const course = child.innerText.replace("Remove", "")
+	courses.push(course)
+    }
+    localStorage.setItem("courses", courses)
+}
+
+function next() {
+    var selectedList = document.getElementById("selectedCourses")
+
+    var courses = []
+    for (const child of selectedList.children) {
+	const course = child.innerText.replace("Remove", "")
+	courses.push(course)
+    }
+    localStorage.setItem("courses", courses)
+
+    window.location.replace("index")
 }
 
 async function getCoursesFromServer() {
@@ -63,8 +88,11 @@ async function getCoursesFromServer() {
 
 document.addEventListener("DOMContentLoaded", async function () {
     const availableCourses = document.getElementById("availableCourses");
+    const selectedCourses = document.getElementById("selectedCourses");
 
     const courses = await getCoursesFromServer();
+
+    const savedCourses = localStorage.getItem("courses").split(',')
 
     console.log(courses);
 
@@ -77,14 +105,25 @@ document.addEventListener("DOMContentLoaded", async function () {
             const courseItem = document.createElement("li");
             courseItem.appendChild(document.createTextNode(course.name));
 
-            const addButton = document.createElement("button");
-            addButton.classList.add("addButton");
-            addButton.onclick = () => addCourse(course.code);
-            addButton.appendChild(document.createTextNode("Add"));
-
-            courseItem.appendChild(addButton);
-            courseItem.id = course.code;
-            availableCourses.appendChild(courseItem);
+	    if (savedCourses.includes(course.name)) {
+		const remButton = document.createElement("button")
+		remButton.classList.add("removeButton");
+		remButton.onclick = () => removeCourse(course.code);
+		remButton.appendChild(document.createTextNode("Remove"));
+		
+		courseItem.appendChild(remButton);
+		courseItem.id = course.code;
+		selectedCourses.appendChild(courseItem);
+	    }else{
+		const addButton = document.createElement("button");
+		addButton.classList.add("addButton");
+		addButton.onclick = () => addCourse(course.code);
+		addButton.appendChild(document.createTextNode("Add"));
+		
+		courseItem.appendChild(addButton);
+		courseItem.id = course.code;
+		availableCourses.appendChild(courseItem);
+	    }
         }
     }
 
