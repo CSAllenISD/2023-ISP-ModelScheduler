@@ -28,4 +28,17 @@ function darkMode() {
     document.body.appendChild(dmButton);
 }
 
-darkMode();
+//darkMode();
+
+window.onload = function () {
+    const selectedCourses = localStorage.getItem("courses").split(',')
+    var classes = document.getElementById("classes")
+    
+    for (let i = 0; i < selectedCourses.length; i++) {
+	var newTr = document.createElement("tr")
+	var newTh = document.createElement("th")
+	newTh.appendChild(document.createTextNode(selectedCourses[i]))
+	newTr.appendChild(newTh)
+	classes.appendChild(newTr)
+    }
+}

@@ -14,39 +14,40 @@
     <div class="navbar">
       <a href="./classes.html"><img id="logo" src="images/allenisdLogo.png" alt="AllenISD Logo"></a>
 
-	  <ul>
-	    <li><a href="./FAQ.html">FAQ</a></li>
-	    <li><a href="./final.html">FINAL</a></li>
-	    <li><a href="./index.html">SCHEDULER</a></li>
-	    <li><a class="selected" href="#">COURSES</a></li>
-	    <li><img id="darkmode" src="images/moon.png"></li>
-	  </ul>
-	 </div>
+      <ul>
+	<li><a href="./FAQ.html">FAQ</a></li>
+	<li><a href="./final.html">FINAL</a></li>
+	<li><a href="./index.html">SCHEDULER</a></li>
+	<li><a class="selected" href="#">COURSES</a></li>
+	<li><img id="darkmode" src="images/moon.png"></li>
+      </ul>
+    </div>
 		  
-	  <div class="classList">
-	    <h2>Available Courses</h2>
-	    <input type="text" placeholder="Search">
-	    <hr>
-	    <ul id="availableCourses">
-	      <li id="cs2">Computer Science II <button onclick="addCourse('cs2')" class="addButton">Add</button></li>
-	      <li id="cs3">Computer Science III <button onclick="addCourse('cs3')" class="addButton">Add</button></li>
-	      <li id="apphysics1">AP Physics I <button onclick="addCourse('apphysics1')" class="addButton">Add</button></li>
-	      <li id="abcalc">AP Calculus AB <button onclick="addCourse('abcalc')" class="addButton">Add</button></li>
-	    </ul>
-	  </div>
+    <div class="classList">
+      <h2>Available Courses</h2>
+      <input type="text" placeholder="Search">
+      <hr>
+      <ul id="availableCourses">
+	<!-- <li id="cs2">Computer Science II <button onclick="addCourse('cs2')" class="addButton">Add</button></li> -->
+	<!-- <li id="cs3">Computer Science III <button onclick="addCourse('cs3')" class="addButton">Add</button></li> -->
+	<!-- <li id="apphysics1">AP Physics I <button onclick="addCourse('apphysics1')" class="addButton">Add</button></li> -->
+	<!-- <li id="abcalc">AP Calculus AB <button onclick="addCourse('abcalc')" class="addButton">Add</button></li> -->
+      </ul>
+    </div>
 
-	  <div class="classList2">
-	    <h2>Selected Courses</h2>
-	    <hr>
-	    <ul id="selectedCourses">
-	      
-	    </ul>
-	  </div>
-	</div>
+    <div class="classList2">
+      <h2>Selected Courses</h2>
+      <hr>
+      <ul id="selectedCourses">
 	
-	
-	<!-- <footer class="main"> -->
-	<!-- 	<p>Powered by Swift.</p> -->
-	<!-- </footer> -->
+      </ul>
+    </div>
+
+    <div id="footer">
+      <button id="navButton">Back</button>
+      <button id="navButton" class="next" onclick="next()">Next</button>
+    </div>
+
+
   </body>
 </html>
