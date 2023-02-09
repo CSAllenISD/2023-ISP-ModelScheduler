@@ -31,7 +31,10 @@ function darkMode() {
 //darkMode();
 
 window.onload = function () {
-    const selectedCourses = localStorage.getItem("courses").split(',')
+    let selectedCourses = localStorage.getItem("courses")
+    if (selectedCourses != null) {
+	selectedCourses = selectedCourses.split(',')
+    }
     var classes = document.getElementById("classes")
     
     for (let i = 0; i < selectedCourses.length; i++) {

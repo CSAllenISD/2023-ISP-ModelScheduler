@@ -92,7 +92,10 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const courses = await getCoursesFromServer();
 
-    const savedCourses = localStorage.getItem("courses").split(',')
+    let savedCourses = localStorage.getItem("courses")
+    if(savedCourses != null) {
+	savedCourses = savedCourses.split(',')
+    }
 
     console.log(courses);
 
@@ -105,7 +108,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             const courseItem = document.createElement("li");
             courseItem.appendChild(document.createTextNode(course.name));
 
-	    if (savedCourses.includes(course.name)) {
+	    if (savedCourses != null && savedCourses.includes(course.name)) {
 		const remButton = document.createElement("button")
 		remButton.classList.add("removeButton");
 		remButton.onclick = () => removeCourse(course.code);
