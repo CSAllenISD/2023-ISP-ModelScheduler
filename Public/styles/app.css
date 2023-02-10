@@ -28,15 +28,15 @@ body {
     padding-left: 15%;
     padding-right: 15%;
     overflow: hidden;
-    height: 7%;
-    min-height: 100px;
+    height: 5%;
+    min-height: 70px;
     display: inline-block;
     background-color: #BFD7EA;
 }
 
 #logo {
-    width: 90px;
-    height: 90px;
+    width: 60px;
+    height: 60px;
     margin-top: 5px;
     float: left;
 }
@@ -44,12 +44,12 @@ body {
 .navbar li {
     list-style-type: none;
     text-align: center;
-    font-size: 40px;
+    font-size: 32px;
     font-weight: 600;
     float: right;
     margin-right: 30px;
     color: white;
-    line-height: 100px;
+    line-height: 70px;
 }
 
 .navbar a {
@@ -109,11 +109,15 @@ body {
 #steam {
     width: 40%;
 }
+.gap {
+    width: 3%;
+    background-color: transparent;
+}
 
 #darkmode {
     width: 40px;
     height: 40px;
-    margin-top: 30px;
+    margin-top: 15px;
     cursor: pointer;
 }
 #darkmodeButton {
