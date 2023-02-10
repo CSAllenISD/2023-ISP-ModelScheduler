@@ -28,13 +28,13 @@ final class Courses: Model, Content {
 
     @Field(key: "size")
     var size: Int
-    
+    /*
     @Field(key: "seatsTaken")
     var seatsTaken: Int
-    
+    */
     init() { }
 
-    init(id: Int? = nil, code: String, section: String, name: String, period: Int, loaction: String, credits: Float, size: Int, seatsTaken: Int){
+    init(id: Int? = nil, code: String, section: String, name: String, period: Int, loaction: String, credits: Float, size: Int){ //, seatsTaken: Int
         self.id = id
         self.code = code
         self.section = section
@@ -43,7 +43,7 @@ final class Courses: Model, Content {
         self.location = location
         self.credits = credits
         self.size = size
-        self.seatsTaken = seatsTaken 
+        //self.seatsTaken = seatsTaken 
     }   
 }
 
