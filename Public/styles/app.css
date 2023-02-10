@@ -100,6 +100,10 @@ body {
     margin: 2% 3% 0 3%;
 }
 
+#semesterSwitchBar th {
+    background-color: rgba(0, 0, 0, 0) !important;
+}
+
 #period {
     width: 20%;
 }
@@ -154,12 +158,19 @@ table .blueBox {
 
 .switch {
     border: none;
-    border-radius: 3px;
+    border-radius: 4px;
     background: rgb(225,225,225);
     font-size: 14px;
+    padding: 8px;
     width: 80%;
     margin-left: 10%;
     float: left;
+    cursor: pointer;
+    transition: background-color 200ms ease-in-out;
+}
+
+.switch:hover {
+    background: rgb(200, 200, 200);
 }
 
 /**Dark mode classes**/
