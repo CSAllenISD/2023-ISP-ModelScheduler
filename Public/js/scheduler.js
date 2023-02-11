@@ -5,6 +5,7 @@ for (let i = 0; i < classes.length; i++) {
 
     const span = document.createElement('span');
     span.innerHTML = "Empty";
+    span.style.pointerEvents = "none";
 
     classPeriod.appendChild(span);
 }
@@ -23,8 +24,10 @@ const courses = [
 ];
 
 const courseSelect = document.querySelector('#courseSelect');
+const scheduleViewer = document.querySelector('#scheduleViewer');
 
 var selectedCourse = null;
+const classKeyRegExp = /^(?!P[0-8]-(AHS|STE)-[AB]$).+$/g;
 
 for (let i = 0; i < courses.length; i++) {
     const course = courses[i];
@@ -52,6 +55,15 @@ courseSelect.addEventListener('click', function (event) {
 	}
 	selectedCourse = null;
     }
+});
+
+scheduleViewer.addEventListener('click', function (event) {
+    if (classKeyRegExp.test(event.target.id) === true || selectedCourse === null || event.target.id === "scheduleViewer" || event.target.id === "") return;
+    console.log("Valid class div selected");
+
+    // Query selected class into db
+
+    // Update course to reflect updated class schedule (grab all classes in db then update schedule)
 });
 
 const semesterSelecters = document.querySelectorAll('.semesterBtn');
