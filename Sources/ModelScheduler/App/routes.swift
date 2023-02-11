@@ -100,7 +100,7 @@ func routes(_ app: Application) throws {
     
     // Check if the user already has a saved schedule. If true, continue to scheduler page. If False, render class selection page
     protected.get("classes") { req -> View in
-        let user = try req.auth.require(User.self)
+//        let user = try req.auth.require(User.self)
         let courses = try await Courses.query(on: req.db).paginate(for: req)
         
 //        if let schedule = try await UserSchedule.query(on: req.db).filter(\.$id == user.id!).first() {
