@@ -97,6 +97,7 @@ body {
     float: right;
     width: 70%;
     height: 100%;
+    max-width: 1000px;
     margin-right: 3%;
     margin-top: 2%;
 }
@@ -114,6 +115,11 @@ body {
 #steam {
     width: 40%;
 }
+
+#semesterSwitchBar {
+    height: 7%;
+}
+
 .gap {
     width: 3%;
     background-color: transparent;
@@ -134,7 +140,9 @@ body {
     width: 21%;
     margin-left: 3%;
     margin-top: 10%;
-    background-color: orange;
+    background-color: lightgray;
+    border-radius: 10px;
+    text-align: center;
 }
 
 th {
