@@ -97,7 +97,8 @@ body {
     float: right;
     width: 70%;
     height: 100%;
-    margin: 2% 3% 0 3%;
+    margin-right: 3%;
+    margin-top: 2%;
 }
 
 #semesterSwitchBar th {
@@ -127,13 +128,13 @@ body {
 #darkmodeButton {
     all: unset;
 }
-
 #classes {
     float: left;
-    height: 65%;
-    width: 15%;
-    margin-left: 5%;
-    margin-top: 2%;
+    height: 75%;
+    width: 21%;
+    margin-left: 3%;
+    margin-top: 10%;
+    background-color: orange;
 }
 
 th {
