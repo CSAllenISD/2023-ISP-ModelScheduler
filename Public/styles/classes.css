@@ -93,6 +93,7 @@ input {
     position: absolute;
     display: flex-block;
     float: left;
+    overflow-y: scroll;
 }
 
 .classList {
