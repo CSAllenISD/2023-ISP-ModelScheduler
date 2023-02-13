@@ -1,15 +1,16 @@
 document.addEventListener("DOMContentLoaded", function() { //Waits for HTML DOM content to load
-    const button = document.getElementById("darkmodeButton");
+    const dmButton = document.getElementById("darkmodeButton"); //Gets darkMode button id
+    
 
-    if (button) { //Checks whether or not button was clicked for debug purposes
-	button.addEventListener("click", function() {
+    if (dmButton) { //Checks whether or not button was clicked for debug purposes
+	dmButton.addEventListener("click", function() {
 	    console.log("Button was clicked!");
 	});
     } else {
 	console.error("Element with id 'darkMode' not found");
     }
 
-    button.addEventListener("click", dmSwitch);
+    dmButton.addEventListener("click", dmSwitch);
 });
 
 function dmSwitch() {
