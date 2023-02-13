@@ -38,7 +38,7 @@ window.onload = function () {
     if (selectedCourses != null) {
 	selectedCourses = selectedCourses.split(',')
     }
-    var classes = document.getElementById("classes")
+    var classes = document.getElementById("class")
     
     for (let i = 0; i < selectedCourses.length; i++) {
 	var newTr = document.createElement("tr")
