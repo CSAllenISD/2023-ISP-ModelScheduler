@@ -20,6 +20,7 @@ function dmSwitch() {
     boxes.forEach(function(box) {
 	box.classList.toggle("dm-grayBox");
     });
+    document.getElementById("darkmode").src="./images/sun-icon-8581.png";
 }
 
 function darkMode() {
@@ -27,6 +28,8 @@ function darkMode() {
     dmButton.id = "darkMode";
     dmButton.innerHTML = "Toggle Dark Mode";
     document.body.appendChild(dmButton);
+    document.getElementById("darkmode").src="./images/moon.png";
+
 }
 
 //darkMode();
