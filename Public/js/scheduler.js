@@ -4,12 +4,7 @@ function updateClassSchedule() {
 
     for (let i = 0; i < classList.length; i++) {
 	const span = document.getElementById(classList[i].id).getElementsByTagName("span")[0];
-
-	if (!Object.keys(schedule).some(course => classList[i].id === course)) {
-	    span.innerHTML = "Empty";
-	} else {
-	    span.innerHTML = schedule[classList[i].id];
-	}
+	!Object.keys(schedule).some(course => classList[i].id === course) ? span.innerHTML = "Empty" : span.innerHTML = schedule[classList[i].id];
     }
 }
 
