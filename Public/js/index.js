@@ -1,15 +1,16 @@
 document.addEventListener("DOMContentLoaded", function() { //Waits for HTML DOM content to load
-    const button = document.getElementById("darkmodeButton");
+    const dmButton = document.getElementById("darkmodeButton"); //Gets darkMode button id
+    
 
-    if (button) { //Checks whether or not button was clicked for debug purposes
-	button.addEventListener("click", function() {
+    if (dmButton) { //Checks whether or not button was clicked for debug purposes
+	dmButton.addEventListener("click", function() {
 	    console.log("Button was clicked!");
 	});
     } else {
 	console.error("Element with id 'darkMode' not found");
     }
 
-    button.addEventListener("click", dmSwitch);
+    dmButton.addEventListener("click", dmSwitch);
 });
 
 function dmSwitch() {
@@ -19,6 +20,7 @@ function dmSwitch() {
     boxes.forEach(function(box) {
 	box.classList.toggle("dm-grayBox");
     });
+    document.getElementById("darkmode").src="./images/sun-icon-8581.png";
 }
 
 function darkMode() {
@@ -26,6 +28,8 @@ function darkMode() {
     dmButton.id = "darkMode";
     dmButton.innerHTML = "Toggle Dark Mode";
     document.body.appendChild(dmButton);
+    document.getElementById("darkmode").src="./images/moon.png";
+
 }
 
 //darkMode();
@@ -35,7 +39,7 @@ window.onload = function () {
     if (selectedCourses != null) {
 	selectedCourses = selectedCourses.split(',')
     }
-    var classes = document.getElementById("classes")
+    var classes = document.getElementById("class")
     
     for (let i = 0; i < selectedCourses.length; i++) {
 	var newTr = document.createElement("tr")
