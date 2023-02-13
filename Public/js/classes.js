@@ -27,6 +27,7 @@ function addCourse(id) {
 }
 
 function removeCourse(id) {
+    console.log("ID: " + id)
     var selectedList = document.getElementById("selectedCourses");
     var courseItem = document.getElementById(id);
     var course = courseItem.innerText.replace("Remove", "");
@@ -111,20 +112,21 @@ document.addEventListener("DOMContentLoaded", async function () {
 	    if (savedCourses != null && savedCourses.includes(course.name)) {
 		const remButton = document.createElement("button")
 		remButton.classList.add("removeButton");
-		remButton.onclick = () => removeCourse(course.code);
+		remButton.onclick = () => removeCourse(course.code + "-" + course.section);
 		remButton.appendChild(document.createTextNode("Remove"));
 		
 		courseItem.appendChild(remButton);
-		courseItem.id = course.code;
+		courseItem.id = course.code + "-" + course.section;
+		console.log("COURSE ITEM ID: " + courseItem.id)
 		selectedCourses.appendChild(courseItem);
 	    }else{
 		const addButton = document.createElement("button");
 		addButton.classList.add("addButton");
-		addButton.onclick = () => addCourse(course.code);
+		addButton.onclick = () => addCourse(course.code + "-" + course.section);
 		addButton.appendChild(document.createTextNode("Add"));
 		
 		courseItem.appendChild(addButton);
-		courseItem.id = course.code;
+		courseItem.id = course.code + "-" + course.section;
 		availableCourses.appendChild(courseItem);
 	    }
         }
