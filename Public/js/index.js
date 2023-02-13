@@ -19,7 +19,7 @@ function dmSwitch() {
     boxes.forEach(function(box) {
 	box.classList.toggle("dm-grayBox");
     });
-    document.getElementById("darkmode").src="./images/sun-icon-8581.png";
+    document.getElementById("darkmode").src="./images/sun.png";
 }
 
 function darkMode() {
@@ -38,7 +38,7 @@ window.onload = function () {
     if (selectedCourses != null) {
 	selectedCourses = selectedCourses.split(',')
     }
-    var classes = document.getElementById("class")
+    var classes = document.getElementById("classes")
     
     for (let i = 0; i < selectedCourses.length; i++) {
 	var newTr = document.createElement("tr")
