@@ -21,19 +21,15 @@ function dmSwitch() {
     boxes.forEach(function(box) {
 	box.classList.toggle("dm-grayBox");
     });
-<<<<<<< HEAD
 }
 
 function toggleDmButton() {
     let dmButton = document.getElementById("darkmode");
-    if (dmButton.getAttribute("src") === "./images/sun-icon-8581.png") {
+    if (dmButton.getAttribute("src") === "./images/sun.png") {
         dmButton.setAttribute("src", "./images/moon.png");
     } else {
-	dmButton.setAttribute("src", "./images/sun-icon-8581.png");
+	dmButton.setAttribute("src", "./images/sun.png");
     }
-=======
-    document.getElementById("darkmode").src="./images/sun.png";
->>>>>>> de33e14654cabae157ce60aba1bd57a15d937a85
 }
 
 function darkMode() {
@@ -42,7 +38,6 @@ function darkMode() {
     dmButton.innerHTML = "Toggle Dark Mode";
     document.body.appendChild(dmButton);
     document.getElementById("darkmode").src="./images/moon.png";
-
 }
 
 //darkMode();
