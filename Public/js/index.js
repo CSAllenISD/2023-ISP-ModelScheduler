@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function() { //Waits for HTML DOM 
     }
 
     dmButton.addEventListener("click", dmSwitch);
+    dmButton.addEventListener("click", toggleDmButton);
 });
 
 function dmSwitch() {
@@ -20,7 +21,15 @@ function dmSwitch() {
     boxes.forEach(function(box) {
 	box.classList.toggle("dm-grayBox");
     });
-    document.getElementById("darkmode").src="./images/sun-icon-8581.png";
+}
+
+function toggleDmButton() {
+    let dmButton = document.getElementById("darkmode");
+    if (dmButton.getAttribute("src") === "./images/sun-icon-8581.png") {
+        dmButton.setAttribute("src", "./images/moon.png");
+    } else {
+	dmButton.setAttribute("src", "./images/sun-icon-8581.png");
+    }
 }
 
 function darkMode() {
