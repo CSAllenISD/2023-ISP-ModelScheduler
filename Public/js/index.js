@@ -21,6 +21,7 @@ function dmSwitch() {
     boxes.forEach(function(box) {
 	box.classList.toggle("dm-grayBox");
     });
+<<<<<<< HEAD
 }
 
 function toggleDmButton() {
@@ -30,6 +31,9 @@ function toggleDmButton() {
     } else {
 	dmButton.setAttribute("src", "./images/sun-icon-8581.png");
     }
+=======
+    document.getElementById("darkmode").src="./images/sun.png";
+>>>>>>> de33e14654cabae157ce60aba1bd57a15d937a85
 }
 
 function darkMode() {
