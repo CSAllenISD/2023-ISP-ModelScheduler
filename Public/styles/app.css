@@ -95,10 +95,10 @@ body {
 }
 #scheduler {
     float: right;
-    width: 70%;
+    width: 55%;
     height: 100%;
-    max-width: 1000px;
-    margin-right: 3%;
+    max-width: 1200px;
+    margin-right: 12%;
     margin-top: 2%;
 }
 
@@ -137,12 +137,18 @@ body {
 #classes {
     float: left;
     height: 75%;
-    width: 21%;
-    margin-left: 3%;
+    width: 20%;
+    margin-left: 12%;
     margin-top: 10%;
     background-color: lightgray;
     border-radius: 10px;
     text-align: center;
+}
+
+#class {
+    width: 90%;
+    height: 90%;
+    margin-left: 5%;
 }
 
 th {
