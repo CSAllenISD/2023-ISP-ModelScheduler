@@ -20,6 +20,8 @@
     :root {
 	--main-bg-color: #dce9f8;
 	--main-gradient-bg-color: #a3bded;
+	--alt-bg-color: #bd2d28;
+	--alt-gradient-bg-color: #151b66;
 	--nav-bg-color: #f2f7fd;
 	--nav-gradient-bg-color: #f7f7f7;
 	--content-bg-color: #c2d1f0;
