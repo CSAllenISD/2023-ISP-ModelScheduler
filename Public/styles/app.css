@@ -21,6 +21,31 @@ body {
     height: 100%;
     width: 100%;
 }
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 105%;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
 
 .navbar {
     list-style-type: none;
@@ -50,6 +75,7 @@ body {
     margin-right: 30px;
     color: white;
     line-height: 70px;
+    
 }
 
 .navbar a {
@@ -59,6 +85,7 @@ body {
 .navbar .selected {
     color: red;
 }
+
 .navbar a:hover {
     color: red;
     transition: ease 0.2s;
@@ -130,6 +157,8 @@ body {
     height: 40px;
     margin-top: 15px;
     cursor: pointer;
+    text-line: left
+	       
 }
 #darkmodeButton {
     all: unset;
@@ -210,3 +239,4 @@ table .dm-grayBox{
     margin-left: 10%;
     float: left;
 }
+
