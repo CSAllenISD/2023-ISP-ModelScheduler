@@ -2,10 +2,10 @@
     :root {
 	--main-bg-color: #2d2d2d;
 	--main-gradient-bg-color: #3a3a3a;
-	--alt-bg-color: #bd2d28;
-	--alt-gradient-bg-color: #151b66;
+	--alt-bg-color: #222222;
+	--alt-gradient-bg-color: #434343;
 	--nav-bg-color: #3a3a3a;
-	--nav-gradient-bg-color: #4a4a4a;
+	--nav-gradient-bg-color: #3a3a3a;
 	--content-bg-color: #5a5a5a;
 
 	--a-day-red: #bd2d28;
@@ -20,8 +20,8 @@
     :root {
 	--main-bg-color: #dce9f8;
 	--main-gradient-bg-color: #a3bded;
-	--alt-bg-color: #bd2d28;
-	--alt-gradient-bg-color: #151b66;
+	--alt-bg-color: #cfd9df;
+	--alt-gradient-bg-color: #e2ebf0;
 	--nav-bg-color: #f2f7fd;
 	--nav-gradient-bg-color: #f7f7f7;
 	--content-bg-color: #c2d1f0;
