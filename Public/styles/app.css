@@ -29,18 +29,18 @@ body {
 
 .tooltip .tooltiptext {
     visibility: hidden;
-    width: 120px;
     background-color: black;
     color: #fff;
+    width: 180px;
+    font-size: 20px;
     text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
+    border-radius: 3px;
+    padding: 3px 0;
 
     /* Position the tooltip */
     position: absolute;
     z-index: 1;
-    top: -5px;
-    left: 105%;
+    top: 105%;
 }
 
 .tooltip:hover .tooltiptext {
@@ -52,7 +52,6 @@ body {
     width: 100%;
     padding-left: 15%;
     padding-right: 15%;
-    overflow: hidden;
     height: 5%;
     min-height: 70px;
     display: inline-block;
@@ -98,6 +97,10 @@ body {
     margin-left: 15%;
     width: 70%;
     margin-bottom: 25px;
+}
+
+#footer button {
+    cursor: pointer;
 }
 
 #navButton {
