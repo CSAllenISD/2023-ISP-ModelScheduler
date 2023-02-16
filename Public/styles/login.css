@@ -80,8 +80,10 @@ body {
 .box-form .right h5 {
     font-size: 4vmax;
     color: #b5b5b5;
-    margin-top: 220%
-    margin-bottom: 0%
+    line-height: 0;
+    padding-right: 300px;
+    margin-top: 55%;
+    margin-bottom: 60%;    
 }
 .box-form .right p {
     font-size: 14px;
