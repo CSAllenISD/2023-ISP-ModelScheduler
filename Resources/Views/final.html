@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>ModelScheduler</title>
-
+   
     <link rel="stylesheet" href="styles/app.css">
     <link rel="stylesheet" href="styles/final.css">
     <link rel="icon" type="image/png" href="images/allenisdLogo.png">
@@ -12,7 +12,7 @@
     <div class="navbar">
       <a href="./classes.html"><img id="logo" src="images/allenisdLogo.png" alt="AllenISD Logo"></a>
 
-      <ul>
+      <ul class="screen">
 	<li><a href="./FAQ.html">FAQ</a></li>
 	<li><a class="selected" href="#">FINAL</a></li>
 	<li><a href="./index.html">SCHEDULER</a></li>
@@ -21,82 +21,81 @@
       </ul>
     </div>
     <!--    <div class="wrapper"> -->
-    <h1>Finalize and print your schedule</h1>
+    <h1 class="screen" style="margin-left:5px">Finalize and print your schedule<br><br></h1>
     </div>
     <div class="classList">
-      <h2>Your courses</h2>
-
-      <!--        </div> -->
-      <div id="scheduleViewer">
-	      <div class="header" id="topLeft">
-	        <span>2023 Fall</span>
-	      </div>
-	      <div class="header topHeader">
-	        <span>High School Schedule</span>
-	      </div>
-	      <div class="header topHeader">
-	        <span>STEAM / CTC Schedule</span>
-	      </div>
-	      <div class="header aDay">
-	        <span>A Day</span>
-	      </div>
-	      <div class="header bDay">
-	        <span>B Day</span>
-	      </div>
-	      <div class="header aDay">
-	        <span>A Day</span>
-	      </div>
-	      <div class="header bDay">
-	        <span>B Day</span>
-	      </div>
-	      <div class="header period" id="period0Container">
-	        <span>Period 0</span>
-	      </div>
-	      <div class="class" id="P0-AHS-A"></div>
-	      <div class="class" id="P0-AHS-B"></div>
-	      <div class="class" id="P0-STE-A"></div>
-	      <div class="class" id="P0-STE-B"></div>
-	      <div class="header period" id="period1Container">
-	        <span>Period 1</span>
-	      </div>
-	      <div class="class" id="P1-AHS-A"></div>
-	      <div class="class" id="P1-AHS-B"></div>
-	      <div class="class" id="P1-STE-A"></div>
-	      <div class="class" id="P1-STE-B"></div>
-	      <div class="header period" id="period2Container">
-	        <span>Period 2/5</span>
-	      </div>
-	      <div class="class" id="P2-AHS-A"></div>
-	      <div class="class" id="P5-AHS-B"></div>
-	      <div class="class" id="P2-STE-A"></div>
-	      <div class="class" id="P5-STE-B"></div>
-	      <div class="header period" id="period3Container">
-	        <span>Period 3/6</span>
-	      </div>
-	      <div class="class" id="P3-AHS-A"></div>
-	      <div class="class" id="P6-AHS-B"></div>
-	      <div class="class" id="P3-STE-A"></div>
-	      <div class="class" id="P6-STE-B"></div>
-	      <div class="header period" id="period4Container">
-	        <span>Period 4/7</span>
-	      </div>
-	      <div class="class" id="P4-AHS-A"></div>
-	      <div class="class" id="P7-AHS-B"></div>
-	      <div class="class" id="P4-STE-A"></div>
-	      <div class="class" id="P7-STE-B"></div>
-	      <div class="header period" id="period8Container">
-	        <span>Period 8</span>
-	      </div>
-	      <div class="class" id="P8-AHS-A"></div>
-	      <div class="class" id="P8-AHS-B"></div>
-	      <div class="class" id="P8-STE-A"></div>
-	      <div class="class" id="P8-STE-B"></div>
-	    </div>
+      <div id="scheduleViewer" class="print">
+	<div class="header" id="topLeft">
+	  <span>2023 Fall</span>
+	</div>
+	<div class="header topHeader">
+	  <span>High School Schedule</span>
+	</div>
+	<div class="header topHeader">
+	  <span>STEAM / CTC Schedule</span>
+	</div>
+	<div class="header aDay">
+	  <span>A Day</span>
+	</div>
+	<div class="header bDay">
+	  <span>B Day</span>
+	</div>
+	<div class="header aDay">
+	  <span>A Day</span>
+	</div>
+	<div class="header bDay">
+	  <span>B Day</span>
+	</div>
+	<div class="header period" id="period0Container">
+	  <span>Period 0</span>
+	</div>
+	<div class="class" id="P0-AHS-A"></div>
+	<div class="class" id="P0-AHS-B"></div>
+	<div class="class" id="P0-STE-A"></div>
+	<div class="class" id="P0-STE-B"></div>
+	<div class="header period" id="period1Container">
+	  <span>Period 1</span>
+	</div>
+	<div class="class" id="P1-AHS-A"></div>
+	<div class="class" id="P1-AHS-B"></div>
+	<div class="class" id="P1-STE-A"></div>
+	<div class="class" id="P1-STE-B"></div>
+	<div class="header period" id="period2Container">
+	  <span>Period 2/5</span>
+	</div>
+	<div class="class" id="P2-AHS-A"></div>
+	<div class="class" id="P5-AHS-B"></div>
+	<div class="class" id="P2-STE-A"></div>
+	<div class="class" id="P5-STE-B"></div>
+	<div class="header period" id="period3Container">
+	  <span>Period 3/6</span>
+	</div>
+	<div class="class" id="P3-AHS-A"></div>
+	<div class="class" id="P6-AHS-B"></div>
+	<div class="class" id="P3-STE-A"></div>
+	<div class="class" id="P6-STE-B"></div>
+	<div class="header period" id="period4Container">
+	  <span>Period 4/7</span>
+	</div>
+	<div class="class" id="P4-AHS-A"></div>
+	<div class="class" id="P7-AHS-B"></div>
+	<div class="class" id="P4-STE-A"></div>
+	<div class="class" id="P7-STE-B"></div>
+	<div class="header period" id="period8Container">
+	  <span>Period 8</span>
+	</div>
+	<div class="class" id="P8-AHS-A"></div>
+	<div class="class" id="P8-AHS-B"></div>
+	<div class="class" id="P8-STE-A"></div>
+	<div class="class" id="P8-STE-B"></div>
+      </div>
+    </div>
     <div>
       <!-- Once the method for final scheulde production is made do: ALTER TABLE Courses ALTER COLUMN seatsTaken +1; -->
     </div>
-    <div style="text-align:right;margin-right:10%;"><button onClick="window.print()">Print this page
-      </button>
+    <div class="screen" style="text-align:right;margin-right:10%;">
+      <br><br>
+      <button onClick="window.print()" style="background-color:rgb(66, 66, 66);color:white;padding:2px">Print schedule</button>
     </div>
   </body>
   <script src="js/final.js"></script>
