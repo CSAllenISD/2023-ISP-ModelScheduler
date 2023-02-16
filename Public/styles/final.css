@@ -360,3 +360,15 @@ a.semesterBtn.selected::before {
 	flex-direction: column;
     }
 }
+
+.print {
+    display: none;
+}
+@media print {
+    .screen {
+	display: none;
+    }
+    .print {
+	display: block;
+    }
+}
