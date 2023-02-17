@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", function() { //Waits for HTML DOM 
     dmButton.addEventListener("click", toggleDmButton);
 });
 
+//for dark mode
+var light = true;
 function dmSwitch() {
     var background = document.body;
     var boxes = document.querySelectorAll(".grayBox");
@@ -21,7 +23,16 @@ function dmSwitch() {
     boxes.forEach(function(box) {
 	box.classList.toggle("dm-grayBox");
     });
-}
+    if (light == true) {
+	document.documentElement.classList.remove("light")  
+	document.documentElement.classList.add("dark");
+	light = false;
+    } else if (light == false) {
+	document.documentElement.classList.add("light")  
+	document.documentElement.classList.remove("dark")
+	light = true;
+    }
+    }
 
 function toggleDmButton() {
     let dmButton = document.getElementById("darkmode");
