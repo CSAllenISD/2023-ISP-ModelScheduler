@@ -1,5 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
+:root {
+    --main-bg-color:  #2d2d2d;
+    --main-gradient-bg-color:  #3a3a3a;
+    --alt-bg-color:  #222222;
+    --alt-gradient-bg-color:  #434343;
+    --nav-bg-color:  #3a3a3a;
+    --nav-gradient-bg-color:  #3a3a3a;
+    --content-bg-color:  #5a5a5a;
+    --a-day-red:  #bd2d28;
+    --b-day-blue:  #151b66;
+    --main-text-color:  white;
+    --lighter-text-color:  #f1f1f1;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -175,6 +189,7 @@ body {
     background-color: lightgray;
     border-radius: 10px;
     text-align: center;
+    overflow-y: scroll;
 }
 
 #class {
@@ -223,7 +238,10 @@ table .blueBox {
 /**Dark mode classes**/
 
 .dark-mode {
-    background-color: #38393c;
+    background: linear-gradient(to top,
+	var(--alt-bg-color),
+	var(--alt-gradient-bg-color) 90%
+);
     height: 100%;
     width: 100%;
 }

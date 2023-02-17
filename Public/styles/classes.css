@@ -35,8 +35,8 @@ input {
 }
 
 .addButton {
-    background-color: blue;
-    color: white;
+    background-color: #bfd7ea;
+    color: black;
     border-radius: 5px;
     cursor: pointer;
     float: right;
@@ -46,7 +46,7 @@ input {
 
 .removeButton {
     background-color: red;
-    color: white;
+    color: black;
     border-radius: 5px;
     cursor: pointer;
     float: right;
@@ -64,7 +64,7 @@ input {
 
 .navButton {
     background-color: #c3c3c3;
-    color: blue;
+    color: #bfd7ea;
     font-weight: bold;
     font-family: Arial;
     font-size: 20px;
@@ -88,7 +88,7 @@ input {
     border-weight: 50px;
     border-style: solid;
     border-radius: 7px;
-    width: 20%;
+    width: 25%;
     height: 85%;
     position: absolute;
     display: flex-block;
@@ -97,11 +97,11 @@ input {
 }
 
 .classList {
-    margin-left: 25%;
+    margin-left: 20%;
 }
 
 .classList2 {
-    margin-left: 53%;
+    margin-left: 55%;
 }
 
 .classList > h2,
