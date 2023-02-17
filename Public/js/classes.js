@@ -12,8 +12,11 @@ document.addEventListener("DOMContentLoaded", function() { //Waits for HTML DOM 
 
     dmButton.addEventListener("click", dmSwitch);
     dmButton.addEventListener("click", toggleDmButton);
+    dmButton.addEventListener("click", saveDm)
 });
 
+//for dark mode
+var light = true;
 function dmSwitch() {
     var background = document.body;
     var boxes = document.querySelectorAll(".grayBox");
@@ -21,6 +24,21 @@ function dmSwitch() {
     boxes.forEach(function(box) {
 	box.classList.toggle("dm-grayBox");
     });
+    if (light == true) {
+	document.documentElement.classList.remove("light")  
+	document.documentElement.classList.add("dark");
+	light = false;
+    } else if (light == false) {
+	document.documentElement.classList.add("light")  
+	document.documentElement.classList.remove("dark")
+	light = true;
+    }
+}
+
+function saveDm() {
+    if (localStorage.getItem("darkmode") == null || localStorage.getItem("darkmode") == "false") {
+	
+    }
 }
 
 function toggleDmButton() {
