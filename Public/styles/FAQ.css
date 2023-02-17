@@ -19,15 +19,38 @@
 	float: none;
     }
 }
-
-* {
-    box-sizing: border-box;
+:root, :root.light{
+    --navbar: #bfd7ea;
+    --navbar-labels: : black;
+    --bg-color: white;
+    --bg-color2: white;
 }
 
+:root.dark{
+    --navbar: darkblue;
+    --navbar-labels: white;
+    --bg-color: #222222;
+    --bg-color2: #434343;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif
+}
+html{
+    width: 100%;
+    height: 100%;
+}	      
 body{
     height: 100%;
     width: 100%;
     line-height: 3;
+    background: linear-gradient(to top,
+				var(--bg-color),
+				var(--bg-color2) 90%
+)
 }
 
 #darkmode {
@@ -39,10 +62,21 @@ body{
 }
 
 #logo{
-    width: 90px;
-    height: 90px;
+    width: 60px;
+    height: 60px;
     margin-top: 5px;
     float: left;
+}
+
+#darkmode {
+    width: 40px;
+    height: 40px;
+    margin-top: 15px;
+    cursor: pointer;
+    text-line: left;
+}
+#darkmodeButton{
+    all: unset;
 }
 
 ul {
@@ -51,8 +85,36 @@ ul {
     padding-left: 15%;
     padding-right: 15%;
     overflow: hidden;
-    min-height: 100px;
-    background-color: #BFD7EA;
+    height: 5%;
+    min-height: 70px;
+    display: inline-block;
+    background-color: var(--navbar);
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext{
+    visibility: hidden;
+    background-color:black;
+    color: white;
+    width: 120px;
+    line-height: 225%;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 3px;
+    padding: 3px 0;
+
+    position: absolute;
+    z-index: 1;
+    top: 80%;
+    left: -125%
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }
 
 #footer {
@@ -68,17 +130,17 @@ ul {
 }
 
 li {
+    list-style-type: none;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    margin-right: 30px;
+    line-height: 70px;
     float: right;
 }
 
 li a {
-    display: block;
-    color: black;
-    text-align: center;
-    margin-right: 30px;
-    font-size: 40px;
-    font-weight: 600;
-    line-height:100px;
+    color: var(--navbar-labels);
     text-decoration: none; 
 }
 
@@ -111,7 +173,7 @@ h1 {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 900;
     text-align: center;
-    
+    color: var(--navbar-labels);
 }
 
 h2{
@@ -119,6 +181,7 @@ h2{
     font-weight: bold;
     font-size: 30px;
     text-align: center;
+    color: var(--navbar-labels);
 }
 
 p{
@@ -130,4 +193,5 @@ p{
     line-height: 1.8;
     margin-left: 50px;
     margin-right: 130px;
+    color: var(--navbar-labels);
 }

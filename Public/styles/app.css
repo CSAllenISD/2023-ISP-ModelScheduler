@@ -40,7 +40,7 @@ body {
     background: linear-gradient(to top,
 	var(--bg-color),
 	var(--bg-color2) 90%
-    )
+)
 }
 .tooltip {
     position: relative;
