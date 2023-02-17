@@ -1,67 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" >
-  <head>
-    <meta charset="UTF-8">
-    <title>Model Scheduler</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<html lang="en">
+<head>
 
+  <meta charset="UTF-8">
+  <title>Model Scheduler</title>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="styles/login.css" rel="stylesheet">
+</head>
+<body class="align">
 
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"><link rel="stylesheet" href="styles/login.css">
-    <link rel="icon"
-	  type="image/png"
-	                  href="images/allenisdLogo.png" />
-    <script
-      src="js/login.js">
-    </script>
-    
-  </head>
-  
-  <body>
-    <!-- partial:index.partial.html -->
-    <div class="box-form">
-      <div class="left">
-	<div class="overlay">
-	  <h1></h1>
-	  <p style="font-size: 500%; text-align: center; vertical-align: middle; line-height: normal; display: inline-block;">
-	    <b>Allen High School Model Scheduler</b>
-	  </p>
-	  <img src="images/allenisdLogo.png" style="display: block; margin-left: 39%;">
-	</div>
-      </div>
+  <div class="grid align__item">
 
+    <div class="register">
 
-      <div class="right">
-	<h5>Login
-	  <br>
-	  <br>
-	</h5>
-	<p>Don't have an account? <a href="createuser">Create Your Account</a></p>
-	<div class="inputs">
-	  <form method="POST" action="./login">
-	    <label for="username">Username</label>
-	    <input type="text" id="username" placeholder="Username" name="username" autocomplete="username" required autofocus>
-	    <label for="password">Password</label>
-	    <input type="password" id="password" placeholder="Password" name="password" autocomplete="current-password" required>
-	    <input type="submit" value="Sign In">
-	    </form>
-	</div>
+      <svg xmlns="http://www.w3.org/2000/svg" class="site__logo" width="56" height="84" viewBox="77.7 214.9 274.7 412"><defs><linearGradient id="a" x1="0%" y1="0%" y2="0%"><stop offset="0%" stop-color="#8ceabb"/><stop offset="100%" stop-color="#378f7b"/></linearGradient></defs><path fill="url(#a)" d="M215 214.9c-83.6 123.5-137.3 200.8-137.3 275.9 0 75.2 61.4 136.1 137.3 136.1s137.3-60.9 137.3-136.1c0-75.1-53.7-152.4-137.3-275.9z"/></svg>
 
-	<br><br>
+      <h2>Login</h2>
 
-	<div class="remember-me--forget-password">
-	  <!-- Angular -->
-	  <label>
-	    <input type="checkbox" name="item" checked/>
-	    <span class="text-checkbox" style="color: #FFFFFF">Remember me</span>
-	  </label>
-	  <p>Forgot password?</p>
-	</div>
+      <form action="./login" method="post" class="form">
 
-	<br>
-      </div>
+        <div class="form__field">
+          <input type="email" id="username" name="username" placeholder="first.last@student.allenisd.org" autocomplete="email" required autofocus>
+        </div>
+
+        <div class="form__field">
+          <input type="password" id="password" name="password" placeholder="••••••••••••" autocomplete="current-password" required>
+        </div>
+
+        <div class="form__field">
+          <input type="submit" value="Log in">
+        </div>
+
+      </form>
+
+      <p>Don't have an account? <a href="./createuser">Sign Up</a></p>
 
     </div>
-    <!-- partial -->
 
-  </body>
-  </html>
+  </div>
+  
+</body>
+</html>
