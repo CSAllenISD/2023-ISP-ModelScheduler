@@ -1,103 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/scheduler.css">
-    <title>Scheduler | Model Scheduler</title>
-    <link rel="icon"
-	  type="image/png"
-	                  href="images/allenisdLogo.png" />
-  </head>
-  <body>
-    <nav>
-      <div>
-	<a href="index.html">Home</a>
-      </div>
-      <div>
-	<a href="#" class="selected">Scheduler</a>
-      </div>
-      <div>
-	<a href="FAQ.html">FAQ</a>
-      </div>
-    </nav>
-    <main>
-      <div class="leftside" id="courseSelect">
-	<h1>Courses</h1>
-      </div>
-      <div class="rightside" id="schedules">
-	<div style="width: 100%; display: flex; flex-direction: row; justify-content: space-around;">
-	  <a class="semesterBtn selected">Fall Semester</a>
-	  <a class="semesterBtn">Spring Semester</a>
-	</div>
-	<div id="scheduleViewer">
-	  <div class="header" id="topLeft">
-	    <span>2023-2024</span>
-	  </div>
-	  <div class="header topHeader">
-	    <span>High School Schedule</span>
-	  </div>
-	  <div class="header topHeader">
-	    <span>STEAM / CTC Schedule</span>
-	  </div>
-	  <div class="header aDay">
-	    <span>A Day</span>
-	  </div>
-	  <div class="header bDay">
-	    <span>B Day</span>
-	  </div>
-	  <div class="header aDay">
-	    <span>A Day</span>
-	  </div>
-	  <div class="header bDay">
-	    <span>B Day</span>
-	  </div>
-	  <div class="header period" id="period0Container">
-	    <span>Period 0</span>
-	  </div>
-	  <div class="class" id="P0-AHS-A"></div>
-	  <div class="class" id="P0-AHS-B"></div>
-	  <div class="class" id="P0-STE-A"></div>
-	  <div class="class" id="P0-STE-B"></div>
-	  <div class="header period" id="period1Container">
-	    <span>Period 1</span>
-	  </div>
-	  <div class="class" id="P1-AHS-A"></div>
-	  <div class="class" id="P1-AHS-B"></div>
-	  <div class="class" id="P1-STE-A"></div>
-	  <div class="class" id="P1-STE-B"></div>
-	  <div class="header period" id="period2Container">
-	    <span>Period 2/5</span>
-	  </div>
-	  <div class="class" id="P2-AHS-A"></div>
-	  <div class="class" id="P5-AHS-B"></div>
-	  <div class="class" id="P2-STE-A"></div>
-	  <div class="class" id="P5-STE-B"></div>
-	  <div class="header period" id="period3Container">
-	    <span>Period 3/6</span>
-	  </div>
-	  <div class="class" id="P3-AHS-A"></div>
-	  <div class="class" id="P6-AHS-B"></div>
-	  <div class="class" id="P3-STE-A"></div>
-	  <div class="class" id="P6-STE-B"></div>
-	  <div class="header period" id="period4Container">
-	    <span>Period 4/7</span>
-	  </div>
-	  <div class="class" id="P4-AHS-A"></div>
-	  <div class="class" id="P7-AHS-B"></div>
-	  <div class="class" id="P4-STE-A"></div>
-	  <div class="class" id="P7-STE-B"></div>
-	  <div class="header period" id="period8Container">
-	    <span>Period 8</span>
-	  </div>
-	  <div class="class" id="P8-AHS-A"></div>
-	  <div class="class" id="P8-AHS-B"></div>
-	  <div class="class" id="P8-STE-A"></div>
-	  <div class="class" id="P8-STE-B"></div>
-	</div>
-      </div>
-    </main>
-    <script src="js/scheduler.js"></script>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="styles/scheduler.css" />
+		<title>Scheduler | Model Scheduler</title>
+		<link rel="icon" type="image/png" href="images/allenisdLogo.png" />
+	</head>
+	<body>
+		<nav>
+			<div>
+				<a href="index.html">Home</a>
+			</div>
+			<div>
+				<a href="#" class="selected">Scheduler</a>
+			</div>
+			<div>
+				<a href="FAQ.html">FAQ</a>
+			</div>
+		</nav>
+		<main>
+			<div class="leftside" id="courseSelect">
+				<h1>Courses</h1>
+			</div>
+			<div class="rightside" id="schedules">
+				<div
+					style="
+						width: 100%;
+						display: flex;
+						flex-direction: row;
+						justify-content: space-around;
+					"
+				>
+					<a class="semesterBtn selected">Fall Semester</a>
+					<a class="semesterBtn">Spring Semester</a>
+				</div>
+				<div id="scheduleViewer">
+					<div class="header" id="topLeft">
+						<span>2023-2024</span>
+					</div>
+					<div class="header topHeader">
+						<span>High School Schedule</span>
+					</div>
+					<div class="header topHeader">
+						<span>STEAM / CTC Schedule</span>
+					</div>
+					<div class="header aDay">
+						<span>A Day</span>
+					</div>
+					<div class="header bDay">
+						<span>B Day</span>
+					</div>
+					<div class="header aDay">
+						<span>A Day</span>
+					</div>
+					<div class="header bDay">
+						<span>B Day</span>
+					</div>
+					<div class="header period" id="period0Container">
+						<span>Period 0</span>
+					</div>
+					<div class="class" id="P0-AHS-A"></div>
+					<div class="class" id="P0-AHS-B"></div>
+					<div class="class" id="P0-STE-A"></div>
+					<div class="class" id="P0-STE-B"></div>
+					<div class="header period" id="period1Container">
+						<span>Period 1</span>
+					</div>
+					<div class="class" id="P1-AHS-A"></div>
+					<div class="class" id="P1-AHS-B"></div>
+					<div class="class" id="P1-STE-A"></div>
+					<div class="class" id="P1-STE-B"></div>
+					<div class="header period" id="period2Container">
+						<span>Period 2/5</span>
+					</div>
+					<div class="class" id="P2-AHS-A"></div>
+					<div class="class" id="P5-AHS-B"></div>
+					<div class="class" id="P2-STE-A"></div>
+					<div class="class" id="P5-STE-B"></div>
+					<div class="header period" id="period3Container">
+						<span>Period 3/6</span>
+					</div>
+					<div class="class" id="P3-AHS-A"></div>
+					<div class="class" id="P6-AHS-B"></div>
+					<div class="class" id="P3-STE-A"></div>
+					<div class="class" id="P6-STE-B"></div>
+					<div class="header period" id="period4Container">
+						<span>Period 4/7</span>
+					</div>
+					<div class="class" id="P4-AHS-A"></div>
+					<div class="class" id="P7-AHS-B"></div>
+					<div class="class" id="P4-STE-A"></div>
+					<div class="class" id="P7-STE-B"></div>
+					<div class="header period" id="period8Container">
+						<span>Period 8</span>
+					</div>
+					<div class="class" id="P8-AHS-A"></div>
+					<div class="class" id="P8-AHS-B"></div>
+					<div class="class" id="P8-STE-A"></div>
+					<div class="class" id="P8-STE-B"></div>
+				</div>
+			</div>
+		</main>
+		<script src="js/scheduler.js"></script>
+	</body>
 </html>
