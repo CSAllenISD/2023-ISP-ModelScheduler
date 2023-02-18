@@ -167,18 +167,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     const courses = await getCoursesFromServer();
 
     let savedCourses = localStorage.getItem("courses")
-    if(savedCourses != null) {
-	savedCourses = savedCourses.split(',')
-    }
-
-    console.log(courses);
-
+    
     // if got the courses from the server without error
     if (courses != null) {
         for (let i = 0; i < courses?.items?.length; i++) {
             const course = courses.items[i];
-            console.log(course);
-
+            
             const courseItem = document.createElement("li");
             courseItem.appendChild(document.createTextNode(course.name));
 
@@ -190,7 +184,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 		
 		courseItem.appendChild(remButton);
 		courseItem.id = course.code + "-" + course.section;
-		console.log("COURSE ITEM ID: " + courseItem.id)
 		selectedCourses.appendChild(courseItem);
 	    }else{
 		const addButton = document.createElement("button");
