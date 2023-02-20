@@ -34,6 +34,11 @@ input {
 	font-size: 18px;
 }
 
+#search {
+    background-color: var(--search);
+    color: var(--text);
+}
+
 .addButton {
 	background-color: #bfd7ea;
 	color: black;
@@ -83,8 +88,8 @@ input {
 
 .classList,
 .classList2 {
-	background-color: rgb(225, 225, 225);
-	border-color: black;
+	background-color: var(--classes-bg);
+	border-color: var(--text);
 	border-weight: 50px;
 	border-style: solid;
 	border-radius: 7px;
@@ -106,7 +111,7 @@ input {
 
 .classList > h2,
 .classList2 > h2 {
-	background-color: rgb(200, 200, 200);
+	background-color: var(--classes-bg);
 	width: 100%;
 	height: 40px;
 	text-align: center;
