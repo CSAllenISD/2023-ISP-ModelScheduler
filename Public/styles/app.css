@@ -1,20 +1,32 @@
 :root,
 :root.light {
-	--navbar: #bfd7ea;
+    --text: #000;
+    --navbar: #bfd7ea;
 	--navbar-labels: #000;
 	--buttons: #bfd7ea;
 	--bg-color: #fff;
 	--bg-color2: #fff;
 	--aDay: red;
 	--bDay: blue;
+	--classes-bg: rgb(200,200,200);
+	--th: rgb(225,225,225);
+	--gray-box: rgb(200,200,200);
+	--search: white;
 }
 
 :root.dark {
-	--navbar: darkblue;
+    --text: #fff;
+	--navbar: #151b66;
 	--navbar-labels: #fff;
-	--butons: darkblue;
+	--buttons: #151b66;
 	--bg-color: #222222;
 	--bg-color2: #434343;
+	--aDay: #bd2d28;
+	--bDay: #151b66;
+	--classes-bg: rgb(60,60,60);
+	--th: rgb(100,100,100);
+	--gray-box: rgb(60,60,60);
+	--search: rgb(100,100,100)
 }
 
 * {
@@ -110,8 +122,8 @@ body {
 	position: absolute;
 	height: 7%;
 	bottom: 0;
-	margin-left: 15%;
-	width: 70%;
+	margin-left: 10%;
+	width: 80%;
 	margin-bottom: 25px;
 }
 
@@ -156,10 +168,12 @@ body {
 	width: 20%;
 }
 #allen {
-	width: 40%;
+    width: 40%;
+    color: var(--text);
 }
 #steam {
-	width: 40%;
+    width: 40%;
+    color: var(--text);
 }
 
 #semesterSwitchBar {
@@ -188,10 +202,10 @@ body {
 	margin-left: 8%;
 	margin-top: 5%;
 	margin-bottom: 5%;
-	background-color: lightgray;
+	background-color: var(--classes-bg);
 	border-radius: 10px;
 	text-align: center;
-	overflow-y: scroll;
+	color: var(--text);
 }
 
 #class {
@@ -201,22 +215,23 @@ body {
 }
 
 th {
-	border-radius: 5px;
-	background-color: rgb(225, 225, 225);
+    border-radius: 5px;
+    color: var(--text);
+	background-color: var(--th);
 }
 
 table .grayBox {
-	background-color: rgb(200, 200, 200);
+	background-color: var(--gray-box);
 	color: black;
 }
 
 table .redBox {
-	background-color: red;
+	background-color: var(--aDay);
 	color: white;
 }
 
 table .blueBox {
-	background-color: blue;
+	background-color: var(--bDay);
 	color: white;
 }
 
