@@ -343,14 +343,21 @@ body {
 	border-radius: 10px;
 	text-align: center;
 	color: var(--text);
+	overflow-y: scroll;
 }
 
-#class {
+.selectedClass {
 	width: 90%;
-	height: 90%;
+	height: 55px;
 	margin-left: 5%;
+	margin-bottom: 3px;
 	background-color: var(--class);
 	border-radius: 5px;
+}
+
+#classTitle {
+    line-height: 2;
+    font-size: 26px;
 }
 
 table .grayBox {

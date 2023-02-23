@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 	    if (selectedCourses.includes(course.code)) {
 		let classDiv = document.createElement("div")
-		classDiv.classList.add("class")
+		classDiv.classList.add("selectedClass")
 
 		let classP = document.createElement("p")
 		classP.appendChild(document.createTextNode(course.name))
