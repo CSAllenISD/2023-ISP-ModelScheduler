@@ -74,21 +74,56 @@ function darkMode() {
 
 //darkMode();
 
-window.onload = function () {
-	let selectedCourses = localStorage.getItem("courses");
-	if (selectedCourses != null) {
-		selectedCourses = selectedCourses.split(",");
-	}
-	var classes = document.getElementById("class");
+async function getCoursesFromServer() {
+	return new Promise((resolve, reject) => {
+		const xhr = new XMLHttpRequest();
+		xhr.open("GET", "./classes/data");
+		xhr.send();
+		xhr.responseType = "json";
+		xhr.onload = () => {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				const data = xhr.response;
+				console.log(data);
+				resolve(data);
+			} else {
+				console.log(`Error: ${xhr.status}`);
+				reject(xhr.status);
+			}
+		};
+	});
+}
 
-	for (let i = 0; i < selectedCourses.length; i++) {
+window.onload = function () {
+    let selectedCourses = localStorage.getItem("courses");
+    if (selectedCourses != null) {
+	selectedCourses = selectedCourses.split(",");
+    }
+    var classes = document.getElementById("class");
+    
+    const courses = await getCoursesFromServer();
+
+    if (courses != null) {
+	// for (let i = 0; i < selectedCourses.length; i++) {
+	//     var newTr = document.createElement("tr");
+	//     var newTh = document.createElement("th");
+	//     newTh.appendChild(document.createTextNode(selectedCourses[i]));
+	//     newTr.appendChild(newTh);
+	//     classes.appendChild(newTr);
+	// }
+
+	for (let i = 0; i < courses?.items?.length; i++) {
+	    const course = courses[i];
+
+	    if (selectedCourses.includes(course.code)) {
 		var newTr = document.createElement("tr");
 		var newTh = document.createElement("th");
-		newTh.appendChild(document.createTextNode(selectedCourses[i]));
+		newTh.appendChild(document.createTextNode(course.name));
 		newTr.appendChild(newTh);
 		classes.appendChild(newTr);
+	    }
 	}
-
-	//set dark mode
-	dmSwitch();
+    }
+    
+    //set dark mode
+    dmSwitch();
 };
