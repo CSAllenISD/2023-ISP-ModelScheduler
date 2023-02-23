@@ -151,6 +151,133 @@ body {
 	margin: none;
 	padding: none;
 }
+
+#schedule {
+    float: right;
+    width: 55%;
+    height: 98%;
+    max-width: 1200px;
+    margin-right: 12%;
+    margin-top: 2%;
+    display: grid;
+    grid-template-colums: repeat(5, 1fr);
+    grid-template-rows: repeat(14, 0.25fr);
+    gap: 5px;
+}
+/*Some absolute bullshit dear god*/
+#scheduleViewer {
+    width: 55%;
+    height: 98%;
+    margin: 0 auto;
+    display: grid;
+    padding-left: 5px;
+    padding-right: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr;
+    background-color: var(--content-bg-color);
+    border-radius: 10px;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    font-size: 16px;
+    gap: 5px;
+}
+
+#scheduleViewer > div {
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    display: table;
+    table-layout: fixed;
+    cursor: auto;
+    grid-row: span 2;
+}
+
+#scheduleViewer > div > span {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#scheduleViewer > div:nth-child(n + 2) {
+    margin-left: -1px;
+}
+
+#scheduleViewer > div:nth-child(n + 8) {
+    margin-top: -1px;
+}
+
+#scheduleViewer > div:nth-child(2),
+#scheduleViewer > div:nth-child(5n) {
+    margin-right: 5px;
+}
+
+#scheduleViewer > div:nth-child(3),
+#scheduleViewer > div:nth-child(5n + 1) {
+    margin-left: 5px;
+}
+
+#scheduleViewer > .highlighted {
+    background-color: rgb(48, 48, 48);
+    cursor: pointer;
+}
+
+#scheduleViewer > .super_highlighted {
+    background-color: rgb(66, 66, 66);
+}
+
+#scheduleViewer > .class {
+    background-color: var(--nav-bg-color);
+    color: var(--main-text-color);
+}
+
+#scheduleViewer > .shortened {
+    grid-row: span 1;
+}
+
+#scheduleViewer > .steam {
+    background-color: #d6cece;
+}
+
+#scheduleViewer > .steam-time-conflict {
+    grid-row: span 3;
+}
+
+#scheduleViewer > .header {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+    font-weight: bolder;
+}
+
+#scheduleViewer > .period {
+    grid-column: 1;
+}
+
+#scheduleViewer > #topLeft {
+    grid-row: 1 / span 2;
+    margin-left: 0;
+}
+
+#scheduleViewer > .topHeader {
+    grid-column: span 2;
+    grid-row: span 1;
+    height: 0.25fr;
+}
+
+#scheduleViewer > .aDay {
+    color: white;
+    background-color: var(--aDay);
+    grid-row: span 1;
+}
+
+#scheduleViewer > .bDay {
+    color: white;
+    background-color: var(--bDay);
+    grid-row: span 1;
+}
+/*End bullshit here*/
+
+
+
 #scheduler {
 	float: right;
 	width: 55%;
