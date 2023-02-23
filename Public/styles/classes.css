@@ -101,6 +101,11 @@ input {
 	overflow-y: scroll;
 }
 
+p {
+    width: 70%;
+    margin: none;
+}
+
 /* width */
 ::-webkit-scrollbar {
     width: 10px;

@@ -9,7 +9,7 @@
 	--aDay: red;
 	--bDay: blue;
 	--classes-bg: rgb(200,200,200);
-	--th: rgb(225,225,225);
+	--class: rgb(225,225,225);
 	--gray-box: rgb(200,200,200);
 	--search: white;
 }
@@ -24,7 +24,7 @@
 	--aDay: #bd2d28;
 	--bDay: #151b66;
 	--classes-bg: rgb(60,60,60);
-	--th: rgb(100,100,100);
+	--class: rgb(100,100,100);
 	--gray-box: rgb(60,60,60);
 	--search: rgb(100,100,100)
 }
@@ -141,7 +141,7 @@ body {
 }
 
 .next {
-	float: right;
+    float: right;
 }
 
 #tables {
@@ -226,7 +226,7 @@ body {
 }
 
 #scheduleViewer > .class {
-    background-color: var(--nav-bg-color);
+    background-color: var(--class);
     color: var(--main-text-color);
 }
 
@@ -243,7 +243,7 @@ body {
 }
 
 #scheduleViewer > .header {
-    background-color: var(--main-bg-color);
+    background-color: var(--classes-bg);
     color: var(--main-text-color);
     font-weight: bolder;
 }
