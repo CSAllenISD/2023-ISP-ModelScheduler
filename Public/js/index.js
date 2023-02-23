@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
 	//Waits for HTML DOM content to load
 	const dmButton = document.getElementById("darkmodeButton"); //Gets darkMode button id
 
@@ -11,7 +11,44 @@ document.addEventListener("DOMContentLoaded", function () {
 		console.error("Element with id 'darkMode' not found");
 	}
 
-	dmButton.addEventListener("click", toggleDm);
+    dmButton.addEventListener("click", toggleDm);
+
+
+    let selectedCourses = localStorage.getItem("courses");
+    if (selectedCourses != null) {
+	selectedCourses = selectedCourses.split(",");
+    }
+    var classes = document.getElementById("classes");
+    
+    const courses = await getCoursesFromServer();
+
+    console.log(courses)
+
+    if (courses != null) {
+	// for (let i = 0; i < selectedCourses.length; i++) {
+	//     var newTr = document.createElement("tr");
+	//     var newTh = document.createElement("th");
+	//     newTh.appendChild(document.createTextNode(selectedCourses[i]));
+	//     newTr.appendChild(newTh);
+	//     classes.appendChild(newTr);
+	// }
+
+	for (let i = 0; i < courses?.items?.length; i++) {
+	    const course = courses.items[i];
+
+	    if (selectedCourses.includes(course.code)) {
+		let classDiv = document.createElement("div")
+		classDiv.classList.add("class")
+
+		let classP = document.createElement("p")
+		classP.appendChild(document.createTextNode(course.name))
+
+		classDiv.appendChild(classP)
+
+		classes.appendChild(classDiv)
+	    }
+	}
+    }
 });
 
 //for dark mode
@@ -94,35 +131,7 @@ async function getCoursesFromServer() {
 }
 
 window.onload = function () {
-    let selectedCourses = localStorage.getItem("courses");
-    if (selectedCourses != null) {
-	selectedCourses = selectedCourses.split(",");
-    }
-    var classes = document.getElementById("class");
     
-    const courses = await getCoursesFromServer();
-
-    if (courses != null) {
-	// for (let i = 0; i < selectedCourses.length; i++) {
-	//     var newTr = document.createElement("tr");
-	//     var newTh = document.createElement("th");
-	//     newTh.appendChild(document.createTextNode(selectedCourses[i]));
-	//     newTr.appendChild(newTh);
-	//     classes.appendChild(newTr);
-	// }
-
-	for (let i = 0; i < courses?.items?.length; i++) {
-	    const course = courses[i];
-
-	    if (selectedCourses.includes(course.code)) {
-		var newTr = document.createElement("tr");
-		var newTh = document.createElement("th");
-		newTh.appendChild(document.createTextNode(course.name));
-		newTr.appendChild(newTh);
-		classes.appendChild(newTr);
-	    }
-	}
-    }
     
     //set dark mode
     dmSwitch();
