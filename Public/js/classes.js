@@ -178,7 +178,10 @@ document.addEventListener("DOMContentLoaded", async function () {
 			const course = courses.items[i];
 
 			const courseItem = document.createElement("li");
-			courseItem.appendChild(document.createTextNode(course.name));
+
+		    const pTag = document.createElement("p");
+		    courseItem.appendChild(pTag)
+		    pTag.appendChild(document.createTextNode(course.name));
 
 			if (savedCourses != null && savedCourses.includes(course.name)) {
 				const remButton = document.createElement("button");
@@ -203,3 +206,26 @@ document.addEventListener("DOMContentLoaded", async function () {
 		}
 	}
 });
+
+//search bar
+    function search() {
+	// Declare variables
+	var input, filter, ul, li, a, i, txtValue;
+	input = document.getElementById('search');
+	filter = input.value.toUpperCase();
+	console.log(filter);
+	ul = document.getElementById("availableCourses");
+	li = ul.getElementsByTagName('li');
+
+	// Loop through all list items, and hide those who don't match the search query
+	for (i = 0; i < li.length; i++) {
+	    p = li[i].getElementsByTagName("p")[0];
+	    txtValue = p.innerText || p.textContent;
+	    console.log(txtValue)
+	    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+		li[i].style.display = "";
+	    } else {
+		li[i].style.display = "none";
+	    }
+	}
+    }
