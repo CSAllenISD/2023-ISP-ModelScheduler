@@ -52,7 +52,7 @@ body {
 }
 
 body {
-	font-family: "DM Sans", sans-serif;
+ 	font-family: "DM Sans", sans-serif;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
@@ -371,4 +371,22 @@ a.semesterBtn.selected::before {
 	.print {
 		display: block;
 	}
+}
+
+.printButton {
+    background-color: gray;
+    border: none;
+    color: white;
+    padding: 7px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: "DM Sans", sans-serif;
+    border-radius: 8px;
+    transition-duration: 0.3s;
+}
+
+.printButton:hover {
+    background-color:darkgray;
 }
