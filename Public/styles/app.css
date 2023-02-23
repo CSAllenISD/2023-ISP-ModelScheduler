@@ -157,8 +157,9 @@ body {
 #tables {
 	display: inline-block;
 	width: 100%;
-	height: 70%;
-	margin: none;
+	height: 80%;
+	overflow: hidden;
+	margin-top: 1%;
 	padding: none;
 }
 
@@ -185,7 +186,7 @@ body {
     padding-top: 4px;
     padding-bottom: 4px;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr;
+    grid-template-rows: 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr;
     background-color: var(--content-bg-color);
     border-radius: 10px;
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
@@ -262,9 +263,19 @@ body {
     grid-column: 1;
 }
 
+#scheduleViewer > #fall {
+    grid-column: span 2;
+    grid-row: 1
+}
+
+#scheduleViewer > #spring {
+    grid-column: span 2;
+}
+
 #scheduleViewer > #topLeft {
-    grid-row: 1 / span 2;
+    grid-row: 1 / span 3;
     margin-left: 0;
+    grid-column: 1;
 }
 
 #scheduleViewer > .topHeader {
@@ -334,11 +345,10 @@ body {
 }
 #classes {
 	float: left;
-	height: 90%;
+	height: 80%;
 	width: 20%;
 	margin-left: 8%;
 	margin-top: 5%;
-	margin-bottom: 5%;
 	background-color: var(--classes-bg);
 	border-radius: 10px;
 	text-align: center;
