@@ -27,6 +27,15 @@ li {
 	margin-bottom: 1%;
 }
 
+courseList {
+    width: 100%;
+}
+
+p {
+    display: inline;
+    width: 50%;
+}
+
 input {
 	width: 100%;
 	height: 40px;

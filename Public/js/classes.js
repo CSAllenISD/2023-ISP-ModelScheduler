@@ -103,7 +103,8 @@ function addCourse(id) {
     var courses = [];
     for (const child of selectedList.children) {
 	const course = child.innerText.replace("Remove", "");
-	courses.push(course);
+	//courses.push(course);
+	courses.push(child.id)
     }
     localStorage.setItem("courses", courses);
 }
@@ -135,7 +136,8 @@ function removeCourse(id) {
     var courses = [];
     for (const child of selectedList.children) {
 	const course = child.innerText.replace("Remove", "");
-	courses.push(course);
+	//courses.push(course);
+	course.push(child.id)
     }
     localStorage.setItem("courses", courses);
 }
@@ -145,8 +147,9 @@ function next() {
 
 	var courses = [];
 	for (const child of selectedList.children) {
-		const course = child.innerText.replace("Remove", "");
-		courses.push(course);
+	    const course = child.innerText.replace("Remove", "");
+	    //courses.push(course);
+	    courses.push(child.id)
 	}
 	localStorage.setItem("courses", courses);
 
@@ -186,29 +189,30 @@ document.addEventListener("DOMContentLoaded", async function () {
 		    const course = courses.items[i];
 		    
 		    const courseItem = document.createElement("li");
+		    courseItem.classList.add("courseList")
 
 		    const pTag = document.createElement("p");
 		    courseItem.appendChild(pTag)
 		    pTag.appendChild(document.createTextNode(course.name));
 
-		    if (savedCourses != null && savedCourses.includes(course.name)) {
+		    if (savedCourses != null && savedCourses.includes(course.code)) {
 			const remButton = document.createElement("button");
 			remButton.classList.add("removeButton");
 			remButton.onclick = () =>
-			removeCourse(course.code + "-" + course.section);
+			removeCourse(course.code);
 			remButton.appendChild(document.createTextNode("Remove"));
 			
 			courseItem.appendChild(remButton);
-			courseItem.id = course.code + "-" + course.section;
+			courseItem.id = course.code;
 			selectedCourses.appendChild(courseItem);
 		    } else {
 			const addButton = document.createElement("button");
 			addButton.classList.add("addButton");
-			addButton.onclick = () => addCourse(course.code + "-" + course.section);
+			addButton.onclick = () => addCourse(course.code);
 			addButton.appendChild(document.createTextNode("Add"));
 			
 			courseItem.appendChild(addButton);
-			courseItem.id = course.code + "-" + course.section;
+			courseItem.id = course.code;
 			availableCourses.appendChild(courseItem);
 		    }
 		}
