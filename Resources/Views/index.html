@@ -22,21 +22,24 @@
 	<li><div class="tooltip"><button id="darkmodeButton"><img id="darkmode" src="images/moon.png"><span class="tooltiptext">Dark Mode</span></div></li>
       </ul>
     </div>
-
-    <div>
-      <button class="switch"><b>Fall Semester</b></button>
-      <button class="switch">Spring Semester</button>
-    </div>
+    
   <div id="tables">
     <div id="classes">
       <h1 id="classTitle">Classes</h1>
-      <!---<div class="class"><p>AAAAAA</p></div>--->
     </div>
 
     <div id="scheduleViewer">
-      <div class="header" id="topLeft">
+      <div class="header topHeader" id="topLeft">
 	<span>2023-2024</span>
       </div>
+      
+      <div class="header" id="fall">
+	<button class="switch"><b>Fall Semester</b></button>
+      </div>
+      <div class="header topHeader" id="spring">
+	<button class="switch">Spring Semester</button>
+      </div>
+      
       <div class="header topHeader">
 	<span>High School Schedule</span>
       </div>
@@ -98,6 +101,11 @@
       <div class="class" id="P8-STE-A"><span style="pointer-events: none;">Empty</span></div>
       <div class="class" id="P8-STE-B"><span style="pointer-events: none;">Empty</span></div>
     </div>
-  
+</div>
+
+    <div id="footer">
+      <a href="./classes.html"><button id="navButton">Back</button></a>
+      <a href="./final.html"><button id="navButton" class="next">Next</button></a>
+    </div>
 </body>
 </html>
