@@ -105,6 +105,16 @@ body {
 	line-height: 70px;
 }
 
+@media screen and (max-width: 1300px) {
+    .navbar li {
+	font-size: 15px;
+    }
+    .navbar {
+	height: 2%;
+    }
+
+}
+
 .navbar a {
 	text-decoration: none;
 	color: var(--navbar-labels);
