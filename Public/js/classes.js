@@ -76,60 +76,68 @@ function darkMode() {
 }
 
 function addCourse(id) {
-	var availableList = document.getElementById("availableCourses");
-	var courseItem = document.getElementById(id);
-	var course = courseItem.innerText.replace("Add", "");
-
-	var selectedList = document.getElementById("selectedCourses");
-	var newItem = document.createElement("li");
-	newItem.appendChild(document.createTextNode(course));
-
-	var removeButton = document.createElement("button");
-	removeButton.setAttribute("class", "removeButton");
-	removeButton.setAttribute("onclick", "removeCourse('" + id + "')");
-	removeButton.appendChild(document.createTextNode("Remove"));
-
-	newItem.appendChild(removeButton);
-	newItem.setAttribute("id", id);
-	selectedList.appendChild(newItem);
-
-	availableList.removeChild(courseItem);
-
-	var courses = [];
-	for (const child of selectedList.children) {
-		const course = child.innerText.replace("Remove", "");
-		courses.push(course);
-	}
-	localStorage.setItem("courses", courses);
+    var availableList = document.getElementById("availableCourses");
+    var courseItem = document.getElementById(id);
+    var course = courseItem.innerText.replace("Add", "");
+    
+    var selectedList = document.getElementById("selectedCourses");
+    var newItem = document.createElement("li");
+    //newItem.appendChild(document.createTextNode(course));
+    
+    const pTag = document.createElement("p");
+    pTag.appendChild(document.createTextNode(course));
+    newItem.appendChild(pTag)
+    
+    
+    var removeButton = document.createElement("button");
+    removeButton.setAttribute("class", "removeButton");
+    removeButton.setAttribute("onclick", "removeCourse('" + id + "')");
+    removeButton.appendChild(document.createTextNode("Remove"));
+    
+    newItem.appendChild(removeButton);
+    newItem.setAttribute("id", id);
+    selectedList.appendChild(newItem);
+    
+    availableList.removeChild(courseItem);
+    
+    var courses = [];
+    for (const child of selectedList.children) {
+	const course = child.innerText.replace("Remove", "");
+	courses.push(course);
+    }
+    localStorage.setItem("courses", courses);
 }
 
 function removeCourse(id) {
-	console.log("ID: " + id);
-	var selectedList = document.getElementById("selectedCourses");
-	var courseItem = document.getElementById(id);
-	var course = courseItem.innerText.replace("Remove", "");
-
-	var availableList = document.getElementById("availableCourses");
-	var newItem = document.createElement("li");
-	newItem.appendChild(document.createTextNode(course));
-
-	var addButton = document.createElement("button");
-	addButton.setAttribute("class", "addButton");
-	addButton.setAttribute("onclick", "addCourse('" + id + "')");
-	addButton.appendChild(document.createTextNode("Add"));
-
-	newItem.appendChild(addButton);
-	newItem.setAttribute("id", id);
-	availableList.appendChild(newItem);
-
-	selectedList.removeChild(courseItem);
-
-	var courses = [];
-	for (const child of selectedList.children) {
-		const course = child.innerText.replace("Remove", "");
-		courses.push(course);
-	}
-	localStorage.setItem("courses", courses);
+    var selectedList = document.getElementById("selectedCourses");
+    var courseItem = document.getElementById(id);
+    var course = courseItem.innerText.replace("Remove", "");
+    
+    var availableList = document.getElementById("availableCourses");
+    var newItem = document.createElement("li");
+    //newItem.appendChild(document.createTextNode(course));
+    
+    const pTag = document.createElement("p");
+    pTag.appendChild(document.createTextNode(course));
+    newItem.appendChild(pTag)   
+    
+    var addButton = document.createElement("button");
+    addButton.setAttribute("class", "addButton");
+    addButton.setAttribute("onclick", "addCourse('" + id + "')");
+    addButton.appendChild(document.createTextNode("Add"));
+    
+    newItem.appendChild(addButton);
+    newItem.setAttribute("id", id);
+    availableList.appendChild(newItem);
+    
+    selectedList.removeChild(courseItem);
+    
+    var courses = [];
+    for (const child of selectedList.children) {
+	const course = child.innerText.replace("Remove", "");
+	courses.push(course);
+    }
+    localStorage.setItem("courses", courses);
 }
 
 function next() {
@@ -175,34 +183,34 @@ document.addEventListener("DOMContentLoaded", async function () {
 	// if got the courses from the server without error
 	if (courses != null) {
 		for (let i = 0; i < courses?.items?.length; i++) {
-			const course = courses.items[i];
-
-			const courseItem = document.createElement("li");
+		    const course = courses.items[i];
+		    
+		    const courseItem = document.createElement("li");
 
 		    const pTag = document.createElement("p");
 		    courseItem.appendChild(pTag)
 		    pTag.appendChild(document.createTextNode(course.name));
 
-			if (savedCourses != null && savedCourses.includes(course.name)) {
-				const remButton = document.createElement("button");
-				remButton.classList.add("removeButton");
-				remButton.onclick = () =>
-					removeCourse(course.code + "-" + course.section);
-				remButton.appendChild(document.createTextNode("Remove"));
-
-				courseItem.appendChild(remButton);
-				courseItem.id = course.code + "-" + course.section;
-				selectedCourses.appendChild(courseItem);
-			} else {
-				const addButton = document.createElement("button");
-				addButton.classList.add("addButton");
-				addButton.onclick = () => addCourse(course.code + "-" + course.section);
-				addButton.appendChild(document.createTextNode("Add"));
-
-				courseItem.appendChild(addButton);
-				courseItem.id = course.code + "-" + course.section;
-				availableCourses.appendChild(courseItem);
-			}
+		    if (savedCourses != null && savedCourses.includes(course.name)) {
+			const remButton = document.createElement("button");
+			remButton.classList.add("removeButton");
+			remButton.onclick = () =>
+			removeCourse(course.code + "-" + course.section);
+			remButton.appendChild(document.createTextNode("Remove"));
+			
+			courseItem.appendChild(remButton);
+			courseItem.id = course.code + "-" + course.section;
+			selectedCourses.appendChild(courseItem);
+		    } else {
+			const addButton = document.createElement("button");
+			addButton.classList.add("addButton");
+			addButton.onclick = () => addCourse(course.code + "-" + course.section);
+			addButton.appendChild(document.createTextNode("Add"));
+			
+			courseItem.appendChild(addButton);
+			courseItem.id = course.code + "-" + course.section;
+			availableCourses.appendChild(courseItem);
+		    }
 		}
 	}
 });
