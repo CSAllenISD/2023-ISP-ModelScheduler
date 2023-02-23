@@ -339,12 +339,8 @@ body {
 	width: 90%;
 	height: 90%;
 	margin-left: 5%;
-}
-
-th {
-    border-radius: 5px;
-    color: var(--text);
-	background-color: var(--th);
+	background-color: var(--class);
+	border-radius: 5px;
 }
 
 table .grayBox {
