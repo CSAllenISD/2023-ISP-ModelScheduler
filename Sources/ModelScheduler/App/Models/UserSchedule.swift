@@ -7,61 +7,61 @@ final class UserSchedule: Model, Content {
     @ID(custom: "id", generatedBy: .database)
     var id: Int?
     
-    @Parent(key: "userId")
-    var user: User
+    @Field(key: "userId")
+    var userId: Int?
 
-    @Parent(key: "periodZero")
-    var periodZero: Courses
+    @Field(key: "periodZero")
+    var periodZero: Int?
 
-    @Parent(key: "periodOne")
-    var periodOne: Courses
+    @Field(key: "periodOne")
+    var periodOne: Int?
 
-    @Parent(key: "periodTwo")
-    var periodTwo: Courses
+    @Field(key: "periodTwo")
+    var periodTwo: Int?
 
-    @Parent(key: "periodThree")
-    var periodThree: Courses
+    @Field(key: "periodThree")
+    var periodThree: Int?
 
-    @Parent(key: "periodFour")
-    var periodFour: Courses
+    @Field(key: "periodFour")
+    var periodFour: Int?
 
-    @Parent(key: "periodFive")
-    var periodFive: Courses
+    @Field(key: "periodFive")
+    var periodFive: Int?
 
-    @Parent(key: "periodSix")
-    var periodSix: Courses
+    @Field(key: "periodSix")
+    var periodSix: Int?
 
-    @Parent(key: "periodSeven")
-    var periodSeven: Courses
+    @Field(key: "periodSeven")
+    var periodSeven: Int?
 
-    @Parent(key: "periodEight")
-    var periodEight: Courses
+    @Field(key: "periodEight")
+    var periodEight: Int?
     
     init() { }
 
     init(
       id: Int? = nil,
-      userId: User.IDValue, 
-      periodZero: Courses.IDValue,
-      periodOne: Courses.IDValue,
-      periodTwo: Courses.IDValue,
-      periodThree: Courses.IDValue,
-      periodFour: Courses.IDValue,
-      periodFive: Courses.IDValue,
-      periodSix: Courses.IDValue,
-      periodSeven: Courses.IDValue,
-      periodEight: Courses.IDValue
+      userId: Int? = nil, 
+      periodZero: Int? = nil,
+      periodOne: Int? = nil,
+      periodTwo: Int? = nil,
+      periodThree: Int? = nil,
+      periodFour: Int? = nil,
+      periodFive: Int? = nil,
+      periodSix: Int? = nil,
+      periodSeven: Int? = nil,
+      periodEight: Int? = nil
     ) {
         self.id = id
-        self.$user.id = userId
-        self.$periodZero.id = periodZero
-        self.$periodOne.id = periodOne
-        self.$periodTwo.id = periodTwo
-        self.$periodThree.id = periodThree
-        self.$periodFour.id = periodFour
-        self.$periodFive.id = periodFive
-        self.$periodSix.id = periodSix
-        self.$periodSeven.id = periodSeven
-        self.$periodEight.id = periodEight
+        self.userId = userId
+        self.periodZero = periodZero
+        self.periodOne = periodOne
+        self.periodTwo = periodTwo
+        self.periodThree = periodThree
+        self.periodFour = periodFour
+        self.periodFive = periodFive
+        self.periodSix = periodSix
+        self.periodSeven = periodSeven
+        self.periodEight = periodEight
     }
 }
