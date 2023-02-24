@@ -1,7 +1,6 @@
 .build
 .DS_Store
 /Sources/ModelScheduler/App/secrets.swift
-/Sources/ModelSchceduler/App/configure.swift
 *.xcodeproj
 DerivedData/
 Package.resolved
