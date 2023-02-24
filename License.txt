@@ -1,4 +1,4 @@
-Copyright (C) 2023 Dylan Pettijohn, Brayden Edington, Ryan Hallock, MD Raeed, Reynard Gunawan, Sahil Patel, Jonathan Gately, Isaac Pandyan, Juneyoung Hwang, Caysen Mayo, Logan Rohlfs, Muqadam Sabir, Brett Kaplan, Jacob Jershin, Tahmid Rahman, Kevin Li, Layne Y, Avanish, Devon Leerssen, aaron Berdecia, Devin Wingfield.
+Copyright (C) 2023 Dylan Pettijohn, Brayden Edington, Ryan Hallock, MD Raeed, Reynard Gunawan, Sahil Patel, Jonathan Gately, Isaac Pandyan, Juneyoung Hwang, Caysen Mayo, Logan Rohlfs, Muqadam Sabir, Brett Kaplan, Jacob Jershin, Tahmid Rahman, Kevin Li, Layne Y, Avanish, Devon Leerssen, Aaron Berdecia, Devin Wingfield.
 This program was developed using codermerlin.academy resources.
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
