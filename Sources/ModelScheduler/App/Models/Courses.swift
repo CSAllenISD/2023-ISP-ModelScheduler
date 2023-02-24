@@ -20,6 +20,9 @@ final class Courses: Model, Content {
     @Field(key: "name")
     var name: String
 
+    @Field(key: "dcDays")
+    var dcDays: String?
+    
     @Field(key: "period")
     var period: Int
 
@@ -37,12 +40,13 @@ final class Courses: Model, Content {
     
     init() { }
 
-    init(id: Int? = nil, code: String, semester: Int, section: String, name: String, period: Int, loaction: String, credits: Float, size: Int, seatsTaken: Int){ 
+    init(id: Int? = nil, code: String, semester: Int, section: String, name: String, dcDays: String? = nil, period: Int, loaction: String, credits: Float, size: Int, seatsTaken: Int){ 
         self.id = id
         self.code = code
-	self.semester = semester
+        self.semester = semester
         self.section = section
         self.name = name
+        self.dcDays = dcDays
         self.period = period
         self.location = location
         self.credits = credits
