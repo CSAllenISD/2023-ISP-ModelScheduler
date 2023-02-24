@@ -10,6 +10,7 @@
 	--bDay: blue;
 	--classes-bg: rgb(200,200,200);
 	--class: rgb(225,225,225);
+	--hover-class: rgb(216,216,216)
 	--gray-box: rgb(200,200,200);
 	--search: white;
 }
@@ -25,6 +26,7 @@
 	--bDay: #151b66;
 	--classes-bg: rgb(60,60,60);
 	--class: rgb(100,100,100);
+	--hover-class: rgb(115,115,115)
 	--gray-box: rgb(60,60,60);
 	--search: rgb(100,100,100)
 }
@@ -241,6 +243,10 @@ body {
     color: var(--main-text-color);
 }
 
+#scheduleViewer > .combined {
+    grid-column: span 2;
+}
+
 #scheduleViewer > .shortened {
     grid-row: span 1;
 }
@@ -345,10 +351,10 @@ body {
 }
 #classes {
 	float: left;
-	height: 80%;
+	height: 90%;
 	width: 20%;
 	margin-left: 8%;
-	margin-top: 5%;
+	margin-top: 2%;
 	background-color: var(--classes-bg);
 	border-radius: 10px;
 	text-align: center;
@@ -363,6 +369,12 @@ body {
 	margin-bottom: 3px;
 	background-color: var(--class);
 	border-radius: 5px;
+	cursor: move;
+	line-height: 2;
+}
+
+.selectedClass:hover {
+    background-color: var(--buttons)
 }
 
 #classTitle {
@@ -386,16 +398,17 @@ table .blueBox {
 }
 
 .switch {
-	border: none;
+    border: none;
 	border-radius: 4px;
 	background: rgb(225, 225, 225);
 	font-size: 14px;
-	padding: 8px;
-	width: 80%;
-	margin-left: 10%;
 	float: left;
 	cursor: pointer;
 	transition: background-color 200ms ease-in-out;
+}
+
+.selected {
+    background-color: var(--buttons) !important
 }
 
 .switch:hover {

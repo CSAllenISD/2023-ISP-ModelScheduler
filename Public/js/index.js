@@ -37,12 +37,14 @@ document.addEventListener("DOMContentLoaded", async function () {
 	    const course = courses.items[i];
 
 	    if (selectedCourses.includes(course.code)) {
-		let classDiv = document.createElement("div")
-		classDiv.classList.add("selectedClass")
+		let classDiv = document.createElement("div");
+		classDiv.classList.add("selectedClass");
+		classDiv.setAttribute("draggable", true);
 
 		let classP = document.createElement("p")
 		classP.appendChild(document.createTextNode(course.name))
-
+		classP.id = 'title'
+		
 		classDiv.appendChild(classP)
 
 		classes.appendChild(classDiv)
@@ -50,7 +52,23 @@ document.addEventListener("DOMContentLoaded", async function () {
 	}
     }
 });
+//all the bs for dragging and dropping goes here, wish me luck
+//document.addEventListener("DOMContentLoaded", (event) => {
 
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    console.log("ran")
+	console.log(ev.target.innerHTML)
+    }
+
+function drop(ev){
+	ev.preventDefault();
+    ev.target.innerText = "changed";
+    }
 //for dark mode
 
 function dmSwitch() {
