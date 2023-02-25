@@ -80,7 +80,7 @@ func routes(_ app: Application) throws {
             content.flatMapThrowing{ content in
                 let contentString = String(buffer: content.data)
                 let message = MailgunMessage(
-                  from: "ModelScheduler@allenisd.org",
+                  from: "ModelScheduler@gmail.com",
                   to: create.email,
                   subject: "Verify your Model Scheduler account.",
                   text: "",

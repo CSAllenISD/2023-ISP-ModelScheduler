@@ -1,0 +1,6 @@
+<html>
+<body>
+<p>Hello #(email), if you did not make this request please disregard this email.</p>
+<p>To complete account creation please<a href="https://codermerlin.com/vapor/muqadam-sabir/verify/:#(token)">click here.</a></p>
+</body>
+</html>

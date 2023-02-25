@@ -62,13 +62,13 @@ function allowDrop(ev) {
 
 function drag(ev) {
     console.log("ran")
-	console.log(ev.target.innerHTML)
-    }
+    console.log(ev.target.innerHTML)
+}
 
 function drop(ev){
-	ev.preventDefault();
-    ev.target.innerText = "changed";
-    }
+    ev.preventDefault();
+    ev.target.innerText = ev.textContent;
+}
 //for dark mode
 
 function dmSwitch() {
