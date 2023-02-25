@@ -4,26 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create User</title>
-    <link rel="stylesheet" href="styles/createuser.css">
+    <link rel="stylesheet" href="styles/app.css">
+    <link rel="stylesheet" href="styles/login.css">
     <script defer src="js/createuser.js"></script>
 
   </head>
 
-  <body>
-    <main id="main-holder">
-      <h1 id="login-header">Create User</h1>
+  <body class="align">
+    <div class="gird align__item">
+      <div class="register">
+	<img src="images/allenisdLogo.png"
+	     width="56"
+	     height="84"
+	     viewBox="77.7 214.9 274.7 412" />	
 
+	<h2>Create User</h2>
 
-      <div id="login-error-msg-holder">
-	<p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
+	<form id="login-form" class="form">
+	  <div class="form__field">
+	    <input type="text" name="email" id="email" class="login-form-field" placeholder="Email" required autofocus>
+	  </div>
+	  <div class="form__field">
+	    <input type="submit" value="Register" id="login-form-submit">
+	  </div>
+	</form>
       </div>
-
-      <form id="login-form">
-	<input type="text" name="email" id="email" class="login-form-field" placeholder="Email" required autofocus>
-	<input type="submit" value="Register" id="login-form-submit">
-      </form>
-
-    </main>
+    </div>
   </body>
 
 
