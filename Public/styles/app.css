@@ -13,6 +13,8 @@
 	--hover-class: rgb(216,216,216)
 	--gray-box: rgb(200,200,200);
 	--search: white;
+	--valid: green;
+	--invalid: red;
 }
 
 :root.dark {
@@ -28,7 +30,9 @@
 	--class: rgb(100,100,100);
 	--hover-class: rgb(115,115,115)
 	--gray-box: rgb(60,60,60);
-	--search: rgb(100,100,100)
+	--search: rgb(100,100,100);
+	--valid: green;
+	--invalid: red;
 }
 
 * {
@@ -205,6 +209,14 @@ body {
     cursor: auto;
     grid-row: span 2;
 }
+
+scheduleViewer > div.valid {
+    background-color: var(--valid); !important
+}
+
+#schedulerViewer > div.invalid {
+    background-color: var(--invalid) !important
+}	      
 
 #scheduleViewer > div > span {
     display: table-cell;
