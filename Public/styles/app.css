@@ -227,7 +227,6 @@ body {
     text-align: center;
     display: table;
     table-layout: fixed;
-    cursor: auto;
     grid-row: span 2;
 }
 
@@ -274,6 +273,15 @@ body {
 #scheduleViewer > .class {
     background-color: var(--class);
     color: var(--text);
+}
+
+.class.notEmpty {
+    cursor: move;
+    cursor: grab;
+}
+
+#schedulerViewer > .notEmpty:active {
+    cursor: grabbing;
 }
 
 #scheduleViewer > .combined {
@@ -403,9 +411,18 @@ body {
 	background-color: var(--class);
 	border-radius: 5px;
 	cursor: move;
+	cursor: grab;
 	line-height: 1.5;
 	text-align: left;
 	display: inline-block;
+}
+
+.selectedClass:active {
+    cursor: grabbing;
+}
+
+.selectedClass .classText {
+    display: flex;
 }
 
 /*testing*/
@@ -418,12 +435,14 @@ body {
     text-align: left;
     overflow: hidden;
     white-space: nowrap;
+    flex: 1;
 }
 
 .selectedClass .id {
     font-size: 14px;
     color: var(--text);
     padding-right: 5px;
+    padding-left: 5px;
     float: right;
 }
 
@@ -446,7 +465,7 @@ body {
 }
 
 .selectedClass #demand {
-    width: 30%;
+    min-width: 30%;
     margin-top: 8px;
     margin-right: 5px;
     float: right;

@@ -51,6 +51,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 		    classDiv.addEventListener('mouseleave', (event) => { dragEnd(event) });
 
 		    let textDiv = document.createElement("div");
+		    textDiv.classList.add("classText");
 		    classDiv.appendChild(textDiv);
 		    
 		    let classP = document.createElement("span")
@@ -100,7 +101,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 
 function allowDrop(ev) {
-    ev.preventDefault();
+    if(ev.target.classList.contains("valid")) {
+	ev.preventDefault();
+    }
 }
 
 function dragEnd(ev) {
@@ -115,6 +118,20 @@ function dragEnd(ev) {
     }
 }
 
+// remove it
+function dragPlacedEnd(ev) {
+    const oldClass = ev.target.dataset.classcode;
+    if (oldClass) {
+	dragEnd(null);
+	ev.target.dataset.classcode = null;
+	ev.target.classList.remove("notEmpty");
+	ev.target.setAttribute("draggable", false);
+	ev.target.removeEventListener("dragstart", dragPlaced);
+	ev.target.removeEventListener("dragend", dragPlacedEnd);
+	ev.target.firstElementChild.innerText = "Empty";
+    }
+}
+
 function highlightValidPeriods(classCode) {
     const course = courses.items.find(a => a.code == classCode);
     if (!course) return console.log(`invalid course code: ${classCode}`)
@@ -122,7 +139,7 @@ function highlightValidPeriods(classCode) {
     let allPeriods = [];
     document.querySelectorAll(".class").forEach(a => allPeriods.push(a.id));
 
-    const periods = course.period;
+    const periods = course.period.map(a => parseInt(a));
     const isAHS = course.location == "AHS";
 
     let validPeriodIDs = [];
@@ -149,32 +166,76 @@ function highlightValidPeriods(classCode) {
 
 
 function drag(ev) {
-    ev.dataTransfer.setData('Text/html', ev.target.id);
+    ev.dataTransfer.setData('text/plain', ev.target.id);
     highlightValidPeriods(ev.target.id);
+
+    // console.log(ev.dataTransfer.getData("text/plain"))
+}
+
+function dragPlaced(ev) {
+    ev.dataTransfer.setData('text/plain', `${ev.target.dataset.classcode}`);
+    ev.dataTransfer.setData('text/oldclass', `${ev.target.id}`);
+
+    highlightValidPeriods(ev.target.dataset.classcode);
+
+    // console.log(`${ev.target.dataset.classcode}`);
+    // console.log(ev.dataTransfer.getData('text/plain'));
 }
 
 function hoverClassSelector(ev) {
     if (!ev.target.classList.contains("selectedClass")) {
-	if (!ev.target.parentElement) return;
-	highlightValidPeriods(ev.target.parentElement.id);
+	var ele = ev.target;
+	while (ele.parentElement != null) {
+	    if (!ele.parentElement.classList.contains("selectedClass")) {
+		ele = ele.parentElement;
+		continue;
+	    }
+	    highlightValidPeriods(ele.parentElement.id);
+	    break;
+	}
     } else {
 	highlightValidPeriods(ev.target.id);
     }
 }
 
-function drop(ev, target){
+function drop(ev, target) {
     if (!ev.target.classList.contains("valid")) {
 	ev.preventDefault();
 	return;
     }
     
-    const droppedClass = ev.dataTransfer.getData('text/html');
+    const droppedClass = ev.dataTransfer.getData('text/plain');
     const droppedClassElement = document.getElementById(droppedClass);
 
     const course = courses.items.find(a => a.code == droppedClass);
+
+    console.log(droppedClass);
+    console.log(course);
     
     ev.preventDefault();
+
+    ev.target.dataset.classcode = droppedClass;
+    ev.target.classList.add("notEmpty");
+    ev.target.setAttribute("draggable", true);
+    ev.target.addEventListener("dragstart", dragPlaced);
+    ev.target.addEventListener("dragend", dragPlacedEnd);
+    
     ev.target.firstElementChild.innerText = course.name;
+
+    const oldClass = ev.dataTransfer.getData('text/oldclass');
+    if (oldClass) {
+	dragEnd(null);
+	if (oldClass != ev.target.id) {
+	    const oldClassElement = document.getElementById(oldClass);
+	    oldClassElement.dataset.classcode = null;
+	    oldClassElement.classList.remove("notEmpty");
+	    oldClassElement.setAttribute("draggable", false);
+	    oldClassElement.removeEventListener("dragstart", dragPlaced);
+	    oldClassElement.removeEventListener("dragend", dragPlacedEnd);
+	    oldClassElement.firstElementChild.innerText = "Empty";
+	}
+    }
+    
     // ev.target.innerText = course.name;
 }
 
