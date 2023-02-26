@@ -426,3 +426,7 @@ table .blueBox {
 .switch:hover {
 	background: rgb(200, 200, 200);
 }
+
+div.class.valid {
+    background-color: green !important;
+}
