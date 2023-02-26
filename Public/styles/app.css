@@ -47,6 +47,27 @@ html {
 	height: 100%;
 }
 
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px grey;
+    border-radius: 7px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--navbar);
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--navbar);
+}
+
 .container {
 	margin: 50px auto;
 }
@@ -382,7 +403,31 @@ body {
 	background-color: var(--class);
 	border-radius: 5px;
 	cursor: move;
-	line-height: 2;
+	line-height: 1.5;
+	text-align: left;
+}
+
+/*testing*/
+.selectedClass .title {
+    font-size: 16px;
+    height: 25px;
+    padding: 2px 0 0 5px;
+    font-weight: bold;
+}
+
+.selectedClass .periods {
+    width: 100%;
+    height: 30px;
+    overflow: hidden;
+    display: inline-flex;
+}
+
+.selectedClass .period {
+    margin: 2px 0 2px 5px;
+    padding: 0 8px 0 8px;
+    text-align: center;
+    background-color: var(--navbar);
+    border-radius: 10px;
 }
 
 .selectedClass:hover {
