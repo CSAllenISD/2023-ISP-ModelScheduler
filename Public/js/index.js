@@ -49,14 +49,45 @@ document.addEventListener("DOMContentLoaded", async function () {
 		    classDiv.addEventListener('dragend', (event) => { dragEnd(event) });
 		    classDiv.addEventListener('mouseover', (event) => { hoverClassSelector(event) });
 		    classDiv.addEventListener('mouseleave', (event) => { dragEnd(event) });
+
+		    let textDiv = document.createElement("div");
+		    classDiv.appendChild(textDiv);
 		    
-		    let classP = document.createElement("p")
+		    let classP = document.createElement("span")
 		    classP.appendChild(document.createTextNode(course.name))
 		    classP.classList.add('title')
 		
-		    classDiv.appendChild(classP)
+		    textDiv.appendChild(classP)
 
 		    classes.appendChild(classDiv)
+
+		    let idP = document.createElement('span');
+		    idP.appendChild(document.createTextNode(course.code));
+		    idP.classList.add("id");
+		    textDiv.appendChild(idP);
+		    
+		    
+		    let periodDiv = document.createElement("div");
+		    periodDiv.classList.add("periods");
+		    classDiv.appendChild(periodDiv);
+		    for (let i = 0; i < course.period.length; i++) {
+			let periodP = document.createElement("p");
+			periodP.classList.add("period");
+			periodP.appendChild(document.createTextNode(i+1))
+			
+			periodDiv.appendChild(periodP);
+		    }
+
+		    let demandDiv = document.createElement("div");
+		    demandDiv.id = "demand";
+		    classDiv.appendChild(demandDiv);
+
+		    for(let i = 0; i < 3; i++) {
+			let demandImg = document.createElement("img");
+			demandImg.src = "images/fire.png"
+			demandImg.setAttribute("draggable", false);
+			demandDiv.appendChild(demandImg);
+		    }
 		}
 
 		
