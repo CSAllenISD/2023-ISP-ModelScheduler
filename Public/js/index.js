@@ -73,17 +73,28 @@ function allowDrop(ev) {
 }
 
 function dragEnd(ev) {
-    const validPeriodElements = document.getElementsByClassName("valid");
+    const validPeriodElements = document.querySelectorAll(".valid");
     for (var i = 0; i < validPeriodElements.length; i++) {
 	validPeriodElements[i].classList.remove("valid")
+    }
+    
+    const invalidPeriodElements = document.querySelectorAll(".invalid");
+    for (var i = 0; i < invalidPeriodElements.length; i++) {
+	invalidPeriodElements[i].classList.remove("invalid")
     }
 }
 
 function highlightValidPeriods(classCode) {
     const course = courses.items.find(a => a.code == classCode);
     if (!course) return console.log(`invalid course code: ${classCode}`)
+
+    let allPeriods = [];
+    document.querySelectorAll(".class").forEach(a => allPeriods.push(a.id));
+
     const periods = [course.period];
     const isAHS = course.location == "AHS";
+
+    let validPeriodIDs = [];
 
     for (let i = 0; i < periods.length; i++) {
 	const period = periods[i];
@@ -92,9 +103,16 @@ function highlightValidPeriods(classCode) {
 	const periodElement = document.getElementById(periodID);
 	if (periodElement) {
 	    periodElement.classList.add("valid");
+	    validPeriodIDs.push(periodID);
 	} else {
 	    console.log(`INVALID ID: ${periodID}`);
 	}
+    }
+
+    const invalidPeriods = allPeriods.filter(a => !validPeriodIDs.includes(a));
+    for (let i = 0; i < invalidPeriods.length; i++) {
+	const periodElement = document.getElementById(invalidPeriods[i]);
+	periodElement.classList.add("invalid");
     }
 }    
 
@@ -125,7 +143,8 @@ function drop(ev, target){
     const course = courses.items.find(a => a.code == droppedClass);
     
     ev.preventDefault();
-    ev.target.innerText = course.name;
+    ev.target.firstElementChild.innerText = course.name;
+    // ev.target.innerText = course.name;
 }
 
 //for dark mode
