@@ -381,7 +381,7 @@ a.semesterBtn.selected::before {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 18px;
     font-family: "DM Sans", sans-serif;
     border-radius: 8px;
     transition-duration: 0.3s;
