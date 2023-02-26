@@ -138,11 +138,11 @@ func routes(_ app: Application) throws {
 
       
     // Authenticate the user and redirect to class selection page
-    let sessions = app.grouped([User.sessionAuthenticator(), User.customAuthenticator()])
+    let sessions = app//.grouped([User.sessionAuthenticator(), User.customAuthenticator()])
     sessions.post("login") { req -> Response in
         // let user = try req.content.decode(User.self)
-        let user = try req.auth.require(User.self)
-        req.auth.login(user)      
+//        let user = try req.auth.require(User.self)
+ //       req.auth.login(user)      
         return req.redirect(to: "./classes")
     }
 
@@ -152,7 +152,7 @@ func routes(_ app: Application) throws {
     /// START CORE SITE ENDPOINTS
 
     // Create protected route group which requires user auth. 
-    let protected = sessions.grouped(User.redirectMiddleware(path: "./login"))
+    let protected = sessions//.grouped(User.redirectMiddleware(path: "./login"))
 
     
     protected.get("scheduler") {req -> View in
@@ -164,12 +164,12 @@ func routes(_ app: Application) throws {
     
     // Check if the user already has a saved schedule. If true, continue to scheduler page. If False, render class selection page
     protected.get("classes") { req -> View in
-        let user = try req.auth.require(User.self)
+        //let user = try req.auth.require(User.self)
         //let courses = try await Courses.query(on: req.db).paginate(for: req)
         
-        if try await UserSchedule.query(on: req.db).filter(\.$userId == user.id!).first() != nil {
-            req.redirect(to: "./index")
-        }
+        //if try await UserSchedule.query(on: req.db).filter(\.$userId == user.id!).first() != nil {
+        //    req.redirect(to: "./index")
+        //}
         
         return try await req.view.render("classes.html")
     }
@@ -184,7 +184,7 @@ func routes(_ app: Application) throws {
     
     // Load the saved schedule if it exists. If not, continue normally.
     protected.get("index") {req -> View in
-        try req.auth.require(User.self)
+        //try req.auth.require(User.self)
         return try await req.view.render("index.html")
     }
 
