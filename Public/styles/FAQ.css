@@ -1,3 +1,14 @@
+@keyframes border{
+    0% {border-color: red;}
+    15% {border-color: orange;}
+    30% {border-color:yellow;}
+    45% {border-color:green;}
+    60% {border-color:cyan;}
+    75% {border-color:blue;}
+    90% {border-color:purple;}
+    100% {border-color:pink;}
+}
+
 @media screen and (max-width: 900px) {
     ul.sidenav {
 	width: 100%;
@@ -19,6 +30,7 @@
 	float: none;
     }
 }
+
 :root, :root.light{
     --navbar: #bfd7ea;
     --navbar-labels: : black;
@@ -168,6 +180,11 @@ div {
 }
 
 h1 {
+    animation-name: border;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    border: 3px;
+    border-radius: 15px;
     top: 60px;
     font-size: 45px;
     font-family: Arial, Helvetica, sans-serif;
