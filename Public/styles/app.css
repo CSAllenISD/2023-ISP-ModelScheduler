@@ -405,15 +405,26 @@ body {
 	cursor: move;
 	line-height: 1.5;
 	text-align: left;
+	display: inline-block;
 }
 
 /*testing*/
 .selectedClass .title {
     font-size: 18px;
     height: 25px;
+    max-width: 80%;
     padding: 2px 0 0 5px;
     font-weight: bold;
     text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.selectedClass .id {
+    font-size: 14px;
+    color: var(--text);
+    padding-right: 5px;
+    float: right;
 }
 
 .selectedClass .periods {
@@ -435,7 +446,7 @@ body {
 }
 
 .selectedClass #demand {
-    width: 100px;
+    width: 30%;
     margin-top: 8px;
     margin-right: 5px;
     float: right;
