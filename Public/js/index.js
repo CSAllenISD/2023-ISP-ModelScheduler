@@ -1,5 +1,6 @@
 var courses = [];
-var selectedSemester = 0; // 0 is Fall, 1 is Spring
+var selectedSemester = "fall";
+var unsavedSchedule = {fall: {}, spring: {}};
 
 document.addEventListener("DOMContentLoaded", async function () {
 	//Waits for HTML DOM content to load
@@ -21,12 +22,33 @@ document.addEventListener("DOMContentLoaded", async function () {
     if (selectedCourses != null) {
 	selectedCourses = selectedCourses.split(",");
     }
+    
     var classes = document.getElementById("classes");
     
     // const courses = await getCoursesFromServer();
     courses = {};
     courses.items = JSON.parse(`[ { "credits": 0.5, "code": "AS1241", "id": 2, "section": "T01", "size": 0, "semester": 1, "name": "Computer Science 2", "seatsTaken": 0, "location": "STEAM", "period":["1","2","3","4","5","6","7","8"] }, { "credits": 0.5, "code": "AS1241", "id": 3, "section": "T02", "size": 0, "semester": 2, "name": "Computer Science 2", "seatsTaken": 0, "location": "STEAM", "period": ["2"] }, { "credits": 0.5, "code": "TA2345", "id": 4, "section": "T04", "size": 0, "semester": 1, "name": "Computer Science 1", "seatsTaken": 0, "location": "STEAM", "period": ["3"] }, { "credits": 0.5, "code": "TA2345", "id": 5, "section": "T05", "size": 0, "semester": 2, "name": "Computer Science 1", "seatsTaken": 0, "location": "STEAM", "period": ["3"] }, { "credits": 0.5, "code": "TA3245", "id": 6, "section": "T07", "size": 0, "semester": 1, "name": "Physics", "seatsTaken": 0, "location": "AHS", "period": ["4"] }, { "credits": 0.5, "code": "TA3245", "id": 7, "section": "T08", "size": 0, "semester": 2, "name": "Physics", "seatsTaken": 0, "location": "AHS", "period": ["4"] }, { "credits": 0.5, "code": "TB2135", "id": 8, "section": "T09", "size": 0, "semester": 1, "name": "Calculus", "seatsTaken": 0, "location": "AHS", "period": ["5"] }, { "credits": 0.5, "code": "TB2135", "id": 9, "section": "T10", "size": 0, "semester": 2, "name": "Calculus", "seatsTaken": 0, "location": "AHS", "period": ["5"] }, { "credits": 0.5, "code": "TASDF", "id": 10, "section": "T11", "size": 0, "semester": 1, "name": "English", "seatsTaken": 0, "location": "AHS", "period": ["6"] }, { "credits": 0.5, "code": "TASDF", "id": 11, "section": "T12", "size": 0, "semester": 2, "name": "English", "seatsTaken": 0, "location": "AHS", "period": ["6"] } ]`)
 
+    const unsavedScheduleStr = localStorage.getItem("unsavedSchedule");
+    if (unsavedScheduleStr) {
+	unsavedSchedule = JSON.parse(unsavedScheduleStr);
+
+	const semester = unsavedSchedule[selectedSemester];
+	Object.keys(semester).forEach(id => {
+	    const ele = document.getElementById(id);
+	    const course = courses.items.find(a => a.code == semester[id]);
+	    if (!course) return;
+	    
+	    ele.dataset.classcode = course.code;
+	    ele.classList.add("notEmpty");
+	    ele.setAttribute("draggable", true);
+	    ele.addEventListener("dragstart", dragPlaced);
+	    ele.addEventListener("dragend", dragPlacedEnd);
+	    
+	    ele.firstElementChild.innerText = course.name;
+	});
+    }
+    
     if (courses != null) {
 	// for (let i = 0; i < selectedCourses.length; i++) {
 	//     var newTr = document.createElement("tr");
@@ -99,6 +121,28 @@ document.addEventListener("DOMContentLoaded", async function () {
 //all the bs for dragging and dropping goes here, wish me luck
 //document.addEventListener("DOMContentLoaded", (event) => {
 
+function saveCurrentSchedule() {
+    const periods = [
+	"P0-AHS-A", "P1-AHS-A", "P2-AHS-A", "P3-AHS-A", "P4-AHS-A", "P5-AHS-B", "P6-AHS-B", "P7-AHS-B", "P8-AHS-A",
+	"P0-STE-A", "P1-STE-A", "P2-STE-A", "P3-STE-A", "P4-STE-A", "P5-STE-B", "P6-STE-B", "P7-STE-B", "P8-STE-A"
+    ]
+
+    let schedule = {};
+
+    for (let i = 0; i < periods.length; i++) {
+	const periodEle = document.getElementById(periods[i]);
+	const classID = periodEle.dataset.classcode;
+	if(classID == null || classID == "null") continue;
+
+	if (classID) {
+	    schedule[periods[i]] = classID;
+	}
+    }
+    
+    unsavedSchedule[selectedSemester] = schedule;
+
+    localStorage.setItem("unsavedSchedule", JSON.stringify(unsavedSchedule));
+}
 
 function allowDrop(ev) {
     if(ev.target.classList.contains("valid")) {
@@ -130,6 +174,8 @@ function dragPlacedEnd(ev) {
 	ev.target.removeEventListener("dragend", dragPlacedEnd);
 	ev.target.firstElementChild.innerText = "Empty";
     }
+
+    saveCurrentSchedule();
 }
 
 function highlightValidPeriods(classCode) {
@@ -209,8 +255,8 @@ function drop(ev, target) {
 
     const course = courses.items.find(a => a.code == droppedClass);
 
-    console.log(droppedClass);
-    console.log(course);
+    // console.log(droppedClass);
+    // console.log(course);
     
     ev.preventDefault();
 
@@ -235,8 +281,8 @@ function drop(ev, target) {
 	    oldClassElement.firstElementChild.innerText = "Empty";
 	}
     }
-    
-    // ev.target.innerText = course.name;
+
+    saveCurrentSchedule();
 }
 
 //for dark mode
