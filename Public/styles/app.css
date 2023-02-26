@@ -10,11 +10,11 @@
 	--bDay: blue;
 	--classes-bg: rgb(200,200,200);
 	--class: rgb(225,225,225);
-	--hover-class: rgb(216,216,216)
+	--hover-class: rgb(216,216,216);
 	--gray-box: rgb(200,200,200);
 	--search: white;
-	--valid: green;
-	--invalid: red;
+	--valid: rgb(183, 217, 177);
+	--invalid: rgb(247, 102, 94);
 }
 
 :root.dark {
@@ -28,11 +28,11 @@
 	--bDay: #151b66;
 	--classes-bg: rgb(60,60,60);
 	--class: rgb(100,100,100);
-	--hover-class: rgb(115,115,115)
+	--hover-class: rgb(115,115,115);
 	--gray-box: rgb(60,60,60);
 	--search: rgb(100,100,100);
-	--valid: green;
-	--invalid: red;
+	--valid: rgb(183, 217, 177);
+	--invalid: rgb(247, 102, 94);
 }
 
 * {
@@ -210,19 +210,19 @@ body {
     grid-row: span 2;
 }
 
-scheduleViewer > div.valid {
-    background-color: var(--valid); !important
+#scheduleViewer > div.valid {
+    background-color: var(--valid) !important;
 }
 
-#schedulerViewer > div.invalid {
-    background-color: var(--invalid) !important
+#scheduleViewer > div.invalid {
+    background-color: var(--invalid) !important;
 }	      
 
 #scheduleViewer > div > span {
     display: table-cell;
     vertical-align: middle;
 }
-
+/*brokey formatting for table, fix later
 #scheduleViewer > div:nth-child(n + 2) {
     margin-left: -1px;
 }
@@ -239,7 +239,7 @@ scheduleViewer > div.valid {
 #scheduleViewer > div:nth-child(3),
 #scheduleViewer > div:nth-child(5n + 1) {
     margin-left: 5px;
-}
+}*/
 
 #scheduleViewer > .highlighted {
     background-color: rgb(48, 48, 48);
@@ -252,7 +252,7 @@ scheduleViewer > div.valid {
 
 #scheduleViewer > .class {
     background-color: var(--class);
-    color: var(--main-text-color);
+    color: var(--text);
 }
 
 #scheduleViewer > .combined {
@@ -273,7 +273,7 @@ scheduleViewer > div.valid {
 
 #scheduleViewer > .header {
     background-color: var(--classes-bg);
-    color: var(--main-text-color);
+    color: var(--text);
     font-weight: bolder;
 }
 
@@ -410,17 +410,21 @@ table .blueBox {
 }
 
 .switch {
-    border: none;
+    border: 1px solid black;
 	border-radius: 4px;
-	background: rgb(225, 225, 225);
 	font-size: 14px;
 	float: left;
 	cursor: pointer;
 	transition: background-color 200ms ease-in-out;
 }
 
+.switch:hover {
+    background-color: var(--class) !important;
+    
+}
+
 .selected {
-    background-color: var(--buttons) !important
+    background-color: var(--buttons) !important;
 }
 
 .switch:hover {
