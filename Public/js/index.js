@@ -1,3 +1,6 @@
+var courses = [];
+var selectedSemester = 0; // 0 is Fall, 1 is Spring
+
 document.addEventListener("DOMContentLoaded", async function () {
 	//Waits for HTML DOM content to load
 	const dmButton = document.getElementById("darkmodeButton"); //Gets darkMode button id
@@ -20,7 +23,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
     var classes = document.getElementById("classes");
     
-    const courses = await getCoursesFromServer();
+    // const courses = await getCoursesFromServer();
+    courses = {};
+    courses.items = JSON.parse(`[ { "credits": 0.5, "code": "AS1241", "id": 2, "section": "T01", "size": 0, "semester": 1, "name": "Computer Science 2", "seatsTaken": 0, "location": "STEAM", "period": 2 }, { "credits": 0.5, "code": "AS1241", "id": 3, "section": "T02", "size": 0, "semester": 2, "name": "Computer Science 2", "seatsTaken": 0, "location": "STEAM", "period": 2 }, { "credits": 0.5, "code": "TA2345", "id": 4, "section": "T04", "size": 0, "semester": 1, "name": "Computer Science 1", "seatsTaken": 0, "location": "STEAM", "period": 3 }, { "credits": 0.5, "code": "TA2345", "id": 5, "section": "T05", "size": 0, "semester": 2, "name": "Computer Science 1", "seatsTaken": 0, "location": "STEAM", "period": 3 }, { "credits": 0.5, "code": "TA3245", "id": 6, "section": "T07", "size": 0, "semester": 1, "name": "Physics", "seatsTaken": 0, "location": "AHS", "period": 4 }, { "credits": 0.5, "code": "TA3245", "id": 7, "section": "T08", "size": 0, "semester": 2, "name": "Physics", "seatsTaken": 0, "location": "AHS", "period": 4 }, { "credits": 0.5, "code": "TB2135", "id": 8, "section": "T09", "size": 0, "semester": 1, "name": "Calculus", "seatsTaken": 0, "location": "AHS", "period": 5 }, { "credits": 0.5, "code": "TB2135", "id": 9, "section": "T10", "size": 0, "semester": 2, "name": "Calculus", "seatsTaken": 0, "location": "AHS", "period": 5 }, { "credits": 0.5, "code": "TASDF", "id": 10, "section": "T11", "size": 0, "semester": 1, "name": "English", "seatsTaken": 0, "location": "AHS", "period": 6 }, { "credits": 0.5, "code": "TASDF", "id": 11, "section": "T12", "size": 0, "semester": 2, "name": "English", "seatsTaken": 0, "location": "AHS", "period": 6 } ]`)
 
     if (courses != null) {
 	// for (let i = 0; i < selectedCourses.length; i++) {
@@ -39,11 +44,15 @@ document.addEventListener("DOMContentLoaded", async function () {
 		    let classDiv = document.createElement("div");
 		    classDiv.classList.add("selectedClass");
 		    classDiv.setAttribute("draggable", true);
-		    classDiv.id = course.code
+		    classDiv.setAttribute("id", course.code);
+		    classDiv.addEventListener('dragstart', (event) => { drag(event) });
+		    classDiv.addEventListener('dragend', (event) => { dragEnd(event) });
+		    classDiv.addEventListener('mouseover', (event) => { hoverClassSelector(event) });
+		    classDiv.addEventListener('mouseleave', (event) => { dragEnd(event) });
 		    
 		    let classP = document.createElement("p")
 		    classP.appendChild(document.createTextNode(course.name))
-		    classP.id = 'title'
+		    classP.classList.add('title')
 		
 		    classDiv.appendChild(classP)
 
@@ -63,15 +72,62 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function drag(ev) {
-    console.log("ran")
-    console.log(ev.target.innerHTML)
+function dragEnd(ev) {
+    const validPeriodElements = document.getElementsByClassName("valid");
+    for (var i = 0; i < validPeriodElements.length; i++) {
+	validPeriodElements[i].classList.remove("valid")
+    }
 }
 
-function drop(ev){
-    ev.preventDefault();
-    ev.target.innerText = ev.textContent;
+function highlightValidPeriods(classCode) {
+    const course = courses.items.find(a => a.code == classCode);
+    if (!course) return console.log(`invalid course code: ${classCode}`)
+    const periods = [course.period];
+    const isAHS = course.location == "AHS";
+
+    for (let i = 0; i < periods.length; i++) {
+	const period = periods[i];
+	const isA = period <= 4 || period == 8;
+	const periodID = `P${period}-${isAHS ? "AHS" : "STE"}-${isA ? "A" : "B"}`;
+	const periodElement = document.getElementById(periodID);
+	if (periodElement) {
+	    periodElement.classList.add("valid");
+	} else {
+	    console.log(`INVALID ID: ${periodID}`);
+	}
+    }
+}    
+
+
+function drag(ev) {
+    ev.dataTransfer.setData('Text/html', ev.target.id);
+    highlightValidPeriods(ev.target.id);
 }
+
+function hoverClassSelector(ev) {
+    if (!ev.target.classList.contains("selectedClass")) {
+	if (!ev.target.parentElement) return;
+	highlightValidPeriods(ev.target.parentElement.id);
+    } else {
+	highlightValidPeriods(ev.target.id);
+    }
+}
+
+function drop(ev, target){
+    if (!ev.target.classList.contains("valid")) {
+	ev.preventDefault();
+	return;
+    }
+    
+    const droppedClass = ev.dataTransfer.getData('text/html');
+    const droppedClassElement = document.getElementById(droppedClass);
+
+    const course = courses.items.find(a => a.code == droppedClass);
+    
+    ev.preventDefault();
+    ev.target.innerText = course.name;
+}
+
 //for dark mode
 
 function dmSwitch() {
