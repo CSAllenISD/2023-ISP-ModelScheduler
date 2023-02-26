@@ -187,6 +187,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 	if (courses != null) {
 		for (let i = 0; i < courses?.items?.length; i++) {
 		    const course = courses.items[i];
+
+		    if (document.getElementById(course.code) == null) {
 		    
 		    const courseItem = document.createElement("li");
 		    courseItem.classList.add("courseList")
@@ -214,6 +216,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 			courseItem.appendChild(addButton);
 			courseItem.id = course.code;
 			availableCourses.appendChild(courseItem);
+		    }
 		    }
 		}
 	}
