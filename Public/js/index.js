@@ -22,8 +22,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     
     const courses = await getCoursesFromServer();
 
-    console.log(courses)
-
     if (courses != null) {
 	// for (let i = 0; i < selectedCourses.length; i++) {
 	//     var newTr = document.createElement("tr");
@@ -37,17 +35,22 @@ document.addEventListener("DOMContentLoaded", async function () {
 	    const course = courses.items[i];
 
 	    if (selectedCourses.includes(course.code)) {
-		let classDiv = document.createElement("div");
-		classDiv.classList.add("selectedClass");
-		classDiv.setAttribute("draggable", true);
-
-		let classP = document.createElement("p")
-		classP.appendChild(document.createTextNode(course.name))
-		classP.id = 'title'
+		if (document.getElementById(course.code) == null) {
+		    let classDiv = document.createElement("div");
+		    classDiv.classList.add("selectedClass");
+		    classDiv.setAttribute("draggable", true);
+		    classDiv.id = course.code
+		    
+		    let classP = document.createElement("p")
+		    classP.appendChild(document.createTextNode(course.name))
+		    classP.id = 'title'
 		
-		classDiv.appendChild(classP)
+		    classDiv.appendChild(classP)
 
-		classes.appendChild(classDiv)
+		    classes.appendChild(classDiv)
+		}
+
+		
 	    }
 	}
     }
