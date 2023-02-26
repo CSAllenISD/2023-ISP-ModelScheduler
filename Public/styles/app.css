@@ -397,7 +397,7 @@ body {
 
 .selectedClass {
 	width: 90%;
-	height: 55px;
+	height: 65px;
 	margin-left: 5%;
 	margin-bottom: 3px;
 	background-color: var(--class);
@@ -409,29 +409,50 @@ body {
 
 /*testing*/
 .selectedClass .title {
-    font-size: 16px;
+    font-size: 18px;
     height: 25px;
     padding: 2px 0 0 5px;
     font-weight: bold;
+    text-align: left;
 }
 
 .selectedClass .periods {
-    width: 100%;
+    width: 60%;
     height: 30px;
+    margin-top: 8px;
+    margin-left: 5px;
     overflow: hidden;
     display: inline-flex;
 }
 
 .selectedClass .period {
-    margin: 2px 0 2px 5px;
-    padding: 0 8px 0 8px;
+    margin: 2px 0 2px 2px;
+    width: 26px;
     text-align: center;
     background-color: var(--navbar);
-    border-radius: 10px;
+    border-radius: 50%;
+    line-height: 1.5;
+}
+
+.selectedClass #demand {
+    width: 100px;
+    margin-top: 8px;
+    margin-right: 5px;
+    float: right;
+}
+
+.selectedClass #demand img {
+    width: 30px;
+    height: 30px;
+    float: right;
+    object-fit: contain;
 }
 
 .selectedClass:hover {
     background-color: var(--buttons)
+}
+.selectedClass:hover .period {
+    background-color: white;
 }
 
 #classTitle {
