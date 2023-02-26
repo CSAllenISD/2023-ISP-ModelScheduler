@@ -447,7 +447,7 @@ body {
 }
 
 .selectedClass .periods {
-    width: 60%;
+    max-width: 55%;
     height: 30px;
     margin-top: 8px;
     margin-left: 5px;
@@ -464,14 +464,14 @@ body {
     line-height: 1.5;
 }
 
-.selectedClass #demand {
+.selectedClass .demand {
     min-width: 30%;
     margin-top: 8px;
     margin-right: 5px;
     float: right;
 }
 
-.selectedClass #demand img {
+.selectedClass .demand img {
     width: 30px;
     height: 30px;
     float: right;
