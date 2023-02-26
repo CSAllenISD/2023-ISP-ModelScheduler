@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 		    }
 
 		    let demandDiv = document.createElement("div");
-		    demandDiv.id = "demand";
+		    demandDiv.classList.add("demand");
 		    classDiv.appendChild(demandDiv);
 
 		    for(let i = 0; i < 3; i++) {
