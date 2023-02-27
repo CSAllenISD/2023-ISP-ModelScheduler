@@ -23,82 +23,98 @@
 	<li><div class="tooltip"><button id="darkmodeButton"><img id="darkmode" src="images/moon.png"><span class="tooltiptext">Dark Mode</span></div></li>
       </ul>
     </div>
-    
-  <div id="tables">
-    <table id="scheduler">
-      <tr id="semesterSwitchBar">
-	<th colspan="2"><button class="switch"><b>Fall Semester</b></button></th>
-	<th></th>
-	<th colspan="2"><button class="switch">Spring Semester</button></th>
-      </tr>
-      <tr>
-	<th id="allen" class="grayBox" colspan="2">Allen Schedule</th>
-	<th class="gap"></th>
-	<th id="steam" class="grayBox" colspan="2">Steam/CTC Schedule</th>
-      </tr>
-
-      <tr>
-	<th class="redBox">A Day</th>
-	<th class="blueBox">B Day</th>
-	<th class="gap"></th>
-	<th class="redBox">A Day</th>
-	<th class="blueBox">B Day</th>
-      </tr>
-
-      <tr>
-	<th colspan="2">Period 0</th>
-	<th class="gap"></th>
-	<th colspan="2">Period 0</th>
-      </tr>
-
-      <tr>
-	<th colspan="2">Period 1</th>
-	<th class="gap"></th>  
-	<th colspan="2">Period 1</th>
-      </tr>
+    <div class="leftside" id="courseSelect">
+      <h1>Courses</h1>
+    </div>
+    <div class="rightside" id="schedules">
+      <div
+	style="
+	       width: 100%;
+	       display: flex;
+	       flex-direction: row;
+	       justify-content: space-around;
+	       "
+	>
+	<a class="semesterBtn selected">Fall Semester</a>
+	<a class="semesterBtn">Spring Semester</a>
+      </div>
+      <div id="scheduleViewer">
+	<div class="header" id="topLeft">
+	  <span>2023-2024</span>
+	</div>
+	<div class="header topHeader">
+	  <span>High School Schedule</span>
+	</div>
+	<div class="header topHeader">
+	  <span>STEAM / CTC Schedule</span>
+	</div>
+	<div class="header aDay">
+	  <span>A Day</span>
+	</div>
+	<div class="header bDay">
+	  <span>B Day</span>
+	</div>
+	<div class="header aDay">
+	  <span>A Day</span>
+	</div>
+	<div class="header bDay">
+	  <span>B Day</span>
+	</div>
+	<div class="header period" id="period0Container">
+	  <span>Period 0</span>
+	</div>
+	<div class="class" id="P0-AHS-A"></div>
+	<div class="class" id="P0-AHS-B"></div>
+	<div class="class" id="P0-STE-A"></div>
+	<div class="class" id="P0-STE-B"></div>
+	<div class="header period" id="period1Container">
+	  <span>Period 1</span>
+	</div>
+	<div class="class" id="P1-AHS-A"></div>
+	<div class="class" id="P1-AHS-B"></div>
+	<div class="class" id="P1-STE-A"></div>
+	<div class="class" id="P1-STE-B"></div>
+	<div class="header period" id="period2Container">
+	  <span>Period 2/5</span>
+	</div>
+	<div class="class" id="P2-AHS-A"></div>
+	<div class="class" id="P5-AHS-B"></div>
+	<div class="class" id="P2-STE-A"></div>
+	<div class="class" id="P5-STE-B"></div>
+	<div class="header period" id="period3Container">
+	  <span>Period 3/6</span>
+	</div>
+	<div class="class" id="P3-AHS-A"></div>
+	<div class="class" id="P6-AHS-B"></div>
+	<div class="class" id="P3-STE-A"></div>
+	<div class="class" id="P6-STE-B"></div>
+	<div class="header period" id="period4Container">
+	  <span>Period 4/7</span>
+	</div>
+	<div class="class" id="P4-AHS-A"></div>
+	<div class="class" id="P7-AHS-B"></div>
+	<div class="class" id="P4-STE-A"></div>
+	<div class="class" id="P7-STE-B"></div>
+	<div class="header period" id="period8Container">
+	  <span>Period 8</span>
+	</div>
+	<div class="class" id="P8-AHS-A"></div>
+	<div class="class" id="P8-AHS-B"></div>
+	<div class="class" id="P8-STE-A"></div>
+	<div class="class" id="P8-STE-B"></div>
+      </div>
       
-      <tr>
-	<th>Period 2</th>
-	<th>Period 5</th>
-	<th class="gap"></th>  
-	<th>Period 2</th>
-	<th>Period 5</th>
-      </tr>
-
-      <tr>
-	<th>Period 3</th>
-	<th>Period 6</th>
-	<th class="gap"></th>  
-	<th>Period 3</th>
-	<th>Period 6</th>
-      </tr>
-
-      <tr>
-	<th>Period 4</th>
-	<th>Period 7</th>
-	<th class="gap"></th>  
-	<th>Period 4</th>
-	<th>Period 7</th>
-      </tr>
-
-      <tr>
-	<th colspan="2">Period 8</th>
-	<th class="gap"></th>  
-	<th colspan="2">Period 8</th>
-      </tr>
-    </table>
-  </div>
-
-
-  <div class="no-print" style="text-align:right;margin-right:12.14%;">
-    <br><br><br>
-    <button class="printButton"><img src="images/save.png" alt="saveIcon" width="14" height="14" style="vertical-align:middle;margin-top:-3px;">&nbsp;&nbsp;<strong>Save</strong></button> &nbsp; &nbsp;
-    <button onClick="window.print()" class="printButton"><img src="images/print.png" alt="printIcon" width="14" height="14" style="vertical-align:middle;margin-top:-1px">&nbsp; <strong>Print</strong></button>
-  </div>
-  
-  <div id="footer" class="no-print">
-    <a href="./index.html"><button id="navButton">Back</button></a>
-  </div>
-  
-</body>
+      
+      <div class="screen" style="text-align:right;margin-right:12.14%;">
+	<br><br><br>
+	<button class="printButton"><img src="images/save.png" alt="saveIcon" width="14" height="14" style="vertical-align:middle;margin-top:-3px;">&nbsp;&nbsp;<strong>Save</strong></button> &nbsp; &nbsp;
+	<button onClick="window.print()" class="printButton"><img src="images/print.png" alt="printIcon" width="14" height="14" style="vertical-align:middle;margin-top:-1px">&nbsp; <strong>Print</strong></button>
+      </div>
+      
+      <div id="footer">
+	<a href="./index.html"><button id="navButton">Back</button></a>
+      </div>
+      
+  </body>
+<!--  >>>>>>> b1321a0ce3ef4da6ec0356d525534e856ee12bfd -->
 </html>

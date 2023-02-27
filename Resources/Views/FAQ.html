@@ -3,7 +3,7 @@
   <head>
     <title>Model Scheduler</title>
     <link rel="stylesheet" href="styles/FAQ.css">
-
+    <link rel="stylesheet" href="styles/app.css">
 
     <script src="js/FAQ.js"></script>
     <link rel="icon"
@@ -12,55 +12,58 @@
   </head> 
   
   <body>
-
-    <ul>    
-      <a href="./classes.html"><img id="logo" src="images/allenisdLogo.png" alt="AllenISD Logo"></a>
-      <li><a class="selected" href="./FAQ.html">FAQ</a></li>
-      <li><a href="./final.html">FINAL</a></li>
-      <li><a href="./index.html">SCHEDULER</a></li>
-      <li><a href="./classes.html">COURSES</a><li> 
-      <li><button id="darkmodeButton"><img id="darkmode" src="images/moon.png"></li>
-
-    </ul>
-
-    
-    <h1> Frequently Asked Questions </h1>
-    
-    <div>  
-      
-      <h2> How do I start?</h2>
-      
-      <p> A: Once you login in start selecting your courses. Then you'll move onto the scheduling page where you can schedule your courses. Finally you'll move onto the final page where you can either print or save the final product.</p>
-
-      <h2> How to select my courses? </h2> 
-      <p> A: You can select your courses in the selection page by searching for the course name and then adding it by clicking the add button.</p>
-      
-      <h2> How to use the scheduling page</h2>
-      
-      <p> A: In the schedule page you can drag and drop the selected courses onto the desired period and will show if any time conflicts are present due to an existing course that is in dual credit or Steam.</p>
-      
-      <h2> How can I save my schedule?</h2>
-      
-      <p> A: Once you have completed your desired schedule you'll be able to print or save the schedule by going to the final page.</p>
-
+    <div class="navbar">
+      <ul>    
+	<a href="./classes.html"><img id="logo" src="images/allenisdLogo.png" alt="AllenISD Logo"></a>
+	<li><a class="selected" href="./FAQ.html">FAQ</a></li>
+	<li><a href="./final.html">FINAL</a></li>
+	<li><a href="./index.html">SCHEDULER</a></li>
+	<li><a href="./classes.html">COURSES</a><li> 
+	<li><div class="tooltip"><button id="darkmodeButton"><img id="darkmode" src="images/moon.png"><span class="tooltiptext">Dark Mode</span></div></li>
+      </ul>
     </div>
     
-    <div>
-      <h2> How to access Dark mode?</h2>
+    <h1> Frequently Asked Questions </h1>
+    <div class="row">
       
-      <p> A: To access dark mode you can simply press the little moon on the navigation bar and then you can press the sun to change it back to light mode.</p>
+      <div class="column">  
+	
+	<h2> How do I start?</h2>
+	
+	<p> A: Once you login in start selecting your courses. Then you'll move onto the scheduling page where you can schedule your courses. Finally you'll move onto the final page where you can either print or save the final product.</p>
 
-      <h2> Is any of my information going to be stored? </h2>
-      
-      <p> A: Once you have login into the scheduler with your information none of it will be stored for safety purposes. </p>
-      
-      <h2> How many schedules should I make? </h2>
-      
-      <p> A: Usually we'll recommend a minimum of 3 schedules since it's not always guaranteed that you'll get the desired schedule </p>
+	<h2> How to select my courses? </h2> 
+	<p> A: You can select your courses in the selection page by searching for the course name and then adding it by clicking the add button.</p>
+	
+	<h2> How to use the scheduling page</h2>
+	
+	<p> A: In the schedule page you can drag and drop the selected courses onto the desired period and will show if any time conflicts are present due to an existing course that is in dual credit or Steam.</p>
+	
+	<h2> How can I save my schedule?</h2>
+	
+	<p> A: Once you have completed your desired schedule you'll be able to print or save the schedule by going to the final page.</p>
 
-      <h2> Why should I use this?</h2>
-      <p> A: You can use this scheduler to create an ideal schedule that can prepare you for the arena scheduling. </p>      
- 
-  </body>  
-  <center> <img src="https://c.tenor.com/E7Fh1PZqhDUAAAAC/tenor.gif" alt="idk" style="width: 10%; height: 200px;"</center>
+      </div>
+      
+      <div class="column">
+	<h2> How to access Dark mode?</h2>
+	
+	<p> A: To access dark mode you can simply press the little moon on the navigation bar and then you can press the sun to change it back to light mode.</p>
+
+	<h2> Is any of my information going to be stored? </h2>
+	
+	<p> A: Once you have login into the scheduler with your information none of it will be stored for safety purposes. </p>
+	
+	<h2> How many schedules should I make? </h2>
+	
+	<p> A: Usually we'll recommend a minimum of 3 schedules since it's not always guaranteed that you'll get the desired schedule </p>
+
+	<h2> Why should I use this?</h2>
+	<p> A: You can use this scheduler to create an ideal schedule that can prepare you for the arena scheduling. </p>      
+      </div>
+    </div>
+    <center><img src="https://www.essence.com/wp-content/uploads/2016/12/1481579907/IMG_8283.GIF" alt="idk" style="width:30%;height:200px;"></center>
+  </body>
+
+  
 </html>

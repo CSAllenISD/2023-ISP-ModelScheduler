@@ -1,58 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
+  <head>
+    <meta charset="UTF-8" />
 
-		<title>Model Scheduler</title>
+    <title>Model Scheduler</title>
 
-		<link rel="stylesheet" href="styles/app.css" />
-		<link rel="stylesheet" href="styles/classes.css" />
+    <link rel="stylesheet" href="styles/app.css" />
+    <link rel="stylesheet" href="styles/classes.css" />
 
-		<script src="js/classes.js"></script>
-		<link rel="icon" type="image/png" href="images/allenisdLogo.png" />
-	</head>
-	<body>
-		<div class="navbar">
-			<a href="./classes.html"
-				><img id="logo" src="images/allenisdLogo.png" alt="AllenISD Logo"
-			/></a>
+    <script src="js/classes.js"></script>
+    <link rel="icon" type="image/png" href="images/allenisdLogo.png" />
+  </head>
+  <body>
+    <div class="navbar">
+      
+      <ul>
+	<a href="./classes.html"><img id="logo" src="images/allenisdLogo.png" alt="AllenISD Logo"></a>
+	<li><a href="./FAQ.html">FAQ</a></li>
+	<li><a href="./final.html">FINAL</a></li>
+	<li><a href="./index.html">SCHEDULER</a></li>
+	<li><a class="selected" href="#">COURSES</a></li>
+	<!--li><img id="darkmode" src="images/moon.png"></li-->
+	<li><div class="tooltip"><button id="darkmodeButton"><img id="darkmode" src="images/moon.png"><span class="tooltiptext">Dark Mode</span></div></li>
+      </ul>
+    </div>
 
-			<ul>
-				<li><a href="./FAQ.html">FAQ</a></li>
-				<li><a href="./final.html">FINAL</a></li>
-				<li><a href="./index.html">SCHEDULER</a></li>
-				<li><a class="selected" href="#">COURSES</a></li>
-				<!--li><img id="darkmode" src="images/moon.png"></li-->
-				<li>
-					<button id="darkmodeButton">
-						<img id="darkmode" src="images/moon.png" />
-					</button>
-				</li>
-			</ul>
-		</div>
+    <div class="classList">
+      <h2>Available Courses</h2>
+      <input onkeyup="search()" id="search" type="text" placeholder="Search"></input>
+      <hr />
+      <ul id="availableCourses">
+	<!-- <li id="cs2">Computer Science II <button onclick="addCourse('cs2')" class="addButton">Add</button></li> -->
+	<!-- <li id="cs3">Computer Science III <button onclick="addCourse('cs3')" class="addButton">Add</button></li> -->
+	<!-- <li id="apphysics1">AP Physics I <button onclick="addCourse('apphysics1')" class="addButton">Add</button></li> -->
+	<!-- <li id="abcalc">AP Calculus AB <button onclick="addCourse('abcalc')" class="addButton">Add</button></li> -->
+      </ul>
+    </div>
 
-		<div class="classList">
-			<h2>Available Courses</h2>
-			<input onkeyup="search()" id="search" type="text" placeholder="Search"></input>
-			<hr />
-			<ul id="availableCourses">
-				<!-- <li id="cs2">Computer Science II <button onclick="addCourse('cs2')" class="addButton">Add</button></li> -->
-				<!-- <li id="cs3">Computer Science III <button onclick="addCourse('cs3')" class="addButton">Add</button></li> -->
-				<!-- <li id="apphysics1">AP Physics I <button onclick="addCourse('apphysics1')" class="addButton">Add</button></li> -->
-				<!-- <li id="abcalc">AP Calculus AB <button onclick="addCourse('abcalc')" class="addButton">Add</button></li> -->
-			</ul>
-		</div>
+    <div class="classList2">
+      <h2>Selected Courses</h2>
+      <hr />
+      <ul id="selectedCourses"></ul>
+    </div>
 
-		<div class="classList2">
-			<h2>Selected Courses</h2>
-			<hr />
-			<ul id="selectedCourses"></ul>
-		</div>
-
-		<div id="footer">
-			<a href="./index.html"
-				><button id="navButton" class="next" onclick="next()">Next</button></a
-			>
-		</div>
-	</body>
+    <div id="footer">
+      <a href="./index.html"
+	 ><button id="navButton" class="next" onclick="next()">Next</button></a
+									      >
+    </div>
+  </body>
 </html>
