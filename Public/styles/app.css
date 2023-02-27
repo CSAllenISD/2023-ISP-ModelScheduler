@@ -206,7 +206,7 @@ body {
 #scheduleViewer {
     width: 55%;
     height: 98%;
-    margin-left: 5%;
+    margin-left: 8%;
     display: inline-grid;
     padding-left: 5px;
     padding-right: 4px;
@@ -394,7 +394,7 @@ body {
 	float: left;
 	height: 90%;
 	width: 20%;
-	margin-left: 5%;
+	margin-left: 8%;
 	margin-top: 2%;
 	background-color: var(--classes-bg);
 	border-radius: 10px;
@@ -512,11 +512,6 @@ table .blueBox {
 	float: left;
 	cursor: pointer;
 	transition: background-color 200ms ease-in-out;
-}
-
-#trash {
-    width: 10%;
-    
 }
 
 .switch:hover {
