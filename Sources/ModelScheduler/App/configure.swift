@@ -10,18 +10,18 @@ func configure(_ app: Application) throws {
     app.views.use(.leaf)
 
     
-    app.mailgun.configuration = .init(apiKey: secrets.mailgunApiKey)
-    app.mailgun.defaultDomain = .myApp1
+    app.mailgun.configuration = .init(apiKey: getEnvString("MAILGUN_APIKEY"))
+    app.mailgun.defaultDomain = MailgunDomain(getEnvString("MAILGUN_DOMAIN"), .us)
     
     
     var tls = TLSConfiguration.makeClientConfiguration()
     tls.certificateVerification = .none
     app.databases.use(.mysql(
-                        hostname: "db",
-                        port: MySQLConfiguration.ianaPortNumber,
-                        username: secrets.dbUser,
-                        password: secrets.dbPass,
-                        database: secrets.dbName,
+                        hostname: getEnvString("MYSQL_HOSTNAME", "db"),
+                        port: Int(getEnvString("MYSQL_PORT", String(MySQLConfiguration.ianaPortNumber)))!, // messy
+                        username: getEnvString("MYSQL_USERNAME"),
+                        password: getEnvString("MYSQL_PASSWORD"),
+                        database: getEnvString("MYSQL_DATABASE_NAME"),
                         tlsConfiguration: tls
                       ), as: .mysql)
 
@@ -43,4 +43,14 @@ func configure(_ app: Application) throws {
         
     // register routes
     try routes(app)
+}
+
+func getEnvString(_ path: String, _ defaultReturn: String = "") -> String {
+    guard let variable = Environment.get(path) else {
+        print("Failed to read environment variable: \(path) defaulting to `\(defaultReturn)`")
+
+        return defaultReturn
+    }
+
+    return variable
 }
