@@ -9,3 +9,4 @@ Tests/LinuxMain.swift
 *~
 \#*\#
 .dir-locals.el
+.env*
