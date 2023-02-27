@@ -13,20 +13,6 @@ body {
 	font-family: Arial;
 }
 
-ul {
-	list-style-type: none;
-	padding: 0;
-	margin: 0;
-	margin-left: 5%;
-	margin-right: 5%;
-}
-
-li {
-	text-align: left;
-	font-size: 20px;
-	margin-bottom: 1%;
-}
-
 courseList {
     width: 100%;
 }
@@ -73,13 +59,13 @@ input {
 	width: 30%;
 }
 
-.navBar {
-	width: 30%;
-	border-radius: 7px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 1%;
-}
+/* .navBar { */
+/* 	width: 30%; */
+/* 	border-radius: 7px; */
+/* 	margin-left: auto; */
+/* 	margin-right: auto; */
+/* 	margin-bottom: 1%; */
+/* } */
 
 .navButton {
 	background-color: #c3c3c3;

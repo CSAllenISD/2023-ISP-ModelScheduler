@@ -66,106 +66,7 @@ body{
 )
 }
 
-#darkmode {
-    width: 40px;
-    height: 40px;
-    margin-top: 30px;
-    margin-right: 35px;
-    cursor: pointer;
-}
-
-#logo{
-    width: 60px;
-    height: 60px;
-    margin-top: 5px;
-    float: left;
-}
-
-#darkmode {
-    width: 40px;
-    height: 40px;
-    margin-top: 15px;
-    cursor: pointer;
-    text-line: left;
-}
-#darkmodeButton{
-    all: unset;
-}
-
-ul {
-    list-style-type: none;
-    width:100%;
-    padding-left: 15%;
-    padding-right: 15%;
-    overflow: hidden;
-    height: 5%;
-    min-height: 70px;
-    display: inline-block;
-    background-color: var(--navbar);
-}
-
-.tooltip {
-    position: relative;
-    display: inline-block;
-}
-
-.tooltip .tooltiptext{
-    visibility: hidden;
-    background-color:black;
-    color: white;
-    width: 120px;
-    line-height: 225%;
-    font-size: 18px;
-    text-align: center;
-    border-radius: 3px;
-    padding: 3px 0;
-
-    position: absolute;
-    z-index: 1;
-    top: 80%;
-    left: -125%
-}
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-}
-
-#footer {
-    height: 7%;
-    bottom: 0;
-    margin-left: 15%;
-    width: 70%;
-    margin-bottom: 25px;
-}
-
-.center {
-    float: center;
-}
-
-li {
-    list-style-type: none;
-    text-align: center;
-    font-size: 32px;
-    font-weight: 600;
-    margin-right: 30px;
-    line-height: 70px;
-    float: right;
-}
-
-li a {
-    color: var(--navbar-labels);
-    text-decoration: none; 
-}
-
-li a:hover {
-    color: red;
-    transtion: ease.2s;
-}
-li .selected{
-    color: red;
-}
-
-div {
+.column {
     top: 70px;
     float: left;
     width: 50%;
@@ -183,8 +84,11 @@ h1 {
     animation-name: border;
     animation-duration: 5s;
     animation-iteration-count: infinite;
-    border: 3px;
+    border: 5px;
     border-radius: 15px;
+    margin-left: 30%;
+    margin-right: 30%;
+    border-style: solid;
     top: 60px;
     font-size: 45px;
     font-family: Arial, Helvetica, sans-serif;
