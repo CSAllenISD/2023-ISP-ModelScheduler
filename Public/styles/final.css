@@ -361,16 +361,12 @@ a.semesterBtn.selected::before {
 	}
 }
 
-.print {
-	display: none;
-}
-@media print {
-	.screen {
-		display: none;
-	}
-	.print {
-		display: block;
-	}
+@media print
+{
+    .no-print, .no-print *
+    {
+	display: none !important;
+    }
 }
 
 .printButton {
