@@ -189,14 +189,56 @@ document.addEventListener("DOMContentLoaded", async function () {
 		    const course = courses.items[i];
 
 		    if (document.getElementById(course.code) == null) {
-		    
-		    const courseItem = document.createElement("li");
-		    courseItem.classList.add("courseList")
 
-		    const pTag = document.createElement("p");
-		    courseItem.appendChild(pTag)
-		    pTag.appendChild(document.createTextNode(course.name));
+			//start creating document
+			//create class div
+			let classDiv = document.createElement("div");
+			classDiv.classList.add("selectedClass");
+			classDiv.setAttribute("id", course.code);
 
+			//create div which contains title and id
+			let textDiv = document.createElement("div");
+			textDiv.classList.add("classText");
+			classDiv.appendChild(textDiv);
+			
+			//class text
+			let classP = document.createElement("span")
+			classP.appendChild(document.createTextNode(course.name))
+			classP.classList.add('title')
+			textDiv.appendChild(classP)
+			availableCourses.appendChild(classDiv)
+
+			//id text
+			let idP = document.createElement('span');
+			idP.appendChild(document.createTextNode(course.code));
+			idP.classList.add("id");
+			textDiv.appendChild(idP);
+
+			//create period bubbles
+			let periodDiv = document.createElement("div");
+			periodDiv.classList.add("periods");
+			classDiv.appendChild(periodDiv);
+			for (let i = 0; i < course.period.length; i++) {
+			    let periodP = document.createElement("p");
+			    periodP.classList.add("period");
+			    periodP.appendChild(document.createTextNode(i+1))
+
+			    periodDiv.appendChild(periodP);
+			}
+
+			//create fire demand icons
+			let demandDiv = document.createElement("div");
+			demandDiv.classList.add("demand");
+			classDiv.appendChild(demandDiv);
+
+			for(let i = 0; i < 3; i++) {
+			    let demandImg = document.createElement("img");
+			    demandImg.src = "images/fire.png"
+			    demandImg.setAttribute("draggable", false);
+			    demandDiv.appendChild(demandImg);
+			}
+			
+			//create the add/remove buttons
 		    if (savedCourses != null && savedCourses.includes(course.code)) {
 			const remButton = document.createElement("button");
 			remButton.classList.add("removeButton");
@@ -213,9 +255,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 			addButton.onclick = () => addCourse(course.code);
 			addButton.appendChild(document.createTextNode("Add"));
 			
-			courseItem.appendChild(addButton);
-			courseItem.id = course.code;
-			availableCourses.appendChild(courseItem);
+			classDiv.appendChild(addButton);
 		    }
 		    }
 		}
