@@ -75,97 +75,92 @@ function darkMode() {
 	document.getElementById("darkmode").src = "./images/moon.png";
 }
 
-function addCourse(id) {
+function addCourse(code) {
     var availableList = document.getElementById("availableCourses");
-    var courseItem = document.getElementById(id);
-    var course = courseItem.innerText.replace("Add", "");
+    // var courseItem = document.getElementById(id);
+    // var course = courseItem.innerText.replace("Add", "");
     
     var selectedList = document.getElementById("selectedCourses");
-
-    //start creating document
-    //create class div
-    let classDiv = document.createElement("div");
-    classDiv.classList.add("selectedClass");
-    classDiv.setAttribute("id", course.code);
-
-    //create div which contains title and id
-    let textDiv = document.createElement("div");
-    textDiv.classList.add("classText");
-    classDiv.appendChild(textDiv);
-
-    //class text
-    let classP = document.createElement("span")
-    classP.appendChild(document.createTextNode(course.name))
-    classP.classList.add('title')
-    textDiv.appendChild(classP)
-
-    //id text
-    let idP = document.createElement('span');
-    idP.appendChild(document.createTextNode(course.code));
-    idP.classList.add("id");
-    textDiv.appendChild(idP);
-
-    //create period bubbles
-    let periodDiv = document.createElement("div");
-    periodDiv.classList.add("periods");
-    classDiv.appendChild(periodDiv);
-    //course is no longer an object so this doesn't work
-    /*for (let i = 0; i < course.period.length; i++) {
-	let periodP = document.createElement("p");
-	periodP.classList.add("period");
-	periodP.appendChild(document.createTextNode(i+1))
-
-	periodDiv.appendChild(periodP);
-    }*/
-    var removeButton = document.createElement("button");
-    removeButton.setAttribute("class", "removeButton");
-    removeButton.setAttribute("onclick", "removeCourse('" + id + "')");
-    removeButton.appendChild(document.createTextNode("Remove"));
+    // var newItem = document.createElement("li");
+    // //newItem.appendChild(document.createTextNode(course));
     
-    classDiv.appendChild(removeButton);
-    selectedCourses.appendChild(classDiv)
-    selectedList.removeChild(courseItem);
+    // const pTag = document.createElement("p");
+    // pTag.appendChild(document.createTextNode(course));
+    // newItem.appendChild(pTag)
+    
+    
+    // var removeButton = document.createElement("button");
+    // removeButton.setAttribute("class", "removeButton");
+    // removeButton.setAttribute("onclick", "removeCourse('" + id + "')");
+    // removeButton.appendChild(document.createTextNode("Remove"));
+    
+    // newItem.appendChild(removeButton);
+    // newItem.setAttribute("id", id);
+    // selectedList.appendChild(newItem);
+    
+    // availableList.removeChild(courseItem);
+
+    const availableCourse = document.getElementById(code + "AC")
+    const selectedCourse = document.getElementById(code + "SC")
+
+    availableCourse.style.display = "none";
+    selectedCourse.style.display = "inline-block";
+
     
     var courses = [];
     for (const child of selectedList.children) {
 	const course = child.innerText.replace("Remove", "");
 	//courses.push(course);
-	courses.push(child.id)
+	const id = child.id
+	if (child.style.display != "none") {
+	    courses.push(id.slice(0, id.length - 2))
+	}
     }
     localStorage.setItem("courses", courses);
+
 }
 
-function removeCourse(id) {
+function removeCourse(code) {
     var selectedList = document.getElementById("selectedCourses");
-    var courseItem = document.getElementById(id);
-    var course = courseItem.innerText.replace("Remove", "");
+    // var courseItem = document.getElementById(id);
+    // var course = courseItem.innerText.replace("Remove", "");
     
     var availableList = document.getElementById("availableCourses");
-    var newItem = document.createElement("li");
-    //newItem.appendChild(document.createTextNode(course));
+    // var newItem = document.createElement("li");
+    // //newItem.appendChild(document.createTextNode(course));
     
-    const pTag = document.createElement("p");
-    pTag.appendChild(document.createTextNode(course));
-    newItem.appendChild(pTag)   
+    // const pTag = document.createElement("p");
+    // pTag.appendChild(document.createTextNode(course));
+    // newItem.appendChild(pTag)   
     
-    var addButton = document.createElement("button");
-    addButton.setAttribute("class", "addButton");
-    addButton.setAttribute("onclick", "addCourse('" + id + "')");
-    addButton.appendChild(document.createTextNode("Add"));
+    // var addButton = document.createElement("button");
+    // addButton.setAttribute("class", "addButton");
+    // addButton.setAttribute("onclick", "addCourse('" + id + "')");
+    // addButton.appendChild(document.createTextNode("Add"));
     
-    newItem.appendChild(addButton);
-    newItem.setAttribute("id", id);
-    availableList.appendChild(newItem);
+    // newItem.appendChild(addButton);
+    // newItem.setAttribute("id", id);
+    // availableList.appendChild(newItem);
     
-    selectedList.removeChild(courseItem);
+    // selectedList.removeChild(courseItem);
+
+    const availableCourse = document.getElementById(code + "AC")
+    const selectedCourse = document.getElementById(code + "SC")
+
+    availableCourse.style.display = "inline-block";
+    selectedCourse.style.display = "none";    
     
     var courses = [];
     for (const child of selectedList.children) {
-	const course = child.innerText.replace("Remove", "");
-	//courses.push(course);
-	course.push(child.id)
+    	const course = child.innerText.replace("Remove", "");
+     	//courses.push(course);
+	const id = child.id
+	if (child.style.display != "none") {
+     	    courses.push(id.slice(0, id.length - 2))
+	}
     }
     localStorage.setItem("courses", courses);
+    
 }
 
 function next() {
@@ -175,7 +170,10 @@ function next() {
 	for (const child of selectedList.children) {
 	    const course = child.innerText.replace("Remove", "");
 	    //courses.push(course);
-	    courses.push(child.id)
+	    const id = child.id
+	    if (child.style.display != "none") {
+		courses.push(id.slice(0, id.length - 2))
+	    }
 	}
 	localStorage.setItem("courses", courses);
 
@@ -214,78 +212,98 @@ document.addEventListener("DOMContentLoaded", async function () {
 		for (let i = 0; i < courses?.items?.length; i++) {
 		    const course = courses.items[i];
 
-		    if (document.getElementById(course.code) == null) {
+		    if (document.getElementById(course.code + "SC") == null && document.getElementById(course.code + "AC") == null) {
 
-			//start creating document
-			//create class div
-			let classDiv = document.createElement("div");
-			classDiv.classList.add("selectedClass");
-			classDiv.setAttribute("id", course.code);
-
-			//create div which contains title and id
-			let textDiv = document.createElement("div");
-			textDiv.classList.add("classText");
-			classDiv.appendChild(textDiv);
+			const classDivA = getClassDiv(course)
+			const classDivS = getClassDiv(course)
 			
-			//class text
-			let classP = document.createElement("span")
-			classP.appendChild(document.createTextNode(course.name))
-			classP.classList.add('title')
-			textDiv.appendChild(classP)
-
-			//id text
-			let idP = document.createElement('span');
-			idP.appendChild(document.createTextNode(course.code));
-			idP.classList.add("id");
-			textDiv.appendChild(idP);
-
-			//create period bubbles
-			let periodDiv = document.createElement("div");
-			periodDiv.classList.add("periods");
-			classDiv.appendChild(periodDiv);
-			for (let i = 0; i < course.period.length; i++) {
-			    let periodP = document.createElement("p");
-			    periodP.classList.add("period");
-			    periodP.appendChild(document.createTextNode(i+1))
-
-			    periodDiv.appendChild(periodP);
-			}
-
-			//create fire demand icons
-			let demandDiv = document.createElement("div");
-			demandDiv.classList.add("demand");
-			classDiv.appendChild(demandDiv);
-
-			for(let i = 0; i < 3; i++) {
-			    let demandImg = document.createElement("img");
-			    demandImg.src = "images/fire.png"
-			    demandImg.setAttribute("draggable", false);
-			    demandDiv.appendChild(demandImg);
-			}
-			
-			//create the add/remove buttons
-		    if (savedCourses != null && savedCourses.includes(course.code)) {
 			const remButton = document.createElement("button");
 			remButton.classList.add("removeButton");
 			remButton.onclick = () =>
 			removeCourse(course.code);
 			remButton.appendChild(document.createTextNode("Remove"));
-			
-			classDiv.appendChild(remButton);
-			selectedCourses.appendChild(classDiv);
-		    } else {
+
+			classDivS.id = course.code + "SC";
+			classDivS.appendChild(remButton);
+
+			selectedCourses.appendChild(classDivS);
+
 			const addButton = document.createElement("button");
 			addButton.classList.add("addButton");
 			addButton.onclick = () => addCourse(course.code);
 			addButton.appendChild(document.createTextNode("Add"));
+
+			classDivA.id = course.code + "AC";
+			classDivA.appendChild(addButton);
 			
-			classDiv.appendChild(addButton);
-			availableCourses.appendChild(classDiv);
-		    }
+			availableCourses.appendChild(classDivA)
+
+			const selected = document.getElementById(course.code + "SC");
+			const available = document.getElementById(course.code + "AC");
+			//hide and show the correct ones
+			if (savedCourses != null && savedCourses.includes(course.code)) {
+			    available.style.display = "none";
+			    selected.style.display = "inline-block";
+			} else {
+			    available.style.display = "inline-block";
+			    selected.style.display = "none";
+			}
 		    }
 		}
 	}
 });
+
+function getClassDiv(course) {
+    //start creating document
+    //create class div
+    let classDiv = document.createElement("div");
+    classDiv.classList.add("selectedClass");
+//    classDiv.setAttribute("id", course.code);
+    
+    //create div which contains title and id
+    let textDiv = document.createElement("div");
+    textDiv.classList.add("classText");
+    classDiv.appendChild(textDiv);
+    
+    //class text
+    let classP = document.createElement("span")
+    classP.appendChild(document.createTextNode(course.name))
+    classP.classList.add('title')
+    textDiv.appendChild(classP)
+//    availableCourses.appendChild(classDiv)
+    
+    //id text
+    let idP = document.createElement('span');
+    idP.appendChild(document.createTextNode(course.code));
+    idP.classList.add("id");
+    textDiv.appendChild(idP);
+    
+    //create period bubbles
+    let periodDiv = document.createElement("div");
+    periodDiv.classList.add("periods");
+    classDiv.appendChild(periodDiv);
+    for (let i = 0; i < course.period.length; i++) {
+	let periodP = document.createElement("p");
+	periodP.classList.add("period");
+	periodP.appendChild(document.createTextNode(i+1))
+	
+	periodDiv.appendChild(periodP);
+    }
+    
+    //create fire demand icons
+    let demandDiv = document.createElement("div");
+    demandDiv.classList.add("demand");
+    classDiv.appendChild(demandDiv);
+    
+    for(let i = 0; i < 3; i++) {
+	let demandImg = document.createElement("img");
+	demandImg.src = "images/fire.png"
+	demandImg.setAttribute("draggable", false);
+	demandDiv.appendChild(demandImg);
+    }
+
+    return classDiv
+}
 
 //search bar
     function search() {
@@ -294,18 +312,18 @@ document.addEventListener("DOMContentLoaded", async function () {
 	input = document.getElementById('search');
 	filter = input.value.toUpperCase();
 	console.log(filter);
-	ul = document.getElementById("availableCourses");
-	li = ul.getElementsByTagName('li');
 
 	// Loop through all list items, and hide those who don't match the search query
-	for (i = 0; i < li.length; i++) {
-	    p = li[i].getElementsByTagName("p")[0];
-	    txtValue = p.innerText || p.textContent;
-	    console.log(txtValue)
+	classDivs = document.getElementsByClassName("selectedClass");
+	for(i=0; i < classDivs.length; i++) {
+	    classDiv = classDivs[i];
+	    txtValue = classDiv.getElementsByClassName("title")[0].innerHTML;
+
+	    //needs to check if the course is already selected before it display again
 	    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-		li[i].style.display = "";
+		classDiv.style.display = "";
 	    } else {
-		li[i].style.display = "none";
+		classDiv.style.display = "none";
 	    }
 	}
     }
