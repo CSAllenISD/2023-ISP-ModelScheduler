@@ -24,7 +24,7 @@ final class Courses: Model, Content {
     var dcDays: String?
     
     @Field(key: "period")
-    var period: Int
+    var period: CoursePeriod
 
     @Field(key: "location")
     var location: String
@@ -40,7 +40,7 @@ final class Courses: Model, Content {
     
     init() { }
 
-    init(id: Int? = nil, code: String, semester: Int, section: String, name: String, dcDays: String? = nil, period: Int, loaction: String, credits: Float, size: Int, seatsTaken: Int){ 
+    init(id: Int? = nil, code: String, semester: Int, section: String, name: String, dcDays: String? = nil, period: CoursePeriod, loaction: String, credits: Float, size: Int, seatsTaken: Int){
         self.id = id
         self.code = code
         self.semester = semester
