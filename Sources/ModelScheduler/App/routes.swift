@@ -71,26 +71,54 @@ func routes(_ app: Application) throws {
                
         if userExist != nil{
             if userExist?.isActive == 0 {
-                let error = CustomError(error: "Email has already been sent, click the link in your email to proceed.")
-                return error
+                let curTime = Date()
+                let updatedAtTime = userExist?.updatedAt
+                if updatedAtTime!.distance(to: curTime) > Double(180) {
+
+                    let emailApi = ModelScheduler.getEnvString("EMAIL_API")
+                    let response = try await req.client.post("\(emailApi)") { req in
+                        let contact = contact(firstName: "", lastName: "", emailAddress: create.email)
+                        let emailData = EmailData(contact: contact,
+                                                  templateName: "cmwModelSchedulerVerification",
+                                                  templateParameters:
+                                                    "{\"firstName\": \"\(create.firstName)\", \"lastName\": \"\(create.lastName)\", \"token\": \":\(verifyToken)\"}")
+                        
+                        try req.content.encode(emailData)
+                        
+                        req.headers.add(name: "apiKey", value: ModelScheduler.getEnvString("EMAIL_APIKEY"))
+                    }
+
+                    try await User.query(on: req.db)
+                      .set(\.$token, to: verifyToken)
+                      .filter(\.$email == hashedEmail.hex)
+                      .update()
+                    
+                    let error = CustomError(error: "Another email has been sent, click the link in your email to proceed.")
+                    return error
+                }
+                else {
+                    let error = CustomError(error: "Please wait 3 minutes before trying again.")
+                    return error
+                }
             }
         }
         else {
-            let content = req.view.render("Emails/verifyAccount.leaf", ["email": create.email, "token": verifyToken])
-            content.flatMapThrowing{ content in
-                let contentString = String(buffer: content.data)
-                let message = MailgunMessage(
-                  from: "ModelScheduler@gmail.com",
-                  to: create.email,
-                  subject: "Verify your Model Scheduler account.",
-                  text: "",
-                  html: contentString
-                )
-                req.mailgun().send(message)
+            let emailApi = ModelScheduler.getEnvString("EMAIL_API")
+            let response = try await req.client.post("\(emailApi)") { req in
+                let contact = contact(firstName: "", lastName: "", emailAddress: create.email)
+                let emailData = EmailData(contact: contact,
+                                          templateName: "cmwModelSchedulerVerification",
+                                          templateParameters:
+                                            "{\"firstName\": \"\(create.firstName)\", \"lastName\": \"\(create.lastName)\", \"token\": \":\(verifyToken)\"}")
+                
+                try req.content.encode(emailData)
+
+                req.headers.add(name: "apiKey", value: ModelScheduler.getEnvString("EMAIL_APIKEY"))
             }
+            //print("RESPONSE: \n \(response)")
             
             try await user.save(on: req.db)
-            let error = CustomError(error: "Click the link in your email to complete account creation.")
+            let error = CustomError(error: "Click the link in your email to complete account creation. If you did not recieve an email please wait 3 minutes and then try again.")
             return error
             
         }
@@ -138,11 +166,11 @@ func routes(_ app: Application) throws {
 
       
     // Authenticate the user and redirect to class selection page
-    let sessions = app//.grouped([User.sessionAuthenticator(), User.customAuthenticator()])
+    let sessions = app.grouped([User.sessionAuthenticator(), User.customAuthenticator()])
     sessions.post("login") { req -> Response in
-        // let user = try req.content.decode(User.self)
-//        let user = try req.auth.require(User.self)
- //       req.auth.login(user)      
+        //let user = try req.content.decode(User.self)
+        let user = try req.auth.require(User.self)
+        req.auth.login(user)      
         return req.redirect(to: "./classes")
     }
 
@@ -152,11 +180,11 @@ func routes(_ app: Application) throws {
     /// START CORE SITE ENDPOINTS
 
     // Create protected route group which requires user auth. 
-    let protected = sessions//.grouped(User.redirectMiddleware(path: "./login"))
+    let protected = sessions.grouped(User.redirectMiddleware(path: "./login"))
 
     
     protected.get("scheduler") {req -> View in
-        //        let user = try req.auth.require(User.self)
+        let user = try req.auth.require(User.self)
 
         return try await req.view.render("scheduler.html")
     }
@@ -164,12 +192,12 @@ func routes(_ app: Application) throws {
     
     // Check if the user already has a saved schedule. If true, continue to scheduler page. If False, render class selection page
     protected.get("classes") { req -> View in
-        //let user = try req.auth.require(User.self)
-        //let courses = try await Courses.query(on: req.db).paginate(for: req)
+        let user = try req.auth.require(User.self)
+        let courses = try await Courses.query(on: req.db).paginate(for: req)
         
-        //if try await UserSchedule.query(on: req.db).filter(\.$userId == user.id!).first() != nil {
-        //    req.redirect(to: "./index")
-        //}
+        if try await UserSchedule.query(on: req.db).filter(\.$userId == user.id!).first() != nil {
+            req.redirect(to: "./index")
+        }
         
         return try await req.view.render("classes.html")
     }
@@ -184,7 +212,7 @@ func routes(_ app: Application) throws {
     
     // Load the saved schedule if it exists. If not, continue normally.
     protected.get("index") {req -> View in
-        //try req.auth.require(User.self)
+        try req.auth.require(User.self)
         return try await req.view.render("index.html")
     }
 
@@ -269,6 +297,18 @@ struct SchedulerContext: Encodable {
     
     let schedule: UserSchedule
     
+}
+
+struct contact: Content {
+    let firstName: String
+    let lastName: String
+    let emailAddress: String
+}
+
+struct EmailData: Content {
+    let contact: contact
+    let templateName: String
+    let templateParameters: String
 }
 
 struct CustomError: Content {

@@ -4,21 +4,25 @@ const loginErrorMsg = document.getElementById("login-error-msg");
 
 loginButton.addEventListener("click", (e) => {
     e.preventDefault();
+    const firstName = loginForm.firstName.value;
+    const lastName = loginForm.lastName.value;
     const email = loginForm.email.value;
 
-    sendAccountCreate(email);
+    sendAccountCreate(firstName, lastName, email);
     
 })
 
-async function sendAccountCreate(email) {
+async function sendAccountCreate(firstName, lastName, email) {
     const response = await fetch("./createuser", {
 	method: 'POST',
 	headers: {
 	    'Accept': 'application/json',
 	    'Content-Type': 'application/json'
 	},
-	body: `{"email": "${email}"}`,
+	body: JSON.stringify({firstName: firstName, lastName: lastName, email: email}),
     });
+
+    console.log(response);
 
     response.json().then(data => {
 	//const alertString = JSON.parse(data);

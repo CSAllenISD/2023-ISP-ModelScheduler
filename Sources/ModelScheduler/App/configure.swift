@@ -10,17 +10,6 @@ func configure(_ app: Application) throws {
     app.views.use(.leaf)
 
     // Configuration
-    func getEnvString(_ path: String, _ defaultReturn: String = "") -> String {
-        guard let variable = Environment.get(path) else {
-            app.logger.warning("Failed to read environment variable: \(path) defaulting to `\(defaultReturn)`")
-
-            return defaultReturn
-        }
-
-        return variable
-    }
-
-    
     app.mailgun.configuration = .init(apiKey: getEnvString("MAILGUN_APIKEY"))
     app.mailgun.defaultDomain = MailgunDomain(getEnvString("MAILGUN_DOMAIN"), .us)
     
@@ -55,3 +44,14 @@ func configure(_ app: Application) throws {
     // register routes
     try routes(app)
 }
+public func getEnvString(_ path: String, _ defaultReturn: String = "") -> String {
+    guard let variable = Environment.get(path) else {
+        app.logger.warning("Failed to read environment variable: \(path) defaulting to `\(defaultReturn)`")
+        
+        return defaultReturn
+    }
+    
+    return variable
+}
+
+    
