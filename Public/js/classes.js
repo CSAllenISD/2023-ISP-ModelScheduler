@@ -312,18 +312,18 @@ function getClassDiv(course) {
 	input = document.getElementById('search');
 	filter = input.value.toUpperCase();
 	console.log(filter);
-	ul = document.getElementById("availableCourses");
-	li = ul.getElementsByTagName('li');
 
 	// Loop through all list items, and hide those who don't match the search query
-	for (i = 0; i < li.length; i++) {
-	    p = li[i].getElementsByTagName("p")[0];
-	    txtValue = p.innerText || p.textContent;
-	    console.log(txtValue)
+	classDivs = document.getElementsByClassName("selectedClass");
+	for(i=0; i < classDivs.length; i++) {
+	    classDiv = classDivs[i];
+	    txtValue = classDiv.getElementsByClassName("title")[0].innerHTML;
+
+	    //needs to check if the course is already selected before it display again
 	    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-		li[i].style.display = "";
+		classDiv.style.display = "";
 	    } else {
-		li[i].style.display = "none";
+		classDiv.style.display = "none";
 	    }
 	}
     }
