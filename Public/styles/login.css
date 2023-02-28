@@ -43,6 +43,7 @@ input::placeholder {
 .form input {
 	outline: 0;
 	padding: 0.5rem 1rem;
+	color: white;
 }
 .form input[type="email"],
 .form input[type="password"] {
