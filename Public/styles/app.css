@@ -465,6 +465,24 @@ body {
     line-height: 1.5;
 }
 
+.selectedClass .location {
+    margin: 2px 0 2px;
+    padding: 0 3px 0 3px;
+    text-align: center;
+    border-radius: 10px;
+    line-height: 1.5;
+}
+
+.selectedClass #AHS {
+    border: 2px solid red;
+}
+.selectedClass #STEAM {
+    border: 2px solid blue;
+}
+.selectedClass #CTC {
+    border: 2px solid yellow;
+}
+
 .selectedClass .demand {
     min-width: 30%;
     margin-top: 8px;
