@@ -176,7 +176,10 @@ function dragEnd(ev) {
 
 // remove it
 function dragPlacedEnd(ev) {
-    if (wasSame) return;
+    if (wasSame) {
+	wasSame = false;
+	return;
+    }
     
     const oldClass = ev.target.dataset.classcode;
     
