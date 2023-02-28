@@ -81,24 +81,50 @@ function addCourse(id) {
     var course = courseItem.innerText.replace("Add", "");
     
     var selectedList = document.getElementById("selectedCourses");
-    var newItem = document.createElement("li");
-    //newItem.appendChild(document.createTextNode(course));
-    
-    const pTag = document.createElement("p");
-    pTag.appendChild(document.createTextNode(course));
-    newItem.appendChild(pTag)
-    
-    
+
+    //start creating document
+    //create class div
+    let classDiv = document.createElement("div");
+    classDiv.classList.add("selectedClass");
+    classDiv.setAttribute("id", course.code);
+
+    //create div which contains title and id
+    let textDiv = document.createElement("div");
+    textDiv.classList.add("classText");
+    classDiv.appendChild(textDiv);
+
+    //class text
+    let classP = document.createElement("span")
+    classP.appendChild(document.createTextNode(course.name))
+    classP.classList.add('title')
+    textDiv.appendChild(classP)
+
+    //id text
+    let idP = document.createElement('span');
+    idP.appendChild(document.createTextNode(course.code));
+    idP.classList.add("id");
+    textDiv.appendChild(idP);
+
+    //create period bubbles
+    let periodDiv = document.createElement("div");
+    periodDiv.classList.add("periods");
+    classDiv.appendChild(periodDiv);
+    //course is no longer an object so this doesn't work
+    /*for (let i = 0; i < course.period.length; i++) {
+	let periodP = document.createElement("p");
+	periodP.classList.add("period");
+	periodP.appendChild(document.createTextNode(i+1))
+
+	periodDiv.appendChild(periodP);
+    }*/
     var removeButton = document.createElement("button");
     removeButton.setAttribute("class", "removeButton");
     removeButton.setAttribute("onclick", "removeCourse('" + id + "')");
     removeButton.appendChild(document.createTextNode("Remove"));
     
-    newItem.appendChild(removeButton);
-    newItem.setAttribute("id", id);
-    selectedList.appendChild(newItem);
-    
-    availableList.removeChild(courseItem);
+    classDiv.appendChild(removeButton);
+    selectedCourses.appendChild(classDiv)
+    selectedList.removeChild(courseItem);
     
     var courses = [];
     for (const child of selectedList.children) {
@@ -206,7 +232,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 			classP.appendChild(document.createTextNode(course.name))
 			classP.classList.add('title')
 			textDiv.appendChild(classP)
-			availableCourses.appendChild(classDiv)
 
 			//id text
 			let idP = document.createElement('span');
@@ -246,9 +271,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 			removeCourse(course.code);
 			remButton.appendChild(document.createTextNode("Remove"));
 			
-			courseItem.appendChild(remButton);
-			courseItem.id = course.code;
-			selectedCourses.appendChild(courseItem);
+			classDiv.appendChild(remButton);
+			selectedCourses.appendChild(classDiv);
 		    } else {
 			const addButton = document.createElement("button");
 			addButton.classList.add("addButton");
@@ -256,6 +280,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 			addButton.appendChild(document.createTextNode("Add"));
 			
 			classDiv.appendChild(addButton);
+			availableCourses.appendChild(classDiv);
 		    }
 		    }
 		}

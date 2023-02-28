@@ -223,6 +223,7 @@ body {
 
 #scheduleViewer > div {
     border-radius: 10px;
+    user-select: none;
     padding: 1rem;
     text-align: center;
     display: table;
