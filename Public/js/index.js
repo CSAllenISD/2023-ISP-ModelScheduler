@@ -1,6 +1,8 @@
 var courses = [];
 var selectedSemester = "fall";
 var unsavedSchedule = {fall: {}, spring: {}};
+var isDragging = false;
+var wasSame = true;
 
 document.addEventListener("DOMContentLoaded", async function () {
 	//Waits for HTML DOM content to load
@@ -93,6 +95,14 @@ document.addEventListener("DOMContentLoaded", async function () {
 		    let periodDiv = document.createElement("div");
 		    periodDiv.classList.add("periods");
 		    classDiv.appendChild(periodDiv);
+
+		    //create the location
+		    let locationP = document.createElement("p");
+		    locationP.id = `${course.location}`
+		    locationP.classList.add("location")
+		    locationP.appendChild(document.createTextNode(course.location));
+		    periodDiv.appendChild(locationP);
+		    
 		    for (let i = 0; i < course.period.length; i++) {
 			let periodP = document.createElement("p");
 			periodP.classList.add("period");
@@ -160,11 +170,16 @@ function dragEnd(ev) {
     for (var i = 0; i < invalidPeriodElements.length; i++) {
 	invalidPeriodElements[i].classList.remove("invalid")
     }
+
+    isDragging = false;
 }
 
 // remove it
 function dragPlacedEnd(ev) {
+    if (wasSame) return;
+    
     const oldClass = ev.target.dataset.classcode;
+    
     if (oldClass) {
 	dragEnd(null);
 	ev.target.dataset.classcode = null;
@@ -180,6 +195,8 @@ function dragPlacedEnd(ev) {
     droppedClassElement.style.display = "inline-block"; //show class from list
     
     saveCurrentSchedule();
+
+    isDragging = false;
 }
 
 function highlightValidPeriods(classCode) {
@@ -220,6 +237,8 @@ function drag(ev) {
     highlightValidPeriods(ev.target.id);
 
     // console.log(ev.dataTransfer.getData("text/plain"))
+
+    isDragging = true;
 }
 
 function dragPlaced(ev) {
@@ -230,9 +249,12 @@ function dragPlaced(ev) {
     
     // console.log(`${ev.target.dataset.classcode}`);
     // console.log(ev.dataTransfer.getData('text/plain'));
+
+    isDragging = true;
 }
 
 function hoverClassSelector(ev) {
+    if (isDragging) return;
     if (!ev.target.classList.contains("selectedClass")) {
 	var ele = ev.target;
 	while (ele.parentElement != null) {
@@ -249,6 +271,7 @@ function hoverClassSelector(ev) {
 }
 
 function drop(ev, target) {
+    console.log(ev);
     if (!ev.target.classList.contains("valid")) {
 	ev.preventDefault();
 	return;
@@ -260,11 +283,19 @@ function drop(ev, target) {
     droppedClassElement.style.display = "none"; //hide class from list
 
     const course = courses.items.find(a => a.code == droppedClass);
-
-    // console.log(droppedClass);
-    // console.log(course);
     
     ev.preventDefault();
+
+    const oldClass = ev.dataTransfer.getData('text/oldclass');
+    console.log(ev.target.id, oldClass);
+    if (oldClass == ev.target.id) {
+	dragEnd(null);
+	wasSame = true;
+	setTimeout(() => {
+	    wasSame = false;
+	}, 100);
+	return;
+    }
 
     ev.target.dataset.classcode = droppedClass;
     ev.target.classList.add("notEmpty");
@@ -274,7 +305,6 @@ function drop(ev, target) {
     
     ev.target.firstElementChild.innerText = course.name;
 
-    const oldClass = ev.dataTransfer.getData('text/oldclass');
     if (oldClass) {
 	dragEnd(null);
 	if (oldClass != ev.target.id) {
@@ -289,6 +319,8 @@ function drop(ev, target) {
     }
 
     saveCurrentSchedule();
+
+    isDragging = false;
 }
 
 //for dark mode
