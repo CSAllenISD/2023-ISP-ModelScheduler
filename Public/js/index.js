@@ -133,7 +133,7 @@ function saveCurrentSchedule() {
 	const periodEle = document.getElementById(periods[i]);
 	const classID = periodEle.dataset.classcode;
 	if(classID == null || classID == "null") continue;
-
+	
 	if (classID) {
 	    schedule[periods[i]] = classID;
 	}
@@ -175,6 +175,12 @@ function dragPlacedEnd(ev) {
 	ev.target.firstElementChild.innerText = "Empty";
     }
 
+    const droppedClass = ev.dataTransfer.getData('text/plain');
+    const droppedClassElement = document.getElementById(droppedClass);
+
+    droppedClassElement.style.display = "block"; //show class from list
+
+    
     saveCurrentSchedule();
 }
 
@@ -223,7 +229,7 @@ function dragPlaced(ev) {
     ev.dataTransfer.setData('text/oldclass', `${ev.target.id}`);
 
     highlightValidPeriods(ev.target.dataset.classcode);
-
+    
     // console.log(`${ev.target.dataset.classcode}`);
     // console.log(ev.dataTransfer.getData('text/plain'));
 }
@@ -252,6 +258,8 @@ function drop(ev, target) {
     
     const droppedClass = ev.dataTransfer.getData('text/plain');
     const droppedClassElement = document.getElementById(droppedClass);
+
+    droppedClassElement.style.display = "none"; //hide class from list
 
     const course = courses.items.find(a => a.code == droppedClass);
 
