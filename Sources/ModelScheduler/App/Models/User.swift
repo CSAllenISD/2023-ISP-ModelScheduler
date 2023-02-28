@@ -20,15 +20,20 @@ final class User: Model, Content {
 
     @Field(key: "isActive")
     var isActive: Int
+
+    @Timestamp(key: "updatedAt", on: .update, format: .default)
+    var updatedAt: Date?
+
     
     init() { }
 
-    init(id: Int? = nil, email: String, passwordHash: String, token: String? = nil, isActive: Int = 0) {
+    init(id: Int? = nil, email: String, passwordHash: String, token: String? = nil, isActive: Int = 0, updatedAt: Date? = nil) {
         self.id = id
         self.email = email
         self.passwordHash = passwordHash
         self.token = token
         self.isActive = isActive
+        self.updatedAt = updatedAt
     }
 
     
@@ -37,6 +42,8 @@ final class User: Model, Content {
 
 extension User {
     struct Email: Content {
+        var firstName: String
+        var lastName: String
         var email: String
     }
 
@@ -49,6 +56,8 @@ extension User {
 
 extension User.Email: Validatable {
     static func validations(_  validations: inout Validations){
+        validations.add("firstName", as: String.self, is: !.empty)
+        validations.add("lastName", as: String.self, is: !.empty)
         validations.add("email", as: String.self, is: .studentEmail)
     }
 }
