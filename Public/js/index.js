@@ -281,6 +281,7 @@ function drop(ev, target) {
     const oldClass = ev.dataTransfer.getData('text/oldclass');
     console.log(ev.target.id, oldClass);
     if (oldClass == ev.target.id) {
+	dragEnd(null);
 	wasSame = true;
 	setTimeout(() => {
 	    wasSame = false;
