@@ -2,37 +2,37 @@
 :root.light {
     --text: #000;
     --navbar: #bfd7ea;
-	--navbar-labels: #000;
-	--buttons: #bfd7ea;
-	--bg-color: #fff;
-	--bg-color2: #fff;
-	--aDay: red;
-	--bDay: blue;
-	--classes-bg: rgb(200,200,200);
-	--class: rgb(225,225,225);
-	--hover-class: rgb(216,216,216);
-	--gray-box: rgb(200,200,200);
-	--search: white;
-	--valid: rgb(183, 217, 177);
-	--invalid: rgb(247, 102, 94);
+    --navbar-labels: #000;
+    --buttons: #bfd7ea;
+    --bg-color: #fff;
+    --bg-color2: #fff;
+    --aDay: red;
+    --bDay: blue;
+    --classes-bg: rgb(200,200,200);
+    --class: rgb(225,225,225);
+    --hover-class: rgb(216,216,216);
+    --gray-box: rgb(200,200,200);
+    --search: white;
+    --valid: rgb(183, 217, 177);
+    --invalid: rgb(247, 102, 94);
 }
 
 :root.dark {
     --text: #fff;
-	--navbar: #151b66;
-	--navbar-labels: #fff;
-	--buttons: #151b66;
-	--bg-color: #222222;
-	--bg-color2: #434343;
-	--aDay: #bd2d28;
-	--bDay: #151b66;
-	--classes-bg: rgb(60,60,60);
-	--class: rgb(100,100,100);
-	--hover-class: rgb(115,115,115);
-	--gray-box: rgb(60,60,60);
-	--search: rgb(100,100,100);
-	--valid: rgb(183, 217, 177);
-	--invalid: rgb(247, 102, 94);
+    --navbar: #151b66;
+    --navbar-labels: #fff;
+    --buttons: #151b66;
+    --bg-color: #2b2b2b;
+    --bg-color2: #2b2b2b;
+    --aDay: #bd2d28;
+    --bDay: #151b66;
+    --classes-bg: rgb(60,60,60);
+    --class: rgb(100,100,100);
+    --hover-class: rgb(115,115,115);
+    --gray-box: rgb(60,60,60);
+    --search: rgb(100,100,100);
+    --valid: rgb(183, 217, 177);
+    --invalid: rgb(247, 102, 94);
 }
 
 * {
