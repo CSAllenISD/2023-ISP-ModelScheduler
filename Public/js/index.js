@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 	Object.keys(semester).forEach(id => {
 	    const ele = document.getElementById(id);
 	    const course = courses.items.find(a => a.code == semester[id]);
-	    if (!course) return;
+	    if (!course || !ele) return;
 	    
 	    ele.dataset.classcode = course.code;
 	    ele.classList.add("notEmpty");
@@ -125,8 +125,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 function saveCurrentSchedule() {
     const periods = [
-	"P0-AHS-A", "P1-AHS-A", "P2-AHS-A", "P3-AHS-A", "P4-AHS-A", "P5-AHS-B", "P6-AHS-B", "P7-AHS-B", "P8-AHS-A",
-	"P0-STE-A", "P1-STE-A", "P2-STE-A", "P3-STE-A", "P4-STE-A", "P5-STE-B", "P6-STE-B", "P7-STE-B", "P8-STE-A"
+	"P0-S1-A", "P1-S1-A", "P2-S1-A", "P3-S1-A", "P4-S1-A", "P5-S1-B", "P6-S1-B", "P7-S1-B", "P8-S1-A",
+	"P0-S2-A", "P1-S2-A", "P2-S2-A", "P3-S2-A", "P4-S2-A", "P5-S2-B", "P6-S2-B", "P7-S2-B", "P8-S2-A"
     ]
 
     let schedule = {};
@@ -206,7 +206,7 @@ function highlightValidPeriods(classCode) {
     for (let i = 0; i < periods.length; i++) {
 	const period = periods[i];
 	const isA = period <= 4 || period == 8;
-	const periodID = `P${period}-${isAHS ? "AHS" : "STE"}-${isA ? "A" : "B"}`;
+	const periodID = `P${period}-S${course.semester}-${isA ? "A" : "B"}`;
 	const periodElement = document.getElementById(periodID);
 	if (periodElement) {
 	    periodElement.classList.add("valid");
@@ -272,7 +272,7 @@ function drop(ev, target) {
     const droppedClass = ev.dataTransfer.getData('text/plain');
     const droppedClassElement = document.getElementById(droppedClass);
 
-    droppedClassElement.style.display = "none"; //hide class from list
+    droppedClassElement.style.display = "none"; // hide class from list
 
     const course = courses.items.find(a => a.code == droppedClass);
     
