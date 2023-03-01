@@ -290,7 +290,11 @@ function getClassDiv(course) {
     locationP.appendChild(document.createTextNode(course.location));
     periodDiv.appendChild(locationP);
     
+    //loop to create each period bubble
+    console.log(course.period)
     for (let i = 0; i < course.period.length; i++) {
+	console.log("ran")
+	console.log(course[i].period)
 	let periodP = document.createElement("p");
 	periodP.classList.add("period");
 	periodP.appendChild(document.createTextNode(i+1))
