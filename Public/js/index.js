@@ -29,76 +29,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     
     courses = await getCoursesFromServer();
 
-        
-    if (courses != null) {
-	for (let i = 0; i < courses?.items?.length; i++) {
-	    const course = courses.items[i];
-	    
-	    if (selectedCourses.includes(course.code)) {
-		if (document.getElementById(course.code) == null) {
-		    let classDiv = document.createElement("div");
-		    classDiv.classList.add("selectedClass");
-		    classDiv.setAttribute("draggable", true);
-		    classDiv.setAttribute("id", course.code);
-		    classDiv.addEventListener('dragstart', (event) => { drag(event) });
-		    classDiv.addEventListener('dragend', (event) => { dragEnd(event) });
-		    classDiv.addEventListener('mouseover', (event) => { hoverClassSelector(event) });
-		    classDiv.addEventListener('mouseleave', (event) => { dragEnd(event) });
-
-		    let textDiv = document.createElement("div");
-		    textDiv.classList.add("classText");
-		    classDiv.appendChild(textDiv);
-		    
-		    let classP = document.createElement("span")
-		    classP.appendChild(document.createTextNode(course.name))
-		    classP.classList.add('title')
-		
-		    textDiv.appendChild(classP)
-
-		    classes.appendChild(classDiv)
-
-		    let idP = document.createElement('span');
-		    idP.appendChild(document.createTextNode(course.code));
-		    idP.classList.add("id");
-		    textDiv.appendChild(idP);
-		    
-		    
-		    let periodDiv = document.createElement("div");
-		    periodDiv.classList.add("periods");
-		    classDiv.appendChild(periodDiv);
-
-		    //create the location
-		    let locationP = document.createElement("p");
-		    locationP.id = `${course.location}`
-		    locationP.classList.add("location")
-		    locationP.appendChild(document.createTextNode(course.location));
-		    periodDiv.appendChild(locationP);
-		    
-		    for (let i = 0; i < course.period.length; i++) {
-			let periodP = document.createElement("p");
-			periodP.classList.add("period");
-			periodP.appendChild(document.createTextNode(i+1))
-			
-			periodDiv.appendChild(periodP);
-		    }
-
-		    let demandDiv = document.createElement("div");
-		    demandDiv.classList.add("demand");
-		    classDiv.appendChild(demandDiv);
-
-		    for(let i = 0; i < 3; i++) {
-			let demandImg = document.createElement("img");
-			demandImg.src = "images/fire.png"
-			demandImg.setAttribute("draggable", false);
-			demandDiv.appendChild(demandImg);
-		    }
-		}
-		
-		
-	    }
-	}
-    }
-
+    reloadCourseList(courses)
+ 
     const unsavedScheduleStr = localStorage.getItem("unsavedSchedule");
     if (unsavedScheduleStr) {
 	unsavedSchedule = JSON.parse(unsavedScheduleStr);
@@ -147,6 +79,79 @@ function saveCurrentSchedule() {
     unsavedSchedule[selectedSemester] = schedule;
 
     localStorage.setItem("unsavedSchedule", JSON.stringify(unsavedSchedule));
+}
+
+function reloadCourseList(courses) {
+    const selectedCourses = localStorage.getItem("courses")
+    
+    if (courses != null) {
+    for (let i = 0; i < courses?.items?.length; i++) {
+	const course = courses.items[i];
+	
+	if (selectedCourses.includes(course.code)) {
+	    if (document.getElementById(course.code) == null) {
+		let classDiv = document.createElement("div");
+		classDiv.classList.add("selectedClass");
+		classDiv.setAttribute("draggable", true);
+		classDiv.setAttribute("id", course.code);
+		classDiv.addEventListener('dragstart', (event) => { drag(event) });
+		classDiv.addEventListener('dragend', (event) => { dragEnd(event) });
+		classDiv.addEventListener('mouseover', (event) => { hoverClassSelector(event) });
+		classDiv.addEventListener('mouseleave', (event) => { dragEnd(event) });
+		
+		let textDiv = document.createElement("div");
+		textDiv.classList.add("classText");
+		classDiv.appendChild(textDiv);
+		
+		let classP = document.createElement("span")
+		classP.appendChild(document.createTextNode(course.name))
+		classP.classList.add('title')
+		
+		textDiv.appendChild(classP)
+		
+		classes.appendChild(classDiv)
+		
+		let idP = document.createElement('span');
+		idP.appendChild(document.createTextNode(course.code));
+		idP.classList.add("id");
+		textDiv.appendChild(idP);
+		
+		
+		let periodDiv = document.createElement("div");
+		periodDiv.classList.add("periods");
+		classDiv.appendChild(periodDiv);
+		
+		//create the location
+		let locationP = document.createElement("p");
+		locationP.id = `${course.location}`
+		locationP.classList.add("location")
+		locationP.appendChild(document.createTextNode(course.location));
+		periodDiv.appendChild(locationP);
+		
+		for (let i = 0; i < course.period.length; i++) {
+		    let periodP = document.createElement("p");
+		    periodP.classList.add("period");
+		    periodP.appendChild(document.createTextNode(i+1))
+		    
+		    periodDiv.appendChild(periodP);
+		}
+		
+		let demandDiv = document.createElement("div");
+		demandDiv.classList.add("demand");
+		classDiv.appendChild(demandDiv);
+		
+		for(let i = 0; i < 3; i++) {
+		    let demandImg = document.createElement("img");
+		    demandImg.src = "images/fire.png"
+		    demandImg.setAttribute("draggable", false);
+		    demandDiv.appendChild(demandImg);
+		}
+	    }
+	    
+		
+	}
+    }
+    }
 }
 
 function allowDrop(ev) {
@@ -204,7 +209,7 @@ function highlightValidPeriods(classCode) {
     let allPeriods = [];
     document.querySelectorAll(".class").forEach(a => allPeriods.push(a.id));
 
-    const periods = getPeriodsArray(course.period);
+    const periods = Array.isArray(course.period) ? course.period.map(a => parseInt(a)) : [course.period];
     const isAHS = course.location == "AHS";
 
     let validPeriodIDs = [];
@@ -274,11 +279,19 @@ function drop(ev, target) {
 	ev.preventDefault();
 	return;
     }
-    
+
     const droppedClass = ev.dataTransfer.getData('text/plain');
     const droppedClassElement = document.getElementById(droppedClass);
 
     droppedClassElement.style.display = "none"; // hide class from list
+
+    const classThere = ev.target.dataset.classcode; //gets the class already in the period
+    if (classThere) {
+	const oldEle = document.getElementById(classThere);
+	if (oldEle != null) {
+	    oldEle.style.display = "inline-block";
+	}
+    }
 
     const course = courses.items.find(a => a.code == droppedClass);
     
