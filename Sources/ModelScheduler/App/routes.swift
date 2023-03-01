@@ -240,6 +240,7 @@ func routes(_ app: Application) throws {
     // After recieving user schedule from front end store it in db and redirect to the final/print page
     protected.post("index") {req -> Response in
         let user = try req.auth.require(User.self)
+//        print(req)
         let schedule = try req.content.decode(UserSchedule.self)
         if let userSchedule = try await UserSchedule.query(on: req.db).filter(\.$userId == user.id!).first() {
             try await UserSchedule.query(on: req.db)
