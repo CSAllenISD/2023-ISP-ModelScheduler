@@ -212,6 +212,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 		for (let i = 0; i < courses?.items?.length; i++) {
 		    const course = courses.items[i];
 
+		    course.period = await getPeriodsArray(course.period);
+		    
 		    if (document.getElementById(course.code + "SC") == null && document.getElementById(course.code + "AC") == null) {
 
 			const classDivA = getClassDiv(course)
@@ -291,13 +293,11 @@ function getClassDiv(course) {
     periodDiv.appendChild(locationP);
     
     //loop to create each period bubble
-    console.log(course.period)
     for (let i = 0; i < course.period.length; i++) {
 	console.log("ran")
-	console.log(course[i].period)
 	let periodP = document.createElement("p");
 	periodP.classList.add("period");
-	periodP.appendChild(document.createTextNode(i+1))
+	periodP.appendChild(document.createTextNode(course.period[i]))
 	
 	periodDiv.appendChild(periodP);
     }

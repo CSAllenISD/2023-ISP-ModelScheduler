@@ -408,7 +408,7 @@ body {
 	width: 90%;
 	height: 65px;
 	margin-left: 5%;
-	margin-bottom: 3px;
+	margin-top: 3px;
 	background-color: var(--class);
 	border-radius: 5px;
 	cursor: move;
@@ -475,12 +475,15 @@ body {
 
 .selectedClass #AHS {
     border: 2px solid red;
+    width: 70px;
 }
 .selectedClass #STEAM {
     border: 2px solid blue;
+    width: 70px;
 }
 .selectedClass #CTC {
     border: 2px solid yellow;
+    width: 70px;
 }
 
 .selectedClass .demand {

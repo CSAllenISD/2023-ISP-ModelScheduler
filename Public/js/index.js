@@ -87,6 +87,8 @@ function reloadCourseList(courses) {
     if (courses != null) {
     for (let i = 0; i < courses?.items?.length; i++) {
 	const course = courses.items[i];
+	//change from bitmap to array
+	course.period = getPeriodsArray(course.period);
 	
 	if (selectedCourses.includes(course.code)) {
 	    if (document.getElementById(course.code) == null) {
@@ -131,7 +133,7 @@ function reloadCourseList(courses) {
 		for (let i = 0; i < course.period.length; i++) {
 		    let periodP = document.createElement("p");
 		    periodP.classList.add("period");
-		    periodP.appendChild(document.createTextNode(i+1))
+		    periodP.appendChild(document.createTextNode(course.period[i]))
 		    
 		    periodDiv.appendChild(periodP);
 		}
@@ -209,7 +211,7 @@ function highlightValidPeriods(classCode) {
     let allPeriods = [];
     document.querySelectorAll(".class").forEach(a => allPeriods.push(a.id));
 
-    const periods = getPeriodsArray(course.period);
+    const periods = course.period;
     const isAHS = course.location == "AHS";
 
     let validPeriodIDs = [];
