@@ -395,24 +395,48 @@ function darkMode() {
 //darkMode();
 
 async function getCoursesFromServer() {
-	return new Promise((resolve, reject) => {
-		const xhr = new XMLHttpRequest();
-		xhr.open("GET", "./classes/data");
-		xhr.send();
-		xhr.responseType = "json";
-		xhr.onload = () => {
-			if (xhr.readyState == 4 && xhr.status == 200) {
-				const data = xhr.response;
-				console.log(data);
-				resolve(data);
-			} else {
-				console.log(`Error: ${xhr.status}`);
-				reject(xhr.status);
-			}
-		};
-	});
+    return new Promise((resolve, reject) => {
+	const xhr = new XMLHttpRequest();
+	xhr.open("GET", "./classes/data");
+	xhr.send();
+	xhr.responseType = "json";
+	xhr.onload = () => {
+	    if (xhr.readyState == 4 && xhr.status == 200) {
+		const data = xhr.response;
+		console.log(data);
+		resolve(data);
+	    } else {
+		console.log(`Error: ${xhr.status}`);
+		reject(xhr.status);
+	    }
+	};
+    });
 }
 
+
+async function sendCoursesToServer() {
+    const response = await fetch("./index", {
+	method: 'POST',
+	headers: {
+	    'Accept': 'application/json',
+	    'Content-Type': 'application/json'
+	},
+	body: localStorage.getItem("unsavedSchedule"),
+    });
+
+    console.log(response);
+
+    response.json().then(data => {
+	//const alertString = JSON.parse(data);
+	//console.log(data)
+	if (data.reason){
+	    alert(data.reason);
+	}
+	else{
+	    alert(data.error);
+	}
+    });
+}
 window.onload = function () {
     
     
