@@ -31,26 +31,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     // courses = {};
     // courses.items = JSON.parse(`[ { "credits": 0.5, "code": "AS1241", "id": 2, "section": "T01", "size": 0, "semester": 1, "name": "Computer Science 2", "seatsTaken": 0, "location": "STEAM", "period":["1","2","3","4","5","6","7","8"] }, { "credits": 0.5, "code": "AS1241", "id": 3, "section": "T02", "size": 0, "semester": 2, "name": "Computer Science 2", "seatsTaken": 0, "location": "STEAM", "period": ["2"] }, { "credits": 0.5, "code": "TA2345", "id": 4, "section": "T04", "size": 0, "semester": 1, "name": "Computer Science 1", "seatsTaken": 0, "location": "STEAM", "period": ["3"] }, { "credits": 0.5, "code": "TA2345", "id": 5, "section": "T05", "size": 0, "semester": 2, "name": "Computer Science 1", "seatsTaken": 0, "location": "STEAM", "period": ["3"] }, { "credits": 0.5, "code": "TA3245", "id": 6, "section": "T07", "size": 0, "semester": 1, "name": "Physics", "seatsTaken": 0, "location": "AHS", "period": ["4"] }, { "credits": 0.5, "code": "TA3245", "id": 7, "section": "T08", "size": 0, "semester": 2, "name": "Physics", "seatsTaken": 0, "location": "AHS", "period": ["4"] }, { "credits": 0.5, "code": "TB2135", "id": 8, "section": "T09", "size": 0, "semester": 1, "name": "Calculus", "seatsTaken": 0, "location": "AHS", "period": ["5"] }, { "credits": 0.5, "code": "TB2135", "id": 9, "section": "T10", "size": 0, "semester": 2, "name": "Calculus", "seatsTaken": 0, "location": "AHS", "period": ["5"] }, { "credits": 0.5, "code": "TASDF", "id": 10, "section": "T11", "size": 0, "semester": 1, "name": "English", "seatsTaken": 0, "location": "AHS", "period": ["6"] }, { "credits": 0.5, "code": "TASDF", "id": 11, "section": "T12", "size": 0, "semester": 2, "name": "English", "seatsTaken": 0, "location": "AHS", "period": ["6"] } ]`)
 
-    const unsavedScheduleStr = localStorage.getItem("unsavedSchedule");
-    if (unsavedScheduleStr) {
-	unsavedSchedule = JSON.parse(unsavedScheduleStr);
-
-	const semester = unsavedSchedule[selectedSemester];
-	Object.keys(semester).forEach(id => {
-	    const ele = document.getElementById(id);
-	    const course = courses.items.find(a => a.code == semester[id]);
-	    if (!course || !ele) return;
-	    
-	    ele.dataset.classcode = course.code;
-	    ele.classList.add("notEmpty");
-	    ele.setAttribute("draggable", true);
-	    ele.addEventListener("dragstart", dragPlaced);
-	    ele.addEventListener("dragend", dragPlacedEnd);
-	    
-	    ele.firstElementChild.innerText = course.name;
-	});
-    }
-    
+        
     if (courses != null) {
 	// for (let i = 0; i < selectedCourses.length; i++) {
 	//     var newTr = document.createElement("tr");
@@ -62,7 +43,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 	for (let i = 0; i < courses?.items?.length; i++) {
 	    const course = courses.items[i];
-
+	    
 	    if (selectedCourses.includes(course.code)) {
 		if (document.getElementById(course.code) == null) {
 		    let classDiv = document.createElement("div");
@@ -122,11 +103,35 @@ document.addEventListener("DOMContentLoaded", async function () {
 			demandDiv.appendChild(demandImg);
 		    }
 		}
-
+		
 		
 	    }
 	}
     }
+
+    const unsavedScheduleStr = localStorage.getItem("unsavedSchedule");
+    if (unsavedScheduleStr) {
+	unsavedSchedule = JSON.parse(unsavedScheduleStr);
+	
+	const semester = unsavedSchedule[selectedSemester];
+	Object.keys(semester).forEach(id => {
+	    const ele = document.getElementById(id);
+	    const course = courses.items.find(a => a.code == semester[id]);
+	    if (!course || !ele) return;
+	    
+	    ele.dataset.classcode = course.code;
+	    ele.classList.add("notEmpty");
+	    ele.setAttribute("draggable", true);
+	    ele.addEventListener("dragstart", dragPlaced);
+	    ele.addEventListener("dragend", dragPlacedEnd);
+	    
+	    ele.firstElementChild.innerText = course.name;
+
+	    const classListItem = document.getElementById(course.code)
+	    classListItem.style.display = "none";
+	});
+    }
+    
 });
 //all the bs for dragging and dropping goes here, wish me luck
 //document.addEventListener("DOMContentLoaded", (event) => {
