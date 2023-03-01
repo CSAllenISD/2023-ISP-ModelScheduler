@@ -1,23 +1,45 @@
-function updateClassSchedule() {
-	document.querySelectorAll(".class").forEach((it) => (it.innerHTML = "Empty"));
+async function updateClassSchedule() {
+    document.querySelectorAll(".class").forEach((it) => (it.innerHTML = "Empty"));
+
+    const courses = await getCoursesFromServer();
+
+    const unsavedScheduleStr = localStorage.getItem("unsavedSchedule");
+    if (unsavedScheduleStr) {
+	unsavedSchedule = JSON.parse(unsavedScheduleStr);
+	
+	const semester = unsavedSchedule["fall"];
+	Object.keys(semester).forEach(id => {
+	    const ele = document.getElementById(id);
+	    const course = courses.items.find(a => a.code == semester[id]);
+	    if (!course || !ele) return;
+	    
+	    ele.dataset.classcode = course.code;
+	    ele.classList.add("notEmpty");
+	    ele.setAttribute("draggable", false);
+		    
+	    ele.innerText = course.name;
+	});
+    }
 }
 
-updateClassSchedule();
+
 //dark mode and light mode feature
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
 	//Waits for HTML DOM content to load
-	const dmButton = document.getElementById("darkmodeButton"); //Gets darkMode button id
+    const dmButton = document.getElementById("darkmodeButton"); //Gets darkMode button id
+    
+    if (dmButton) {
+	//Checks whether or not button was clicked for debug purposes
+	dmButton.addEventListener("click", function () {
+	    console.log("Button was clicked!");
+	});
+    } else {
+	console.error("Element with id 'darkMode' not found");
+    }
+    
+    dmButton.addEventListener("click", toggleDm);
 
-	if (dmButton) {
-		//Checks whether or not button was clicked for debug purposes
-		dmButton.addEventListener("click", function () {
-			console.log("Button was clicked!");
-		});
-	} else {
-		console.error("Element with id 'darkMode' not found");
-	}
-
-	dmButton.addEventListener("click", toggleDm);
+    updateClassSchedule();    
 });
 
 window.onload = function () {
@@ -78,4 +100,23 @@ function darkMode() {
 	dmButton.innerHTML = "Toggle Dark Mode";
 	document.body.appendChild(dmButton);
 	document.getElementById("darkmode").src = "./images/moon.png";
+}
+
+async function getCoursesFromServer() {
+	return new Promise((resolve, reject) => {
+		const xhr = new XMLHttpRequest();
+		xhr.open("GET", "./classes/data");
+		xhr.send();
+		xhr.responseType = "json";
+		xhr.onload = () => {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				const data = xhr.response;
+				console.log(data);
+				resolve(data);
+			} else {
+				console.log(`Error: ${xhr.status}`);
+				reject(xhr.status);
+			}
+		};
+	});
 }
