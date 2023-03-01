@@ -209,7 +209,7 @@ function highlightValidPeriods(classCode) {
     let allPeriods = [];
     document.querySelectorAll(".class").forEach(a => allPeriods.push(a.id));
 
-    const periods = Array.isArray(course.period) ? course.period.map(a => parseInt(a)) : [course.period];
+    const periods = getPeriodsArray(course.period);
     const isAHS = course.location == "AHS";
 
     let validPeriodIDs = [];
