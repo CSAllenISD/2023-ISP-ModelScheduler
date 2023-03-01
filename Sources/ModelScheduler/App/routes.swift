@@ -204,10 +204,10 @@ func routes(_ app: Application) throws {
 
         
     // Endpoint for sending all classes
-    protected.get("classes", "data") {req -> Page<Courses> in
-        let courses = try await Courses.query(on: req.db).paginate(for: req)
-
-        return courses;
+    protected.get("classes", "data") {req -> CoursesContent in
+        let courses = try await Courses.query(on: req.db).all()
+        let coursesContent = CoursesContent(items: courses)
+        return coursesContent;
     }
     
     // Load the saved schedule if it exists. If not, continue normally.
@@ -297,6 +297,10 @@ struct SchedulerContext: Encodable {
     
     let schedule: UserSchedule
     
+}
+
+struct CoursesContent: Content {
+    let items: [Courses]
 }
 
 struct contact: Content {

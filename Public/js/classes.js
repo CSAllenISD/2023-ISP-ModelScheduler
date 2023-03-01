@@ -282,6 +282,14 @@ function getClassDiv(course) {
     let periodDiv = document.createElement("div");
     periodDiv.classList.add("periods");
     classDiv.appendChild(periodDiv);
+
+    //create location bubble
+    let locationP = document.createElement("p");
+    locationP.id = `${course.location}`
+    locationP.classList.add("location")
+    locationP.appendChild(document.createTextNode(course.location));
+    periodDiv.appendChild(locationP);
+    
     for (let i = 0; i < course.period.length; i++) {
 	let periodP = document.createElement("p");
 	periodP.classList.add("period");
