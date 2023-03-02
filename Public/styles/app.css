@@ -544,9 +544,9 @@ table .blueBox {
     
 }
 
-.selected {
+/*.selected {
     background-color: var(--buttons) !important;
-}
+}*/
 
 .switch:hover {
 	background: rgb(200, 200, 200);
