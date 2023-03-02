@@ -232,6 +232,8 @@ function dragPlacedEnd(ev) {
 	ev.target.removeEventListener("dragstart", dragPlaced);
 	ev.target.removeEventListener("dragend", dragPlacedEnd);
 	ev.target.firstElementChild.innerText = "Empty";
+	ev.target.children[1].innerText = "";
+	ev.target.children["time"].innerText = "";
     }
 
     const droppedClassElement = document.getElementById(oldClass);
