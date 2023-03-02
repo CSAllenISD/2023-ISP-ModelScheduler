@@ -165,11 +165,14 @@ function reloadCourseList(courses) {
 		periodDiv.appendChild(locationP);
 		
 		for (let i = 0; i < course.period.length; i++) {
-		    let periodP = document.createElement("p");
-		    periodP.classList.add("period");
-		    periodP.appendChild(document.createTextNode(course.period[i]))
+		    let period = course.period[i]
+		    if (period > -1 && period < 9) {
+			let periodP = document.createElement("p");
+			periodP.classList.add("period");
+			periodP.appendChild(document.createTextNode(course.period[i]))
 		    
-		    periodDiv.appendChild(periodP);
+			periodDiv.appendChild(periodP);
+		    }
 		}
 		
 		let demandDiv = document.createElement("div");
