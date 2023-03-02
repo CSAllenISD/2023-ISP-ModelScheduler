@@ -6,8 +6,10 @@
     --buttons: #bfd7ea;
     --bg-color: #fff;
     --bg-color2: #fff;
-    --aDay: red;
-    --bDay: blue;
+    /*aDay: red;
+    --bDay: blue;*/
+    --aDay: rgb(247,102,94);
+    --bDay: #bfd7ea;
     --classes-bg: rgb(200,200,200);
     --class: rgb(225,225,225);
     --hover-class: rgb(216,216,216);
@@ -15,6 +17,9 @@
     --search: white;
     --valid: rgb(183, 217, 177);
     --invalid: rgb(247, 102, 94);
+    --ahs: rgb(247, 102, 94);
+    --steam: #bfd7ea;
+    --ctc: #fffaa0;
 }
 
 :root.dark {
@@ -33,6 +38,9 @@
     --search: rgb(100,100,100);
     --valid: #4a8453;
     --invalid: #bd2d28;
+    --ahs: #bd2d28;
+    --steam: #151b66;
+    --ctc: #ffba26;
 }
 
 * {
@@ -176,6 +184,7 @@ body {
 	border-radius: 10px;
 	font-size: 24px;
 	color: var(--navbar-labels);
+	font-weight: bold;
 }
 
 .next {
@@ -456,6 +465,7 @@ body {
     margin-left: 5px;
     overflow: hidden;
     display: inline-flex;
+    font-weight: bold;
 }
 
 .selectedClass .period {
@@ -477,16 +487,19 @@ body {
 }
 
 .selectedClass #AHS {
-    border: 2px solid red;
+    border: 2px solid var(--ahs);
     width: 70px;
+    font-weight: bold;
 }
 .selectedClass #STEAM {
-    border: 2px solid blue;
+    border: 2px solid var(--steam);
     width: 70px;
+    font-weight: bold;
 }
 .selectedClass #CTC {
-    border: 2px solid yellow;
+    border: 2px solid var(--ctc);
     width: 70px;
+    font-weight: bold;
 }
 
 .selectedClass .demand {
