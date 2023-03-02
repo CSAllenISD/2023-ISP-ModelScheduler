@@ -323,19 +323,33 @@ function getClassDiv(course) {
 	var input, filter, ul, li, a, i, txtValue;
 	input = document.getElementById('search');
 	filter = input.value.toUpperCase();
-	console.log(filter);
 
 	// Loop through all list items, and hide those who don't match the search query
 	classDivs = document.getElementsByClassName("selectedClass");
+
+	//find selected courses
+	var selectedCourses = []
+	for(i=0; i < classDivs.length; i++) {
+	    classDiv = classDivs[i];
+	    
+	    if (classDiv.parentNode.id == "selectedCourses" && window.getComputedStyle(classDiv).display != "none") {
+		selectedCourses.push(classDiv.id.slice(0,-2));
+	    }
+	}
+	console.log(selectedCourses)
+	
 	for(i=0; i < classDivs.length; i++) {
 	    classDiv = classDivs[i];
 	    txtValue = classDiv.getElementsByClassName("title")[0].innerHTML;
 
+	    //check for certain cases
+	    if (classDiv.parentNode.id == "availableCourses" && !selectedCourses.includes(classDiv.id.slice(0,-2))) {
 	    //needs to check if the course is already selected before it display again
-	    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-		classDiv.style.display = "";
-	    } else {
-		classDiv.style.display = "none";
+		if (txtValue.toUpperCase().indexOf(filter) > -1) {
+		    classDiv.style.display = "";
+		} else {
+		    classDiv.style.display = "none";
+		}
 	    }
 	}
     }
