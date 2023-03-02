@@ -6,18 +6,22 @@ loginButton.addEventListener("click", (e) => {
     e.preventDefault();
     const password = loginForm.password.value;
     const confirmPassword = loginForm.confirmPassword.value;
-    const token = getToken(window.location.pathname)
-    //console.log(token)
+    const segments = new URL(window.location.href).pathname.split('/');
+    const last = segments.pop() || segments.pop();
+    const token = last;
+    
     
     sendAccountVerify(password, confirmPassword, token);
     
 })
 
-function getToken(str) {
-    return str.split(':')[1];
+function getToken() {
+    return window.location.pathname.substring(window.locaiton.pathname.lastIndexOf('/') + 1)
+      
 }
 
 async function sendAccountVerify(password, confirmPassword, token) {
+    console.log(token);
     const response = await fetch("../verify", {
 	method: 'POST',
 	headers: {
