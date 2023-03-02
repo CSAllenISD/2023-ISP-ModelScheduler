@@ -1,3 +1,4 @@
+
 var courses = [];
 var selectedSemester = "fall";
 var unsavedSchedule = {fall: {}, spring: {}};
@@ -21,7 +22,14 @@ var STEAM4Per = "1:55-3:30"
 var STEAM5Per = "9:25-11:00" 
 var STEAM6Per = "11:45-1:15"
 var STEAM7Per = "1:55-3:30"
-var STEAM8Per = "3:35-4:30" 
+var STEAM8Per = "3:35-4:30"
+
+var conflicts = {
+    "AHS0": ["STEAM1"],
+    "AHS1": ["STEAM2", "STEAM5"],
+    "STEAM4": ["AHS8"],
+    "STEAM7": ["AHS8"]
+}
 
 document.addEventListener("DOMContentLoaded", async function () {
 	//Waits for HTML DOM content to load
@@ -198,6 +206,11 @@ function dragEnd(ev) {
     for (var i = 0; i < invalidPeriodElements.length; i++) {
 	invalidPeriodElements[i].classList.remove("invalid")
     }
+    
+    const conflictedPeriodElements = document.querySelectorAll(".conflicted");
+    for (var i = 0; i < conflictedPeriodElements.length; i++) {
+	conflictedPeriodElements[i].classList.remove("conflicted")
+    }
 
     isDragging = false;
 }
@@ -241,6 +254,7 @@ function highlightValidPeriods(classCode) {
     const isAHS = course.location == "AHS";
 
     let validPeriodIDs = [];
+    let conflictedPeriodIDs = [];
 
     for (let i = 0; i < periods.length; i++) {
 	const period = periods[i];
@@ -248,14 +262,36 @@ function highlightValidPeriods(classCode) {
 	const periodID = `P${period}-S${course.semester}-${isA ? "A" : "B"}`;
 	const periodElement = document.getElementById(periodID);
 	if (periodElement) {
-	    periodElement.classList.add("valid");
-	    validPeriodIDs.push(periodID);
+	    const courseLoc = course.location+period;
+	    const keys = Object.keys(conflicts);
+	    Object.values(conflicts).forEach((badPeriods, i) => {
+		badPeriods.forEach(badPeriod => {
+		    if (badPeriod == courseLoc) {
+			const periodPreCond = keys[i].replace("STE", "").replace("AHS", "");
+			const preIsA = periodPreCond <= 4 || periodPreCond == 8;
+			const prePeriodID = `P${periodPreCond}-S${course.semester}-${preIsA ? "A" : "B"}`;
+			const prePeriodElement = document.getElementById(prePeriodID);
+
+			if(prePeriodElement && prePeriodElement.children.length > 1) {
+			    if(prePeriodElement.children[1].innerText.includes(keys[i].replace(periodPreCond, ""))) {
+				periodElement.classList.add("conflicted");
+				conflictedPeriodIDs.push(periodID);
+			    }
+			}
+		    }
+		});
+	    });
+
+	    if(!conflictedPeriodIDs.includes(periodID)) {
+		periodElement.classList.add("valid");
+		validPeriodIDs.push(periodID);
+	    }
 	} else {
 	    console.log(`INVALID ID: ${periodID}`);
 	}
     }
 
-    const invalidPeriods = allPeriods.filter(a => !validPeriodIDs.includes(a));
+    const invalidPeriods = allPeriods.filter(a => !validPeriodIDs.includes(a) && !conflictedPeriodIDs.includes(a));
     for (let i = 0; i < invalidPeriods.length; i++) {
 	const periodElement = document.getElementById(invalidPeriods[i]);
 	periodElement.classList.add("invalid");
