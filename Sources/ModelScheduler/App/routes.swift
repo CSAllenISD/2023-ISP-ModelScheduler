@@ -81,7 +81,7 @@ func routes(_ app: Application) throws {
                         let emailData = EmailData(contact: contact,
                                                   templateName: "cmwModelSchedulerVerification",
                                                   templateParameters:
-                                                    "{\"firstName\": \"\(create.firstName)\", \"lastName\": \"\(create.lastName)\", \"token\": \":\(verifyToken)\"}")
+                                                    "{\"firstName\": \"\(create.firstName)\", \"lastName\": \"\(create.lastName)\", \"token\": \"\(verifyToken)\"}")
                         
                         try req.content.encode(emailData)
                         
@@ -109,13 +109,14 @@ func routes(_ app: Application) throws {
                 let emailData = EmailData(contact: contact,
                                           templateName: "cmwModelSchedulerVerification",
                                           templateParameters:
-                                            "{\"firstName\": \"\(create.firstName)\", \"lastName\": \"\(create.lastName)\", \"token\": \":\(verifyToken)\"}")
+                                            "{\"firstName\": \"\(create.firstName)\", \"lastName\": \"\(create.lastName)\", \"token\": \"\(verifyToken)\"}")
                 
                 try req.content.encode(emailData)
 
                 req.headers.add(name: "apiKey", value: ModelScheduler.getEnvString("EMAIL_APIKEY"))
+                print("REQUEST: \n \(req)")
             }
-            //print("RESPONSE: \n \(response)")
+            print("RESPONSE: \n \(response)")
             
             try await user.save(on: req.db)
             let error = CustomError(error: "Click the link in your email to complete account creation. If you did not recieve an email please wait 3 minutes and then try again.")

@@ -23,17 +23,20 @@ final class User: Model, Content {
 
     @Timestamp(key: "updatedAt", on: .update, format: .default)
     var updatedAt: Date?
-
+    
+    @Timestamp(key: "forgotMailSentAt", on: .update, format: .default)
+    var forgotMailSentAt: Date?
     
     init() { }
 
-    init(id: Int? = nil, email: String, passwordHash: String, token: String? = nil, isActive: Int = 0, updatedAt: Date? = nil) {
+    init(id: Int? = nil, email: String, passwordHash: String, token: String? = nil, isActive: Int = 0, updatedAt: Date? = nil, forgotMailSentAt: Date? = nil) {
         self.id = id
         self.email = email
         self.passwordHash = passwordHash
         self.token = token
         self.isActive = isActive
         self.updatedAt = updatedAt
+        self.forgotMailSentAt = forgotMailSentAt
     }
 
     
