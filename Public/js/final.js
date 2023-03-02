@@ -1,3 +1,22 @@
+var AHS0Per = "8:35-9:35"
+var AHS1Per = "8:50-9:45"
+var AHS2Per = "9:50-11:25"
+var AHS3Per = "11:30-1:30"
+var AHS4Per = "1:35-3:10"
+var AHS5Per = "9:50-11:25"
+var AHS6Per = "11:30-1:30"
+var AHS7Per = "1:35-3:10"
+var AHS8Per = "3:15-4:10"
+var STEAM0Per = "7:20-8:15"
+var STEAM1Per = "8:20-9:15"
+var STEAM2Per = "9:25-11:00"
+var STEAM3Per = "11:45-1:15"
+var STEAM4Per = "1:55-3:30" 
+var STEAM5Per = "9:25-11:00" 
+var STEAM6Per = "11:45-1:15"
+var STEAM7Per = "1:55-3:30"
+var STEAM8Per = "3:35-4:30"
+
 async function updateClassSchedule() {
     document.querySelectorAll(".class").forEach((it) => (it.innerHTML = "Empty"));
 
@@ -16,8 +35,14 @@ async function updateClassSchedule() {
 	    ele.dataset.classcode = course.code;
 	    ele.classList.add("notEmpty");
 	    ele.setAttribute("draggable", false);
-		    
-	    ele.innerText = course.name;
+	    ele.setAttribute("style", "cursor:default;")
+
+	    //find time
+	    courseLocation = course.location
+	    coursePeriod = ele.id.charAt(1)
+	    varName = `${courseLocation}${coursePeriod}Per`
+	    
+	    ele.innerText = course.name + "\n" + courseLocation + "\n" + window[varName];
 	});
     }
 }
