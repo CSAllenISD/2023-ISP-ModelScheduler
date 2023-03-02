@@ -20,11 +20,26 @@ body {
 	}
 }
 
-@media print
-{
-    .no-print, .no-print *
-    {
+@media print {
+    .no-print, .no-print * {
 	display: none !important;
+    }
+    p{
+	display:block;
+    }
+    span{
+	color: black;
+    }
+    .navbar{
+	margin-left: 25px
+    }
+    @page {
+	margin-left: 10px;
+    }
+}
+@media screen {
+    p{
+	display:none;
     }
 }
 
@@ -47,6 +62,9 @@ body {
     font-family: "DM Sans", sans-serif;
     border-radius: 8px;
     transition-duration: 0.3s;
+    float: right;
+    margin-right: 100px;
+    margin-top: -15px
 }
 
 .printButton:hover {
