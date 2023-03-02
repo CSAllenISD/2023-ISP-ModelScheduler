@@ -105,6 +105,18 @@ p {
 	text-align: center;
 }
 
+@media screen and (max-width: 1300px) {
+    .classList, .classList2 {
+	width: 90%;
+	height: 35%;
+	margin-left: 5%;
+    }
+    .classList2 {
+	position: absolute;
+	margin-top: 40vh;
+    }
+}
+
 .selectedClass {
     cursor: pointer !important;
     user-select: none;
