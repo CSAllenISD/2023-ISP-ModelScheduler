@@ -35,11 +35,11 @@ input {
 }
 
 .available:hover {
-    background-color: #bfd7ea;
+    background-color: var(--navbar);
 }
 
 .selected:hover {
-    background-color: #ff6961;
+    background-color: var(--invalid);
 }
 
 /* .navBar { */
