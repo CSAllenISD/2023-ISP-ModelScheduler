@@ -31,8 +31,8 @@
     --hover-class: rgb(115,115,115);
     --gray-box: rgb(60,60,60);
     --search: rgb(100,100,100);
-    --valid: rgb(183, 217, 177);
-    --invalid: rgb(247, 102, 94);
+    --valid: #4a8453;
+    --invalid: #bd2d28;
 }
 
 * {
@@ -53,19 +53,20 @@ html {
 
 /* Track */
 ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 2px grey;
-    border-radius: 7px;
+    box-shadow: inset 0 0 2px grey !important;
+    border-radius: 7px !important;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: var(--navbar);
-    border-radius: 10px;
+    background: var(--navbar) !important;
+    border-radius: 10px !important;
+    cursor: pointer; !important
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--navbar);
+    background: var(--navbar) !important;
 }
 
 .container {
@@ -437,6 +438,7 @@ body {
     overflow: hidden;
     white-space: nowrap;
     flex: 1;
+    color: var(--text);
 }
 
 .selectedClass .id {
@@ -461,6 +463,7 @@ body {
     width: 26px;
     text-align: center;
     background-color: var(--navbar);
+    color: var(--text);
     border-radius: 50%;
     line-height: 1.5;
 }
@@ -504,7 +507,7 @@ body {
     background-color: var(--buttons)
 }
 .selectedClass:hover .period {
-    background-color: white;
+    background-color: var(--class);
 }
 
 #classTitle {

@@ -101,27 +101,6 @@ p {
     margin: none;
 }
 
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    background: var(--classes-bg);
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: var(--text);
-    border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: red;
-}
-
 .classList {
 	margin-left: 20%;
 }
@@ -136,4 +115,8 @@ p {
 	width: 100%;
 	height: 40px;
 	text-align: center;
+}
+
+.selectedClass {
+    cursor: default !important;
 }
