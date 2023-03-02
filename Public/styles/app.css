@@ -1,3 +1,4 @@
+
 :root,
 :root.light {
     --text: #000;
@@ -17,6 +18,7 @@
     --search: white;
     --valid: rgb(183, 217, 177);
     --invalid: rgb(247, 102, 94);
+    --conflict rgb(255, 213, 128);
     --ahs: rgb(247, 102, 94);
     --steam: #bfd7ea;
     --ctc: #fffaa0;
@@ -38,6 +40,7 @@
     --search: rgb(100,100,100);
     --valid: #4a8453;
     --invalid: #bd2d28;
+    --conflict: rgb(255, 87, 51);
     --ahs: #bd2d28;
     --steam: #151b66;
     --ctc: #ffba26;
@@ -212,6 +215,7 @@ body {
     grid-template-rows: repeat(14, 0.25fr);
     gap: 5px;
 }
+
 /*Some absolute bullshit dear god*/
 #scheduleViewer {
     width: 55%;
@@ -248,6 +252,10 @@ body {
 
 #scheduleViewer > div.invalid {
     background-color: var(--invalid) !important;
+}
+
+#scheduleViewer > div.conflicted {
+    background-color: var(--conflict) !important;
 }	      
 
 #scheduleViewer > div > span {
@@ -374,6 +382,7 @@ body {
 #period {
 	width: 20%;
 }
+
 #allen {
     width: 40%;
     color: var(--text);
@@ -399,9 +408,11 @@ body {
 	cursor: pointer;
 	text-line: left;
 }
+
 #darkmodeButton {
 	all: unset;
 }
+
 #classes {
 	float: left;
 	height: 90%;
