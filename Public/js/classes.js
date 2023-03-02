@@ -218,25 +218,17 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 			const classDivA = getClassDiv(course)
 			const classDivS = getClassDiv(course)
-			
-			const remButton = document.createElement("button");
-			remButton.classList.add("removeButton");
-			remButton.onclick = () =>
-			removeCourse(course.code);
-			remButton.appendChild(document.createTextNode("Remove"));
+		
+			classDivS.onclick = () => removeCourse(course.code);
 
 			classDivS.id = course.code + "SC";
-			classDivS.appendChild(remButton);
-
+			classDivS.classList.add("selected")
+			
 			selectedCourses.appendChild(classDivS);
 
-			const addButton = document.createElement("button");
-			addButton.classList.add("addButton");
-			addButton.onclick = () => addCourse(course.code);
-			addButton.appendChild(document.createTextNode("Add"));
-
+			classDivA.onclick = () => addCourse(course.code);
+			classDivA.classList.add("available");
 			classDivA.id = course.code + "AC";
-			classDivA.appendChild(addButton);
 			
 			availableCourses.appendChild(classDivA)
 

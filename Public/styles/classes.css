@@ -34,24 +34,12 @@ input {
     color: var(--text);
 }
 
-.addButton {
-	background-color: #bfd7ea;
-	color: black;
-	border-radius: 5px;
-	cursor: pointer;
-	float: right;
-	height: 40%;
-	width: 20%;
+.available:hover {
+    background-color: #bfd7ea;
 }
 
-.removeButton {
-	background-color: red;
-	color: black;
-	border-radius: 5px;
-	cursor: pointer;
-	float: right;
-	height: 40%;
-	width: 30%;
+.selected:hover {
+    background-color: #ff6961;
 }
 
 /* .navBar { */
@@ -118,5 +106,6 @@ p {
 }
 
 .selectedClass {
-    cursor: default !important;
+    cursor: pointer !important;
+    user-select: none;
 }
