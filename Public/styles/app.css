@@ -236,8 +236,9 @@ body {
     user-select: none;
     padding: 1rem;
     text-align: center;
-    display: table;
-    table-layout: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     grid-row: span 2;
 }
 
