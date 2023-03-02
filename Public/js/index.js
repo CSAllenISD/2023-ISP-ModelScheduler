@@ -67,7 +67,14 @@ document.addEventListener("DOMContentLoaded", async function () {
 	    ele.addEventListener("dragend", dragPlacedEnd);
 	    
 	    ele.firstElementChild.innerText = course.name;
-
+	    ele.children[1].innerText = course.location;
+	  
+	    //find the var name to fill in
+	    courseLocation = course.location
+	    coursePeriod = ele.id.charAt(1)
+	    varName = `${courseLocation}${coursePeriod}Per`
+	    ele.children[2].innerText = window[varName]
+	    
 	    const classListItem = document.getElementById(course.code)
 	    classListItem.style.display = "none";
 	});
