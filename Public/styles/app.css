@@ -239,6 +239,7 @@ body {
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
     font-size: 16px;
     gap: 5px;
+    overflow: auto;
 }
 
 #scheduleViewer > div {
@@ -251,6 +252,9 @@ body {
     justify-content: space-between;
     align-items: center;
     grid-row: span 2;
+
+    min-width: 0;
+    overflow: hidden;
 
     transition: background-color 200ms ease-in-out;
 }
@@ -275,6 +279,7 @@ body {
 #scheduleViewer > div > span {
     display: table-cell;
     vertical-align: middle;
+    white-space: nowrap;
 }
 /*brokey formatting for table, fix later
 #scheduleViewer > div:nth-child(n + 2) {
@@ -307,6 +312,8 @@ body {
 #scheduleViewer > .class {
     background-color: var(--class);
     color: var(--text);
+
+    min-height: 100px;
 }
 
 #scheduleViewer > .class.notEmpty span:first-child {
