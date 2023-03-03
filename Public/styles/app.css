@@ -3,6 +3,7 @@
 :root.light {
     --text: #000;
     --navbar: #bfd7ea;
+    --navbar-hover: #95a8b6;
     --navbar-labels: #000;
     --buttons: #bfd7ea;
     --bg-color: #fff;
@@ -17,6 +18,7 @@
     --gray-box: rgb(200,200,200);
     --search: white;
     --valid: rgb(183, 217, 177);
+    --conflict: #ff964f;
     --invalid: rgb(247, 102, 94);
     --conflict rgb(255, 213, 128);
     --ahs: rgb(247, 102, 94);
@@ -27,6 +29,7 @@
 :root.dark {
     --text: #fff;
     --navbar: #151b66;
+    --navbar-hover: #1c258c;
     --navbar-labels: #fff;
     --buttons: #151b66;
     --bg-color: #2b2b2b;
@@ -189,6 +192,9 @@ body {
 	color: var(--navbar-labels);
 	font-weight: bold;
 }
+#navButton:hover {
+    background-color: var(--navbar-hover);
+}
 
 .next {
     float: right;
@@ -243,20 +249,28 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     grid-row: span 2;
+
+    transition: background-color 200ms ease-in-out;
 }
 
 #scheduleViewer > div.valid {
     background-color: var(--valid) !important;
 }
+#scheduleViewer > div.valid > span {
+    pointer-events: none;
+}
 
 #scheduleViewer > div.invalid {
     background-color: var(--invalid) !important;
+    pointer-events: none;
 }
 
 #scheduleViewer > div.conflicted {
     background-color: var(--conflict) !important;
-}	      
+    pointer-events: none;
+}
 
 #scheduleViewer > div > span {
     display: table-cell;
@@ -293,6 +307,31 @@ body {
 #scheduleViewer > .class {
     background-color: var(--class);
     color: var(--text);
+}
+
+#scheduleViewer > .class.notEmpty span:first-child {
+    font-weight: 700;
+}
+
+.class.notEmpty .location {
+    border-radius: 5px;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    max-width: fit-content;
+}
+
+.class.notEmpty .location.AHS {
+    border: 2px solid var(--ahs);
+}
+
+.class.notEmpty .location.STEAM {
+    border: 2px solid var(--steam);
+}
+
+.class.notEmpty .location.CTC {
+    border: 2px solid var(--CTC);
 }
 
 .class.notEmpty {
@@ -383,11 +422,12 @@ body {
 	width: 20%;
 }
 
-#allen {
+.allen {
     width: 40%;
     color: var(--text);
 }
-#steam {
+
+.steam {
     width: 40%;
     color: var(--text);
 }
@@ -498,17 +538,17 @@ body {
     line-height: 1.5;
 }
 
-.selectedClass #AHS {
+.selectedClass .AHS {
     border: 2px solid var(--ahs);
     width: 70px;
     font-weight: bold;
 }
-.selectedClass #STEAM {
+.selectedClass .STEAM {
     border: 2px solid var(--steam);
     width: 70px;
     font-weight: bold;
 }
-.selectedClass #CTC {
+.selectedClass .CTC {
     border: 2px solid var(--ctc);
     width: 70px;
     font-weight: bold;
