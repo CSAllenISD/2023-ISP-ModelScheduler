@@ -253,6 +253,8 @@ body {
     align-items: center;
     grid-row: span 2;
 
+    min-width: 0;
+
     transition: background-color 200ms ease-in-out;
 }
 
@@ -276,6 +278,7 @@ body {
 #scheduleViewer > div > span {
     display: table-cell;
     vertical-align: middle;
+    white-space: nowrap;
 }
 /*brokey formatting for table, fix later
 #scheduleViewer > div:nth-child(n + 2) {
