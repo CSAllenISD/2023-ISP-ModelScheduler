@@ -391,6 +391,7 @@ function drop(ev, target) {
 	    oldClassElement.removeEventListener("dragstart", dragPlaced);
 	    oldClassElement.removeEventListener("dragend", dragPlacedEnd);
 	    oldClassElement.firstElementChild.innerText = "Empty";
+	    oldClassElement.children[1].innerText = "";
 	}
     }
 
