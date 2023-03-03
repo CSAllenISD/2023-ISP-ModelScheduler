@@ -10,18 +10,14 @@ func routes(_ app: Application) throws {
         req.redirect(to: "./login")
     }
 
-    app.get("index.html") {req in
-        req.redirect(to: "./index")
+    app.get("scheduler.html") {req in
+        req.redirect(to: "./scheduler")
     }
 
     app.get("classes.html") {req in
         req.redirect(to: "./classes")
     }
     
-    app.get("scheduler.html") {req in
-        req.redirect(to: "./scheduler")
-    }
-
     app.get("FAQ.html") {req in
         req.redirect(to: "./FAQ")
     }
@@ -184,13 +180,6 @@ func routes(_ app: Application) throws {
     let protected = sessions.grouped(User.redirectMiddleware(path: "./login"))
 
     
-    protected.get("scheduler") {req -> View in
-        let user = try req.auth.require(User.self)
-
-        return try await req.view.render("scheduler.html")
-    }
-
-    
     // Check if the user already has a saved schedule. If true, continue to scheduler page. If False, render class selection page
     protected.get("classes") { req -> View in
         let user = try req.auth.require(User.self)
@@ -212,12 +201,12 @@ func routes(_ app: Application) throws {
     }
     
     // Load the saved schedule if it exists. If not, continue normally.
-    protected.get("index") {req -> View in
+    protected.get("scheduler") {req -> View in
         try req.auth.require(User.self)
         return try await req.view.render("index.html")
     }
 
-    protected.get("index", "check") {req -> Courses in
+    protected.get("scheduler", "check") {req -> Courses in
         let user = try req.auth.require(User.self)
         if let schedule = try await UserSchedule.query(on: req.db).filter(\.$userId == user.id!).first() {
             let courses = try await Courses.query(on: req.db).group(.and) { group in
@@ -239,7 +228,7 @@ func routes(_ app: Application) throws {
     }
     
     // After recieving user schedule from front end store it in db and redirect to the final/print page
-    protected.post("index") {req -> Response in
+    protected.post("scheduler") {req -> Response in
         let user = try req.auth.require(User.self)
 //        print(req)
         let schedule = try req.content.decode(UserSchedule.self)

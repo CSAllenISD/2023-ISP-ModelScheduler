@@ -177,7 +177,7 @@ function next() {
 	}
 	localStorage.setItem("courses", courses);
 
-	window.location.replace("index");
+	window.location.replace("scheduler");
 }
 
 async function getCoursesFromServer() {
