@@ -12,7 +12,12 @@ func configure(_ app: Application) throws {
     // Configuration
     app.mailgun.configuration = .init(apiKey: getEnvString("MAILGUN_APIKEY"))
     app.mailgun.defaultDomain = MailgunDomain(getEnvString("MAILGUN_DOMAIN"), .us)
-    
+
+    //Gatekeeper
+    app.caches.use(.memory)
+    app.gatekeeper.config = .init(maxRequests: 12, per: .second)
+    app.middleware.use(GatekeeperMiddleware())
+    app.gatekeeper.keyMakers.use(.userID)
     
     var tls = TLSConfiguration.makeClientConfiguration()
     tls.certificateVerification = .none
