@@ -372,6 +372,11 @@ body {
     font-weight: bolder;
 }
 
+#scheduleViewer > .header:not(.aDay):not(.bDay) {
+    border-style: solid;
+    border-width: 2px;
+}
+
 #scheduleViewer > .period {
     grid-column: 1;
 }
@@ -467,6 +472,8 @@ body {
 	margin-left: 8%;
 	margin-top: 2%;
 	background-color: var(--classes-bg);
+	border-style: solid;
+	border-width: 2px;
 	border-radius: 10px;
 	text-align: center;
 	color: var(--text);
