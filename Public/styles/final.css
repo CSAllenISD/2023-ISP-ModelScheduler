@@ -51,22 +51,20 @@ body {
 }
 
 .printButton {
-    background-color: gray;
-    border: none;
-    color: white;
-    padding: 7px 15px;
+    background-color: var(--navbar);
+    color: var(--text);
+    width: 10%;
+    height: 100%;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 18px;
+    font-size: 24px;
     font-family: "DM Sans", sans-serif;
-    border-radius: 8px;
+    border-radius: 10px;
     transition-duration: 0.3s;
     float: right;
-    margin-right: 100px;
-    margin-top: -15px
 }
 
 .printButton:hover {
-    background-color:darkgray;
+    background-color: var(--navbar-hover);
 }
