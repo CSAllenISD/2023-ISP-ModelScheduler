@@ -73,15 +73,10 @@ document.addEventListener("DOMContentLoaded", async function () {
 	    ele.setAttribute("draggable", true);
 	    ele.addEventListener("dragstart", dragPlaced);
 	    ele.addEventListener("dragend", dragPlacedEnd);
-	    
+
+	    //set location and time
 	    ele.firstElementChild.innerText = course.name;
-	    ele.children[1].innerText = course.location;
-	  
-	    //find the var name to fill in
-	    courseLocation = course.location
-	    coursePeriod = ele.id.charAt(1)
-	    varName = `${courseLocation}${coursePeriod}Per`
-	    ele.children[2].innerText = window[varName]
+	    ele.children[1].innerHTML = `<span class="location ${course.location}">${course.location}</span> • ` + window[`${course.location}${ele.id.charAt(1)}Per`];
 	    
 	    const classListItem = document.getElementById(course.code)
 	    classListItem.style.display = "none";
@@ -159,17 +154,20 @@ function reloadCourseList(courses) {
 		
 		//create the location
 		let locationP = document.createElement("p");
-		locationP.id = `${course.location}`
+		locationP.classList.add(`${course.location}`);
 		locationP.classList.add("location")
 		locationP.appendChild(document.createTextNode(course.location));
 		periodDiv.appendChild(locationP);
 		
 		for (let i = 0; i < course.period.length; i++) {
-		    let periodP = document.createElement("p");
-		    periodP.classList.add("period");
-		    periodP.appendChild(document.createTextNode(course.period[i]))
+		    let period = course.period[i]
+		    if (period > -1 && period < 9) {
+			let periodP = document.createElement("p");
+			periodP.classList.add("period");
+			periodP.appendChild(document.createTextNode(course.period[i]))
 		    
-		    periodDiv.appendChild(periodP);
+			periodDiv.appendChild(periodP);
+		    }
 		}
 		
 		let demandDiv = document.createElement("div");
@@ -381,13 +379,8 @@ function drop(ev, target) {
     ev.target.addEventListener("dragend", dragPlacedEnd);
     
     ev.target.firstElementChild.innerText = course.name;
-    ev.target.children[1].innerText = course.location;
-
-    //find the var name to fill in
-    courseLocation = course.location
-    coursePeriod = ev.target.id.charAt(1)
-    varName = `${courseLocation}${coursePeriod}Per`
-    ev.target.children[2].innerText = window[varName]
+    // sets location and time
+    ev.target.children[1].innerHTML = `<span class="location ${course.location}">${course.location}</span> • ` + window[`${course.location}${ev.target.id.charAt(1)}Per`];
     
     if (oldClass) {
 	dragEnd(null);

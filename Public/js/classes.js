@@ -286,12 +286,14 @@ function getClassDiv(course) {
     
     //loop to create each period bubble
     for (let i = 0; i < course.period.length; i++) {
-	console.log("ran")
-	let periodP = document.createElement("p");
-	periodP.classList.add("period");
-	periodP.appendChild(document.createTextNode(course.period[i]))
+	period = course.period[i];
+	if (period > -1 && period < 9) {
+	    let periodP = document.createElement("p");
+	    periodP.classList.add("period");
+	    periodP.appendChild(document.createTextNode(course.period[i]))
 	
-	periodDiv.appendChild(periodP);
+	    periodDiv.appendChild(periodP);	    
+	}
     }
     
     //create fire demand icons
