@@ -27,16 +27,16 @@
 }
 
 :root.dark {
-    --text: #fff;
+    --text: #7e8ba3;
     --navbar: #151b66;
     --navbar-hover: #1c258c;
-    --navbar-labels: #fff;
+    --navbar-labels: #7e8ba3;
     --buttons: #151b66;
-    --bg-color: #2b2b2b;
-    --bg-color2: #2b2b2b;
+    --bg-color: #354152;
+    --bg-color2: #354152;
     --aDay: #bd2d28;
     --bDay: #151b66;
-    --classes-bg: rgb(60,60,60);
+    --classes-bg: #354152;
     --class: rgb(100,100,100);
     --hover-class: rgb(115,115,115);
     --gray-box: rgb(60,60,60);
