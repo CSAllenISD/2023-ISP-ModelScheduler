@@ -249,6 +249,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     grid-row: span 2;
 
     transition: background-color 200ms ease-in-out;
@@ -310,6 +311,27 @@ body {
 
 #scheduleViewer > .class.notEmpty span:first-child {
     font-weight: 700;
+}
+
+.class.notEmpty .location {
+    border-radius: 5px;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    max-width: fit-content;
+}
+
+.class.notEmpty .location.AHS {
+    border: 2px solid var(--ahs);
+}
+
+.class.notEmpty .location.STEAM {
+    border: 2px solid var(--steam);
+}
+
+.class.notEmpty .location.CTC {
+    border: 2px solid var(--CTC);
 }
 
 .class.notEmpty {
@@ -400,11 +422,12 @@ body {
 	width: 20%;
 }
 
-#allen {
+.allen {
     width: 40%;
     color: var(--text);
 }
-#steam {
+
+.steam {
     width: 40%;
     color: var(--text);
 }
@@ -515,17 +538,17 @@ body {
     line-height: 1.5;
 }
 
-.selectedClass #AHS {
+.selectedClass .AHS {
     border: 2px solid var(--ahs);
     width: 70px;
     font-weight: bold;
 }
-.selectedClass #STEAM {
+.selectedClass .STEAM {
     border: 2px solid var(--steam);
     width: 70px;
     font-weight: bold;
 }
-.selectedClass #CTC {
+.selectedClass .CTC {
     border: 2px solid var(--ctc);
     width: 70px;
     font-weight: bold;
