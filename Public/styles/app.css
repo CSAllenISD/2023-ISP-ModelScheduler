@@ -18,6 +18,7 @@
     --gray-box: rgb(200,200,200);
     --search: white;
     --valid: rgb(183, 217, 177);
+    --conflict: #ff964f;
     --invalid: rgb(247, 102, 94);
     --conflict rgb(255, 213, 128);
     --ahs: rgb(247, 102, 94);
@@ -254,14 +255,19 @@ body {
 #scheduleViewer > div.valid {
     background-color: var(--valid) !important;
 }
+#scheduleViewer > div.valid > span {
+    pointer-events: none;
+}
 
 #scheduleViewer > div.invalid {
     background-color: var(--invalid) !important;
+    pointer-events: none;
 }
 
 #scheduleViewer > div.conflicted {
     background-color: var(--conflict) !important;
-}	      
+    pointer-events: none;
+}
 
 #scheduleViewer > div > span {
     display: table-cell;
