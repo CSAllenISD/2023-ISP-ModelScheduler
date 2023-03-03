@@ -73,6 +73,7 @@ input {
 .classList2 {
 	background-color: var(--classes-bg);
 	border-color: var(--text);
+	box-shadow: 0 0 100px #000;
 	border-weight: 50px;
 	border-style: solid;
 	border-radius: 7px;
