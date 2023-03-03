@@ -3,6 +3,7 @@
 :root.light {
     --text: #000;
     --navbar: #bfd7ea;
+    --navbar-hover: #95a8b6;
     --navbar-labels: #000;
     --buttons: #bfd7ea;
     --bg-color: #fff;
@@ -27,6 +28,7 @@
 :root.dark {
     --text: #fff;
     --navbar: #151b66;
+    --navbar-hover: #1c258c;
     --navbar-labels: #fff;
     --buttons: #151b66;
     --bg-color: #2b2b2b;
@@ -188,6 +190,9 @@ body {
 	font-size: 24px;
 	color: var(--navbar-labels);
 	font-weight: bold;
+}
+#navButton:hover {
+    background-color: var(--navbar-hover);
 }
 
 .next {
