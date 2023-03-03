@@ -254,6 +254,7 @@ body {
     grid-row: span 2;
 
     min-width: 0;
+    overflow: hidden;
 
     transition: background-color 200ms ease-in-out;
 }
