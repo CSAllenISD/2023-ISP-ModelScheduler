@@ -253,9 +253,6 @@ body {
     align-items: center;
     grid-row: span 2;
 
-    min-width: 0;
-    overflow: hidden;
-
     transition: background-color 200ms ease-in-out;
 }
 
@@ -313,6 +310,9 @@ body {
     background-color: var(--class);
     color: var(--text);
 
+    min-width: 0;
+    overflow: hidden;
+    
     min-height: 100px;
 }
 
