@@ -203,7 +203,7 @@ func routes(_ app: Application) throws {
     // Load the saved schedule if it exists. If not, continue normally.
     protected.get("scheduler") {req -> View in
         try req.auth.require(User.self)
-        return try await req.view.render("index.html")
+        return try await req.view.render("scheduler.html")
     }
 
     protected.get("scheduler", "check") {req -> Courses in
