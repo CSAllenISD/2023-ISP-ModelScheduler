@@ -308,6 +308,10 @@ body {
     color: var(--text);
 }
 
+#scheduleViewer > .class.notEmpty span:first-child {
+    font-weight: 700;
+}
+
 .class.notEmpty {
     cursor: move;
     cursor: grab;
