@@ -1,7 +1,7 @@
 
 :root,
 :root.light {
-    --text: #000;
+    --text: rgba(0, 0, 0, .5);
     --navbar: #bfd7ea;
     --navbar-hover: #95a8b6;
     --navbar-labels: #000;
@@ -27,7 +27,7 @@
 }
 
 :root.dark {
-    --text: #7e8ba3;
+    --text: rgba(255, 255, 255, .5);
     --navbar: #151b66;
     --navbar-hover: #1c258c;
     --navbar-labels: #7e8ba3;
