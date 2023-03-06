@@ -37,7 +37,7 @@
     --aDay: #bd2d28;
     --bDay: #151b66;
     --classes-bg: #354152;
-    --class: rgb(100,100,100);
+    --class: #14181f;
     --hover-class: rgb(115,115,115);
     --gray-box: rgb(60,60,60);
     --search: rgb(100,100,100);
@@ -162,11 +162,11 @@ body {
 	color: var(--navbar-labels);
 }
 .navbar .selected {
-	color: red;
+    color: var(--aDay);
 }
 
 .navbar a:hover {
-	color: red;
+	color: var(--aDay);
 	transition: ease 0.2s;
 }
 
@@ -225,7 +225,7 @@ body {
 /*Some absolute bullshit dear god*/
 #scheduleViewer {
     width: 55%;
-    height: 98%;
+    height: 101%;
     margin-left: 8%;
     display: inline-grid;
     padding-left: 5px;
