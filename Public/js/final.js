@@ -29,6 +29,7 @@ async function updateClassSchedule() {
 	const semester = unsavedSchedule["fall"];
 	Object.keys(semester).forEach(id => {
 	    const ele = document.getElementById(id);
+	    ele.innerHTML = ""
 	    const course = courses.items.find(a => a.code == semester[id]);
 	    if (!course || !ele) return;
 	    
@@ -37,12 +38,26 @@ async function updateClassSchedule() {
 	    ele.setAttribute("draggable", false);
 	    ele.setAttribute("style", "cursor:default;")
 
-	    //find time
+	    //create info
+	    let titleSpan = document.createElement('span');
+	    titleSpan.innerHTML = course.name
+	    ele.appendChild(titleSpan);
+
+	    //create time span
+	    let timeSpan = document.createElement("span");
+	    timeSpan.classList.add("time");
+	    ele.appendChild(timeSpan);
+
+	    //create location
+	    let locationSpan = document.createElement("span");
+	    locationSpan.classList.add("location");
+	    locationSpan.classList.add(course.location);
+	    timeSpan.appendChild(locationSpan);
+	    
 	    courseLocation = course.location
 	    coursePeriod = ele.id.charAt(1)
-	    varName = `${courseLocation}${coursePeriod}Per`
-	    
-	    ele.innerText = course.name + "\n" + courseLocation + "\n" + window[varName];
+	    varName = `${courseLocation}${coursePeriod}Per`;
+	    locationSpan.innerHTML = `${courseLocation} • ${window[varName]}`
 	});
     }
 }
@@ -111,12 +126,15 @@ function getDm() {
 }
 
 function toggleDmButton() {
-	let dmButton = document.getElementById("darkmode");
-	if (getDm() == "false") {
-		dmButton.setAttribute("src", "./images/moon.png");
-	} else {
-		dmButton.setAttribute("src", "./images/sun.png");
-	}
+    let dmButton = document.getElementById("darkmode");
+    let printButton = document.getElementById("printButton");
+    if (getDm() == "false") {
+	dmButton.setAttribute("src", "./images/moon.png");
+	printButton.setAttribute("src", "./images/print-light.png")
+    } else {
+	dmButton.setAttribute("src", "./images/sun.png");
+	printButton.setAttribute("src", "./images/print-dark.png")
+    }
 }
 
 function darkMode() {
