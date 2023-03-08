@@ -3,29 +3,41 @@ import Fluent
 import FluentMySQLDriver
 
 final class Courses: Model, Content {
-    public static let schema = "courses"
+    public static let schema = "courses2024"
 
-    @ID(custom: "id", generatedBy: .database)
-    var id: Int?
+    @ID(custom: "sectionID", generatedBy: .database)
+    var id: String?
 
-    @Field(key: "code")
+    @Field(key: "courseCode")
     var code: String
 
-    @Field(key: "semester")
-    var semester: Int
+    @Field(key: "courseName")
+    var name: String
 
+    @Field(key: "term")
+    var term: String
+
+    @Field(key: "department")
+    var department: String
+
+    @Field(key: "period")
+    //var period: CoursePeriod
+    var period: String
+
+    @Field(key: "doubleBlockPeriod")
+    var doubleBlockPeriod: String?
+
+    @Field(key: "studentMax")
+    var studentMax: Double
+    /*
     @Field(key: "section")
     var section: String
 
-    @Field(key: "name")
-    var name: String
-
+    
     @Field(key: "dcDays")
     var dcDays: String?
     
-    @Field(key: "period")
-    var period: CoursePeriod
-
+    
     @Field(key: "location")
     var location: String
 
@@ -37,21 +49,18 @@ final class Courses: Model, Content {
     
     @Field(key: "seatsTaken")
     var seatsTaken: Int
-    
+    */
     init() { }
 
-    init(id: Int? = nil, code: String, semester: Int, section: String, name: String, dcDays: String? = nil, period: CoursePeriod, loaction: String, credits: Float, size: Int, seatsTaken: Int){
+    init(id: String? = nil, code: String, name: String, term: String, department: String, period: String, doubleBlockPeriod: String?, studentMax: Double) {
         self.id = id
         self.code = code
-        self.semester = semester
-        self.section = section
         self.name = name
-        self.dcDays = dcDays
+        self.term = term
+        self.department = department
         self.period = period
-        self.location = location
-        self.credits = credits
-        self.size = size
-        self.seatsTaken = seatsTaken 
+        self.doubleBlockPeriod = doubleBlockPeriod
+        self.studentMax = studentMax
     }   
 }
 
