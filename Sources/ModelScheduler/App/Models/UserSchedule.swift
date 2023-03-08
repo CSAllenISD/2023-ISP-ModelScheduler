@@ -11,46 +11,46 @@ final class UserSchedule: Model, Content {
     var userId: Int?
 
     @Field(key: "periodZero")
-    var periodZero: Int?
+    var periodZero: String?
 
     @Field(key: "periodOne")
-    var periodOne: Int?
+    var periodOne: String?
 
     @Field(key: "periodTwo")
-    var periodTwo: Int?
+    var periodTwo: String?
 
     @Field(key: "periodThree")
-    var periodThree: Int?
+    var periodThree: String?
 
     @Field(key: "periodFour")
-    var periodFour: Int?
+    var periodFour: String?
 
     @Field(key: "periodFive")
-    var periodFive: Int?
+    var periodFive: String?
 
     @Field(key: "periodSix")
-    var periodSix: Int?
+    var periodSix: String?
 
     @Field(key: "periodSeven")
-    var periodSeven: Int?
+    var periodSeven: String?
 
     @Field(key: "periodEight")
-    var periodEight: Int?
+    var periodEight: String?
     
     init() { }
 
     init(
       id: Int? = nil,
       userId: Int? = nil, 
-      periodZero: Int? = nil,
-      periodOne: Int? = nil,
-      periodTwo: Int? = nil,
-      periodThree: Int? = nil,
-      periodFour: Int? = nil,
-      periodFive: Int? = nil,
-      periodSix: Int? = nil,
-      periodSeven: Int? = nil,
-      periodEight: Int? = nil
+      periodZero: String? = nil,
+      periodOne: String? = nil,
+      periodTwo: String? = nil,
+      periodThree: String? = nil,
+      periodFour: String? = nil,
+      periodFive: String? = nil,
+      periodSix: String? = nil,
+      periodSeven: String? = nil,
+      periodEight: String? = nil
     ) {
         self.id = id
         self.userId = userId
