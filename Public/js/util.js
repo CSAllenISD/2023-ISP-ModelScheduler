@@ -1,27 +1,28 @@
-const CoursePeriods = {
-    0: 1 << 0,
-    1: 1 << 1,
-    2: 1 << 2,
-    3: 1 << 3,
-    4: 1 << 4,
-    5: 1 << 5,
-    6: 1 << 6,
-    7: 1 << 7,
-    8: 1 << 8,
-    9: 1 << 9,
-    10: 1 << 10
-}
+codesDone = []
+mergedClasses = []
 
-function getPeriodsArray(bitmap) {
-    var periods = [];
+function combineCourses(courses) {
+    //loop through all objects from database
+    for(i=0; i < courses?.items?.length; i++) {
+	var course = courses?.items[i];
+	var periods = [];
+	
+	if (!codesDone.includes(course.code)) {
+	    codesDone.push(course.code);
+	  
+	    //loop to find all the periods offered
+	    courses?.items?.forEach(evalCourse => {
+		if(evalCourse.code == course.code && !periods.includes(evalCourse.period)) {
+		    periods.push(evalCourse.period);
+		}
+	    });
 
-    var time = 0;
-    var periodScan = 1;
-    while (bitmap >= periodScan) {
-	if (bitmap & periodScan) periods.push(time)
-	periodScan <<=1;
-	time += 1;
+	    periods.sort();
+	    course.period = periods
+	    mergedClasses.push(course)
+	}
     }
 
-    return periods;
+    console.log(mergedClasses);
+    return mergedClasses;
 }

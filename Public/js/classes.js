@@ -203,16 +203,16 @@ document.addEventListener("DOMContentLoaded", async function () {
 	const availableCourses = document.getElementById("availableCourses");
 	const selectedCourses = document.getElementById("selectedCourses");
 
-	const courses = await getCoursesFromServer();
-
+	var courses = await getCoursesFromServer();
+	courses = await combineCourses(courses);
 	let savedCourses = localStorage.getItem("courses");
 
 	// if got the courses from the server without error
-	if (courses != null) {
-		for (let i = 0; i < courses?.items?.length; i++) {
-		    const course = courses.items[i];
-
-		    course.period = await getPeriodsArray(course.period);
+    if (courses != null) {
+	console.log(courses.length)
+		for (let i = 0; i < courses.length; i++) {
+		    const course = courses[i];
+		    console.log("ran");
 		    
 		    if (document.getElementById(course.code + "SC") == null && document.getElementById(course.code + "AC") == null) {
 
@@ -279,7 +279,7 @@ function getClassDiv(course) {
 
     //create location bubble
     let locationP = document.createElement("p");
-    locationP.id = `${course.location}`
+    locationP.classList.add(`${course.location}`)
     locationP.classList.add("location")
     locationP.appendChild(document.createTextNode(course.location));
     periodDiv.appendChild(locationP);
