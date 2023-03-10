@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     var classes = document.getElementById("classes");
     
     courses = await getCoursesFromServer();
-
+    courses = await combineCourses(courses);
     reloadCourseList(courses)
  
     const unsavedScheduleStr = localStorage.getItem("unsavedSchedule");
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 	const semester = unsavedSchedule[selectedSemester];
 	Object.keys(semester).forEach(id => {
 	    const ele = document.getElementById(id);
-	    const course = courses.items.find(a => a.code == semester[id]);
+	    const course = courses.find(a => a.code == semester[id]);
 	    if (!course || !ele) return;
 	    
 	    ele.dataset.classcode = course.code;
@@ -114,11 +114,9 @@ function reloadCourseList(courses) {
     const selectedCourses = localStorage.getItem("courses")
     
     if (courses != null) {
-    for (let i = 0; i < courses?.items?.length; i++) {
-	const course = courses.items[i];
-	//change from bitmap to array
-	course.period = getPeriodsArray(course.period);
-	
+	for (let i = 0; i < courses.length; i++) {
+	    const course = courses[i];
+	    
 	if (selectedCourses.includes(course.code)) {
 	    if (document.getElementById(course.code) == null) {
 		let classDiv = document.createElement("div");
@@ -243,7 +241,7 @@ function dragPlacedEnd(ev) {
 }
 
 function highlightValidPeriods(classCode) {
-    const course = courses.items.find(a => a.code == classCode);
+    const course = courses.find(a => a.code == classCode);
     if (!course) return console.log(`invalid course code: ${classCode}`)
 
     let allPeriods = [];
@@ -256,11 +254,21 @@ function highlightValidPeriods(classCode) {
     let conflictedPeriodIDs = [];
 
     for (let i = 0; i < periods.length; i++) {
+	var periodIDFall = null;
+	var periodIDSpring = null;
+	var periodElementFall = null;
+	var periodElementSpring = null;
 	const period = periods[i];
 	const isA = period <= 4 || period == 8;
-	const periodID = `P${period}-S${course.semester}-${isA ? "A" : "B"}`;
-	const periodElement = document.getElementById(periodID);
-	if (periodElement) {
+	if (course.term.includes("S1")) {
+	    periodIDFall = `P${period}-S1-${isA ? "A" : "B"}`;
+	    periodElementFall = document.getElementById(periodIDFall); 
+	} else if (course.term.includes("S2")) {
+	    periodIDSpring = `P${period}-S2-${isA ? "A" : "B"}`;
+	    periodElementSpring = document.getElementById(periodIDSpring);
+	} else { console.log("invalid semester"); return;}
+
+	if (periodElementFall || periodElementSpring) {
 	    const courseLoc = course.location+period;
 	    const keys = Object.keys(conflicts);
 	    Object.values(conflicts).forEach((badPeriods, i) => {
@@ -281,9 +289,15 @@ function highlightValidPeriods(classCode) {
 		});
 	    });
 
-	    if(!conflictedPeriodIDs.includes(periodID)) {
-		periodElement.classList.add("valid");
-		validPeriodIDs.push(periodID);
+	    if(!conflictedPeriodIDs.includes(periodIDFall || periodIDSpring)) {
+		if (periodIDFall) {
+		    periodElementFall.classList.add("valid");
+		    validPeriodIDs.push(periodIDFall);
+		}
+		if (periodIDSpring) {
+		    periodElementSpring.classList.add("valid");
+		    validPeriodIDs.push(periodIDSpring);
+		}
 	    }
 	} else {
 	    console.log(`INVALID ID: ${periodID}`);
@@ -356,7 +370,7 @@ function drop(ev, target) {
 	}
     }
 
-    const course = courses.items.find(a => a.code == droppedClass);
+    const course = courses.find(a => a.code == droppedClass);
     
     ev.preventDefault();
 
