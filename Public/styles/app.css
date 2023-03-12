@@ -184,16 +184,22 @@ body {
 }
 
 #navButton {
-	width: 10%;
-	height: 100%;
-	background-color: var(--navbar);
-	border-radius: 10px;
-	font-size: 24px;
-	color: var(--navbar-labels);
-	font-weight: bold;
+    width: 10%;
+    height: 100%;
+    background-color: var(--navbar);
+    border-radius: 10px;
+    font-size: 24px;
+    color: var(--navbar-labels);
+    font-weight: bold;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    opacity: 0.8;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
+
 #navButton:hover {
     background-color: var(--navbar-hover);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.16);
+    opacity: 1;
 }
 
 .next {
