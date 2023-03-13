@@ -8,7 +8,10 @@ final class UserSchedule: Model, Content {
     var id: Int?
     
     @Field(key: "userId")
-    var userId: Int?
+    var userId: Int
+
+    @Enum(key: "semester")
+    var semester: Semester
 
     @Field(key: "periodZero")
     var periodZero: String?
@@ -41,7 +44,8 @@ final class UserSchedule: Model, Content {
 
     init(
       id: Int? = nil,
-      userId: Int? = nil, 
+      userId: Int,
+      semester: Semester,
       periodZero: String? = nil,
       periodOne: String? = nil,
       periodTwo: String? = nil,
@@ -54,6 +58,7 @@ final class UserSchedule: Model, Content {
     ) {
         self.id = id
         self.userId = userId
+        self.semester = semester
         self.periodZero = periodZero
         self.periodOne = periodOne
         self.periodTwo = periodTwo
