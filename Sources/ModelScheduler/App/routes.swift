@@ -243,11 +243,12 @@ func routes(_ app: Application) throws {
               .set(\.$periodSix, to: userSchedule.periodSix)
               .set(\.$periodSeven, to: userSchedule.periodSeven)
               .set(\.$periodEight, to: userSchedule.periodEight)
-              .filter(\.$userId == user.id)
+              .filter(\.$userId == user.id!)
               .update()
         }
         else {
             let userSchedule = UserSchedule(userId: user.id!,
+                                            semester: .S1,
                          periodZero: schedule.periodZero,
                          periodOne: schedule.periodOne,
                          periodTwo: schedule.periodTwo,
