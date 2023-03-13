@@ -229,11 +229,23 @@ function dragPlacedEnd(ev) {
 	ev.target.removeEventListener("dragend", dragPlacedEnd);
 	ev.target.firstElementChild.innerText = "Empty";
 	ev.target.children[1].innerText = "";
+
+	let secondSemesterId = ev.target.id.replace("S1", "S2")
+	let secondSemester = document.getElementById(secondSemesterId)
+	secondSemester.classList.remove("notEmpty");
+	secondSemester.setAttribute("draggable", false);
+	secondSemester.removeEventListener("dragstart", dragPlaced);
+	secondSemester.removeEventListener("dragend", dragPlacedEnd);
+	
+	secondSemester.firstElementChild.innerText = "Empty";
+	secondSemester.children[1].innerText = "";
+
+	
+	const droppedClassElement = document.getElementById(oldClass);
+	droppedClassElement.style.display = "inline-block"; //show class from list
     }
 
-    const droppedClassElement = document.getElementById(oldClass);
 
-    droppedClassElement.style.display = "inline-block"; //show class from list
     
     saveCurrentSchedule();
 
@@ -390,6 +402,19 @@ function drop(ev, target) {
     ev.target.setAttribute("draggable", true);
     ev.target.addEventListener("dragstart", dragPlaced);
     ev.target.addEventListener("dragend", dragPlacedEnd);
+
+    if(course.term == "S1+S2") {
+	let secondSemesterId = ev.target.id.replace("S1", "S2")
+	let secondSemester = document.getElementById(secondSemesterId)
+	secondSemester.dataset.classcode = droppedClass;
+	secondSemester.classList.add("notEmpty");
+	secondSemester.setAttribute("draggable", true);
+	secondSemester.addEventListener("dragstart", dragPlaced);
+	secondSemester.addEventListener("dragend", dragPlacedEnd);
+	
+	secondSemester.firstElementChild.innerText = course.name;
+	secondSemester.children[1].innerHTML = `<span class="location ${course.location}">${course.location}</span> • ` + window[`${course.location}${ev.target.id.charAt(1)}Per`];
+    }
     
     ev.target.firstElementChild.innerText = course.name;
     // sets location and time
