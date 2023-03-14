@@ -5,24 +5,34 @@ var unsavedSchedule = {fall: {}, spring: {}};
 var isDragging = false;
 var wasSame = true;
 
-var AHS0Per = "8:35-9:35"
-var AHS1Per = "8:50-9:45"
-var AHS2Per = "9:50-11:25"
-var AHS3Per = "11:30-1:30"
-var AHS4Per = "1:35-3:10"
-var AHS5Per = "9:50-11:25"
-var AHS6Per = "11:30-1:30"
-var AHS7Per = "1:35-3:10"
-var AHS8Per = "3:15-4:10"
-var STEAM0Per = "7:20-8:15"
-var STEAM1Per = "8:20-9:15"
-var STEAM2Per = "9:25-11:00"
-var STEAM3Per = "11:45-1:15"
-var STEAM4Per = "1:55-3:30" 
-var STEAM5Per = "9:25-11:00" 
-var STEAM6Per = "11:45-1:15"
-var STEAM7Per = "1:55-3:30"
-var STEAM8Per = "3:35-4:30"
+const perTimes = {
+    AHS0Per: "8:35-9:35",
+    AHS1Per: "8:50-9:45",
+    AHS2Per: "9:50-11:25",
+    AHS3Per: "11:30-1:30",
+    AHS4Per: "1:35-3:10",
+    AHS5Per: "9:50-11:25",
+    AHS6Per: "11:30-1:30",
+    AHS7Per: "1:35-3:10",
+    AHS8Per: "3:15-4:10",
+    STEAM0Per: "7:20-8:15",
+    STEAM1Per: "8:20-9:15",
+    STEAM2Per: "9:25-11:00",
+    STEAM3Per: "11:45-1:15",
+    STEAM4Per: "1:55-3:30",
+    STEAM5Per: "9:25-11:00", 
+    STEAM6Per: "11:45-1:15",
+    STEAM7Per: "1:55-3:30",
+    STEAM8Per: "3:35-4:30",
+    CTC1Per: "7:55-8:45",
+    CTC2Per: "9:25-10:15",
+    CTC3Per: "11:55-12:45",
+    CTC4Per: "2:00-2:50",
+    CTC5Per: "9:25-10:40",
+    CTC6Per: "11:55-1:10",
+    CTC7Per: "2:00-3:15",
+    CTC8Per: "3:40-4:55"
+}
 
 var conflicts = {
     "AHS0": ["STEAM1"],
@@ -413,12 +423,14 @@ function drop(ev, target) {
 	secondSemester.addEventListener("dragend", dragPlacedEnd);
 	
 	secondSemester.firstElementChild.innerText = course.name;
-	secondSemester.children[1].innerHTML = `<span class="location ${course.location}">${course.location}</span> • ` + window[`${course.location}${ev.target.id.charAt(1)}Per`];
+	secondSemester.children[1].innerHTML = `<span class="location ${course.location}">${course.location}</span> • ` + perTimes[`${course.location}${ev.target.id.charAt(1)}Per`];
     }
     
     ev.target.firstElementChild.innerText = course.name;
     // sets location and time
-    ev.target.children[1].innerHTML = `<span class="location ${course.location}">${course.location}</span> • ` + window[`${course.location}${ev.target.id.charAt(1)}Per`];
+    ev.target.children[1].innerHTML = `<span class="location ${course.location}">${course.location}</span> • ` + perTimes[`${course.location}${ev.target.id.charAt(1)}Per`];
+
+    console.log(`${course.location}${ev.target.id.charAt(1)}Per`);
     
     if (oldClass) {
 	dragEnd(null);
