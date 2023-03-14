@@ -195,8 +195,8 @@ func routes(_ app: Application) throws {
         
     // Endpoint for sending all classes
     protected.get("classes", "data") {req -> CoursesContent in
-        let courses = try await Courses.query(on: req.db).all()
-        let coursesContent = CoursesContent(items: courses)
+        let courses = Courses.query(on: req.db).sort(\.$name)
+        let coursesContent = try await CoursesContent(items: courses.all())
         return coursesContent;
     }
     
