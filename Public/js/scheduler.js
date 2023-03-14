@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 	    //set location and time
 	    ele.firstElementChild.innerText = course.name;
-	    ele.children[1].innerHTML = `<span class="location ${course.location}">${course.location}</span> • ` + window[`${course.location}${ele.id.charAt(1)}Per`];
+	    ele.children[1].innerHTML = `<span class="location ${course.location}">${course.location}</span> • ` + perTimes[`${course.location}${ele.id.charAt(1)}Per`];
 	    
 	    const classListItem = document.getElementById(course.code)
 	    classListItem.style.display = "none";
