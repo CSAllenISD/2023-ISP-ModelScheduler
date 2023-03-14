@@ -344,7 +344,7 @@ body {
 }
 
 .class.notEmpty .location.CTC {
-    border: 2px solid var(--CTC);
+    border: 2px solid var(--ctc);
 }
 
 .class.notEmpty {
