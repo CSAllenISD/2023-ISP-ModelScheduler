@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 	unsavedSchedule = JSON.parse(unsavedScheduleStr);
 	
 	const semester = unsavedSchedule[selectedSemester];
-	Object.keys(semester).forEach(id => {
+	Object.keys(semester).forEach(async (id) => {
 	    const ele = document.getElementById(id);
 	    const course = courses.find(a => a.code == semester[id]);
 	    if (!course || !ele) return;
@@ -106,6 +106,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 	    //set location and time
 	    ele.firstElementChild.innerText = course.name;
 	    ele.children[1].innerHTML = `<span class="location ${course.location}">${course.location}</span> • ` + perTimes[`${course.location}${ele.id.charAt(1)}Per`];
+
+	    const demand = await requestDemand(course.code, ele.id.charAt(1));
+	    const demandEle = ele.querySelector(".demandContainer");
+	    if (demandEle) {
+		demandEle.style.setProperty('--percent', demand.demand);
+	    }
 	    
 	    const classListItem = document.getElementById(course.code)
 	    classListItem.style.display = "none";
@@ -564,7 +570,7 @@ async function requestDemand(classCode, period) {
 	},
 	body: JSON.stringify({
 	    code: classCode,
-	    period: period
+	    period: parseInt(period)
 	}),
     });
 
