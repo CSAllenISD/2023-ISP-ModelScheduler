@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 	    const demand = await requestDemand(course.code, ele.id.charAt(1));
 	    const demandEle = ele.querySelector(".demandContainer");
 	    if (demandEle) {
-		demandEle.style.setProperty('--percent', demand.demand);
+		demandEle.style.setProperty('--percent', demand.demand+"px");
 	    }
 	    
 	    const classListItem = document.getElementById(course.code)
@@ -474,7 +474,7 @@ async function drop(ev, target) {
     const demand = await requestDemand(course.code, ev.target.id.charAt(1));
     const demandEle = ev.target.querySelector(".demandContainer");
     if (demandEle) {
-	demandEle.style.setProperty('--percent', demand.demand);
+	demandEle.style.setProperty('--percent', demand.demand+"px");
     }
 
     saveCurrentSchedule();
