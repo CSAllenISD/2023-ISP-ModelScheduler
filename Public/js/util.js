@@ -5,7 +5,7 @@ function combineCourses(courses) {
     //loop through all objects from database
     for(i=0; i < courses?.items?.length; i++) {
 	var course = courses?.items[i];
-	if (course.name.toLowerCase().includes("ap-gt english iv")) {
+	if (course.name.toLowerCase().includes("general psych")) {
 	    console.log(course);
 	}
 	var periods = [];
