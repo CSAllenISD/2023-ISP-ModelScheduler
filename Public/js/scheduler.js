@@ -56,6 +56,25 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     dmButton.addEventListener("click", toggleDm);
 
+    const classEles = document.querySelectorAll(".class");
+    classEles.forEach(ele => {
+	const demandContainer = document.createElement("div");
+	demandContainer.classList.add("demandContainer");
+
+	const demandLavaContainer = document.createElement("div");
+	demandLavaContainer.classList.add("demandLavaContainer");
+	demandContainer.appendChild(demandLavaContainer);
+
+	const demandLavaWave1 = document.createElement("div");
+	demandLavaWave1.classList.add("wave");
+	demandLavaContainer.appendChild(demandLavaWave1);
+
+	const demandLavaWave2 = document.createElement("div");
+	demandLavaWave2.classList.add("wave");
+	demandLavaContainer.appendChild(demandLavaWave2);
+
+	ele.appendChild(demandContainer);
+    });
 
     let selectedCourses = localStorage.getItem("courses");
     if (selectedCourses != null) {
@@ -372,7 +391,7 @@ function hoverClassSelector(ev) {
     }
 }
 
-function drop(ev, target) {
+async function drop(ev, target) {
     console.log(ev);
     if (!ev.target.classList.contains("valid")) {
 	ev.preventDefault();
@@ -444,6 +463,12 @@ function drop(ev, target) {
 	    oldClassElement.firstElementChild.innerText = "Empty";
 	    oldClassElement.children[1].innerText = "";
 	}
+    }
+
+    const demand = await requestDemand(course.code, ev.target.id.charAt(1));
+    const demandEle = ev.target.querySelector(".demandContainer");
+    if (demandEle) {
+	demandEle.style.setProperty('--percent', demand.demand);
     }
 
     saveCurrentSchedule();
@@ -530,6 +555,23 @@ async function getCoursesFromServer() {
     });
 }
 
+async function requestDemand(classCode, period) {
+    const response = await fetch("./scheduler/demand", {
+	method: 'POST',
+	headers: {
+	    'Accept': 'application/json',
+	    'Content-Type': 'application/json'
+	},
+	body: JSON.stringify({
+	    code: classCode,
+	    period: period
+	}),
+    });
+
+    console.log(response);
+    const json = await response.json();
+    return json;
+}
 
 async function sendCoursesToServer() {
     const response = await fetch("./scheduler", {
