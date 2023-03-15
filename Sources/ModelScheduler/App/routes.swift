@@ -237,9 +237,21 @@ func routes(_ app: Application) throws {
         
         let matchCourse = try await Courses.query(on: req.db).filter(\.$code == courseCode).filter(\.$period == period).first()
         if matchCourse != nil {
+            let studentCurCount = try await UserSchedule.query(on: req.db).group(.and) { group in
+                group.filter(\.$id == matchCourse?.id)
+                  .filter(\.$id == matchCourse?.id)
+                  .filter(\.$id == matchCourse?.id)
+                  .filter(\.$id == matchCourse?.id)
+                  .filter(\.$id == matchCourse?.id)
+                  .filter(\.$id == matchCourse?.id)
+                  .filter(\.$id == matchCourse?.id)
+                  .filter(\.$id == matchCourse?.id)
+                  .filter(\.$id == matchCourse?.id)
+            }.count()
             studentCur = Int.random(in: 0..<30)
             studentMax = matchCourse?.studentMax
             demand = Int((Float(studentCur!)/Float(studentMax!)) * 100)
+            //print("CourseCode: \(courseCode) Period: \(period) Demand: \(demand)%")
         }
         else {
             print("Course not found: CourseCode: \(courseCode), Period: \(period)")
