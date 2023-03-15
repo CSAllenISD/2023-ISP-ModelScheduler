@@ -231,35 +231,43 @@ func routes(_ app: Application) throws {
         let course = try req.content.decode(SchedulerDemand.self)
         let courseCode = course.code
         let period = course.period
-        var demand : Int = 0
-        var studentCur : Int? = 0
-        var studentMax : Int? = 0
+        let searchedTerm = course.term ?? .both
         
-        let matchCourse = try await Courses.query(on: req.db).filter(\.$code == courseCode).filter(\.$period == period).first()
-        if matchCourse != nil {
-            let studentCurCount = try await UserSchedule.query(on: req.db).group(.and) { group in
-                group.filter(\.$periodZero == matchCourse?.id)
-                  .filter(\.$periodOne == matchCourse?.id)
-                  .filter(\.$periodTwo == matchCourse?.id)
-                  .filter(\.$periodThree == matchCourse?.id)
-                  .filter(\.$periodFour == matchCourse?.id)
-                  .filter(\.$periodFive == matchCourse?.id)
-                  .filter(\.$periodSix == matchCourse?.id)
-                  .filter(\.$periodSeven == matchCourse?.id)
-                  .filter(\.$periodEight == matchCourse?.id)
-            }.count()
-            studentCur = Int.random(in: 0..<30)
-            studentMax = matchCourse?.studentMax
-            demand = Int((Float(studentCur!)/Float(studentMax!)) * 100)
-            //print("CourseCode: \(courseCode) Period: \(period) Demand: \(demand)%")
-        }
-        else {
+        guard let matchCourse: Courses = try await Courses.query(on: req.db).filter(\.$code == courseCode).filter(\.$period == period).first() else {
             print("Course not found: CourseCode: \(courseCode), Period: \(period)")
+            return SchedulerDemandRes(demand: 0, studentMax: 0, studentCur: 0)
         }
 
+        let studentMax = matchCourse.studentMax
+        let filterCollection: [Semester] = searchedTerm == .both ? [.fall, .spring] : [searchedTerm]
+
+        let possibleSchedules = try await UserSchedule.query(on: req.db)
+          .filter(\.$semester ~~ filterCollection)
+          .group(.or) { group in
+            group.filter(\.$periodZero == matchCourse.id)
+              .filter(\.$periodOne == matchCourse.id)
+              .filter(\.$periodTwo == matchCourse.id)
+              .filter(\.$periodThree == matchCourse.id)
+              .filter(\.$periodFour == matchCourse.id)
+              .filter(\.$periodFive == matchCourse.id)
+              .filter(\.$periodSix == matchCourse.id)
+              .filter(\.$periodSeven == matchCourse.id)
+              .filter(\.$periodEight == matchCourse.id)
+        }.all()
+
+        // group schedules by userId
+        let studentSchedules = Dictionary(grouping: possibleSchedules) { $0.userId }
+        let seatsPerTerm: Decimal = matchCourse.term == .both && searchedTerm == .both
+          ? 1 / 2 // divide seats in half if its a dual semester class with both lookup
+          : 1
+
+        // see if a student has more than >1 occourance meaning they took both semesters
+        //TODO: fix impossible configuration with a student taking the same half block class twice
+        let seatsTaken = studentSchedules.compactMap { $1.count > 1 ? seatsPerTerm * 2 : seatsPerTerm }.reduce(0, +)
+
+        let demand = (seatsTaken / Decimal(studentMax)) * 100
         
-        
-        return SchedulerDemandRes(demand: demand, studentMax: studentMax!, studentCur: studentCur!)
+        return SchedulerDemandRes(demand: demand, studentMax: studentMax, studentCur: seatsTaken)
     }
     
     
@@ -284,7 +292,7 @@ func routes(_ app: Application) throws {
         }
         else {
             let userSchedule = UserSchedule(userId: user.id!,
-                                            semester: .S1,
+                                            semester: .fall,
                          periodZero: schedule.periodZero,
                          periodOne: schedule.periodOne,
                          periodTwo: schedule.periodTwo,
@@ -350,10 +358,11 @@ struct CustomError: Content {
 struct SchedulerDemand: Content {
     let code: String
     let period: Int
+    let term: Semester?
 }
 
 struct SchedulerDemandRes: Content {
-    let demand: Int
+    let demand: Decimal
     let studentMax: Int
-    let studentCur: Int
+    let studentCur: Decimal
 }
