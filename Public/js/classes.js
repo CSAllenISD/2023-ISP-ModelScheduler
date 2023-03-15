@@ -160,6 +160,20 @@ function removeCourse(code) {
 	}
     }
     localStorage.setItem("courses", courses);
+
+    let schedule = localStorage.getItem("unsavedSchedule")
+    if(schedule) {
+	let scheduleParsed = JSON.parse(schedule)
+	let fall = scheduleParsed["fall"]
+	for (var per in fall){
+	    if(!localStorage.getItem("courses").includes(fall[per])){
+		fall[per] = null
+	    }
+	}
+
+	scheduleParsed["fall"] = fall
+	localStorage.setItem("unsavedSchedule", JSON.stringify(scheduleParsed))
+    }
     
 }
 
