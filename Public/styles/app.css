@@ -230,9 +230,9 @@ body {
 
 /*Some absolute bullshit dear god*/
 #scheduleViewer {
-    width: 55%;
+    width: 65%;
     height: 101%;
-    margin-left: 8%;
+    margin-left: 5%;
     display: inline-grid;
     padding-left: 5px;
     padding-right: 4px;
@@ -530,7 +530,7 @@ body {
 	float: left;
 	height: 90%;
 	width: 20%;
-	margin-left: 8%;
+	margin-left: 5%;
 	margin-top: 2%;
 	background-color: var(--classes-bg);
 	border-style: solid;
@@ -587,7 +587,7 @@ body {
 }
 
 .selectedClass .periods {
-    max-width: 55%;
+    max-width: 75%;
     height: 30px;
     margin-top: 8px;
     margin-left: 5px;
