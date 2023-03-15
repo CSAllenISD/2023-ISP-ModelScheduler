@@ -38,7 +38,7 @@ var conflicts = {
     "AHS0": ["STEAM1", "CTC1"],
     "AHS1": ["STEAM2", "STEAM5"],
     "STEAM4": ["AHS8"],
-    "STEAM7": ["AHS8"]
+    "STEAM7": ["AHS8"],
 
     "CTC2": ["AHS5", "STEAM5"],
     "CTC3": ["AHS6", "STEAM6"],
@@ -267,16 +267,27 @@ function dragPlacedEnd(ev) {
 	ev.target.firstElementChild.innerText = "Empty";
 	ev.target.children[1].innerText = "";
 
-	let secondSemesterId = ev.target.id.replace("S1", "S2")
-	let secondSemester = document.getElementById(secondSemesterId)
-	secondSemester.classList.remove("notEmpty");
-	secondSemester.setAttribute("draggable", false);
-	secondSemester.removeEventListener("dragstart", dragPlaced);
-	secondSemester.removeEventListener("dragend", dragPlacedEnd);
-	
-	secondSemester.firstElementChild.innerText = "Empty";
-	secondSemester.children[1].innerText = "";
-
+	if (ev.target.id.includes("S1")) {
+	    let secondSemesterId = ev.target.id.replace("S1", "S2")
+	    let secondSemester = document.getElementById(secondSemesterId)
+	    secondSemester.classList.remove("notEmpty");
+	    secondSemester.setAttribute("draggable", false);
+	    secondSemester.removeEventListener("dragstart", dragPlaced);
+	    secondSemester.removeEventListener("dragend", dragPlacedEnd);
+	    
+	    secondSemester.firstElementChild.innerText = "Empty";
+	    secondSemester.children[1].innerText = "";
+	}else if (ev.target.id.includes("S2")) {
+	    let firstSemesterId = ev.target.id.replace("S2", "S1")
+	    let firstSemester = document.getElementById(firstSemesterId)
+	    firstSemester.classList.remove("notEmpty");
+	    firstSemester.setAttribute("draggable", false);
+	    firstSemester.removeEventListener("dragstart", dragPlaced);
+	    firstSemester.removeEventListener("dragend", dragPlacedEnd);
+	    
+	    firstSemester.firstElementChild.innerText = "Empty";
+	    firstSemester.children[1].innerText = "";
+	}
 	
 	const droppedClassElement = document.getElementById(oldClass);
 	droppedClassElement.style.display = "inline-block"; //show class from list
@@ -309,7 +320,13 @@ function highlightValidPeriods(classCode) {
 	var periodElementSpring = null;
 	const period = periods[i];
 	const isA = period <= 4 || period == 8;
-	if (course.term.includes("S1")) {
+	if (course.term.includes("S1+S2")) {
+	    periodIDFall = `P${period}-S1-${isA ? "A" : "B"}`;
+	    periodElementFall = document.getElementById(periodIDFall);
+
+	    periodIDSpring = `P${period}-S2-${isA ? "A" : "B"}`;
+	    periodElementSpring = document.getElementById(periodIDSpring);
+	} else if (course.term.includes("S1")) {
 	    periodIDFall = `P${period}-S1-${isA ? "A" : "B"}`;
 	    periodElementFall = document.getElementById(periodIDFall); 
 	} else if (course.term.includes("S2")) {
@@ -441,16 +458,29 @@ async function drop(ev, target) {
     ev.target.addEventListener("dragend", dragPlacedEnd);
 
     if(course.term == "S1+S2") {
-	let secondSemesterId = ev.target.id.replace("S1", "S2")
-	let secondSemester = document.getElementById(secondSemesterId)
-	secondSemester.dataset.classcode = droppedClass;
-	secondSemester.classList.add("notEmpty");
-	secondSemester.setAttribute("draggable", true);
-	secondSemester.addEventListener("dragstart", dragPlaced);
-	secondSemester.addEventListener("dragend", dragPlacedEnd);
+	if(ev.target.id.includes("S1")) {
+	    let secondSemesterId = ev.target.id.replace("S1", "S2")
+	    let secondSemester = document.getElementById(secondSemesterId)
+	    secondSemester.dataset.classcode = droppedClass;
+	    secondSemester.classList.add("notEmpty");
+	    secondSemester.setAttribute("draggable", true);
+	    secondSemester.addEventListener("dragstart", dragPlaced);
+	    secondSemester.addEventListener("dragend", dragPlacedEnd);
 	
-	secondSemester.firstElementChild.innerText = course.name;
-	secondSemester.children[1].innerHTML = `<span class="location ${course.location}">${course.location}</span> • ` + perTimes[`${course.location}${ev.target.id.charAt(1)}Per`];
+	    secondSemester.firstElementChild.innerText = course.name;
+	    secondSemester.children[1].innerHTML = `<span class="location ${course.location}">${course.location}</span> • ` + perTimes[`${course.location}${ev.target.id.charAt(1)}Per`];
+	}else if(ev.target.id.includes("S2")) {
+	    let firstSemesterId = ev.target.id.replace("S2", "S1")
+	    let firstSemester = document.getElementById(firstSemesterId)
+	    firstSemester.dataset.classcode = droppedClass;
+	    firstSemester.classList.add("notEmpty");
+	    firstSemester.setAttribute("draggable", true);
+	    firstSemester.addEventListener("dragstart", dragPlaced);
+	    firstSemester.addEventListener("dragend", dragPlacedEnd);
+	
+	    firstSemester.firstElementChild.innerText = course.name;
+	    firstSemester.children[1].innerHTML = `<span class="location ${course.location}">${course.location}</span> • ` + perTimes[`${course.location}${ev.target.id.charAt(1)}Per`];
+	}
     }
     
     ev.target.firstElementChild.innerText = course.name;
@@ -470,6 +500,21 @@ async function drop(ev, target) {
 	    oldClassElement.removeEventListener("dragend", dragPlacedEnd);
 	    oldClassElement.firstElementChild.innerText = "Empty";
 	    oldClassElement.children[1].innerText = "";
+	    
+	    if(oldClassElement.id.includes("S1")) {
+		var otherSemId = oldClassElement.id.replace("S1", "S2")
+	    }else if(oldClassElement.id.includes("S2")) {
+		var otherSemId = oldClassElement.id.replace("S2", "S1")
+	    }
+
+	    let otherSem = document.getElementById(otherSemId)
+	    otherSem.dataset.classcode = null;
+	    otherSem.classList.remove("notEmpty");
+	    otherSem.setAttribute("draggable", false);
+	    otherSem.removeEventListener("dragstart", dragPlaced);
+	    otherSem.removeEventListener("dragend", dragPlacedEnd);
+	    otherSem.firstElementChild.innerText = "Empty";
+	    otherSem.children[1].innerText = "";
 	}
     }
 
