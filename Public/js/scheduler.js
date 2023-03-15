@@ -38,7 +38,7 @@ var conflicts = {
     "AHS0": ["STEAM1", "CTC1"],
     "AHS1": ["STEAM2", "STEAM5"],
     "STEAM4": ["AHS8"],
-    "STEAM7": ["AHS8"]
+    "STEAM7": ["AHS8"],
 
     "CTC2": ["AHS5", "STEAM5"],
     "CTC3": ["AHS6", "STEAM6"],
