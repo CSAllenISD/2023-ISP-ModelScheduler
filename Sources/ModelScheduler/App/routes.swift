@@ -110,9 +110,9 @@ func routes(_ app: Application) throws {
                 try req.content.encode(emailData)
 
                 req.headers.add(name: "apiKey", value: ModelScheduler.getEnvString("EMAIL_APIKEY"))
-                print("REQUEST: \n \(req)")
+            //    print("REQUEST: \n \(req)")
             }
-            print("RESPONSE: \n \(response)")
+            // print("RESPONSE: \n \(response)")
             
             try await user.save(on: req.db)
             let error = CustomError(error: "Click the link in your email to complete account creation. If you did not recieve an email please wait 3 minutes and then try again.")
@@ -226,6 +226,30 @@ func routes(_ app: Application) throws {
 
         return Courses()
     }
+
+    protected.post("scheduler", "demand") { req -> SchedulerDemandRes in
+        let course = try req.content.decode(SchedulerDemand.self)
+        let courseCode = course.code
+        let period = course.period
+        var demand : Int = 0
+        var studentCur : Int? = 0
+        var studentMax : Int? = 0
+        
+        let matchCourse = try await Courses.query(on: req.db).filter(\.$code == courseCode).filter(\.$period == period).first()
+        if matchCourse != nil {
+            studentCur = Int.random(in: 0..<30)
+            studentMax = matchCourse?.studentMax
+            demand = (studentCur!/studentMax!) * 100
+        }
+        else {
+            print("Course not found: CourseCode: \(courseCode), Period: \(period)")
+        }
+
+        
+        
+        return SchedulerDemandRes(demand: demand, studentMax: studentMax!, studentCur: studentCur!)
+    }
+    
     
     // After recieving user schedule from front end store it in db and redirect to the final/print page
     protected.post("scheduler") {req -> Response in
@@ -309,4 +333,15 @@ struct EmailData: Content {
 
 struct CustomError: Content {
     let error: String
+}
+
+struct SchedulerDemand: Content {
+    let code: String
+    let period: Int
+}
+
+struct SchedulerDemandRes: Content {
+    let demand: Int
+    let studentMax: Int
+    let studentCur: Int
 }

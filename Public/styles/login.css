@@ -59,8 +59,18 @@ input::placeholder {
 h2 {
 	font-size: 2.75rem;
 	font-weight: 100;
-	margin: 0 0 1rem;
+	margin: 0;
+	height: 60px;
 	text-transform: uppercase;
+}
+
+.subtitle {
+    margin: 0;
+}
+
+form {
+    margin: 0;
+    margin-top: 1.5rem;
 }
 
 svg {
@@ -80,7 +90,7 @@ a {
 .register input {
 	border: 1px solid #242c37 ;
 	border-radius: 999px;
-	background-color: transparent;
+	background-color: transparent !important;
 	text-align: center;
 }
 .register input[type="email"],
@@ -95,11 +105,21 @@ a {
 .register input[type="password"] {
 	background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#242c37"><path d="M195.334 223.333h-50v-62.666c0-61.022 49.645-110.667 110.666-110.667 61.022 0 110.667 49.645 110.667 110.667v62.666h-50v-62.666c0-33.452-27.215-60.667-60.667-60.667-33.451 0-60.666 27.215-60.666 60.667v62.666zm208.666 30v208.667h-296v-208.667h296zm-121 87.667c0-14.912-12.088-27-27-27s-27 12.088-27 27c0 7.811 3.317 14.844 8.619 19.773 4.385 4.075 6.881 9.8 6.881 15.785v22.942h23v-22.941c0-5.989 2.494-11.708 6.881-15.785 5.302-4.93 8.619-11.963 8.619-19.774z"/></svg>');
 }
+a{transition: ease-in 0.1s;}
+a:hover {
+    color: white;
+}
+
 .register input[type="submit"] {
 
     background-image: linear-gradient(160deg, #3D48DC 0%, #2F3ABE 100%);
     color: #fff;
     color: black;
     margin-bottom: 6rem;
+    transition: ease-in 0.2s;
 
+}
+
+.register input[type="submit"]:hover{
+    background-image: linear-gradient(340deg, #3D48DC 0%, #2F3ABE 100%);
 }
