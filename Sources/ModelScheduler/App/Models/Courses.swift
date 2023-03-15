@@ -14,8 +14,8 @@ final class Courses: Model, Content {
     @Field(key: "courseName")
     var name: String
 
-    @Field(key: "term")
-    var term: String
+    @Enum(key: "term")
+    var term: Semester
 
     @Field(key: "department")
     var department: String
@@ -55,7 +55,7 @@ final class Courses: Model, Content {
     */
     init() { }
 
-    init(id: String? = nil, code: String, name: String, term: String, department: String, period: Int, doubleBlockPeriod: Int?, location: String, studentMax: Int) {
+    init(id: String? = nil, code: String, name: String, term: Semester, department: String, period: Int, doubleBlockPeriod: Int?, location: String, studentMax: Int) {
         self.id = id
         self.code = code
         self.name = name

@@ -1,4 +1,3 @@
-
 var courses = [];
 var selectedSemester = "fall";
 var unsavedSchedule = {fall: {}, spring: {}};
@@ -114,7 +113,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 	    ele.firstElementChild.innerText = course.name;
 	    ele.children[1].innerHTML = `<span class="location ${course.location}">${course.location}</span> • ` + perTimes[`${course.location}${ele.id.charAt(1)}Per`];
 
-	    const demand = await requestDemand(course.code, ele.id.charAt(1));
+	    const demand = await requestDemand(course.code, ele.id.charAt(1), ele.id.substring(3, 5));
 	    const demandEle = ele.querySelector(".demandContainer");
 	    if (demandEle) {
 		demandEle.style.setProperty('--percent', demand.demand+"px");
@@ -518,7 +517,7 @@ async function drop(ev, target) {
 	}
     }
 
-    const demand = await requestDemand(course.code, ev.target.id.charAt(1));
+    const demand = await requestDemand(course.code, ev.target.id.charAt(1), ev.target.id.substring(3, 5));
     const demandEle = ev.target.querySelector(".demandContainer");
     if (demandEle) {
 	demandEle.style.setProperty('--percent', demand.demand+"px");
@@ -608,7 +607,7 @@ async function getCoursesFromServer() {
     });
 }
 
-async function requestDemand(classCode, period) {
+async function requestDemand(classCode, period, term) { // term is nullable
     const response = await fetch("./scheduler/demand", {
 	method: 'POST',
 	headers: {
@@ -617,7 +616,8 @@ async function requestDemand(classCode, period) {
 	},
 	body: JSON.stringify({
 	    code: classCode,
-	    period: parseInt(period)
+	    period: parseInt(period),
+        term: term
 	}),
     });
 

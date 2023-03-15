@@ -1,3 +1,5 @@
 enum Semester: String, Codable {
-    case S1, S2
+    case fall = "S1"
+    case spring = "S2"
+    case both = "S1+S2"
 }
