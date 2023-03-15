@@ -600,10 +600,14 @@ body {
     margin: 2px 0 2px 2px;
     width: 26px;
     text-align: center;
-    background-color: var(--navbar);
+    background-color: var(--classes-bg);
     color: var(--text);
     border-radius: 50%;
     line-height: 1.5;
+}
+
+.selectedClass .highlighted {
+    background-color: var(--navbar);
 }
 
 .selectedClass .location {
