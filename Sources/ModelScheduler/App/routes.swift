@@ -239,7 +239,7 @@ func routes(_ app: Application) throws {
         if matchCourse != nil {
             studentCur = Int.random(in: 0..<30)
             studentMax = matchCourse?.studentMax
-            demand = (studentCur!/studentMax!) * 100
+            demand = Int((Float(studentCur!)/Float(studentMax!)) * 100)
         }
         else {
             print("Course not found: CourseCode: \(courseCode), Period: \(period)")
