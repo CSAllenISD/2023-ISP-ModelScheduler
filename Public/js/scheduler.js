@@ -268,6 +268,7 @@ function dragPlacedEnd(ev) {
 	if (ev.target.id.includes("S1")) {
 	    let secondSemesterId = ev.target.id.replace("S1", "S2")
 	    let secondSemester = document.getElementById(secondSemesterId)
+	    secondSemester.dataset.classcode = null;
 	    secondSemester.classList.remove("notEmpty");
 	    secondSemester.setAttribute("draggable", false);
 	    secondSemester.removeEventListener("dragstart", dragPlaced);
@@ -278,6 +279,7 @@ function dragPlacedEnd(ev) {
 	}else if (ev.target.id.includes("S2")) {
 	    let firstSemesterId = ev.target.id.replace("S2", "S1")
 	    let firstSemester = document.getElementById(firstSemesterId)
+	    firstSemester.dataset.classcode = null;
 	    firstSemester.classList.remove("notEmpty");
 	    firstSemester.setAttribute("draggable", false);
 	    firstSemester.removeEventListener("dragstart", dragPlaced);
