@@ -37,7 +37,7 @@
     --aDay: #bd2d28;
     --bDay: #151b66;
     --classes-bg: #354152;
-    --class: #14181f;
+    --class: #2c3545;
     --hover-class: rgb(115,115,115);
     --gray-box: rgb(60,60,60);
     --search: rgb(100,100,100);
@@ -62,7 +62,7 @@ html {
 }
 
 ::-webkit-scrollbar {
-    width: 15px;
+    width: 12px;
 }
 
 /* Track */
@@ -73,14 +73,14 @@ html {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: var(--navbar) !important;
-    border-radius: 10px !important;
+    background: gray !important;
+    border-radius: 5px !important;
     cursor: pointer; !important
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--navbar) !important;
+    background: gray !important;
 }
 
 .container {
