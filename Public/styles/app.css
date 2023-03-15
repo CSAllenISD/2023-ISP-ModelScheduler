@@ -316,6 +316,8 @@ body {
     background-color: var(--class);
     color: var(--text);
 
+    position: relative;
+
     min-width: 0;
     overflow: hidden;
     
@@ -350,6 +352,79 @@ body {
 .class.notEmpty {
     cursor: move;
     cursor: grab;
+}
+
+.class .demandContainer {
+    display: none;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 20px;
+    height: 52px;
+    border: 1px solid black;
+    border-radius: 5px;
+
+    background: none;
+    overflow: hidden;
+}
+
+.class.notEmpty .demandContainer {
+    display: block;
+}
+
+.demandLavaContainer {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    background: none;
+}
+
+.demandLavaContainer .wave {
+    background: red;
+    
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: calc(var(--percent) / 2);
+
+    transition: height 1s ease-in-out;
+}
+
+.demandLavaContainer .wave:nth-of-type(2) {
+    background: rgba(0, 0, 0, 0.2);
+    animation: wave 4s ease-in-out infinite;
+}
+
+@keyframes wave {
+    0%, 100% {
+	clip-path: polygon(
+	    0% 45%,
+	    16% 44%,
+	    33% 50%,
+	    54% 60%,
+	    70% 61%,
+	    84% 59%,
+	    100% 52%,
+	    100% 100%,
+	    0% 100%
+	);
+    }
+
+    50% {
+	clip-path: polygon(
+	    0% 60%,
+	    15% 65%,
+	    34% 66%,
+	    51% 62%,
+	    67% 50%,
+	    84% 45%,
+	    100% 46%,
+	    100% 100%,
+	    0% 100%
+	);
+    }
 }
 
 #schedulerViewer > .notEmpty:active {
