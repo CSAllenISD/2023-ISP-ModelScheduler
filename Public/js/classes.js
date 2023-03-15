@@ -295,18 +295,6 @@ function getClassDiv(course) {
 	    periodDiv.appendChild(periodP);	    
 	}
     }
-    
-    //create fire demand icons
-    let demandDiv = document.createElement("div");
-    demandDiv.classList.add("demand");
-    classDiv.appendChild(demandDiv);
-    
-    for(let i = 0; i < 3; i++) {
-	let demandImg = document.createElement("img");
-	demandImg.src = "images/fire.png"
-	demandImg.setAttribute("draggable", false);
-	demandDiv.appendChild(demandImg);
-    }
 
     return classDiv
 }
