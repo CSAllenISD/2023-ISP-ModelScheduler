@@ -201,19 +201,17 @@ function reloadCourseList(courses) {
 		
 		for (let i = 0; i < 9; i++) {
 		    let period = course.period[i]
-		    if (period > -1 && period < 9) {
-			let periodP = document.createElement("p");
-			periodP.classList.add("period");
+		    let periodP = document.createElement("p");
+		    periodP.classList.add("period");
 
-			//logic for highlight
-			if (course.period.includes(i)) {
-			    periodP.classList.add("highlighted");
-			}
-			
-			periodP.appendChild(document.createTextNode(course.period[i]))
-		    
-			periodDiv.appendChild(periodP);
+		    //logic for highlight
+		    if (course.period.includes(i)) {
+			periodP.classList.add("highlighted");
 		    }
+			
+		    periodP.appendChild(document.createTextNode(i))
+		    
+		    periodDiv.appendChild(periodP);
 		}
 	    }
 	    
