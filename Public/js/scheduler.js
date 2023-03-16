@@ -428,7 +428,7 @@ async function drop(ev, target) {
     droppedClassElement.style.display = "none"; // hide class from list
 
     const classThere = ev.target.dataset.classcode; //gets the class already in the period
-    if (classThere) {
+    if (classThere && classThere != droppedClass) {
 	const oldEle = document.getElementById(classThere);
 	if (oldEle != null) {
 	    oldEle.style.display = "inline-block";
