@@ -10,8 +10,8 @@ func configure(_ app: Application) throws {
     app.views.use(.leaf)
 
     // Configuration
-    app.mailgun.configuration = .init(apiKey: getEnvString("MAILGUN_APIKEY"))
-    app.mailgun.defaultDomain = MailgunDomain(getEnvString("MAILGUN_DOMAIN"), .us)
+    //app.mailgun.configuration = .init(apiKey: getEnvString("MAILGUN_APIKEY"))
+    //app.mailgun.defaultDomain = MailgunDomain(getEnvString("MAILGUN_DOMAIN"), .us)
 
     //Gatekeeper
     app.caches.use(.memory)
