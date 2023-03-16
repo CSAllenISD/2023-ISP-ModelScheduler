@@ -6,40 +6,41 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link href="../styles/login.css" rel="stylesheet" />
+    <link href="styles/login.css" rel="stylesheet" />
     <link rel="icon"
 	  type="image/png"
 	                  href="images/allenisdLogo.png" />
-    <script defer src="../js/forgotpassword.js"></script>
+    <script defer src="js/forgot.js"></script>
+    
   </head>
 
   <body class="align">
     <div class="grid align__item">
       <div class="register">
-	
-	<img src="../images/allenisdLogo.png"
+	<img src="images/allenisdLogo.png"
 	     width="80"
 	     height="85"
 	     viewBox="77.7 214.9 274.7 412" />	
 
 	<h2>Forgot</h2>
-	<p class="subtitle">Change your password.</p>
-	
+
 	<form id="login-form" class="form">
 	  <div class="form__field">
-	    <input type="password" name="password" id="password" class="login-form-field" placeholder="Password" required autofocus>
+	    <input type="text" name="firstName" id="firstName" class="login-form-field" placeholder="First Name" required autofocus>
 	  </div>
 	  <div class="form__field">
-	    <input type="password" name="confirmPassword" id="confirmPassword" class="login-form-field" placeholder="Confirm Password" required autofocus>
+	    <input type="text" name="lastName" id="lastName" class="login-form-field" placeholder="Last Name" required autofocus>
 	  </div>
 	  <div class="form__field">
-	    <input type="submit" value="Submit" id="login-form-submit">
+	    <input type="text" name="email" id="email" class="login-form-field" placeholder="firstname.lastname@student.allenisd.org" required autofocus>
+	  </div>
+	  <div class="form__field">
+	    <input type="submit" value="Register" id="login-form-submit">
 	  </div>
 	</form>
-	<p>Have an account? <a href="../login">Login</a></p>
       </div>
-      
+    </div>
   </body>
-  
-  
+
+
 </html>

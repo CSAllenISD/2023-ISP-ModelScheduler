@@ -15,7 +15,7 @@ func configure(_ app: Application) throws {
 
     //Gatekeeper
     app.caches.use(.memory)
-    app.gatekeeper.config = .init(maxRequests: 12, per: .second)
+    app.gatekeeper.config = .init(maxRequests: 16, per: .second)
     app.middleware.use(GatekeeperMiddleware())
     app.gatekeeper.keyMakers.use(.userID)
     

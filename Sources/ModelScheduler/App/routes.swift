@@ -161,9 +161,111 @@ func routes(_ app: Application) throws {
         return error
     }
 
-      
-    // Authenticate the user and redirect to class selection page
-    let sessions = app.grouped([User.sessionAuthenticator(), User.customAuthenticator()])
+    app.get("forgot") {req in
+        return try await req.view.render("forgot.html")
+    }
+    
+
+   app.get("forgotpassword", ":token") {req in
+        //let token = req.parameters.get("token")!
+        //let user = try await User.query(on: req.db).filter(\.$token == token).first()
+        
+        //TODO: if the user is already verified, redirect to login
+        return try await req.view.render("forgotpassword.html")
+    }
+
+   app.post("forgot") {req -> CustomError in
+       try User.Email.validate(content: req)
+       let create = try req.content.decode(User.Email.self)
+       
+       let emailData = Data(create.email.utf8)
+       let hashedEmail = SHA256.hash(data: emailData)
+       //print("SAVING: \(hashedEmail.hex)")
+       let verifyToken = randomString(length: 6)
+       let user = User(
+         email: hashedEmail.hex,
+         passwordHash: "NULL",
+         token: verifyToken
+       )
+       
+       let userExist = try await User.query(on: req.db).filter(\.$email == user.email).first()
+             
+       if userExist != nil{
+           if userExist?.isActive == 1 {
+               let curTime = Date()
+               let updatedAtTime = userExist?.updatedAt
+               if updatedAtTime!.distance(to: curTime) > Double(180) {
+                   
+                   let emailApi = ModelScheduler.getEnvString("EMAIL_API")
+                   let response = try await req.client.post("\(emailApi)") { req in
+                       let contact = contact(firstName: "", lastName: "", emailAddress: create.email)
+                       let emailData = EmailData(contact: contact,
+                                                 templateName: "cmwModelSchedulerForgotPassword",
+                                                 templateParameters:
+                                                   "{\"firstName\": \"\(create.firstName)\", \"lastName\": \"\(create.lastName)\", \"token\": \"\(verifyToken)\"}")
+                       
+                       try req.content.encode(emailData)
+                       
+                       req.headers.add(name: "apiKey", value: ModelScheduler.getEnvString("EMAIL_APIKEY"))
+                   }
+                   
+                   try await User.query(on: req.db)
+                     .set(\.$token, to: verifyToken)
+                     .filter(\.$email == hashedEmail.hex)
+                     .update()
+                   
+                   let error = CustomError(error: "Email has been sent, click the link in your email to proceed.")
+                   return error
+               }
+               else {
+                   let error = CustomError(error: "Please wait 3 minutes before trying again.")
+                   return error
+               }
+           }
+       }
+       else {
+           
+           let error = CustomError(error: "User does not exist. Check the email and try again.")
+           return error
+           
+       }
+       
+       
+       let error = CustomError(error: "Fatal Error, please try again later.")
+       return error
+       
+   }
+   
+   app.post("forgotpassword") { req -> CustomError in
+       try User.Verify.validate(content: req)
+       let create = try req.content.decode(User.Verify.self)
+       let token = create.token
+       guard create.password == create.confirmPassword else {
+           throw Abort(.badRequest, reason: "Passwords did not match")
+       }
+       let passwordHash = try Bcrypt.hash(create.password)
+       let user = try await User.query(on: req.db).filter(\.$token == token).first()
+       if user?.isActive == 1 {
+           try await User.query(on: req.db)
+             .set(\.$passwordHash, to: passwordHash)
+             .filter(\.$token == token)
+             .update()
+           
+            let error = CustomError(error: "Password successfully updated.")
+            return error
+       }
+       else if user?.isActive == 0 {
+           let error = CustomError(error: "Account is not active.")
+           return error
+        }
+       
+       let error = CustomError(error: "Fatal Error, please try again later.")
+       return error
+   }
+   
+   
+   // Authenticate the user and redirect to class selection page
+   let sessions = app.grouped([User.sessionAuthenticator(), User.customAuthenticator()])
     sessions.post("login") { req -> Response in
         //let user = try req.content.decode(User.self)
         let user = try req.auth.require(User.self)
