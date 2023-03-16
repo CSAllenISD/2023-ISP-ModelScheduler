@@ -36,15 +36,21 @@ const perTimes = {
 var conflicts = {
     "AHS0": ["STEAM1", "CTC1"],
     "AHS1": ["STEAM2", "STEAM5"],
+    "AHS8": ["STEAM4", "STEAM7"],
+
+    "STEAM1": ["AHS0"],
+    "STEAM2": ["AHS1"],
     "STEAM4": ["AHS8"],
+    "STEAM5": ["AHS1"],
     "STEAM7": ["AHS8"],
 
-    "CTC2": ["AHS5", "STEAM5"],
+    "CTC1": ["AHS0"],
+    "CTC2": ["AHS1", "AHS5", "STEAM5"],
     "CTC3": ["AHS6", "STEAM6"],
-    "CTC4": ["AHS7", "STEAM7"],
-    "CTC5": ["AHS2", "STEAM2"],
+    "CTC4": ["AHS8", "AHS7", "STEAM7"],
+    "CTC5": ["AHS1", "AHS2", "STEAM2"],
     "CTC6": ["AHS3", "STEAM3"],
-    "CTC7": ["AHS4", "STEAM4"],
+    "CTC7": ["AHS8", "AHS4", "STEAM4"],
 }
 
 document.addEventListener("DOMContentLoaded", async function () {
@@ -336,33 +342,37 @@ function highlightValidPeriods(classCode) {
 	if (periodElementFall || periodElementSpring) {
 	    const courseLoc = course.location+period;
 	    const keys = Object.keys(conflicts);
+
+	    function checkConflict(semester, periodElement, periodID, periodPreCond, preIsA, i) {		
+		const prePeriodID = `P${periodPreCond}-S${semester}-${preIsA ? "A" : "B"}`;
+		const prePeriodElement = document.getElementById(prePeriodID);
+		
+		if(prePeriodElement && prePeriodElement.children.length > 1) {
+		    if(prePeriodElement.querySelector(".location")?.innerText.includes(keys[i].replace(periodPreCond, ""))) {
+			periodElement.classList.add("conflicted");
+			conflictedPeriodIDs.push(periodID);
+		    }
+		}
+	    }
+	    
 	    Object.values(conflicts).forEach((badPeriods, i) => {
 		badPeriods.forEach(badPeriod => {
 		    if (badPeriod == courseLoc) {
-			const periodPreCond = keys[i].replace("STE", "").replace("AHS", "");
+			const periodPreCond = keys[i].replace("STEAM", "").replace("AHS", "").replace("CTC", "");
 			const preIsA = periodPreCond <= 4 || periodPreCond == 8;
-			const prePeriodID = `P${periodPreCond}-S${course.semester}-${preIsA ? "A" : "B"}`;
-			const prePeriodElement = document.getElementById(prePeriodID);
-
-			if(prePeriodElement && prePeriodElement.children.length > 1) {
-			    if(prePeriodElement.children[1].innerText.includes(keys[i].replace(periodPreCond, ""))) {
-				periodElement.classList.add("conflicted");
-				conflictedPeriodIDs.push(periodID);
-			    }
-			}
+			if (periodElementFall) checkConflict(1, periodElementFall, periodIDFall, periodPreCond, preIsA, i);
+			if (periodElementSpring) checkConflict(2, periodElementSpring, periodIDSpring, periodPreCond, preIsA, i);
 		    }
 		});
 	    });
 
-	    if(!conflictedPeriodIDs.includes(periodIDFall || periodIDSpring)) {
-		if (periodIDFall) {
-		    periodElementFall.classList.add("valid");
-		    validPeriodIDs.push(periodIDFall);
-		}
-		if (periodIDSpring) {
-		    periodElementSpring.classList.add("valid");
-		    validPeriodIDs.push(periodIDSpring);
-		}
+	    if(periodIDFall && !conflictedPeriodIDs.includes(periodIDFall)) {
+		periodElementFall.classList.add("valid");
+		validPeriodIDs.push(periodIDFall);
+	    }
+	    if(periodIDSpring && !conflictedPeriodIDs.includes(periodIDSpring)) {
+		periodElementSpring.classList.add("valid");
+		validPeriodIDs.push(periodIDSpring);
 	    }
 	} else {
 	    console.log(`INVALID ID: ${periodID}`);
