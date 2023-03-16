@@ -62,6 +62,14 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     dmButton.addEventListener("click", toggleDm);
 
+    let instructions = localStorage.getItem("schedulerInstructions")
+    if (instructions == null){
+	localStorage.setItem("schedulerInstructions", "true")
+    }else {
+	document.getElementById('modal').style.display = "none"
+    }
+
+
     const classEles = document.querySelectorAll(".class");
     classEles.forEach(ele => {
 	const demandContainer = document.createElement("div");
