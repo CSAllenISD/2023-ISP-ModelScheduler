@@ -11,11 +11,20 @@ document.addEventListener("DOMContentLoaded", function () {
 		console.error("Element with id 'darkMode' not found");
 	}
 
-	dmButton.addEventListener("click", toggleDm);
+    dmButton.addEventListener("click", toggleDm);
+
+    let instructions = localStorage.getItem("classesInstructions")
+    if (instructions == null){
+	localStorage.setItem("classesInstructions", "true")
+    }else {
+	document.getElementById('modal').style.display = "none"
+    }
 });
 
 window.onload = function () {
     dmSwitch();
+
+        
     document.getElementById('button').onclick = function () {
         document.getElementById('modal').style.display = "none"
     };
