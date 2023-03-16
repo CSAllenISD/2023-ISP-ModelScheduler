@@ -84,6 +84,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 window.onload = function () {
 	dmSwitch();
+        document.getElementById('button').onclick = function () {
+           document.getElementById('modal').style.display = "none"
+       };
 };
 
 function dmSwitch() {

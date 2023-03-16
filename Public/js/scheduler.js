@@ -654,4 +654,7 @@ window.onload = function () {
     
     //set dark mode
     dmSwitch();
+    document.getElementById('button').onclick = function () {
+        document.getElementById('modal').style.display = "none"
+    };
 };
