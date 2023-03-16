@@ -44,4 +44,4 @@ extension ValidatorResults.studentEmail: ValidatorResult {
 }
 
 // FIXME: this regex is too strict with capitalization of the domain part
-private let regex: String = "^\\w+@(student.)?allenisd.org$"
+private let regex: String = "^\\w+\\.\\w+@(?:student\\.)?allenisd\\.org$"
