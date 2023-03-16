@@ -697,3 +697,25 @@ table .blueBox {
 .switch:hover {
 	background: rgb(200, 200, 200);
 }
+
+.modal {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    color: red;
+    font-size: 28px;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    height: 100%;
+    width: 100%;
+}
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    width: 80%;
+    padding: 20px;
+}
