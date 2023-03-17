@@ -97,21 +97,21 @@ body {
 }
 
 .tooltip .tooltiptext {
-	visibility: hidden;
-	background-color: black;
-	color: #fff;
-	width: 120px;
-	line-height: 225%;
-	font-size: 18px;
-	text-align: center;
-	border-radius: 3px;
-	padding: 3px 0;
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    width: 120px;
+    line-height: 225%;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 3px;
+    padding: 3px 0;
 
-	/* Position the tooltip */
-	position: absolute;
-	z-index: 1;
-	top: 80%;
-	left: -125%;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 95%;
+    left: -100%;
 }
 
 .tooltip:hover .tooltiptext {
