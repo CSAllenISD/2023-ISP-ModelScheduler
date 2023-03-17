@@ -98,7 +98,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 	const demandLavaWave2 = document.createElement("div");
 	demandLavaWave2.classList.add("wave");
 	demandLavaContainer.appendChild(demandLavaWave2);
-
+	
+	const tooltipText = document.createElement("span");
+	tooltipText.classList.add("tooltiptext-right");
+	// tooltipText.innerText = "Hello!";
+	demandContainer.appendChild(tooltipText);
+	
 	ele.appendChild(demandContainer);
     });
 
@@ -137,6 +142,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 	    const demandEle = ele.querySelector(".demandContainer");
 	    if (demandEle) {
 		demandEle.style.setProperty('--percent', demand.demand+"px");
+		const toolTip = demandEle.querySelector(".tooltiptext-right");
+		if(toolTip) toolTip.innerText = `${demand.studentCur} interested / ${demand.studentMax} spots`;
 	    }
 	    
 	    const classListItem = document.getElementById(course.code)
