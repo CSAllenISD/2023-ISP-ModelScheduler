@@ -54,7 +54,7 @@ body {
     background-color: var(--navbar);
     color: var(--text);
     width: 10%;
-    height: 100%;
+    height: 3vw;
     text-align: center;
     text-decoration: none;
     display: inline-block;
