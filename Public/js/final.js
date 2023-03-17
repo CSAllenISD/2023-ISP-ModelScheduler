@@ -26,7 +26,11 @@ var CTC7Per = "2:00-3:15"
 var CTC8Per = "3:40-4:55"
 
 async function updateClassSchedule() {
-    document.querySelectorAll(".class").forEach((it) => (it.innerHTML = "Empty"));
+    document.querySelectorAll(".class").forEach((it) => {
+	let emptySpan = document.createElement('span');
+	emptySpan.appendChild(document.createTextNode("Empty"));
+	it.appendChild(emptySpan);
+    });
 
     const courses = await getCoursesFromServer();
 

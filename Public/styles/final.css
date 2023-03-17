@@ -18,14 +18,30 @@ body {
 	main {
 		flex-direction: column;
 	}
-}
-
-@media print {
+}@media print {
     .no-print, .no-print * {
 	display: none !important;
     }
+    #titleText {
+	display: inline !important;
+	margin-top: 17px;
+	margin-left: 10px;
+	white-space: nowrap;
+	color: black;
+    }
     p{
 	display:block;
+	color: black;
+    }
+    div {
+	color: black;
+    }
+    .header, .class {
+	border: 2px solid black;
+	border-radius: 10px;
+    }
+    .class {
+	border-color: gray !important;
     }
     span{
 	color: black;
