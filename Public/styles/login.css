@@ -40,7 +40,7 @@ input:focus {
     outline: 0;
     border-color: #3D48DC;
     box-shadow: 0 0 15px #3D48DC;
-    animation: pulse 1s infinite;
+    animation: pulse 1.5s infinite;
 }
 input::placeholder {
     color: #7e8ba3;
@@ -139,7 +139,7 @@ a:hover {
 	transform: scale(1);
     }
     50% {
-	transform: scale(1.05);
+	transform: scale(1.02);
     }
     100% {
 	transform: scale(1);
