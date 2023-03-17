@@ -92,18 +92,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 window.onload = function () {
 	dmSwitch();
-        document.getElementById('button').onclick = function () {
-           document.getElementById('modal').style.display = "none"
-	};
-
-    document.onclick = function (e) {
-	let modal = document.getElementById('modal')
-	if(modal.style.display != "none"){
-	    if(modal == e.target){
-		modal.style.display = "none"
-	    }
-	}
-    }
 };
 
 function dmSwitch() {
