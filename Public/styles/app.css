@@ -369,7 +369,7 @@ header.navbar {
 #scheduleViewer > .class.notEmpty span:first-child {
     font-weight: 700;
 }
-
+ 
 .class.notEmpty .location {
     border-radius: 5px;
     padding-left: 3px;
@@ -756,4 +756,17 @@ table .blueBox {
     transform: translate(-50%, -50%);
     width: 70%;
     padding: 20px;
+}
+
+
+span.circle {
+    background: var(--aDay);
+    border-radius: 50%;
+    color: var(--navbar);
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.6em;
+    margin-right: 15px;
+    text-align: center;
+    width: 1.6em;
 }
