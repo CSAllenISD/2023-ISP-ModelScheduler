@@ -69,7 +69,7 @@ h2 {
 	box-shadow: 0 0 25px #000;
 	border-style: solid;
 	border-radius: 7px;
-	width: 25%;
+	width: 30%;
 	height: 85%;
 	position: absolute;
 	display: flex-block;
@@ -89,7 +89,7 @@ p {
 }
 
 .classList {
-	margin-left: 20%;
+	margin-left: 15%;
 }
 
 .classList2 {
