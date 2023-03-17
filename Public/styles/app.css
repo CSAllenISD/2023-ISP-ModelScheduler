@@ -118,32 +118,50 @@ body {
 	visibility: visible;
 }
 
-.navbar {
-	list-style-type: none;
-	width: 100%;
-	padding-left: 1%;
-	height: 5%;
-	min-height: 70px;
-	display: inline-block;
-	background-color: var(--navbar);
+header.navbar {
+    list-style-type: none;
+    width: 100%;
+    padding-left: 1%;
+    height: 5%;
+    min-height: 70px;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--navbar);
 }
 
 #logo {
-	width: 60px;
-	height: 60px;
-	margin-top: 5px;
-	margin-right: 1%;
-	float: left;
+    width: 60px;
+    height: 60px;
+    margin-top: 5px;
+    margin-right: 1%;
+    float: left;
+}
+
+.navbar ul.nav_links {
+    list-style: none;
+    display: flex;
+    flex: 3 1 0;
+}
+
+.navbar > div.nav_links {
+    list-style: none;
+    display: flex;
+    flex: 1 1 0;
+}
+
+.navbar div.nav_links:nth-of-type(2) {
+    margin-left: auto;
+    float: right;
+    align-items: flex-end;
+    justify-content: flex-end;
 }
 
 .navbar li {
-	list-style-type: none;
-	text-align: center;
-	font-size: 1.2vw;
-	font-weight: 600;
-	float: right;
-	margin-right: 3vw;
-	line-height: 70px;
+    text-align: center;
+    font-size: 1.2vw;
+    font-weight: 600;
+    line-height: 70px;
+    padding: 0px 20px;
 }
 
 .navbar finalButton {
@@ -158,14 +176,10 @@ body {
     color: var(--aDay);
 }
 
-.navbar .faqbutton {
-    padding-left: 14vw;
-}
 .navbar a:hover {
 	color: var(--aDay);
 	transition: ease 0.2s;
 }
-
 
 @media screen and (max-width: 1300px) {
     .navbar li {
@@ -175,18 +189,15 @@ body {
     .navbar {
 	height: 2%;
     }
-    .navbar .faqbutton {
-	padding-left: 4vw;
-    }    
 }
 
 #footer {
-	position: absolute;
-	height: 7%;
-	bottom: 0;
-	margin-left: 10%;
-	width: 80%;
-	margin-bottom: 25px;
+    position: absolute;
+    height: 7%;
+    bottom: 0;
+    margin-left: 10%;
+    width: 80%;
+    margin-bottom: 25px;
 }
 
 #footer button {
