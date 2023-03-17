@@ -520,6 +520,17 @@ async function drop(ev, target) {
     // sets location and time
     ev.target.children[1].innerHTML = `<span class="location ${course.location}">${course.location}</span> • ` + perTimes[`${course.location}${ev.target.id.charAt(1)}Per`];
 
+    const classDemand = await requestDemand(course.code, ev.target.id.charAt(1), ev.target.id.substring(3, 5));
+    const classDemandEle = ev.target.querySelector(".demandContainer");
+    if (classDemandEle) {
+	classDemandEle.style.setProperty('--percent', classDemand.demand+"px");
+	const toolTip = classDemandEle.querySelector(".tooltiptext-right");
+	if(toolTip) {
+	    toolTip.style.textAlign = "center";
+	    toolTip.innerText = `${classDemand.studentCur} interested / ${classDemand.studentMax} spots`;
+	}
+    }
+    
     console.log(`${course.location}${ev.target.id.charAt(1)}Per`);
     
     if (oldClass) {
