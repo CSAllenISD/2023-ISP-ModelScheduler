@@ -1,4 +1,3 @@
-
 :root,
 :root.light {
     --text: rgba(0, 0, 0, .5);
@@ -19,8 +18,9 @@
     --search: white;
     --valid: rgb(183, 217, 177);
     --conflict: #ff964f;
-    --invalid: rgb(247, 102, 94);
-    --conflict rgb(255, 213, 128);
+    --invalid: repeating-linear-gradient(45deg, rgba(50, 50, 50, .3), rgba(50, 50, 50, .3) 30px, rgba(210, 210, 210, .3) 30px, rgba(210, 210, 210, .3) 60px);
+    --remove: rgb(255, 87, 51);
+    --conflict: rgb(255, 213, 128);
     --ahs: rgb(247, 102, 94);
     --steam: #bfd7ea;
     --ctc: #ffba26;
@@ -42,7 +42,8 @@
     --gray-box: rgb(60,60,60);
     --search: rgb(100,100,100);
     --valid: #4a8453;
-    --invalid: #bd2d28;
+    --invalid: repeating-linear-gradient(45deg, rgba(50, 50, 50, .3), rgba(50, 50, 50, .3) 30px, rgba(210, 210, 210, .3) 30px, rgba(210, 210, 210, .3) 60px);
+    --remove: rgb(255, 87, 51);
     --conflict: rgb(255, 87, 51);
     --ahs: #bd2d28;
     --steam: #151b66;
@@ -98,64 +99,114 @@ body {
 }
 
 .tooltip .tooltiptext {
-	visibility: hidden;
-	background-color: black;
-	color: #fff;
-	width: 120px;
-	line-height: 225%;
-	font-size: 18px;
-	text-align: center;
-	border-radius: 3px;
-	padding: 3px 0;
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    width: 120px;
+    line-height: 225%;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 3px;
+    padding: 3px 0;
 
-	/* Position the tooltip */
-	position: absolute;
-	z-index: 1;
-	top: 80%;
-	left: -125%;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 95%;
+    left: -100%;
 }
 
 .tooltip:hover .tooltiptext {
 	visibility: visible;
 }
 
-.navbar {
-	list-style-type: none;
-	width: 100%;
-	padding-left: 1%;
-	padding-right: 1%;
-	height: 5%;
-	min-height: 70px;
-	display: inline-block;
-	background-color: var(--navbar);
+.tooltip-right {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltiptext-right {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    right: 110%;
+}
+
+.tooltiptext-right::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent black;
+}
+
+.demandContainer:hover {
+    background-color: black;
+}
+
+.demandContainer:hover > .tooltiptext-right {
+    visibility: visible;
+}
+
+header.navbar {
+    list-style-type: none;
+    width: 100%;
+    padding-left: 1%;
+    height: 5%;
+    min-height: 70px;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--navbar);
 }
 
 #logo {
-	width: 60px;
-	height: 60px;
-	margin-top: 5px;
-	margin-right: 1%;
-	float: left;
+    width: 60px;
+    height: 60px;
+    margin-top: 5px;
+    margin-right: 15px;
+    float: left;
+}
+
+.navbar ul.nav_links {
+    list-style: none;
+    display: flex;
+    flex: 3 1 0;
+}
+
+.navbar > div.nav_links {
+    list-style: none;
+    display: flex;
+    flex: 1 1 0;
+}
+
+.navbar div.nav_links:nth-of-type(2) {
+    margin-left: auto;
+    float: right;
+    align-items: flex-end;
+    justify-content: flex-end;
 }
 
 .navbar li {
-	list-style-type: none;
-	text-align: center;
-	font-size: 32px;
-	font-weight: 600;
-	float: right;
-	margin-right: 50px;
-	line-height: 70px;
+    text-align: center;
+    font-size: 1.2vw;
+    font-weight: 600;
+    line-height: 70px;
+    padding: 0px 20px;
 }
 
-@media screen and (max-width: 1300px) {
-    .navbar li {
-	font-size: 15px;
-    }
-    .navbar {
-	height: 2%;
-    }
-
+.navbar finalButton {
+    margin-right: 40vw;
 }
 
 .navbar a {
@@ -171,13 +222,36 @@ body {
 	transition: ease 0.2s;
 }
 
+@media screen and (max-width: 1300px) {
+    .navbar li {
+	font-size: 20px;
+	margin-right: 2vw;
+    }
+    .navbar {
+	height: 2%;
+    }
+}
+
+.modal-content {
+    background-color: var(--bg-color);
+}
+
+.modal button {
+    position: absolute;
+    right: 10px !important;
+    top: 5px !important;
+    border: none;
+    font-size: 36px;
+    background-color: transparent;
+}
+
 #footer {
 	position: absolute;
 	height: 7%;
 	bottom: 0;
-	margin-left: 10%;
-	width: 80%;
-	margin-bottom: 25px;
+	margin-left: 6%;
+	width: 88%;
+	margin-bottom: 10px;
 }
 
 #footer button {
@@ -186,7 +260,7 @@ body {
 
 #navButton {
     width: 10%;
-    height: 100%;
+    height: 3vw;
     background-color: var(--navbar);
     border-radius: 10px;
     font-size: 24px;
@@ -271,7 +345,7 @@ body {
 }
 
 #scheduleViewer > div.invalid {
-    background-color: var(--invalid) !important;
+    background: var(--invalid) !important;
     pointer-events: none;
 }
 
@@ -283,7 +357,15 @@ body {
 #scheduleViewer > div > span {
     display: table-cell;
     vertical-align: middle;
-    white-space: nowrap;
+    
+    max-width: 100%;
+    max-height: 36px;
+    overflow: hidden;
+    
+    word-break: break-all;
+    word-wrap: normal;
+    
+    /* white-space: nowrap; */
 }
 /*brokey formatting for table, fix later
 #scheduleViewer > div:nth-child(n + 2) {
@@ -328,7 +410,7 @@ body {
 #scheduleViewer > .class.notEmpty span:first-child {
     font-weight: 700;
 }
-
+ 
 .class.notEmpty .location {
     border-radius: 5px;
     padding-left: 3px;
@@ -366,7 +448,7 @@ body {
     border-radius: 5px;
 
     background: none;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .class.notEmpty .demandContainer {
@@ -524,7 +606,8 @@ body {
 }
 
 #darkmodeButton {
-	all: unset;
+    all: unset;
+    padding-left: 10px;
 }
 
 #classes {
@@ -698,24 +781,31 @@ table .blueBox {
 	background: rgb(200, 200, 200);
 }
 
-.modal {
-    position: fixed;
-    font-family: Arial, Helvetica, sans-serif;
-    color: red;
-    font-size: 28px;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 99999;
-    height: 100%;
-    width: 100%;
+span.circle1 {
+    background: var(--aDay);
+    border-radius: 50%;
+    color: var(--navbar);
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.6em;
+    margin-right: 15px;
+    text-align: center;
+    width: 1.6em;
 }
-.modal-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #fff;
-    width: 80%;
-    padding: 20px;
+
+span.circle0 {
+    background: var(--navbar);
+    border-style: solid;
+    border-color: var(--aDay);
+    border-radius: 50%;
+    color: var(--aDay);
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.4em;
+    margin-right: 15px;
+    text-align: center;
+    width: 1.6em;
 }
+
+
+

@@ -73,7 +73,7 @@ func routes(_ app: Application) throws {
 
                     let emailApi = ModelScheduler.getEnvString("EMAIL_API")
                     let response = try await req.client.post("\(emailApi)") { req in
-                        let contact = contact(firstName: "", lastName: "", emailAddress: create.email)
+                        let contact = Contact(firstName: "", lastName: "", emailAddress: create.email)
                         let emailData = EmailData(contact: contact,
                                                   templateName: "cmwModelSchedulerVerification",
                                                   templateParameters:
@@ -101,7 +101,7 @@ func routes(_ app: Application) throws {
         else {
             let emailApi = ModelScheduler.getEnvString("EMAIL_API")
             let response = try await req.client.post("\(emailApi)") { req in
-                let contact = contact(firstName: "", lastName: "", emailAddress: create.email)
+                let contact = Contact(firstName: "", lastName: "", emailAddress: create.email)
                 let emailData = EmailData(contact: contact,
                                           templateName: "cmwModelSchedulerVerification",
                                           templateParameters:
@@ -198,7 +198,7 @@ func routes(_ app: Application) throws {
                    
                    let emailApi = ModelScheduler.getEnvString("EMAIL_API")
                    let response = try await req.client.post("\(emailApi)") { req in
-                       let contact = contact(firstName: "", lastName: "", emailAddress: create.email)
+                       let contact = Contact(firstName: "", lastName: "", emailAddress: create.email)
                        let emailData = EmailData(contact: contact,
                                                  templateName: "cmwModelSchedulerForgotPassword",
                                                  templateParameters:
@@ -266,11 +266,12 @@ func routes(_ app: Application) throws {
    
    // Authenticate the user and redirect to class selection page
    let sessions = app.grouped([User.sessionAuthenticator(), User.customAuthenticator()])
-    sessions.post("login") { req -> Response in
+   sessions.post("login") { req -> CustomError in
         //let user = try req.content.decode(User.self)
         let user = try req.auth.require(User.self)
-        req.auth.login(user)      
-        return req.redirect(to: "./classes")
+        req.auth.login(user)
+        let error = CustomError(error:"Success")
+        return error
     }
 
     /// END LOGIN AND ACCOUNT CREATION ENDPOINTS
@@ -364,7 +365,7 @@ func routes(_ app: Application) throws {
           : 1
 
         // see if a student has more than >1 occourance meaning they took both semesters
-        //TODO: fix impossible configuration with a student taking the same half block class twice
+        //TODO: fix impossible configuration with a student taking the same half block class twice (needs to be fixed in input)
         let seatsTaken = studentSchedules.compactMap { $1.count > 1 ? seatsPerTerm * 2 : seatsPerTerm }.reduce(0, +)
 
         let demand = (seatsTaken / Decimal(studentMax)) * 100
@@ -374,43 +375,41 @@ func routes(_ app: Application) throws {
     
     
     // After recieving user schedule from front end store it in db and redirect to the final/print page
-    protected.post("scheduler") {req -> Response in
+    protected.post("scheduler") {req -> String in
         let user = try req.auth.require(User.self)
-//        print(req)
-        let schedule = try req.content.decode(UserSchedule.self)
-        if let userSchedule = try await UserSchedule.query(on: req.db).filter(\.$userId == user.id!).first() {
-            try await UserSchedule.query(on: req.db)
-              .set(\.$periodZero, to: userSchedule.periodZero)
-              .set(\.$periodOne, to: userSchedule.periodOne)
-              .set(\.$periodTwo, to: userSchedule.periodTwo)
-              .set(\.$periodThree, to: userSchedule.periodThree)
-              .set(\.$periodFour, to: userSchedule.periodFour)
-              .set(\.$periodFive, to: userSchedule.periodFive)
-              .set(\.$periodSix, to: userSchedule.periodSix)
-              .set(\.$periodSeven, to: userSchedule.periodSeven)
-              .set(\.$periodEight, to: userSchedule.periodEight)
-              .filter(\.$userId == user.id!)
-              .update()
-        }
-        else {
-            let userSchedule = UserSchedule(userId: user.id!,
-                                            semester: .fall,
-                         periodZero: schedule.periodZero,
-                         periodOne: schedule.periodOne,
-                         periodTwo: schedule.periodTwo,
-                         periodThree: schedule.periodThree,
-                         periodFour: schedule.periodFour,
-                         periodFive: schedule.periodFive,
-                         periodSix: schedule.periodSix,
-                         periodSeven: schedule.periodSeven,
-                         periodEight: schedule.periodEight
-            )
+        let schedules = try req.content.decode(SharableSchedules.self).items
 
-            try await userSchedule.save(on: req.db)
+        precondition(schedules.allSatisfy{$0.term != .both}, "\(user.id!) is not allowed to use term both.") // TODO make this a validator
+
+        // Not a good example of authorative code.
+        let userSchedules = try await UserSchedule.query(on: req.db).filter(\.$userId == user.id!).all()
+
+        for schedule in schedules {
+            let userSchedule = userSchedules.filter{ $0.semester == schedule.term }.first
+            let exists = userSchedule != nil
+            var newSchedule = userSchedule ?? UserSchedule(userId: user.id!, semester: schedule.term)
+
+            newSchedule.periodZero = schedule.periodZero
+            newSchedule.periodOne = schedule.periodOne
+            newSchedule.periodTwo = schedule.periodTwo
+            newSchedule.periodThree = schedule.periodThree
+            newSchedule.periodFour = schedule.periodFour
+            newSchedule.periodFive = schedule.periodFive
+            newSchedule.periodSix = schedule.periodSix
+            newSchedule.periodSeven = schedule.periodSeven
+            newSchedule.periodEight = schedule.periodEight
+
+            if exists {
+                try await newSchedule.update(on: req.db)
+            } else {
+                try await newSchedule.create(on: req.db)
+            }
         }
 
+        // intresting...
+        return "{ \"msg\": \"Update Successful\" }"
         //This might change depending on the request recieved
-        return req.redirect(to: "./final")
+        //return req.redirect(to: "./final")
     } 
 
     
@@ -431,24 +430,35 @@ func routes(_ app: Application) throws {
     
 }
 
-struct SchedulerContext: Encodable {
-    
-    let schedule: UserSchedule
-    
-}
-
 struct CoursesContent: Content {
     let items: [Courses]
 }
 
-struct contact: Content {
+struct SharableSchedule: Content {
+    let term: Semester
+    let periodZero: String?
+    let periodOne: String?
+    let periodTwo: String?
+    let periodThree: String?
+    let periodFour: String?
+    let periodFive: String?
+    let periodSix: String?
+    let periodSeven: String?
+    let periodEight: String?
+}
+
+struct SharableSchedules: Content {
+    let items: [SharableSchedule]
+}
+
+struct Contact: Content {
     let firstName: String
     let lastName: String
     let emailAddress: String
 }
 
 struct EmailData: Content {
-    let contact: contact
+    let contact: Contact
     let templateName: String
     let templateParameters: String
 }

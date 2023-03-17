@@ -13,30 +13,26 @@
 	                  href="images/allenisdLogo.png" />
   </head>
   <body>
-    <div class="navbar">
-      <ul>
+    <header class="navbar">
+      <div class="nav_links">
 	<a href="./classes"><img id="logo" src="images/allenisdLogo.png" alt="AllenISD Logo"></a>
-	<div class="tooltip"><button id="darkmodeButton"><img id="darkmode" src="images/moon.png"><span class="tooltiptext">Dark Mode</span></div>
-	
-	<li><a href="./FAQ">FAQ</a></li>
-	<li><a class="selected" href="#">3. FINALIZE</a></li>
-	<li><a href="./scheduler">2. SCHEDULE PERIODS</a></li>
-	<li><a href="./classes">1. SELECT COURSES</a></li>
-	<!--li><img id="darkmode" src="images/moon.png"></li-->
-
-	
-      </ul>
-      
-    </div>
-    <!-- Modal -->
-    <div class="modal" id="modal">
-
-      <!-- Modal content-->
-      <div class="modal-content" id="modal-content">
-	<p>Instructions for this page!</p>
-	<button id="button">Close</button>
+	<h1 id="titleText" style="display: none;">AHS Model Scheduler</h1>
+	<div class="tooltip no-print"><button id="darkmodeButton"><img id="darkmode" src="images/moon.png"><span class="tooltiptext">Dark Mode</span></div>
       </div>
-    </div>
+
+      <nav>
+	<ul class="nav_links">
+	  <li class="no-print"><span class="circle0">1</span><a href="./classes">SELECT COURSES</a></li>
+	  <li class="no-print"><span class="circle0">2</span><a href="./scheduler">SCHEDULE PERIODS</a></li>
+	  <li class="no-print"><span class="circle1">3</span><a class="selected" href="#">FINALIZE</a></li>
+	</ul>
+      </nav>
+
+      <div class="nav_links">
+	<li class="no-print"><a class="faqbutton" href="./FAQ">FAQ</a></li>
+	<li class="no-print"><a href="https://forms.gle/W5u57TsC8thwrkU2A" target="_blank">Send Feedback</a></li>      
+      </div>
+    </header>
     
       <div id="scheduleViewer">
 	<div class="header" id="topLeft">

@@ -35,16 +35,28 @@ const perTimes = {
 
 var conflicts = {
     "AHS0": ["STEAM1", "CTC1"],
-    "AHS1": ["STEAM2", "STEAM5"],
-    "STEAM4": ["AHS8"],
-    "STEAM7": ["AHS8"],
+    "AHS1": ["STEAM2", "STEAM5", "CTC2", "CTC5"],
+    "AHS2": ["CTC5"],
+    "AHS3": ["CTC6"],
+    "AHS4": ["CTC7"],
+    "AHS5": ["CTC2"],
+    "AHS6": ["CTC3"],
+    "AHS7": ["CTC4"],
+    "AHS8": ["STEAM4", "STEAM7"],
 
-    "CTC2": ["AHS5", "STEAM5"],
+    "STEAM1": ["AHS0"],
+    "STEAM2": ["AHS1", "CTC5"],
+    "STEAM4": ["AHS8", "CTC7"],
+    "STEAM5": ["AHS1", "CTC2"],
+    "STEAM7": ["AHS8", "CTC4"],
+
+    "CTC1": ["AHS0"],
+    "CTC2": ["AHS1", "AHS5", "STEAM5"],
     "CTC3": ["AHS6", "STEAM6"],
-    "CTC4": ["AHS7", "STEAM7"],
-    "CTC5": ["AHS2", "STEAM2"],
+    "CTC4": ["AHS8", "AHS7", "STEAM7"],
+    "CTC5": ["AHS1", "AHS2", "STEAM2"],
     "CTC6": ["AHS3", "STEAM3"],
-    "CTC7": ["AHS4", "STEAM4"],
+    "CTC7": ["AHS8", "AHS4", "STEAM4"],
 }
 
 document.addEventListener("DOMContentLoaded", async function () {
@@ -62,6 +74,14 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     dmButton.addEventListener("click", toggleDm);
 
+    let instructions = localStorage.getItem("schedulerInstructions")
+    if (instructions == null){
+	localStorage.setItem("schedulerInstructions", "true")
+    }else {
+	document.getElementById('modal').style.display = "none"
+    }
+
+
     const classEles = document.querySelectorAll(".class");
     classEles.forEach(ele => {
 	const demandContainer = document.createElement("div");
@@ -78,7 +98,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 	const demandLavaWave2 = document.createElement("div");
 	demandLavaWave2.classList.add("wave");
 	demandLavaContainer.appendChild(demandLavaWave2);
-
+	
+	const tooltipText = document.createElement("span");
+	tooltipText.classList.add("tooltiptext-right");
+	// tooltipText.innerText = "Hello!";
+	demandContainer.appendChild(tooltipText);
+	
 	ele.appendChild(demandContainer);
     });
 
@@ -117,6 +142,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 	    const demandEle = ele.querySelector(".demandContainer");
 	    if (demandEle) {
 		demandEle.style.setProperty('--percent', demand.demand+"px");
+		const toolTip = demandEle.querySelector(".tooltiptext-right");
+		if(toolTip) toolTip.innerText = `${demand.studentCur} interested / ${demand.studentMax} spots`;
 	    }
 	    
 	    const classListItem = document.getElementById(course.code)
@@ -336,33 +363,37 @@ function highlightValidPeriods(classCode) {
 	if (periodElementFall || periodElementSpring) {
 	    const courseLoc = course.location+period;
 	    const keys = Object.keys(conflicts);
+
+	    function checkConflict(semester, periodElement, periodID, periodPreCond, preIsA, i) {		
+		const prePeriodID = `P${periodPreCond}-S${semester}-${preIsA ? "A" : "B"}`;
+		const prePeriodElement = document.getElementById(prePeriodID);
+		
+		if(prePeriodElement && prePeriodElement.children.length > 1) {
+		    if(prePeriodElement.querySelector(".location")?.innerText.includes(keys[i].replace(periodPreCond, "")) && !course.code.startsWith("PP")) {
+			periodElement.classList.add("conflicted");
+			conflictedPeriodIDs.push(periodID);
+		    }
+		}
+	    }
+	    
 	    Object.values(conflicts).forEach((badPeriods, i) => {
 		badPeriods.forEach(badPeriod => {
 		    if (badPeriod == courseLoc) {
-			const periodPreCond = keys[i].replace("STE", "").replace("AHS", "");
+			const periodPreCond = keys[i].replace("STEAM", "").replace("AHS", "").replace("CTC", "");
 			const preIsA = periodPreCond <= 4 || periodPreCond == 8;
-			const prePeriodID = `P${periodPreCond}-S${course.semester}-${preIsA ? "A" : "B"}`;
-			const prePeriodElement = document.getElementById(prePeriodID);
-
-			if(prePeriodElement && prePeriodElement.children.length > 1) {
-			    if(prePeriodElement.children[1].innerText.includes(keys[i].replace(periodPreCond, ""))) {
-				periodElement.classList.add("conflicted");
-				conflictedPeriodIDs.push(periodID);
-			    }
-			}
+			if (periodElementFall) checkConflict(1, periodElementFall, periodIDFall, periodPreCond, preIsA, i);
+			if (periodElementSpring) checkConflict(2, periodElementSpring, periodIDSpring, periodPreCond, preIsA, i);
 		    }
 		});
 	    });
 
-	    if(!conflictedPeriodIDs.includes(periodIDFall || periodIDSpring)) {
-		if (periodIDFall) {
-		    periodElementFall.classList.add("valid");
-		    validPeriodIDs.push(periodIDFall);
-		}
-		if (periodIDSpring) {
-		    periodElementSpring.classList.add("valid");
-		    validPeriodIDs.push(periodIDSpring);
-		}
+	    if(periodIDFall && !conflictedPeriodIDs.includes(periodIDFall)) {
+		periodElementFall.classList.add("valid");
+		validPeriodIDs.push(periodIDFall);
+	    }
+	    if(periodIDSpring && !conflictedPeriodIDs.includes(periodIDSpring)) {
+		periodElementSpring.classList.add("valid");
+		validPeriodIDs.push(periodIDSpring);
 	    }
 	} else {
 	    console.log(`INVALID ID: ${periodID}`);
@@ -524,6 +555,7 @@ async function drop(ev, target) {
     }
 
     saveCurrentSchedule();
+    sendCoursesToServer();
 
     isDragging = false;
 }
@@ -627,16 +659,42 @@ async function requestDemand(classCode, period, term) { // term is nullable
 }
 
 async function sendCoursesToServer() {
+    const periods = [
+	"P0-S1-A", "P1-S1-A", "P2-S1-A", "P3-S1-A", "P4-S1-A", "P5-S1-B", "P6-S1-B", "P7-S1-B", "P8-S1-A",
+	"P0-S2-A", "P1-S2-A", "P2-S2-A", "P3-S2-A", "P4-S2-A", "P5-S2-B", "P6-S2-B", "P7-S2-B", "P8-S2-A"
+    ]
+
+    const items = [{ term: "S1" }, { term: "S2"} ];
+
+    for (let i = 0; i < periods.length; i++) {
+	const periodEle = document.getElementById(periods[i]);
+	const classID = periodEle.dataset.classcode;
+	if(classID == null || classID == "null") continue;
+	
+	if (classID) {
+	    const semester = periods[i].includes("S1") ? 0 : 1;
+	    const course = courses.find(a => a.code == classID);
+
+	    const perToWord = `period${intToWord(parseInt(periods[i].charAt(1)))}`
+
+	    if(course) items[semester][perToWord] = course.id;
+	}
+    }
+    
     const response = await fetch("./scheduler", {
 	method: 'POST',
 	headers: {
 	    'Accept': 'application/json',
 	    'Content-Type': 'application/json'
 	},
-	body: localStorage.getItem("unsavedSchedule"),
+	body: JSON.stringify({
+	    items: items
+	}),
     });
 
     console.log(response);
+
+    try {
 
     response.json().then(data => {
 	//const alertString = JSON.parse(data);
@@ -644,11 +702,16 @@ async function sendCoursesToServer() {
 	if (data.reason){
 	    alert(data.reason);
 	}
-	else{
+	/*
+	  else {
 	    alert(data.error);
-	}
+	  }
+	*/
     });
+	
+    } catch(err) {}
 }
+
 window.onload = function () {
     
     
@@ -657,4 +720,13 @@ window.onload = function () {
     document.getElementById('button').onclick = function () {
         document.getElementById('modal').style.display = "none"
     };
+
+    document.onclick = function (e) {
+	let modal = document.getElementById('modal')
+	if(modal.style.display != "none"){
+	    if(modal == e.target){
+		modal.style.display = "none"
+	    }
+	}
+    }
 };
