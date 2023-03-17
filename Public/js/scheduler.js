@@ -45,10 +45,10 @@ var conflicts = {
     "AHS8": ["STEAM4", "STEAM7"],
 
     "STEAM1": ["AHS0"],
-    "STEAM2": ["AHS1"],
-    "STEAM4": ["AHS8"],
-    "STEAM5": ["AHS1"],
-    "STEAM7": ["AHS8"],
+    "STEAM2": ["AHS1", "CTC5"],
+    "STEAM4": ["AHS8", "CTC7"],
+    "STEAM5": ["AHS1", "CTC2"],
+    "STEAM7": ["AHS8", "CTC4"],
 
     "CTC1": ["AHS0"],
     "CTC2": ["AHS1", "AHS5", "STEAM5"],
@@ -98,7 +98,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 	const demandLavaWave2 = document.createElement("div");
 	demandLavaWave2.classList.add("wave");
 	demandLavaContainer.appendChild(demandLavaWave2);
-
+	
+	const tooltipText = document.createElement("span");
+	tooltipText.classList.add("tooltiptext-right");
+	// tooltipText.innerText = "Hello!";
+	demandContainer.appendChild(tooltipText);
+	
 	ele.appendChild(demandContainer);
     });
 
@@ -137,6 +142,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 	    const demandEle = ele.querySelector(".demandContainer");
 	    if (demandEle) {
 		demandEle.style.setProperty('--percent', demand.demand+"px");
+		const toolTip = demandEle.querySelector(".tooltiptext-right");
+		if(toolTip) toolTip.innerText = `${demand.studentCur} interested / ${demand.studentMax} spots`;
 	    }
 	    
 	    const classListItem = document.getElementById(course.code)
@@ -362,7 +369,7 @@ function highlightValidPeriods(classCode) {
 		const prePeriodElement = document.getElementById(prePeriodID);
 		
 		if(prePeriodElement && prePeriodElement.children.length > 1) {
-		    if(prePeriodElement.querySelector(".location")?.innerText.includes(keys[i].replace(periodPreCond, ""))) {
+		    if(prePeriodElement.querySelector(".location")?.innerText.includes(keys[i].replace(periodPreCond, "")) && !course.code.startsWith("PP")) {
 			periodElement.classList.add("conflicted");
 			conflictedPeriodIDs.push(periodID);
 		    }
