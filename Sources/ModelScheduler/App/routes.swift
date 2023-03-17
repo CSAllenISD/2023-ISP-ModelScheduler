@@ -406,7 +406,8 @@ func routes(_ app: Application) throws {
             }
         }
 
-        return "Update Sucessful."
+        // intresting...
+        return "{ \"msg\": \"Update Successful\" }"
         //This might change depending on the request recieved
         //return req.redirect(to: "./final")
     } 
