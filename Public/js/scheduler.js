@@ -542,6 +542,7 @@ async function drop(ev, target) {
     }
 
     saveCurrentSchedule();
+    sendCoursesToServer();
 
     isDragging = false;
 }
@@ -645,13 +646,37 @@ async function requestDemand(classCode, period, term) { // term is nullable
 }
 
 async function sendCoursesToServer() {
+    const periods = [
+	"P0-S1-A", "P1-S1-A", "P2-S1-A", "P3-S1-A", "P4-S1-A", "P5-S1-B", "P6-S1-B", "P7-S1-B", "P8-S1-A",
+	"P0-S2-A", "P1-S2-A", "P2-S2-A", "P3-S2-A", "P4-S2-A", "P5-S2-B", "P6-S2-B", "P7-S2-B", "P8-S2-A"
+    ]
+
+    const items = [{ term: "S1" }, { term: "S2"} ];
+
+    for (let i = 0; i < periods.length; i++) {
+	const periodEle = document.getElementById(periods[i]);
+	const classID = periodEle.dataset.classcode;
+	if(classID == null || classID == "null") continue;
+	
+	if (classID) {
+	    const semester = periods[i].includes("S1") ? 0 : 1;
+	    const course = courses.find(a => a.code == classID);
+
+	    const perToWord = `period${intToWord(parseInt(periods[i].charAt(1)))}`
+
+	    if(course) items[semester][perToWord] = course.id;
+	}
+    }
+    
     const response = await fetch("./scheduler", {
 	method: 'POST',
 	headers: {
 	    'Accept': 'application/json',
 	    'Content-Type': 'application/json'
 	},
-	body: localStorage.getItem("unsavedSchedule"),
+	body: JSON.stringify({
+	    items: items
+	}),
     });
 
     console.log(response);
@@ -662,11 +687,12 @@ async function sendCoursesToServer() {
 	if (data.reason){
 	    alert(data.reason);
 	}
-	else{
+	else {
 	    alert(data.error);
 	}
     });
 }
+
 window.onload = function () {
     
     
