@@ -1,4 +1,3 @@
-
 :root,
 :root.light {
     --text: rgba(0, 0, 0, .5);
@@ -19,7 +18,7 @@
     --search: white;
     --valid: rgb(183, 217, 177);
     --conflict: #ff964f;
-    --invalid: rgb(247, 102, 94);
+    --invalid: repeating-linear-gradient(45deg, rgba(50, 50, 50, .3), rgba(50, 50, 50, .3) 30px, rgba(210, 210, 210, .3) 30px, rgba(210, 210, 210, .3) 60px);
     --conflict rgb(255, 213, 128);
     --ahs: rgb(247, 102, 94);
     --steam: #bfd7ea;
@@ -42,7 +41,7 @@
     --gray-box: rgb(60,60,60);
     --search: rgb(100,100,100);
     --valid: #4a8453;
-    --invalid: #bd2d28;
+    --invalid: repeating-linear-gradient(45deg, rgba(50, 50, 50, .3), rgba(50, 50, 50, .3) 30px, rgba(210, 210, 210, .3) 30px, rgba(210, 210, 210, .3) 60px);
     --conflict: rgb(255, 87, 51);
     --ahs: #bd2d28;
     --steam: #151b66;
@@ -271,7 +270,7 @@ body {
 }
 
 #scheduleViewer > div.invalid {
-    background-color: var(--invalid) !important;
+    background: var(--invalid) !important;
     pointer-events: none;
 }
 
