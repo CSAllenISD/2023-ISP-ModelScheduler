@@ -18,6 +18,7 @@ func routes(_ app: Application) throws {
         req.redirect(to: "./classes")
     }
     
+
     app.get("FAQ.html") {req in
         req.redirect(to: "./FAQ")
     }
@@ -82,7 +83,9 @@ func routes(_ app: Application) throws {
                         try req.content.encode(emailData)
                         
                         req.headers.add(name: "apiKey", value: ModelScheduler.getEnvString("EMAIL_APIKEY"))
+                        print("REQUEST: \n \(req)")
                     }
+                    print("RESPONSE: \n \(response)")
 
                     try await User.query(on: req.db)
                       .set(\.$token, to: verifyToken)
@@ -110,9 +113,9 @@ func routes(_ app: Application) throws {
                 try req.content.encode(emailData)
 
                 req.headers.add(name: "apiKey", value: ModelScheduler.getEnvString("EMAIL_APIKEY"))
-            //    print("REQUEST: \n \(req)")
+                print("REQUEST: \n \(req)")
             }
-            // print("RESPONSE: \n \(response)")
+            print("RESPONSE: \n \(response)")
             
             try await user.save(on: req.db)
             let error = CustomError(error: "Click the link in your email to complete account creation. If you did not recieve an email please wait 3 minutes and then try again.")
