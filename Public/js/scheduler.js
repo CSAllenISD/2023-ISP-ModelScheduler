@@ -687,6 +687,8 @@ async function sendCoursesToServer() {
 
     console.log(response);
 
+    try {
+
     response.json().then(data => {
 	//const alertString = JSON.parse(data);
 	//console.log(data)
@@ -699,6 +701,8 @@ async function sendCoursesToServer() {
 	  }
 	*/
     });
+	
+    } catch(err) {}
 }
 
 window.onload = function () {
