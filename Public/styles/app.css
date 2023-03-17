@@ -118,6 +118,45 @@ body {
 	visibility: visible;
 }
 
+.tooltip-right {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltiptext-right {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    right: 110%;
+}
+
+.tooltiptext-right::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent black;
+}
+
+.demandContainer:hover {
+    background-color: black;
+}
+
+.demandContainer:hover > .tooltiptext-right {
+    visibility: visible;
+}
+
 header.navbar {
     list-style-type: none;
     width: 100%;
@@ -316,7 +355,15 @@ header.navbar {
 #scheduleViewer > div > span {
     display: table-cell;
     vertical-align: middle;
-    white-space: nowrap;
+    
+    max-width: 100%;
+    max-height: 36px;
+    overflow: hidden;
+    
+    word-break: break-all;
+    word-wrap: normal;
+    
+    /* white-space: nowrap; */
 }
 /*brokey formatting for table, fix later
 #scheduleViewer > div:nth-child(n + 2) {
@@ -361,7 +408,7 @@ header.navbar {
 #scheduleViewer > .class.notEmpty span:first-child {
     font-weight: 700;
 }
-
+ 
 .class.notEmpty .location {
     border-radius: 5px;
     padding-left: 3px;
@@ -399,7 +446,7 @@ header.navbar {
     border-radius: 5px;
 
     background: none;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .class.notEmpty .demandContainer {
@@ -748,4 +795,17 @@ table .blueBox {
     transform: translate(-50%, -50%);
     width: 70%;
     padding: 20px;
+}
+
+
+span.circle {
+    background: var(--aDay);
+    border-radius: 50%;
+    color: var(--navbar);
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.6em;
+    margin-right: 15px;
+    text-align: center;
+    width: 1.6em;
 }
