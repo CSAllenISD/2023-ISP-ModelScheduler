@@ -224,14 +224,29 @@ header.navbar {
 	transition: ease 0.2s;
 }
 
+.normalScreen {
+    display: flex;
+}
+
+.smallScreen {
+    display: none;
+}
+
 @media screen and (max-width: 1300px) {
     .navbar li {
 	font-size: 20px;
-	margin-right: 2vw;
+	padding: 0px 10px;
     }
     .navbar {
 	height: 2%;
     }
+    .normalScreen {
+	display: none;
+    }
+    .smallScreen {
+	display: flex;
+    }
+	
 }
 
 .modal-content {
