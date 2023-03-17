@@ -96,7 +96,7 @@ body > div {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 2rem;
+    margin-top: 4rem;
     margin-bottom: 5rem;
 }
 
@@ -108,7 +108,7 @@ details div {
 }
 
 details div > * + * {
-    margin-top: 1.5em;
+    margin-top: 2em;
 }
 
 details + details {
@@ -158,16 +158,5 @@ details[open] summary:before {
 
 summary:hover {
     background-color: #eee;
-}
-
-a {
-    color: inherit;
-    font-weight: 600;
-    text-decoration: none;
-    box-shadow: 0 1px 0 0;
-}
-
-a:hover {
-    box-shadow: 0 3px 0 0;
 }
 
