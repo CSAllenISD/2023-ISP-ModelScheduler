@@ -160,14 +160,3 @@ summary:hover {
     background-color: #eee;
 }
 
-a {
-    color: inherit;
-    font-weight: 600;
-    text-decoration: none;
-    box-shadow: 0 1px 0 0;
-}
-
-a:hover {
-    box-shadow: 0 3px 0 0;
-}
-
