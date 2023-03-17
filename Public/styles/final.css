@@ -58,7 +58,6 @@ body {
     }
     @page {
 	margin-left: 10px;
-        size: landscape;
     }
 }
 @media screen {
