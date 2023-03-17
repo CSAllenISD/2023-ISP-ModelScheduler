@@ -316,7 +316,15 @@ header.navbar {
 #scheduleViewer > div > span {
     display: table-cell;
     vertical-align: middle;
-    white-space: nowrap;
+    
+    max-width: 100%;
+    max-height: 36px;
+    overflow: hidden;
+    
+    word-break: break-all;
+    word-wrap: normal;
+    
+    /* white-space: nowrap; */
 }
 /*brokey formatting for table, fix later
 #scheduleViewer > div:nth-child(n + 2) {
