@@ -46,6 +46,13 @@ body {
     span{
 	color: black;
     }
+    .location {
+	font-size: 7.5px;
+	border: none !important;
+	font-weight: 500 !important;
+	margin: none !important;
+	white-space: nowrap;
+    }
     .navbar{
 	margin-left: 25px
     }
