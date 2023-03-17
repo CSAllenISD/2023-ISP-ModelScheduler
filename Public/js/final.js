@@ -79,6 +79,14 @@ document.addEventListener("DOMContentLoaded", async function () {
     
     dmButton.addEventListener("click", toggleDm);
 
+    let instructions = localStorage.getItem("finalInstructions")
+    if (instructions == null){
+	localStorage.setItem("finalInstructions", "true")
+    }else {
+	document.getElementById('modal').style.display = "none"
+    }
+
+
     updateClassSchedule();    
 });
 
@@ -86,7 +94,16 @@ window.onload = function () {
 	dmSwitch();
         document.getElementById('button').onclick = function () {
            document.getElementById('modal').style.display = "none"
-       };
+	};
+
+    document.onclick = function (e) {
+	let modal = document.getElementById('modal')
+	if(modal.style.display != "none"){
+	    if(modal == e.target){
+		modal.style.display = "none"
+	    }
+	}
+    }
 };
 
 function dmSwitch() {
