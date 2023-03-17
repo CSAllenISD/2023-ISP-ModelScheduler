@@ -420,6 +420,7 @@ header.navbar {
     padding-top: 1px;
     padding-bottom: 1px;
     max-width: fit-content;
+    font-weight: 500 !important;
 }
 
 .class.notEmpty .location.AHS {
