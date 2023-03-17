@@ -143,7 +143,10 @@ document.addEventListener("DOMContentLoaded", async function () {
 	    if (demandEle) {
 		demandEle.style.setProperty('--percent', demand.demand+"px");
 		const toolTip = demandEle.querySelector(".tooltiptext-right");
-		if(toolTip) toolTip.innerText = `${demand.studentCur} interested / ${demand.studentMax} spots`;
+		if(toolTip) {
+		    toolTip.style.textAlign = "center";
+		    toolTip.innerText = `${demand.studentCur} interested / ${demand.studentMax} spots`;
+		}
 	    }
 	    
 	    const classListItem = document.getElementById(course.code)
