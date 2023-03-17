@@ -122,7 +122,6 @@ body {
 	list-style-type: none;
 	width: 100%;
 	padding-left: 1%;
-	padding-right: 1%;
 	height: 5%;
 	min-height: 70px;
 	display: inline-block;
@@ -140,11 +139,15 @@ body {
 .navbar li {
 	list-style-type: none;
 	text-align: center;
-	font-size: 32px;
+	font-size: 1.2vw;
 	font-weight: 600;
 	float: right;
-	margin-right: 50px;
+	margin-right: 3vw;
 	line-height: 70px;
+}
+
+.navbar finalButton {
+    margin-right: 40vw;
 }
 
 @media screen and (max-width: 1300px) {
@@ -165,6 +168,9 @@ body {
     color: var(--aDay);
 }
 
+.navbar .faqbutton {
+    padding-left: 12.5vw;
+}
 .navbar a:hover {
 	color: var(--aDay);
 	transition: ease 0.2s;
