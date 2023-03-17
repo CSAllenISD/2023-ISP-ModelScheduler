@@ -80,7 +80,7 @@ h2 {
 
 #availableCourses, #selectedCourses {
     overflow-y: scroll;
-    height: calc(100% - 90px);
+    height: calc(100% - 40px);
 }
 
 p {
