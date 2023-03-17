@@ -6,6 +6,7 @@
     --navbar-labels: #000;
     --buttons: #bfd7ea;
     --bg-color: #fff;
+    --modal: #354152;
     --bg-color2: #fff;
     /*aDay: red;
     --bDay: blue;*/
@@ -33,6 +34,7 @@
     --navbar-labels: #7e8ba3;
     --buttons: #151b66;
     --bg-color: #354152;
+    --modal: #354152;
     --bg-color2: #354152;
     --aDay: #bd2d28;
     --bDay: #151b66;
@@ -233,7 +235,7 @@ header.navbar {
 }
 
 .modal-content {
-    background-color: var(--bg-color);
+    background-color: var(--modal);
 }
 
 .modal button {
@@ -807,5 +809,28 @@ span.circle0 {
     width: 1.6em;
 }
 
+.modal {
+    position: fixed;
+    font-size: 28px;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    height: 100%;
+    width: 100%;
+}
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    padding: 20px;
+}
 
+.modal-content img {
+    width: 90%;
+    aspect-ratio: 16/9;
+    margin-left: 5%;
+}
 
