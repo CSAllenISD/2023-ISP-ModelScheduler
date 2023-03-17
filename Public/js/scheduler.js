@@ -35,7 +35,13 @@ const perTimes = {
 
 var conflicts = {
     "AHS0": ["STEAM1", "CTC1"],
-    "AHS1": ["STEAM2", "STEAM5"],
+    "AHS1": ["STEAM2", "STEAM5", "CTC2", "CTC5"],
+    "AHS2": ["CTC5"],
+    "AHS3": ["CTC6"],
+    "AHS4": ["CTC7"],
+    "AHS5": ["CTC2"],
+    "AHS6": ["CTC3"],
+    "AHS7": ["CTC4"],
     "AHS8": ["STEAM4", "STEAM7"],
 
     "STEAM1": ["AHS0"],
