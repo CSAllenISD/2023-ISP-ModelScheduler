@@ -10,6 +10,7 @@
     <link rel="icon"
 	  type="image/png"
 	                  href="images/allenisdLogo.png" />
+    <script defer src="js/login.js"></script>
   </head>
   <body class="align">
     <div class="grid align__item">
@@ -39,7 +40,7 @@
 	
 	<h2>Login</h2>
 	
-	<form action="./login" method="post" class="form">
+	<form id="login-form" class="form">
 	  <div class="form__field">
 	    <input
 	      type="email"
@@ -64,7 +65,7 @@
 	  </div>
 	  
 	  <div class="form__field">
-	    <input type="submit" value="Log in" />
+	    <input type="submit" value="Log in" id="login-form-submit" />
 	  </div>
 	</form>
 	

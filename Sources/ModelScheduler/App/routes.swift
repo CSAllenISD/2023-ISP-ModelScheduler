@@ -266,11 +266,12 @@ func routes(_ app: Application) throws {
    
    // Authenticate the user and redirect to class selection page
    let sessions = app.grouped([User.sessionAuthenticator(), User.customAuthenticator()])
-    sessions.post("login") { req -> Response in
+   sessions.post("login") { req -> CustomError in
         //let user = try req.content.decode(User.self)
         let user = try req.auth.require(User.self)
-        req.auth.login(user)      
-        return req.redirect(to: "./classes")
+        req.auth.login(user)
+        let error = CustomError(error:"Success")
+        return error
     }
 
     /// END LOGIN AND ACCOUNT CREATION ENDPOINTS
