@@ -693,9 +693,11 @@ async function sendCoursesToServer() {
 	if (data.reason){
 	    alert(data.reason);
 	}
-	else {
+	/*
+	  else {
 	    alert(data.error);
-	}
+	  }
+	*/
     });
 }
 
