@@ -180,6 +180,19 @@ body {
     }    
 }
 
+.modal-content {
+    background-color: var(--bg-color);
+}
+
+.modal button {
+    position: absolute;
+    right: 10px !important;
+    top: 5px !important;
+    border: none;
+    font-size: 36px;
+    background-color: transparent;
+}
+
 #footer {
 	position: absolute;
 	height: 7%;
@@ -709,8 +722,6 @@ table .blueBox {
 
 .modal {
     position: fixed;
-    font-family: Arial, Helvetica, sans-serif;
-    color: red;
     font-size: 28px;
     top: 0;
     left: 0;
@@ -724,7 +735,6 @@ table .blueBox {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #fff;
-    width: 80%;
+    width: 70%;
     padding: 20px;
 }
