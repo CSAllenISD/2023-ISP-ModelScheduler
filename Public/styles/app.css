@@ -800,6 +800,11 @@ table .blueBox {
     padding: 20px;
 }
 
+.modal-content img {
+    width: 90%;
+    aspect-ratio: 16/9;
+    margin-left: 5%;
+}
 
 span.circle1 {
     background: var(--aDay);
