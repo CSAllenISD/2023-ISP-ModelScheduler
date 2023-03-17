@@ -79,12 +79,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     
     dmButton.addEventListener("click", toggleDm);
 
-    let instructions = localStorage.getItem("finalInstructions")
+    /*let instructions = localStorage.getItem("finalInstructions")
     if (instructions == null){
 	localStorage.setItem("finalInstructions", "true")
     }else {
 	document.getElementById('modal').style.display = "none"
-    }
+    }**/
 
 
     updateClassSchedule();    
