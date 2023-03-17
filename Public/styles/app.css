@@ -207,10 +207,6 @@ header.navbar {
     padding: 0px 20px;
 }
 
-.navbar finalButton {
-    margin-right: 40vw;
-}
-
 .navbar a {
 	text-decoration: none;
 	color: var(--navbar-labels);
