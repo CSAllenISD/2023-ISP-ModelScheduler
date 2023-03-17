@@ -16,6 +16,14 @@ var STEAM5Per = "9:25-11:00"
 var STEAM6Per = "11:45-1:15"
 var STEAM7Per = "1:55-3:30"
 var STEAM8Per = "3:35-4:30"
+var CTC1Per = "7:55-8:45"
+var CTC2Per = "9:25-10:15"
+var CTC3Per = "11:55-12:45"
+var CTC4Per = "2:00-2:50"
+var CTC5Per = "9:25-10:40"
+var CTC6Per = "11:55-1:10"
+var CTC7Per = "2:00-3:15"
+var CTC8Per = "3:40-4:55"
 
 async function updateClassSchedule() {
     document.querySelectorAll(".class").forEach((it) => (it.innerHTML = "Empty"));
