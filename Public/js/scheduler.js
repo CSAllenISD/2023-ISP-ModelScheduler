@@ -372,7 +372,7 @@ function highlightValidPeriods(classCode) {
 		const prePeriodElement = document.getElementById(prePeriodID);
 		
 		if(prePeriodElement && prePeriodElement.children.length > 1) {
-		    if(prePeriodElement.querySelector(".location")?.innerText.includes(keys[i].replace(periodPreCond, "")) && !course.code.startsWith("PP")) {
+		    if(prePeriodElement.querySelector(".location")?.innerText.includes(keys[i].replace(periodPreCond, "")) && !course.code.startsWith("PP") && !prePeriodElement.dataset.classcode.startsWith("PP")) {
 			periodElement.classList.add("conflicted");
 			conflictedPeriodIDs.push(periodID);
 		    }
