@@ -224,7 +224,7 @@ async function getCoursesFromServer() {
 		xhr.onload = () => {
 			if (xhr.readyState == 4 && xhr.status == 200) {
 				const data = xhr.response;
-				console.log(data);
+				//console.log(data);
 				resolve(data);
 			} else {
 				console.log(`Error: ${xhr.status}`);
@@ -247,7 +247,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 	console.log(courses.length)
 		for (let i = 0; i < courses.length; i++) {
 		    const course = courses[i];
-		    console.log("ran");
+		    //console.log("ran");
 		    
 		    if (document.getElementById(course.code + "SC") == null && document.getElementById(course.code + "AC") == null) {
 
