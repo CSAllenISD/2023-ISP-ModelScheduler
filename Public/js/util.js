@@ -22,7 +22,7 @@ function combineCourses(courses) {
     for(i=0; i < courses?.items?.length; i++) {
 	var course = courses?.items[i];
 	if (course.name.toLowerCase().includes("general psych")) {
-	    console.log(course);
+//	    console.log(course);
 	}
 	var periods = [];
 	
@@ -42,6 +42,6 @@ function combineCourses(courses) {
 	}
     }
 
-    console.log(mergedClasses);
+//    console.log(mergedClasses);
     return mergedClasses;
 }
