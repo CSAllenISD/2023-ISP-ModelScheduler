@@ -33,7 +33,7 @@ async function sendAccountVerify(password, confirmPassword, token) {
 
     response.json().then(data => {
 	//const alertString = JSON.parse(data);
-	console.log(data)
+//	console.log(data)
 	if (data.reason){
 	    alert(data.reason);
 	}

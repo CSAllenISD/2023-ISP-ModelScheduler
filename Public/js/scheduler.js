@@ -372,7 +372,7 @@ function highlightValidPeriods(classCode) {
 		const prePeriodElement = document.getElementById(prePeriodID);
 		
 		if(prePeriodElement && prePeriodElement.children.length > 1) {
-		    if(prePeriodElement.querySelector(".location")?.innerText.includes(keys[i].replace(periodPreCond, "")) && !course.code.startsWith("PP")) {
+		    if(prePeriodElement.querySelector(".location")?.innerText.includes(keys[i].replace(periodPreCond, "")) && !course.code.startsWith("PP") && !prePeriodElement.dataset.classcode.startsWith("PP")) {
 			periodElement.classList.add("conflicted");
 			conflictedPeriodIDs.push(periodID);
 		    }
@@ -643,7 +643,7 @@ async function getCoursesFromServer() {
 	xhr.onload = () => {
 	    if (xhr.readyState == 4 && xhr.status == 200) {
 		const data = xhr.response;
-		console.log(data);
+//		console.log(data);
 		resolve(data);
 	    } else {
 		console.log(`Error: ${xhr.status}`);
@@ -667,7 +667,7 @@ async function requestDemand(classCode, period, term) { // term is nullable
 	}),
     });
 
-    console.log(response);
+  //  console.log(response);
     const json = await response.json();
     return json;
 }
@@ -706,7 +706,7 @@ async function sendCoursesToServer() {
 	}),
     });
 
-    console.log(response);
+    //console.log(response);
 
     try {
 
