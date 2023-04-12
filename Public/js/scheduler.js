@@ -1,4 +1,5 @@
 var courses = [];
+var allCourses = [];
 var selectedSemester = "fall";
 var unsavedSchedule = {fall: {}, spring: {}};
 var isDragging = false;
@@ -116,6 +117,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     
     courses = await getCoursesFromServer();
     courses = await combineCourses(courses);
+    allCourses = await getCoursesFromServer();
     reloadCourseList(courses)
  
     const unsavedScheduleStr = localStorage.getItem("unsavedSchedule");
@@ -329,7 +331,7 @@ function dragPlacedEnd(ev) {
     isDragging = false;
 }
 
-function highlightValidPeriods(classCode) {
+async function highlightValidPeriods(classCode) {
     const course = courses.find(a => a.code == classCode);
     if (!course) return console.log(`invalid course code: ${classCode}`)
 
@@ -342,6 +344,28 @@ function highlightValidPeriods(classCode) {
     let validPeriodIDs = [];
     let conflictedPeriodIDs = [];
 
+    let isFall = false;
+    let isSpring = false;
+
+    if (allCourses != null) {
+	for (let i = 0; i < allCourses.length; i++) {
+	    const currentCourse = allCourses[i]
+
+	    if(currentCourse.code == classCode) {
+		if (currentCourse.term == "S1") {
+		    isFall = true
+		}
+		if (currentCourse.term == "S2") {
+		    isSpring = true
+		}
+		if (currentCourse.term == "S1+S2") {
+		    isFall = true
+		    isSpring = true
+		}
+	    }
+	}
+    }
+
     for (let i = 0; i < periods.length; i++) {
 	var periodIDFall = null;
 	var periodIDSpring = null;
@@ -349,16 +373,16 @@ function highlightValidPeriods(classCode) {
 	var periodElementSpring = null;
 	const period = periods[i];
 	const isA = period <= 4 || period == 8;
-	if (course.term.includes("S1+S2")) {
+	if (5 > 2) {
 	    periodIDFall = `P${period}-S1-${isA ? "A" : "B"}`;
 	    periodElementFall = document.getElementById(periodIDFall);
 
 	    periodIDSpring = `P${period}-S2-${isA ? "A" : "B"}`;
 	    periodElementSpring = document.getElementById(periodIDSpring);
-	} else if (course.term.includes("S1")) {
+	} else if (isFall) {
 	    periodIDFall = `P${period}-S1-${isA ? "A" : "B"}`;
 	    periodElementFall = document.getElementById(periodIDFall); 
-	} else if (course.term.includes("S2")) {
+	} else if (isSpring) {
 	    periodIDSpring = `P${period}-S2-${isA ? "A" : "B"}`;
 	    periodElementSpring = document.getElementById(periodIDSpring);
 	} else { console.log("invalid semester"); return;}
