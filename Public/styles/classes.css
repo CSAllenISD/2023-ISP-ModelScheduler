@@ -78,9 +78,13 @@ h2 {
 	overflow: hidden;
 }
 
-#availableCourses, #selectedCourses {
+#availableCourses {
     overflow-y: scroll;
     height: calc(100% - 10%);
+}
+#selectedCourses {
+    overflow-y: scroll;
+    height: calc(100% - 5.5%);
 }
 
 p {
