@@ -1,16 +1,6 @@
 var courses = [];
 var allCourses = [];
 var selectedSemester = "fall";
-MAILGUN_APIKEY=207e086e28c87b67281cdf23dfbf0608-d1a07e51-48bdc8b1
-MAILGUN_DOMAIN=sandboxf612995a126240dfa1392ccc71ef3e33.mailgun.org
-EMAIL_API=https://api-server.codermerlin.com/v1/notifications/email/enqueue
-EMAIL_APIKEY=7b096290-ae21-11ed-a8be-0242c0a8c003
-
-MYSQL_HOSTNAME=db
-MYSQL_PORT=3306
-MYSQL_USERNAME=apikey-cmwModelScheduler2023
-MYSQL_PASSWORD=cmwModelScheduler2023-7b096290-ae21-11ed-a8be-0242c0a8c003
-MYSQL_DATABASE_NAME=AHSSchedule2024var unsavedSchedule = {fall: {}, spring: {}};
 var isDragging = false;
 var wasSame = true;
 
