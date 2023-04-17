@@ -1,7 +1,16 @@
 var courses = [];
 var allCourses = [];
 var selectedSemester = "fall";
-var unsavedSchedule = {fall: {}, spring: {}};
+MAILGUN_APIKEY=207e086e28c87b67281cdf23dfbf0608-d1a07e51-48bdc8b1
+MAILGUN_DOMAIN=sandboxf612995a126240dfa1392ccc71ef3e33.mailgun.org
+EMAIL_API=https://api-server.codermerlin.com/v1/notifications/email/enqueue
+EMAIL_APIKEY=7b096290-ae21-11ed-a8be-0242c0a8c003
+
+MYSQL_HOSTNAME=db
+MYSQL_PORT=3306
+MYSQL_USERNAME=apikey-cmwModelScheduler2023
+MYSQL_PASSWORD=cmwModelScheduler2023-7b096290-ae21-11ed-a8be-0242c0a8c003
+MYSQL_DATABASE_NAME=AHSSchedule2024var unsavedSchedule = {fall: {}, spring: {}};
 var isDragging = false;
 var wasSame = true;
 
@@ -157,9 +166,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
     
 });
-//all the bs for dragging and dropping goes here, wish me luck
-//document.addEventListener("DOMContentLoaded", (event) => {
 
+/**
+ * Saves current schedule displayed in scheduler into local storage
+ */
 function saveCurrentSchedule() {
     const periods = [
 	"P0-S1-A", "P1-S1-A", "P2-S1-A", "P3-S1-A", "P4-S1-A", "P5-S1-B", "P6-S1-B", "P7-S1-B", "P8-S1-A",
@@ -182,8 +192,10 @@ function saveCurrentSchedule() {
 
     localStorage.setItem("unsavedSchedule", JSON.stringify(unsavedSchedule));
 }
+
 /**
- * Reloads Course List
+ * Refreshes scheduled courses list into scheduler
+ * @param {array} courses
  */
 function reloadCourseList(courses) {
     const selectedCourses = localStorage.getItem("courses")
@@ -253,8 +265,10 @@ function reloadCourseList(courses) {
     }
     }
 }
+
 /**
- * Allow drop
+ * Checks if dropped course is in a valid div
+ * @param {object} ev
  */ 
 function allowDrop(ev) {
     if(ev.target.classList.contains("valid")) {
@@ -263,7 +277,8 @@ function allowDrop(ev) {
 }
 
 /**
- * Ends Drag
+ * Removes all highlighting of classes on dragend
+ * @param {object} ev
  */
 function dragEnd(ev) {
     const validPeriodElements = document.querySelectorAll(".valid");
@@ -284,7 +299,11 @@ function dragEnd(ev) {
     isDragging = false;
 }
 
-// remove it
+/**
+ * Places classes into scheduler and saves schedule to local storage on dragend
+ * @param {object} ev
+ * @throws Will return if wasSame is true
+ */
 function dragPlacedEnd(ev) {
     if (wasSame) {
 	wasSame = false;
@@ -330,8 +349,6 @@ function dragPlacedEnd(ev) {
 	const droppedClassElement = document.getElementById(oldClass);
 	droppedClassElement.style.display = "inline-block"; //show class from list
     }
-
-
     
     saveCurrentSchedule();
 
@@ -339,7 +356,10 @@ function dragPlacedEnd(ev) {
 }
 
 /**
- * Highlights valid periods
+ * Adds CSS highlight classes to courses in the scheduler
+ * @async
+ * @param {string} classCode
+ * @throws Will throw an error if the parameter is not found in courses
  */ 
 async function highlightValidPeriods(classCode) {
     const course = courses.find(a => a.code == classCode);
@@ -401,6 +421,15 @@ async function highlightValidPeriods(classCode) {
 	    const courseLoc = course.location+period;
 	    const keys = Object.keys(conflicts);
 
+	    /**
+	     * Assigns a course the CSS conflicted class when found to be in conflict with another course
+	     * @param {string} semester
+	     * @param {object} periodElement
+	     * @param {number} periodID
+	     * @param {number} periodPreCond
+	     * @param {boolean} preIsA
+	     * @param {number} i
+	     */
 	    function checkConflict(semester, periodElement, periodID, periodPreCond, preIsA, i) {		
 		const prePeriodID = `P${periodPreCond}-S${semester}-${preIsA ? "A" : "B"}`;
 		const prePeriodElement = document.getElementById(prePeriodID);
@@ -445,7 +474,8 @@ async function highlightValidPeriods(classCode) {
 }    
 
 /**
- * Drag
+ * Highlights periods on dragstart
+ * @param {object} ev
  */ 
 function drag(ev) {
     ev.dataTransfer.setData('text/plain', ev.target.id);
@@ -457,7 +487,8 @@ function drag(ev) {
 }
 
 /**
- * Drage Placed
+ * Adds class code & target's id to dataTransfer on dragstart
+ * @param {object} ev
  */ 
 function dragPlaced(ev) {
     ev.dataTransfer.setData('text/plain', `${ev.target.dataset.classcode}`);
@@ -472,7 +503,8 @@ function dragPlaced(ev) {
 }
 
 /**
- * Hover class selector
+ * Highlights periods in scheduler on mouseover
+ * @param {object} ev
  */ 
 function hoverClassSelector(ev) {
     if (isDragging) return;
@@ -493,6 +525,10 @@ function hoverClassSelector(ev) {
 
 /**
  * Drop
+ * @async
+ * @param {object} ev
+ * @param {object} target
+ * @throws Will return if dropped course is not in valid class
  */ 
 async function drop(ev, target) {
     console.log(ev);
@@ -620,7 +656,7 @@ async function drop(ev, target) {
 }
 
 /**
- * Dark Mode Switch
+ * Switches dark/light mode
  */ 
 function dmSwitch() {
 	//    var background = document.body;
@@ -639,8 +675,9 @@ function dmSwitch() {
 
 	toggleDmButton();
 }
+
 /**
- * Dark Mode Toggle
+ * Switches the darkmode item
  */ 
 function toggleDm() {
 	if (
@@ -656,7 +693,8 @@ function toggleDm() {
 }
 
 /**
- * Get Dark Mode
+ * Gets the current dark mode setting
+ * @returns {boolean} Current dark mode setting from local storage
  */ 
 function getDm() {
 	if (localStorage.getItem("darkmode") == null) {
@@ -667,7 +705,7 @@ function getDm() {
 }
 
 /**
- * Toggle Dark Mode Button
+ * Switches the dark mode button's image
  */ 
 function toggleDmButton() {
 	let dmButton = document.getElementById("darkmode");
@@ -679,7 +717,7 @@ function toggleDmButton() {
 }
 
 /**
- * Dark Mode
+ * Creates the dark mode button
  */
 function darkMode() {
 	var dmButton = document.createElement("button");
@@ -690,7 +728,8 @@ function darkMode() {
 }
 
 /**
- * Get Courses From Server
+ * Get courses from server through API call
+ * @async
  */ 
 async function getCoursesFromServer() {
     return new Promise((resolve, reject) => {
@@ -712,7 +751,11 @@ async function getCoursesFromServer() {
 }
 
 /**
- * Request Demand
+ * Requests current demand for a course
+ * @param {string} classCode
+ * @param {number} period
+ * @param {string} term
+ * @returns {json} Demand of the course provided
  */ 
 async function requestDemand(classCode, period, term) { // term is nullable
     const response = await fetch("./scheduler/demand", {
@@ -734,7 +777,8 @@ async function requestDemand(classCode, period, term) { // term is nullable
 }
 
 /**
- * Send courses to server
+ * Send courses to server through API call
+ * @async
  */ 
 async function sendCoursesToServer() {
     const periods = [
