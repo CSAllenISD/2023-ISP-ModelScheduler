@@ -182,7 +182,9 @@ function saveCurrentSchedule() {
 
     localStorage.setItem("unsavedSchedule", JSON.stringify(unsavedSchedule));
 }
-
+/**
+ * Reloads Course List
+ */
 function reloadCourseList(courses) {
     const selectedCourses = localStorage.getItem("courses")
     
@@ -251,13 +253,18 @@ function reloadCourseList(courses) {
     }
     }
 }
-
+/**
+ * Allow drop
+ */ 
 function allowDrop(ev) {
     if(ev.target.classList.contains("valid")) {
 	ev.preventDefault();
     }
 }
 
+/**
+ * Ends Drag
+ */
 function dragEnd(ev) {
     const validPeriodElements = document.querySelectorAll(".valid");
     for (var i = 0; i < validPeriodElements.length; i++) {
@@ -331,6 +338,9 @@ function dragPlacedEnd(ev) {
     isDragging = false;
 }
 
+/**
+ * Highlights valid periods
+ */ 
 async function highlightValidPeriods(classCode) {
     const course = courses.find(a => a.code == classCode);
     if (!course) return console.log(`invalid course code: ${classCode}`)
@@ -434,7 +444,9 @@ async function highlightValidPeriods(classCode) {
     }
 }    
 
-
+/**
+ * Drag
+ */ 
 function drag(ev) {
     ev.dataTransfer.setData('text/plain', ev.target.id);
     highlightValidPeriods(ev.target.id);
@@ -444,6 +456,9 @@ function drag(ev) {
     isDragging = true;
 }
 
+/**
+ * Drage Placed
+ */ 
 function dragPlaced(ev) {
     ev.dataTransfer.setData('text/plain', `${ev.target.dataset.classcode}`);
     ev.dataTransfer.setData('text/oldclass', `${ev.target.id}`);
@@ -456,6 +471,9 @@ function dragPlaced(ev) {
     isDragging = true;
 }
 
+/**
+ * Hover class selector
+ */ 
 function hoverClassSelector(ev) {
     if (isDragging) return;
     if (!ev.target.classList.contains("selectedClass")) {
@@ -473,6 +491,9 @@ function hoverClassSelector(ev) {
     }
 }
 
+/**
+ * Drop
+ */ 
 async function drop(ev, target) {
     console.log(ev);
     if (!ev.target.classList.contains("valid")) {
@@ -598,8 +619,9 @@ async function drop(ev, target) {
     isDragging = false;
 }
 
-//for dark mode
-
+/**
+ * Dark Mode Switch
+ */ 
 function dmSwitch() {
 	//    var background = document.body;
 	//  var boxes = document.querySelectorAll(".grayBox");
@@ -617,7 +639,9 @@ function dmSwitch() {
 
 	toggleDmButton();
 }
-
+/**
+ * Dark Mode Toggle
+ */ 
 function toggleDm() {
 	if (
 		localStorage.getItem("darkmode") == null ||
@@ -631,6 +655,9 @@ function toggleDm() {
 	dmSwitch();
 }
 
+/**
+ * Get Dark Mode
+ */ 
 function getDm() {
 	if (localStorage.getItem("darkmode") == null) {
 		return "false";
@@ -639,6 +666,9 @@ function getDm() {
 	}
 }
 
+/**
+ * Toggle Dark Mode Button
+ */ 
 function toggleDmButton() {
 	let dmButton = document.getElementById("darkmode");
 	if (getDm() == "false") {
@@ -648,6 +678,9 @@ function toggleDmButton() {
 	}
 }
 
+/**
+ * Dark Mode
+ */
 function darkMode() {
 	var dmButton = document.createElement("button");
 	dmButton.id = "darkMode";
@@ -656,8 +689,9 @@ function darkMode() {
 	document.getElementById("darkmode").src = "./images/moon.png";
 }
 
-//darkMode();
-
+/**
+ * Get Courses From Server
+ */ 
 async function getCoursesFromServer() {
     return new Promise((resolve, reject) => {
 	const xhr = new XMLHttpRequest();
@@ -677,6 +711,9 @@ async function getCoursesFromServer() {
     });
 }
 
+/**
+ * Request Demand
+ */ 
 async function requestDemand(classCode, period, term) { // term is nullable
     const response = await fetch("./scheduler/demand", {
 	method: 'POST',
@@ -696,6 +733,9 @@ async function requestDemand(classCode, period, term) { // term is nullable
     return json;
 }
 
+/**
+ * Send courses to server
+ */ 
 async function sendCoursesToServer() {
     const periods = [
 	"P0-S1-A", "P1-S1-A", "P2-S1-A", "P3-S1-A", "P4-S1-A", "P5-S1-B", "P6-S1-B", "P7-S1-B", "P8-S1-A",
