@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     if (dmButton) {
 	//Checks whether or not button was clicked for debug purposes
 	dmButton.addEventListener("click", function () {
-	    console.log("Button was clicked!");
+//	    console.log("Button was clicked!");
 	});
     } else {
 	console.error("Element with id 'darkMode' not found");
@@ -174,7 +174,7 @@ async function getCoursesFromServer() {
 		xhr.onload = () => {
 			if (xhr.readyState == 4 && xhr.status == 200) {
 				const data = xhr.response;
-				console.log(data);
+//				console.log(data);
 				resolve(data);
 			} else {
 				console.log(`Error: ${xhr.status}`);

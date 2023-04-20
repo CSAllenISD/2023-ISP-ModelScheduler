@@ -1,6 +1,6 @@
 var courses = [];
+var allCourses = [];
 var selectedSemester = "fall";
-var unsavedSchedule = {fall: {}, spring: {}};
 var isDragging = false;
 var wasSame = true;
 
@@ -116,6 +116,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     
     courses = await getCoursesFromServer();
     courses = await combineCourses(courses);
+    allCourses = await getCoursesFromServer();
     reloadCourseList(courses)
  
     const unsavedScheduleStr = localStorage.getItem("unsavedSchedule");
@@ -158,6 +159,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 //all the bs for dragging and dropping goes here, wish me luck
 //document.addEventListener("DOMContentLoaded", (event) => {
 
+/**
+ * Saves current schedule displayed in scheduler into local storage
+ */
 function saveCurrentSchedule() {
     const periods = [
 	"P0-S1-A", "P1-S1-A", "P2-S1-A", "P3-S1-A", "P4-S1-A", "P5-S1-B", "P6-S1-B", "P7-S1-B", "P8-S1-A",
@@ -181,6 +185,10 @@ function saveCurrentSchedule() {
     localStorage.setItem("unsavedSchedule", JSON.stringify(unsavedSchedule));
 }
 
+/**
+ * Refreshes scheduled courses list into scheduler
+ * @param {array} courses
+ */
 function reloadCourseList(courses) {
     const selectedCourses = localStorage.getItem("courses")
     
@@ -250,12 +258,20 @@ function reloadCourseList(courses) {
     }
 }
 
+/**
+ * Checks if dropped course is in a valid div
+ * @param {object} ev
+ */ 
 function allowDrop(ev) {
     if(ev.target.classList.contains("valid")) {
 	ev.preventDefault();
     }
 }
 
+/**
+ * Removes all highlighting of classes on dragend
+ * @param {object} ev
+ */
 function dragEnd(ev) {
     const validPeriodElements = document.querySelectorAll(".valid");
     for (var i = 0; i < validPeriodElements.length; i++) {
@@ -275,7 +291,11 @@ function dragEnd(ev) {
     isDragging = false;
 }
 
-// remove it
+/**
+ * Places classes into scheduler and saves schedule to local storage on dragend
+ * @param {object} ev
+ * @throws Will return if wasSame is true
+ */
 function dragPlacedEnd(ev) {
     if (wasSame) {
 	wasSame = false;
@@ -321,15 +341,19 @@ function dragPlacedEnd(ev) {
 	const droppedClassElement = document.getElementById(oldClass);
 	droppedClassElement.style.display = "inline-block"; //show class from list
     }
-
-
     
     saveCurrentSchedule();
 
     isDragging = false;
 }
 
-function highlightValidPeriods(classCode) {
+/**
+ * Adds CSS highlight classes to courses in the scheduler
+ * @async
+ * @param {string} classCode
+ * @throws Will throw an error if the parameter is not found in courses
+ */ 
+async function highlightValidPeriods(classCode) {
     const course = courses.find(a => a.code == classCode);
     if (!course) return console.log(`invalid course code: ${classCode}`)
 
@@ -342,6 +366,28 @@ function highlightValidPeriods(classCode) {
     let validPeriodIDs = [];
     let conflictedPeriodIDs = [];
 
+    let isFall = false;
+    let isSpring = false;
+
+    if (allCourses != null) {
+	for (let i = 0; i < allCourses.length; i++) {
+	    const currentCourse = allCourses[i]
+
+	    if(currentCourse.code == classCode) {
+		if (currentCourse.term == "S1") {
+		    isFall = true
+		}
+		if (currentCourse.term == "S2") {
+		    isSpring = true
+		}
+		if (currentCourse.term == "S1+S2") {
+		    isFall = true
+		    isSpring = true
+		}
+	    }
+	}
+    }
+
     for (let i = 0; i < periods.length; i++) {
 	var periodIDFall = null;
 	var periodIDSpring = null;
@@ -349,16 +395,16 @@ function highlightValidPeriods(classCode) {
 	var periodElementSpring = null;
 	const period = periods[i];
 	const isA = period <= 4 || period == 8;
-	if (course.term.includes("S1+S2")) {
+	if (5 > 2) {
 	    periodIDFall = `P${period}-S1-${isA ? "A" : "B"}`;
 	    periodElementFall = document.getElementById(periodIDFall);
 
 	    periodIDSpring = `P${period}-S2-${isA ? "A" : "B"}`;
 	    periodElementSpring = document.getElementById(periodIDSpring);
-	} else if (course.term.includes("S1")) {
+	} else if (isFall) {
 	    periodIDFall = `P${period}-S1-${isA ? "A" : "B"}`;
 	    periodElementFall = document.getElementById(periodIDFall); 
-	} else if (course.term.includes("S2")) {
+	} else if (isSpring) {
 	    periodIDSpring = `P${period}-S2-${isA ? "A" : "B"}`;
 	    periodElementSpring = document.getElementById(periodIDSpring);
 	} else { console.log("invalid semester"); return;}
@@ -367,12 +413,21 @@ function highlightValidPeriods(classCode) {
 	    const courseLoc = course.location+period;
 	    const keys = Object.keys(conflicts);
 
+	    /**
+	     * Assigns a course the CSS conflicted class when found to be in conflict with another course
+	     * @param {string} semester
+	     * @param {object} periodElement
+	     * @param {number} periodID
+	     * @param {number} periodPreCond
+	     * @param {boolean} preIsA
+	     * @param {number} i
+	     */
 	    function checkConflict(semester, periodElement, periodID, periodPreCond, preIsA, i) {		
 		const prePeriodID = `P${periodPreCond}-S${semester}-${preIsA ? "A" : "B"}`;
 		const prePeriodElement = document.getElementById(prePeriodID);
 		
 		if(prePeriodElement && prePeriodElement.children.length > 1) {
-		    if(prePeriodElement.querySelector(".location")?.innerText.includes(keys[i].replace(periodPreCond, "")) && !course.code.startsWith("PP")) {
+		    if(prePeriodElement.querySelector(".location")?.innerText.includes(keys[i].replace(periodPreCond, "")) && !course.code.startsWith("PP") && !prePeriodElement.dataset.classcode.startsWith("PP")) {
 			periodElement.classList.add("conflicted");
 			conflictedPeriodIDs.push(periodID);
 		    }
@@ -410,7 +465,10 @@ function highlightValidPeriods(classCode) {
     }
 }    
 
-
+/**
+ * Highlights periods on dragstart
+ * @param {object} ev
+ */ 
 function drag(ev) {
     ev.dataTransfer.setData('text/plain', ev.target.id);
     highlightValidPeriods(ev.target.id);
@@ -420,6 +478,10 @@ function drag(ev) {
     isDragging = true;
 }
 
+/**
+ * Adds class code & target's id to dataTransfer on dragstart
+ * @param {object} ev
+ */ 
 function dragPlaced(ev) {
     ev.dataTransfer.setData('text/plain', `${ev.target.dataset.classcode}`);
     ev.dataTransfer.setData('text/oldclass', `${ev.target.id}`);
@@ -432,6 +494,10 @@ function dragPlaced(ev) {
     isDragging = true;
 }
 
+/**
+ * Highlights periods in scheduler on mouseover
+ * @param {object} ev
+ */ 
 function hoverClassSelector(ev) {
     if (isDragging) return;
     if (!ev.target.classList.contains("selectedClass")) {
@@ -449,6 +515,13 @@ function hoverClassSelector(ev) {
     }
 }
 
+/**
+ * Drop
+ * @async
+ * @param {object} ev
+ * @param {object} target
+ * @throws Will return if dropped course is not in valid class
+ */ 
 async function drop(ev, target) {
     console.log(ev);
     if (!ev.target.classList.contains("valid")) {
@@ -520,6 +593,17 @@ async function drop(ev, target) {
     // sets location and time
     ev.target.children[1].innerHTML = `<span class="location ${course.location}">${course.location}</span> • ` + perTimes[`${course.location}${ev.target.id.charAt(1)}Per`];
 
+    const classDemand = await requestDemand(course.code, ev.target.id.charAt(1), ev.target.id.substring(3, 5));
+    const classDemandEle = ev.target.querySelector(".demandContainer");
+    if (classDemandEle) {
+	classDemandEle.style.setProperty('--percent', classDemand.demand+"px");
+	const toolTip = classDemandEle.querySelector(".tooltiptext-right");
+	if(toolTip) {
+	    toolTip.style.textAlign = "center";
+	    toolTip.innerText = `${classDemand.studentCur} interested / ${classDemand.studentMax} spots`;
+	}
+    }
+    
     console.log(`${course.location}${ev.target.id.charAt(1)}Per`);
     
     if (oldClass) {
@@ -563,8 +647,9 @@ async function drop(ev, target) {
     isDragging = false;
 }
 
-//for dark mode
-
+/**
+ * Switches dark/light mode
+ */ 
 function dmSwitch() {
 	//    var background = document.body;
 	//  var boxes = document.querySelectorAll(".grayBox");
@@ -583,6 +668,9 @@ function dmSwitch() {
 	toggleDmButton();
 }
 
+/**
+ * Switches the darkmode item
+ */ 
 function toggleDm() {
 	if (
 		localStorage.getItem("darkmode") == null ||
@@ -596,6 +684,10 @@ function toggleDm() {
 	dmSwitch();
 }
 
+/**
+ * Gets the current dark mode setting
+ * @returns {boolean} Current dark mode setting from local storage
+ */ 
 function getDm() {
 	if (localStorage.getItem("darkmode") == null) {
 		return "false";
@@ -604,6 +696,9 @@ function getDm() {
 	}
 }
 
+/**
+ * Switches the dark mode button's image
+ */ 
 function toggleDmButton() {
 	let dmButton = document.getElementById("darkmode");
 	if (getDm() == "false") {
@@ -613,6 +708,9 @@ function toggleDmButton() {
 	}
 }
 
+/**
+ * Creates the dark mode button
+ */
 function darkMode() {
 	var dmButton = document.createElement("button");
 	dmButton.id = "darkMode";
@@ -621,8 +719,10 @@ function darkMode() {
 	document.getElementById("darkmode").src = "./images/moon.png";
 }
 
-//darkMode();
-
+/**
+ * Get courses from server through API call
+ * @async
+ */ 
 async function getCoursesFromServer() {
     return new Promise((resolve, reject) => {
 	const xhr = new XMLHttpRequest();
@@ -632,7 +732,7 @@ async function getCoursesFromServer() {
 	xhr.onload = () => {
 	    if (xhr.readyState == 4 && xhr.status == 200) {
 		const data = xhr.response;
-		console.log(data);
+//		console.log(data);
 		resolve(data);
 	    } else {
 		console.log(`Error: ${xhr.status}`);
@@ -642,6 +742,13 @@ async function getCoursesFromServer() {
     });
 }
 
+/**
+ * Requests current demand for a course
+ * @param {string} classCode
+ * @param {number} period
+ * @param {string} term
+ * @returns {json} Demand of the course provided
+ */ 
 async function requestDemand(classCode, period, term) { // term is nullable
     const response = await fetch("./scheduler/demand", {
 	method: 'POST',
@@ -656,11 +763,18 @@ async function requestDemand(classCode, period, term) { // term is nullable
 	}),
     });
 
-    console.log(response);
+  //  console.log(response);
     const json = await response.json();
     return json;
 }
 
+<<<<<<< HEAD
+=======
+/**
+ * Send courses to server through API call
+ * @async
+ */ 
+>>>>>>> 5cb702847504cd10b4633cee7d5441dfbc7aa41c
 async function sendCoursesToServer() {
     const periods = [
 	"P0-S1-A", "P1-S1-A", "P2-S1-A", "P3-S1-A", "P4-S1-A", "P5-S1-B", "P6-S1-B", "P7-S1-B", "P8-S1-A",
@@ -695,7 +809,7 @@ async function sendCoursesToServer() {
 	}),
     });
 
-    console.log(response);
+    //console.log(response);
 
     try {
 

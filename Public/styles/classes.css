@@ -18,6 +18,7 @@ p {
     color: var(--text);
 }
 
+<<<<<<< HEAD
 #adhdVideo {
     position: absolute;
     left: 0;
@@ -25,6 +26,8 @@ p {
     z-index: 99;
 }
 
+=======
+>>>>>>> 5cb702847504cd10b4633cee7d5441dfbc7aa41c
 h2 {
     color: var(--text);
 }
@@ -85,9 +88,19 @@ h2 {
 	overflow: hidden;
 }
 
+<<<<<<< HEAD
 #availableCourses, #selectedCourses {
     overflow-y: scroll;
     height: calc(100% - 40px);
+=======
+#availableCourses {
+    overflow-y: scroll;
+    height: calc(100% - 10%);
+}
+#selectedCourses {
+    overflow-y: scroll;
+    height: calc(100% - 5.5%);
+>>>>>>> 5cb702847504cd10b4633cee7d5441dfbc7aa41c
 }
 
 p {
@@ -128,6 +141,7 @@ p {
     margin-bottom: 5px;
 }
 
+<<<<<<< HEAD
 @media screen and (max-width: 1300px) {
     .classList, .classList2 {
 	width: 90%;
@@ -139,6 +153,8 @@ p {
 	margin-top: 40vh;
     }
 }
+=======
+>>>>>>> 5cb702847504cd10b4633cee7d5441dfbc7aa41c
 
 .selectedClass {
     cursor: pointer !important;
