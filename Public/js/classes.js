@@ -72,7 +72,7 @@ function toggleDm() {
 
 function getDm() {
 	if (localStorage.getItem("darkmode") == null) {
-		return "false";
+		return "true";
 	} else {
 		return localStorage.getItem("darkmode");
 	}
