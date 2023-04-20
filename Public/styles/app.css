@@ -1,29 +1,5 @@
 :root,
 :root.light {
-    --text: rgba(255, 255, 255, .5);
-    --navbar: #151b66;
-    --navbar-hover: #1c258c;
-    --navbar-labels: #7e8ba3;
-    --buttons: #151b66;
-    --bg-color: #354152;
-    --modal: #354152;
-    --bg-color2: #354152;
-    --aDay: #bd2d28;
-    --bDay: #151b66;
-    --classes-bg: #354152;
-    --class: #2c3545;
-    --hover-class: rgb(115,115,115);
-    --gray-box: rgb(60,60,60);
-    --search: rgb(100,100,100);
-    --valid: #4a8453;
-    --invalid: repeating-linear-gradient(45deg, rgba(50, 50, 50, .3), rgba(50, 50, 50, .3) 30px, rgba(210, 210, 210, .3) 30px, rgba(210, 210, 210, .3) 60px);
-    --remove: rgb(255, 87, 51);
-    --conflict: rgb(255, 87, 51);
-    --ahs: #bd2d28;
-    --steam: #151b66;
-    --ctc: #ffba26;
-}
-:root.dark {
     --text: rgba(0, 0, 0, .5);
     --navbar: #bfd7ea;
     --navbar-hover: #95a8b6;
@@ -50,6 +26,31 @@
     --steam: #bfd7ea;
     --ctc: #ffba26;
 }
+:root.dark {
+    --text: rgba(255, 255, 255, .5);
+    --navbar: #151b66;
+    --navbar-hover: #1c258c;
+    --navbar-labels: #7e8ba3;
+    --buttons: #151b66;
+    --bg-color: #354152;
+    --modal: #354152;
+    --bg-color2: #354152;
+    --aDay: #bd2d28;
+    --bDay: #151b66;
+    --classes-bg: #354152;
+    --class: #2c3545;
+    --hover-class: rgb(115,115,115);
+    --gray-box: rgb(60,60,60);
+    --search: rgb(100,100,100);
+    --valid: #4a8453;
+    --invalid: repeating-linear-gradient(45deg, rgba(50, 50, 50, .3), rgba(50, 50, 50, .3) 30px, rgba(210, 210, 210, .3) 30px, rgba(210, 210, 210, .3) 60px);
+    --remove: rgb(255, 87, 51);
+    --conflict: rgb(255, 87, 51);
+    --ahs: #bd2d28;
+    --steam: #151b66;
+    --ctc: #ffba26;
+}
+
 * {
 	margin: 0;
 	padding: 0;

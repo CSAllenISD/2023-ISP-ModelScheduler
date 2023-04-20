@@ -62,7 +62,7 @@ var conflicts = {
 document.addEventListener("DOMContentLoaded", async function () {
 	//Waits for HTML DOM content to load
 	const dmButton = document.getElementById("darkmodeButton"); //Gets darkMode button id
-
+    dmSwitch();
 	if (dmButton) {
 		//Checks whether or not button was clicked for debug purposes
 		dmButton.addEventListener("click", function () {
