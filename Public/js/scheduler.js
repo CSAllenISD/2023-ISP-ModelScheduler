@@ -317,6 +317,7 @@ function dragPlacedEnd(ev) {
 	if (ev.target.id.includes("S1")) {
 	    let secondSemesterId = ev.target.id.replace("S1", "S2")
 	    let secondSemester = document.getElementById(secondSemesterId)
+	    if(secondSemester.dataset.classcode == oldClass){
 	    secondSemester.dataset.classcode = null;
 	    secondSemester.classList.remove("notEmpty");
 	    secondSemester.setAttribute("draggable", false);
@@ -325,9 +326,11 @@ function dragPlacedEnd(ev) {
 	    
 	    secondSemester.firstElementChild.innerText = "Empty";
 	    secondSemester.children[1].innerText = "";
+	    }
 	}else if (ev.target.id.includes("S2")) {
 	    let firstSemesterId = ev.target.id.replace("S2", "S1")
 	    let firstSemester = document.getElementById(firstSemesterId)
+	    if(firstSemester.dataset.classcode == oldClass){
 	    firstSemester.dataset.classcode = null;
 	    firstSemester.classList.remove("notEmpty");
 	    firstSemester.setAttribute("draggable", false);
@@ -336,11 +339,13 @@ function dragPlacedEnd(ev) {
 	    
 	    firstSemester.firstElementChild.innerText = "Empty";
 	    firstSemester.children[1].innerText = "";
+	    }
+
 	}
-	
-	const droppedClassElement = document.getElementById(oldClass);
-	droppedClassElement.style.display = "inline-block"; //show class from list
     }
+    const droppedClassElement = document.getElementById(oldClass);
+    droppedClassElement.style.display = "inline-block"; //show class from list
+
     
     saveCurrentSchedule();
 
@@ -768,13 +773,10 @@ async function requestDemand(classCode, period, term) { // term is nullable
     return json;
 }
 
-<<<<<<< HEAD
-=======
 /**
  * Send courses to server through API call
  * @async
  */ 
->>>>>>> 5cb702847504cd10b4633cee7d5441dfbc7aa41c
 async function sendCoursesToServer() {
     const periods = [
 	"P0-S1-A", "P1-S1-A", "P2-S1-A", "P3-S1-A", "P4-S1-A", "P5-S1-B", "P6-S1-B", "P7-S1-B", "P8-S1-A",
