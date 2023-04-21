@@ -46,10 +46,10 @@ function dmSwitch() {
 	//  boxes.forEach(function(box) {
 	//	box.classList.toggle("dm-grayBox");
 	//  });
-	if (getDm() == "false") {
+	if (getDm() == "true") {
 		document.documentElement.classList.remove("light");
 		document.documentElement.classList.add("dark");
-	} else if (getDm() == "true") {
+	} else if (getDm() == "false") {
 		document.documentElement.classList.add("light");
 		document.documentElement.classList.remove("dark");
 	}
