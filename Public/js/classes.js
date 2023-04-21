@@ -46,10 +46,10 @@ function dmSwitch() {
 	//  boxes.forEach(function(box) {
 	//	box.classList.toggle("dm-grayBox");
 	//  });
-	if (getDm() == "true") {
+	if (getDm() == "false") {
 		document.documentElement.classList.remove("light");
 		document.documentElement.classList.add("dark");
-	} else if (getDm() == "false") {
+	} else if (getDm() == "true") {
 		document.documentElement.classList.add("light");
 		document.documentElement.classList.remove("dark");
 	}
@@ -64,15 +64,15 @@ function toggleDm() {
 	) {
 		localStorage.setItem("darkmode", "true");
 	} else {
-		localStorage.setItem("darkmode", "false");
+	    localStorage.setItem("darkmode", "false");
 	}
 
 	dmSwitch();
 }
 
 function getDm() {
-	if (localStorage.getItem("darkmode") == null) {
-		return "true";
+    if (localStorage.getItem("darkmode") == null){
+	return "false";
 	} else {
 		return localStorage.getItem("darkmode");
 	}
