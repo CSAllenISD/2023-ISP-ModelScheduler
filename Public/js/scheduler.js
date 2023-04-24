@@ -652,9 +652,16 @@ async function drop(ev, target) {
     isDragging = false;
 }
 
-/**
- * Switches dark/light mode
- */ 
+//for jumpscare
+function jmSwitch() {
+    document.getElementById("jumpscareButton").onClick = function() {jumpscare()};
+    function jumpscare() {
+	jumpscare.style.visibility="visibility";
+    }
+}
+	
+//for dark mode
+
 function dmSwitch() {
 	//    var background = document.body;
 	//  var boxes = document.querySelectorAll(".grayBox");
