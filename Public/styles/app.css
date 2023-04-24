@@ -623,7 +623,21 @@ header.navbar {
 	text-line: left;
 }
 
+#jumpscare {
+    width: 40px;
+    height: 40px;
+    margin-top: 15px;
+    cursor: pointer;
+    text-line: left;
+    background-color: transparent;
+}
+
 #darkmodeButton {
+    all: unset;
+    padding-left: 10px;
+}
+
+#jumpscareButton {
     all: unset;
     padding-left: 10px;
 }

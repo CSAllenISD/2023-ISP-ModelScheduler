@@ -574,6 +574,14 @@ async function drop(ev, target) {
     isDragging = false;
 }
 
+//for jumpscare
+function jmSwitch() {
+    document.getElementById("jumpscareButton").onClick = function() {jumpscare()};
+    function jumpscare() {
+	jumpscare.style.visibility="visibility";
+    }
+}
+	
 //for dark mode
 
 function dmSwitch() {
