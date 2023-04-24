@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 	//Waits for HTML DOM content to load
 	const dmButton = document.getElementById("darkmodeButton"); //Gets darkMode button id
-
+    dmSwitch();
 	if (dmButton) {
 		//Checks whether or not button was clicked for debug purposes
 		dmButton.addEventListener("click", function () {
@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 window.onload = function () {
-    dmSwitch();
 
         
     document.getElementById('button').onclick = function () {
@@ -65,15 +64,15 @@ function toggleDm() {
 	) {
 		localStorage.setItem("darkmode", "true");
 	} else {
-		localStorage.setItem("darkmode", "false");
+	    localStorage.setItem("darkmode", "false");
 	}
 
 	dmSwitch();
 }
 
 function getDm() {
-	if (localStorage.getItem("darkmode") == null) {
-		return "false";
+    if (localStorage.getItem("darkmode") == null){
+	return "false";
 	} else {
 		return localStorage.getItem("darkmode");
 	}
@@ -224,7 +223,7 @@ async function getCoursesFromServer() {
 		xhr.onload = () => {
 			if (xhr.readyState == 4 && xhr.status == 200) {
 				const data = xhr.response;
-				console.log(data);
+				//console.log(data);
 				resolve(data);
 			} else {
 				console.log(`Error: ${xhr.status}`);
@@ -247,7 +246,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 	console.log(courses.length)
 		for (let i = 0; i < courses.length; i++) {
 		    const course = courses[i];
-		    console.log("ran");
+		    //console.log("ran");
 		    
 		    if (document.getElementById(course.code + "SC") == null && document.getElementById(course.code + "AC") == null) {
 

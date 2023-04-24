@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-143196265-2" type="0b14cc16aea93a23b1ab57b1-text/javascript"></script>
+<script type="0b14cc16aea93a23b1ab57b1-text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-143196265-2');
+    </script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta property="og:title" content="easyupload.io" />
+<meta property="og:image" content="https://easyupload.io/img/logo.jpg" />
+<meta property="og:site_name" content="easyupload.io" />
+<meta name="description" content="Upload files effortlessly - Our reliable and secure file upload service allows you to easily upload and share files up to 10GB. Get started with our free file upload tool today and experience the power of hassle-free file sharing and storage." />
+<meta property="og:description" content="easyupload.io" />
+<meta name="keywords" content="easyupload.io" />
+<meta name="author" content="Mert Tufan Vatandost" />
+<meta name="Copyright" content="easyupload.io" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-itunes-app" content="app-id=6446423284">
+<link rel="icon" type="image/png" href="https://easyupload.io/img/favicon/favicon.png" />
+<link rel="apple-touch-icon" sizes="57x57" href="https://easyupload.io/img/favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="https://easyupload.io/img/favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://easyupload.io/img/favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://easyupload.io/img/favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://easyupload.io/img/favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://easyupload.io/img/favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://easyupload.io/img/favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://easyupload.io/img/favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://easyupload.io/img/favicon/apple-icon-180x180.png">
+<link rel="apple-touch-icon-precomposed" href="https://easyupload.io/img/favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://easyupload.io/img/favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://easyupload.io/img/favicon/apple-icon-180x180.png">
+<link rel="apple-touch-icon-precomposed" sizes="167x167" ref="https://easyupload.io/img/favicon/apple-icon-180x180.png">
+<link rel="manifest" href="https://easyupload.io/img/favicon/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="https://easyupload.io/img/favicon/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="https://easyupload.io/css/materialize.min.css">
+<link rel="stylesheet" href="https://easyupload.io/css/bootstrap.css">
+<link rel="stylesheet" href="https://easyupload.io/css/bootstrap-select.css">
+<link rel="stylesheet" href="https://easyupload.io/css/style.css?4000000000000103">
+<link rel="stylesheet" href="https://easyupload.io/css/dropzone.css?20210802141605">
+<title>Upload Files Easily | Fast File Upload and Sharing Up To 10GB</title>
+<script src="https://easyupload.io/js/jquery-3.6.0.min.js" type="0b14cc16aea93a23b1ab57b1-text/javascript"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.0/dist/sweetalert2.all.min.js" type="0b14cc16aea93a23b1ab57b1-text/javascript"></script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" integrity="sha512-q583ppKrCRc7N5O0n2nzUiJ+suUv7Et1JGels4bXOaMFQcamPk9HjdUknZuuFjBNs7tsMuadge5k9RzdmO+1GQ==" crossorigin="anonymous" referrerpolicy="no-referrer" type="0b14cc16aea93a23b1ab57b1-text/javascript"></script>
+<script type="0b14cc16aea93a23b1ab57b1-text/javascript">
+  function loader(position,color) {
+    if ( color != '' && color != null ) {
+      var html = '<div class="loader" style="background-color: ' + color + '">';
+    } else {
+      var html = '<div class="loader">';
+    }
+    html += '<div class="preloader-wrapper small active"> <div class="spinner-layer spinner-blue"><div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div> </div> <div class="spinner-layer spinner-red"><div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div> </div> <div class="spinner-layer spinner-yellow"><div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div> </div> <div class="spinner-layer spinner-green"><div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div> </div></div></div>';
+    $(position).css('position','relative');
+    if ( position == 'html' ) { $(position).css("overflow","hidden"); }
+    $(position).append(html);
+  }
+  function loaderclose(position) {
+    if ( position == '' || position == null ) {
+      $('.loader').remove();
+    } else {
+      if ( $(position).children('.loader').length > 0 ) {
+        if ( position == "html" ) { $(position).css('overflow','unset'); $(position).css("position",""); }
+        $(position).children('.loader').remove();
+      }
+    }
+  }
+  // loader('html');
+</script>
+</head>
+<body>
+<header>
+<div class="navbar-fixed">
+<nav>
+<div class="nav-wrapper">
+<div class="top-header">
+<div class="container">
+<div class="left-header valign-wrapper hide-on-med-and-down">
+<a href="https://easyupload.io/" class="logo">
+<img class="responsive-img" alt="file upload" src="https://easyupload.io/img/logo-new.png" />
+</a>
+</div>
+<div class="right-header valign-wrapper hide-on-med-and-down">
+<a class="link" href="https://easyupload.io/dmca">DMCA</a>
+<a class="link" href="https://easyupload.io/#faq">FAQ</a>
+<a class="link" href="https://easyupload.io/#how-it-works">How It Works</a>
+<a class="link" href="https://easyupload.io/blog">Blog</a>
+<a class="link" href="https://easyupload.io/contact-us">Contact Us</a>
+<a class="link" href="https://easyupload.io/login">
+<img alt="upload account" src="https://easyupload.io/img/person.png">
+<span>Login / Register</span>
+</a>
+</div>
+<div class="left-header valign-wrapper hide-on-large-only">
+<a href="#" data-target="slide-out" class="sidenav-trigger"><img class="icon" alt="upload files easily" src="https://easyupload.io/img/menu.png"></a>
+</div>
+<div class="right-header valign-wrapper hide-on-large-only">
+<a href="https://easyupload.io/" class="logo">
+<img class="responsive-img" alt="file-upload" src="https://easyupload.io/img/logo-new.png" />
+</a>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</div>
+<ul id="slide-out" class="sidenav ">
+<a class="waves-effect btn" href="https://easyupload.io/login">Login</a>
+<li>
+<div class="collapsible-header">
+<a href="https://easyupload.io/">
+<img class="icon" alt="eas-upload" src="https://easyupload.io/img/home.png" />
+<span>Home</span>
+</a>
+</div>
+</li>
+<li class="sep"></li>
+<li>
+<div class="collapsible-header">
+<a class="link" href="https://easyupload.io/#faq">
+<img class="icon" alt="faq" src="https://easyupload.io/img/faq.png" />
+<span>FAQ</span>
+</a>
+</div>
+</li>
+<li class="sep"></li>
+<li>
+<div class="collapsible-header">
+<a class="link" href="https://easyupload.io/#how-it-works">
+<img class="icon" alt="how-it-works" src="https://easyupload.io/img/how-it-works.png" />
+<span>How It Works</span>
+</a>
+</div>
+</li>
+<li class="sep"></li>
+<li>
+<div class="collapsible-header">
+<a href="https://easyupload.io/blog">
+<img class="icon" alt="blog" src="https://easyupload.io/img/blog.png" />
+<span>Blog</span>
+</a>
+</div>
+</li>
+<li class="sep"></li>
+<li>
+<div class="collapsible-header">
+<a href="https://easyupload.io/premium">
+<img class="icon" alt="premium" src="https://easyupload.io/img/premium.png" />
+<span>Premium</span>
+</a>
+</div>
+</li>
+<li class="sep"></li>
+<li>
+<div class="collapsible-header">
+<a href="https://easyupload.io/contact-us">
+<img class="icon" alt="contact-us" src="https://easyupload.io/img/info.png" />
+<span>Contact Us</span>
+</a>
+</div>
+</li>
+</ul>
+</header>
+<main>
+
+<script data-ad-client="ca-pub-3390620440720015" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" type="0b14cc16aea93a23b1ab57b1-text/javascript"></script>
+<div class="home">
+<div class="upload">
+<div class="reklam">
+<div class="mobilead center">
+<div class="row justify-content-center">
+<p class="mb-0 pb-0">Advertisement</p>
+</div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3390620440720015" crossorigin="anonymous" type="0b14cc16aea93a23b1ab57b1-text/javascript"></script>
+
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-3390620440720015" data-ad-slot="7044825194"></ins>
+<script type="0b14cc16aea93a23b1ab57b1-text/javascript">
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+<div class="row justify-content-center">
+<p class="mb-0 pb-0">Advertisement</p>
+</div>
+</div>
+<div class="desktopad center">
+<div class="row justify-content-center">
+<p class="mb-0 pb-0">Advertisement</p>
+</div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3390620440720015" crossorigin="anonymous" type="0b14cc16aea93a23b1ab57b1-text/javascript"></script>
+
+<ins class="adsbygoogle" style="display:inline-block;width:970px;height:250px" data-ad-client="ca-pub-3390620440720015" data-ad-slot="3181601803"></ins>
+<script type="0b14cc16aea93a23b1ab57b1-text/javascript">
+				     (adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+<div class="row justify-content-center">
+<p class="mb-0 pb-0">Advertisement</p>
+</div>
+</div>
+</div>
+<div class="showonbig mt-5" style="height:280px; width:336px; position:absolute; background: transparent; left:10px; margin-top: 60px;">
+<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js" type="0b14cc16aea93a23b1ab57b1-text/javascript"></script><div id="336x280-1"><script type="0b14cc16aea93a23b1ab57b1-text/javascript">
+    window.googletag = window.googletag || {cmd: []}; googletag.cmd.push(function() {
+    googletag.defineSlot('/21849154601,22498824693/Ad.Plus-336x280', [336, 280], '336x280-1').addService(googletag.pubads());
+    googletag.enableServices(); googletag.display('336x280-1'); });</script></div>
+</div>
+<div class="showonbig mt-5" style="height:280px; width:336px; position:absolute; background: transparent; right:10px; margin-top: 60px;margin-right: 10px;">
+<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js" type="0b14cc16aea93a23b1ab57b1-text/javascript"></script><div id="336x280-2"><script type="0b14cc16aea93a23b1ab57b1-text/javascript">
+    window.googletag = window.googletag || {cmd: []}; googletag.cmd.push(function() {
+    googletag.defineSlot('/21849154601,22498824693/Ad.Plus-336x280', [336, 280], '336x280-2').addService(googletag.pubads());
+    googletag.enableServices(); googletag.display('336x280-2'); });</script></div>
+</div>
+<h4>SUBWAY SURFERS (Main Theme).mp3</h4>
+<h6>Size: 2.11 MB | Expires: 6 Days | Uploaded: 18 Apr 2023 | Public</h6>
+
+<p id="infnoti" class="turbo pat"></p>
+<div class="container download">
+<div class="row" id="special-section">
+
+<div id="normal-section" class="col s8 m6 l4 offset-m3 offset-l4 offset-s2">
+<a class="div start-download">
+<h5 id="hd1">Download</h5>
+<img src="https://easyupload.io/img/down.png" />
+<p id="hd2">Download with High Speed</p>
+</a>
+</div>
+</div>
+</div>
+<a href="https://easyupload.io/report/w0mvh6" class="report">Report This File</a>
+<div class="reklam removeifadplus">
+<div class="desktopad center mb-2 ">
+<div class="row justify-content-center adextrainfo">
+<p class="mb-0 pb-0">Advertisement</p>
+</div>
+<div class="row justify-content-center">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3390620440720015" crossorigin="anonymous" type="0b14cc16aea93a23b1ab57b1-text/javascript"></script>
+
+<ins class="adsbygoogle" style="display:inline-block;width:970px;height:250px" data-ad-client="ca-pub-3390620440720015" data-ad-slot="9775039396"></ins>
+<script type="0b14cc16aea93a23b1ab57b1-text/javascript">
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+</div>
+<div class="row justify-content-center adextrainfo">
+<p class="mb-0 pb-0">Advertisement</p>
+</div>
+</div>
+</div>
+<div class="reklam">
+<div class="row justify-content-center">
+<p class="mb-0 pb-0">Advertisement</p>
+</div>
+<div class="row justify-content-center mt-2">
+<div id="pf-63b2c9e784e6550029483058"><script async data-cfasync="true" src="https://platform.pubfuture.com/v1/unit/63b2c9e784e6550029483058.js?v=2" type="0b14cc16aea93a23b1ab57b1-text/javascript"></script></div>
+
+</div>
+<div class="row justify-content-center">
+<p class="mb-0 pb-0">Advertisement</p>
+</div>
+</div>
+
+<div class="container images">
+<div class="row">
+<div class="col s12 m4">
+<img src="https://easyupload.io/img/upload1.png" />
+<p>Easy File Upload</p>
+</div>
+<div class="col s12 m4">
+<img src="https://easyupload.io/img/upload2.png" />
+<p>High Network Speed</p>
+</div>
+<div class="col s12 m4">
+<img src="https://easyupload.io/img/upload3.png" />
+<p>Optional Premium Plan</p>
+</div>
+</div>
+</div>
+</div>
+<iframe class="download-iframe hide" src=""></iframe>
+<div id="password-modal" class="modal">
+<div class="modal-content">
+<h4 class="title">Password Protected</h4>
+<div class="sep"></div>
+<p>This file is password protected. Please enter the password to start download</p>
+<div class="error center"></div>
+<div class="row">
+<div class="input-field col s12 left-align">
+<label for="password">File Password</label>
+<input id="password" type="text" class="validate" name="password" minlength="6" maxlength="20" data-length="20">
+<img class="icon" src="https://easyupload.io/img/password.png" />
+</div>
+<div class="input-field col s12 right-align">
+<button type="button" class="waves-effect btn" id="password-button">Download</button>
+</div>
+</div>
+</div>
+</div>
+<div id="download-error" class="modal">
+<div class="modal-content">
+<h4 class="title">Error!</h4>
+<div class="sep"></div>
+<div class="error center"><img class="icon" src="https://easyupload.io/img/warning.png" />Download can not be started</div>
+<p>You are already downloading a file. Only 1 download is allowed per ip for Free Accounts</p>
+</div>
+</div>
+<script async data-cfasync="true" src="//cdn.intergient.com/ramp_core.js" type="0b14cc16aea93a23b1ab57b1-text/javascript"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6LfWajMdAAAAAGLXz_nxz2tHnuqa-abQqC97DIZ3" type="0b14cc16aea93a23b1ab57b1-text/javascript"></script>
+<script type="0b14cc16aea93a23b1ab57b1-text/javascript">
+		$(document).ready(function(){
+			var method = "regular";
+      console.log('adsense');
+
+
+			$('#password-modal').modal({
+				'dismissable': false
+			});
+
+			var captcha='';
+			$(".start-download").click(function(e) {
+
+				grecaptcha.execute('6LfWajMdAAAAAGLXz_nxz2tHnuqa-abQqC97DIZ3', {action:'validate_download'})
+        .then(function(token) {
+					captcha=token;
+				  // console.log(captcha);
+					method = "regular";
+											createDownloadToken("",captcha);
+											return false;
+				});
+
+			});  //biten js code
+
+
+
+			// $("#special-section").on("click", "#turbo-section", function(){
+      // console.log("turbo");
+			// });
+
+			$("#password-button").click(function(e) {
+				var password = $("#password").val();
+				createDownloadToken(password,captcha);
+				console.log('here1');
+			});
+
+			$("#password-modal").on("click", "button .btn", function(){
+				var password = $("#password").val();
+				createDownloadToken(password,captcha);
+				console.log('here2');
+			});
+
+			$("#special-section").on("click", ".start-turbo-download", function(){
+				grecaptcha.execute('6LfWajMdAAAAAGLXz_nxz2tHnuqa-abQqC97DIZ3', {action:'validate_download'})
+			  .then(function(token) {
+			    captcha=token;
+			    method = "turbo";
+			    			      createDownloadToken("",captcha);
+			      			    return false;
+			  });
+			});
+
+
+
+
+			$(".start-turbo-download").click(function(e) {
+				method = "turbo";
+									$('#password-modal .password-column').addClass("hide");
+					$('#password-modal p').addClass("hide");
+					createDownloadToken("",captcha);
+									return false;
+			});
+
+
+			console.log('yok');
+      
+			$("#special-section").append("<div class='col s6 m5 offset-m1 l4' id='turbo-section'><a class='div start-download-turbo-nonweb3' id='start-download-turbo-nonweb3'><h5><span class='turbo'>Turbo</span> Download</h5><img src='https://easyupload.io/img/down.png'></img><p class='bold'>Unlimited Speed*</p></a> <div class='row'> <span class='turbo'>Download 10X FASTER : $ 1.99 - One Time Download</span></div><div class='row'></div>  </div>");
+			$("#normal-section").attr('class', 'col s6 m5 l4 offset-m1 offset-l2');
+      
+			$("#start-download-turbo-nonweb3").click(function() {
+				window.location.href = "https://easyupload.io/turbo?token=5175071";
+			});
+
+			$("#password-modal button.btn").click(function() {
+				var password = $("#password").val();
+				createDownloadToken(password,captcha);
+				console.log('here');
+			});
+
+			function createDownloadToken(value,cvalue) {
+				// loader($("#normal-section"));
+        loader($("#password-modal .modal-content"));
+				$.ajax({
+					type: "POST",
+					url: "https://eu6.easyupload.io/action.php",
+					data: {
+						type: "download-token",
+						url: "w0mvh6",
+						value: value,
+						captchatoken: cvalue,
+						method: method
+					},
+					xhrFields: {
+						withCredentials: true
+					},
+					crossDomain: true,
+					dataType: "json",
+					success: function(r) {
+						if ( r.status ) {
+							$("#password-modal .error").html('<img class="icon" src="https://easyupload.io/img/check.png" />' + r.data);
+							// $(".download-iframe").attr('src', r.download_link);
+							window.location = r.download_link;
+							$('#password-modal').modal('close');
+						} else {
+							$("#password-modal .error").html('<img class="icon" src="https://easyupload.io/img/warning.png" />' + r.data);
+							if ( r.data == "1" ) {
+								$('#password-modal').modal('close');
+								$('#download-error').modal('open');
+							}
+						}
+						loaderclose($("#password-modal .modal-content"));
+
+					}
+				});
+			}
+		});
+		</script>
+<script type="0b14cc16aea93a23b1ab57b1-text/javascript">
+		var i = 0;
+		function isActive(order_id) {
+			$.ajax({
+				url: 'https://easyupload.io/action.php',
+				type: 'POST',
+				data: { type: "isActive", order_id: order_id },
+				dataType: 'json',
+				cache: false,
+				success: function(r) {
+					if ( r.status ) {
+						location.reload();
+						// loaderclose('html');
+					} else {
+						setTimeout(function() {
+							isActive(order_id);
+						}, 1000);
+						i++;
+						if ( i > 30 ) {
+							location.reload();
+							// loaderclose('html');
+						}
+					}
+				}
+			});
+		}
+
+		function onPopupClose(order) {
+			if ( order != null ) {
+				loader('html');
+				isActive(order.id);
+			}
+		}
+		</script>
+<script id="fsc-api" src="https://d1f8f9xcsvx3ha.cloudfront.net/sbl/0.7.3/fastspring-builder.min.js" type="0b14cc16aea93a23b1ab57b1-text/javascript" data-storefront="fileshare.onfastspring.com/popup-fileshare" data-data-callback="dataCallbackFunction" data-error-callback="errorCallback" data-before-requests-callback="beforeRequestsCallbackFunction" data-after-requests-callback="afterRequestsCallbackFunction" data-before-markup-callback="beforeMarkupCallbackFunction" data-after-markup-callback="afterMarkupCallbackFunction" data-decorate-callback="decorateURLFunction" data-popup-event-received="popupEventReceived" data-popup-webhook-received="popupWebhookReceived" data-popup-closed="onPopupClose" data-access-key="3GYUGZGCQL2RRFSLAAWIUA" data-debug="false" data-continuous="true">
+		</script>
+<script type="0b14cc16aea93a23b1ab57b1-text/javascript">
+		$(".buy").click(function() {
+			fastspring.builder.reset();
+			fastspring.builder.add($(this).attr("data-item"));
+			fastspring.builder.tag({"ip": "3.16.3.0", "cf_ip": "46.101.22.242", "file_id": "5175071"})
+			fastspring.builder.checkout();
+		});
+		</script>
+</div>
+<script type="0b14cc16aea93a23b1ab57b1-text/javascript">
+    // loaderclose("html");
+    // loader("main");
+    </script>
+</main>
+<footer>
+<footer class="page-footer">
+<div class="container">
+<div class="row">
+ <div class="col s12 l5 info">
+<img alt="upload files" src="https://easyupload.io/img/logo.png" />
+</div>
+</div>
+<div class="row">
+<div class="col s12 m5 l5 info">
+<div class="sep"></div>
+<div><p>Easyupload.io aims to provide all internet users, without a necessity to register, to upload big files, store them or share them with their friends easily. While we encourage all our users to use the services as they want, without any hassle, we strictly require all uploaded content to be legal.<strong> We are strictly against </strong>any copyright infringement or any content that is illegal, and we will take the necessary actions immediately if we find out any illegal content or got a report about any file uploaded to our servers.</p></div>
+</div>
+<div class="col s12 m4 offset-m3 column">
+<span class="title">QUICK LINKS</span>
+<ul>
+<li><a href="https://easyupload.io/contact-us">Contact Us</a></li>
+<li><a href="https://easyupload.io/terms-of-use">Terms of Use</a></li>
+<li><a href="https://easyupload.io/privacy-policy">Privacy Policy</a></li>
+<li><a href="https://easyupload.io/contact-us">Report Abuse</a></li>
+
+</ul>
+</div>
+</div>
+</div>
+<div class="footer-copyright">
+<div class="container">
+<div class="row">
+<div class="col s12">
+<a href="https://apps.apple.com/tr/app/easyupload-io-transfer-files/id6446423284"><img class="appstoreicon" alt="appstore easy upload" src="https://easyupload.io/img/appstore.png" /></a>
+</div>
+</div>
+</div>
+</div>
+<div class="footer-copyright">
+<div class="container">
+<div class="row">
+<div class="col s12">
+<div class="valign-wrapper">
+<span class="copyright">Copyright © 2023, easyupload.io - 0.00194 second</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+</footer>
+<script src="https://easyupload.io/js/materialize.js" type="0b14cc16aea93a23b1ab57b1-text/javascript"></script>
+<script src="https://easyupload.io/js/bootstrap.js" type="0b14cc16aea93a23b1ab57b1-text/javascript"></script>
+<script src="https://easyupload.io/js/bootstrap-select.js" type="0b14cc16aea93a23b1ab57b1-text/javascript"></script>
+<script src="https://easyupload.io/js/clipboard.js" type="0b14cc16aea93a23b1ab57b1-text/javascript"></script>
+<script src="https://easyupload.io/js/dropzone.js?20211111122500" type="0b14cc16aea93a23b1ab57b1-text/javascript"></script>
+<script type="0b14cc16aea93a23b1ab57b1-text/javascript">
+  $(document).ready(function() {
+    M.AutoInit();
+    $('.tooltipped').tooltip({
+      position: 'top',
+      delay: 50,
+      html: true
+    });
+
+    $("form input[type!=checkbox][type!=range][type!=hidden][type!=file][type!=number]:not(.file-path):not(.select-dropdown):not(.form-control):not(.chip-input):not(.datepicker), textarea").characterCounter();
+
+    $('input[type=checkbox]:not(.sw)').wrap('<div class="checkbox checkbox-primary"><label></label></div>').after('<span class="checkbox-material"><span class="check"></span></span>');
+
+    $('.selectpicker').selectpicker();
+
+    $("button[name=delete]").click(function() {
+      if ( confirm('Are you sure you want to delete?') ) {
+        return true;
+      }
+      return false;
+    });
+
+    $(document).on('click', 'a[href^="#"]', function(e) {
+      // target element id
+      if ( !$(this).hasClass("modal-trigger") ) {
+        var id = $(this).attr('href');
+
+        // target element
+        var $id = $(id);
+        if ($id.length === 0) {
+          return;
+        }
+
+        // prevent standard hash navigation (avoid blinking in IE)
+        e.preventDefault();
+
+        // top position relative to the document
+        var pos = $(id).offset().top;
+
+        // animated top scrolling
+        $('**html, body**').animate({scrollTop: pos}, 500);
+        $('.sidenav').sidenav('close');
+      }
+    });
+  });
+
+  window.addEventListener('load', function () {
+    loaderclose('html');
+  });
+  </script>
+<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="0b14cc16aea93a23b1ab57b1-|49" defer=""></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v2b4487d741ca48dcbadcaf954e159fc61680799950996" integrity="sha512-D/jdE0CypeVxFadTejKGTzmwyV10c1pxZk/AqjJuZbaJwGMyNHY3q/mTPWqMUnFACfCTunhZUVcd4cV78dK1pQ==" data-cf-beacon='{"rayId":"7b9ed1d06e6302c0","version":"2023.3.0","b":1,"token":"3150244028834e5383efc2be51ecf81d","si":100}' crossorigin="anonymous"></script>
+</body>
+</html>

@@ -47,6 +47,21 @@
     --bg-color2: #434343;
 }
 
+#subway{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+    
+}
+
+#temple{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -70,7 +85,10 @@ h1 {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 900;
     text-align: center;
-
+    color: var(--navbar-labels);
+    animation-name: border;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
 }
 
 
@@ -118,6 +136,12 @@ details + details {
 summary {
     list-style: none;
     font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-size: 22px;
+    letter-spacing: 1px; 
+    line-height: 1.8;
+    color: var(--navbar-labels);    
 }
 
 summary::-webkit-details-marker {
@@ -142,6 +166,8 @@ summary:before {
     height: 1.75rem;
     background-color: #000;
     color: #FFF;
+    background-color: black;
+    color: white;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -150,6 +176,7 @@ summary:before {
 
 details[open] summary {
     background-color: #eee;
+    background-color: var(--navbar);
 }
 
 details[open] summary:before {
@@ -158,5 +185,6 @@ details[open] summary:before {
 
 summary:hover {
     background-color: #eee;
+    background-color: var(--navbar);
 }
 

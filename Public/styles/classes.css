@@ -18,6 +18,13 @@ p {
     color: var(--text);
 }
 
+#adhdVideo {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 99;
+}
+
 h2 {
     color: var(--text);
 }
@@ -81,6 +88,14 @@ h2 {
 #availableCourses, #selectedCourses {
     overflow-y: scroll;
     height: calc(100% - 40px);
+}
+#availableCourses {
+    overflow-y: scroll;
+    height: calc(100% - 10%);
+}
+#selectedCourses {
+    overflow-y: scroll;
+    height: calc(100% - 5.5%);
 }
 
 p {
