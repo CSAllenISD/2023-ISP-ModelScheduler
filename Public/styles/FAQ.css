@@ -47,6 +47,21 @@
     --bg-color2: #434343;
 }
 
+#subway{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+    
+}
+
+#temple{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -70,11 +85,10 @@ h1 {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 900;
     text-align: center;
-<<<<<<< HEAD
-
-=======
     color: var(--navbar-labels);
->>>>>>> 5cb702847504cd10b4633cee7d5441dfbc7aa41c
+    animation-name: border;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
 }
 
 
@@ -122,15 +136,12 @@ details + details {
 summary {
     list-style: none;
     font-size: 20px;
-<<<<<<< HEAD
-=======
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
     font-size: 22px;
     letter-spacing: 1px; 
     line-height: 1.8;
     color: var(--navbar-labels);    
->>>>>>> 5cb702847504cd10b4633cee7d5441dfbc7aa41c
 }
 
 summary::-webkit-details-marker {
@@ -153,13 +164,10 @@ summary:before {
     content: "↓";
     width: 1.75rem;
     height: 1.75rem;
-<<<<<<< HEAD
     background-color: #000;
     color: #FFF;
-=======
     background-color: black;
     color: white;
->>>>>>> 5cb702847504cd10b4633cee7d5441dfbc7aa41c
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -167,11 +175,8 @@ summary:before {
 }
 
 details[open] summary {
-<<<<<<< HEAD
     background-color: #eee;
-=======
     background-color: var(--navbar);
->>>>>>> 5cb702847504cd10b4633cee7d5441dfbc7aa41c
 }
 
 details[open] summary:before {
@@ -179,10 +184,7 @@ details[open] summary:before {
 }
 
 summary:hover {
-<<<<<<< HEAD
     background-color: #eee;
-=======
     background-color: var(--navbar);
->>>>>>> 5cb702847504cd10b4633cee7d5441dfbc7aa41c
 }
 

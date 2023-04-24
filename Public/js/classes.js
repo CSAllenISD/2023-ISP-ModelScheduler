@@ -64,15 +64,15 @@ function toggleDm() {
 	) {
 		localStorage.setItem("darkmode", "true");
 	} else {
-		localStorage.setItem("darkmode", "false");
+	    localStorage.setItem("darkmode", "false");
 	}
 
 	dmSwitch();
 }
 
 function getDm() {
-	if (localStorage.getItem("darkmode") == null) {
-		return "false";
+    if (localStorage.getItem("darkmode") == null){
+	return "false";
 	} else {
 		return localStorage.getItem("darkmode");
 	}
