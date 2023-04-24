@@ -4,7 +4,6 @@
 ## This is the development branch, push directly to this branch.
 
 [Official Release Link](https://codermerlin.app/cmw-ms23/login)
->>>>>>> 5cb702847504cd10b4633cee7d5441dfbc7aa41c
 
 ## Project Members:
 
