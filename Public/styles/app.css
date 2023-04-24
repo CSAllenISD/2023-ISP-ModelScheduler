@@ -110,6 +110,14 @@ body {
     z-index : -1;
 }
 
+#mcdonaldPOV {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 400px;
+    height: 225px;
+}
+
 .tooltip .tooltiptext {
     visibility: hidden;
     background-color: black;
