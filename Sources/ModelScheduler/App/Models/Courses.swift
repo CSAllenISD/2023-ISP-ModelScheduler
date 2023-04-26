@@ -3,7 +3,7 @@ import Fluent
 import FluentMySQLDriver
 
 final class Courses: Model, Content {
-    public static let schema = "Courses2024"
+    public static let schema = "Courses2024_MD"
 
     @ID(custom: "sectionID", generatedBy: .database)
     var id: String?
