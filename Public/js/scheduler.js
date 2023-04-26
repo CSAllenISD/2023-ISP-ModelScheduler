@@ -653,13 +653,16 @@ async function drop(ev, target) {
 }
 
 //for jumpscare
-function jmSwitch() {
-    document.getElementById("jumpscareButton").onClick = function() {jumpscare()};
-    function jumpscare() {
-	jumpscare.style.visibility="visibility";
-    }
-}
-	
+  function jmSwitch() {
+    var jumpscare = getElementById("jumpscareImage");
+      document.getElementById("jumpscareButton").onClick = function() {jumpscare()};
+      
+  
+      function jumpscare() {
+	  jumpscare.style.visibility = "visible";
+      }
+  }
+
 //for dark mode
 
 function dmSwitch() {
