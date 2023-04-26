@@ -44,7 +44,11 @@ func configure(_ app: Application) throws {
     app.http.server.configuration.hostname = hostname
 
     // Reigster Migrations
-    app.migrations.add(User.Migration())
+    //app.migrations.add(User.Migration())
+    app.migrations.add(DemandMigration())
+
+    print("FIXIXNG YEAHHH")
+    try app.autoMigrate().wait()
 
     // register routes
     try routes(app)
