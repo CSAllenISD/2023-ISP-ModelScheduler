@@ -32,6 +32,10 @@ final class Courses: Model, Content {
 
     @Field(key: "studentMax")
     var studentMax: Int
+
+    @Field(key: "duplicateSectionCount")
+    var duplicateSectionCount: Int
+
     /*
     @Field(key: "section")
     var section: String
@@ -55,7 +59,7 @@ final class Courses: Model, Content {
     */
     init() { }
 
-    init(id: String? = nil, code: String, name: String, term: Semester, department: String, period: Int, doubleBlockPeriod: Int?, location: String, studentMax: Int) {
+    init(id: String? = nil, code: String, name: String, term: Semester, department: String, period: Int, doubleBlockPeriod: Int?, location: String, studentMax: Int, duplicateSectionCount: Int) {
         self.id = id
         self.code = code
         self.name = name
@@ -65,6 +69,7 @@ final class Courses: Model, Content {
         self.doubleBlockPeriod = doubleBlockPeriod
         self.location = location
         self.studentMax = studentMax
+        self.duplicateSectionCount = duplicateSectionCount
     }   
 }
 
