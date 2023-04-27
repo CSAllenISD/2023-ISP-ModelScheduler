@@ -653,6 +653,10 @@ header.navbar {
     height: 100%;
     cursor: pointer;
     text-line: left;
+
+}
+
+#jumpscare{
     visibility: hidden;
 }
 
