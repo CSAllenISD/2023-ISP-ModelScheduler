@@ -17,6 +17,24 @@
       <div class="nav_links">
 	<a href="./classes"><img id="logo" src="images/allenisdLogo.png" alt="AllenISD Logo"></a>
 	<div class="tooltip"><button id="darkmodeButton"><img id="darkmode" src="images/moon.png"><span class="tooltiptext">Dark Mode</span></div>
+	<button onclick="play()" type="button" class="tooltip" style="background-color:transparent;background-repeat:no-repeat;border:none;margin-left:25px;"><img src="images/pause.png" alt="pause" style="width:40px;height:40px;"></button>
+	<audio id="myAudio" autoplay loop> <source src="images/backMucic.mp3" type="audio/mpeg"></audio>
+	
+	<script>
+	  var aud = document.getElementById("myAudio");
+	  var playing = true;
+	  
+	  function play() {
+
+	      if (playing == true) { 
+		  aud.pause();
+		  playing = false;
+	      } else {
+		  aud.play();
+		  playing = true;
+	      }
+	  }
+	</script> 
       </div>
 
       <nav>
@@ -47,9 +65,7 @@
       <source src="images/surfer.mp3" type="audio/mpeg">
       Your browser does not support the audio element.
     </audio> -->
-    <audio autoplay loop> <source src="images/backMucic.mp3" type="audio/mpeg">
-      <p>If you are reading this, it is because your browser does not support the audio element.</p>
-    </audio>
+    
 
     <!-- <iframe id="adhdVideo" width="315" height="560" src="https://www.youtube.com/embed/nNGQ7kMhGuQ?controls=0&amp;start=93" title="YouTube video player" frameborer="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
     
