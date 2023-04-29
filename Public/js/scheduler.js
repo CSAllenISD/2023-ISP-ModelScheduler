@@ -652,16 +652,20 @@ async function drop(ev, target) {
     isDragging = false;
 }
 
-//for jumpscare
-  function jmSwitch() {
-    var jumpscare = getElementById("jumpscareImage");
-      document.getElementById("jumpscareButton").onClick = function() {jumpscare()};
-      
-  
-      function jumpscare() {
-	  jumpscare.style.visibility = "visible";
-      }
-  }
+/**
+ * Show jumpscare image & play audio, after 2 seconds hide jumpscare image
+ */
+function jumpscare() {
+    console.log("test");
+    var jumpscare = document.getElementById("jumpscareImage");
+    var boom = document.getElementById("boomAudio");
+    boom.play();
+    jumpscare.style.visibility = "visible";
+
+    setTimeout(() => {
+	jumpscare.style.visibility = "hidden";
+    }, 2000);
+}
 
 //for dark mode
 

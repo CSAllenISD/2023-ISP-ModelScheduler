@@ -10,14 +10,14 @@
 	        href="images/allenisdLogo.png" />
     <link rel="icon"
 	  type="image/png"
-	                  href="images/allenisdLogo.png" />
+	  href="images/allenisdLogo.png" />
   </head>
   <body>
     <header class="navbar">
       <div class="nav_links">
 	<a href="./classes"><img id="logo" src="images/allenisdLogo.png" alt="AllenISD Logo"></a>
 	<div class="tooltip"><button id="darkmodeButton"><img id="darkmode" src="images/moon.png"><span class="tooltiptext">Dark Mode</span></div>
-	<div class="tooltip"><button onclick="document.getElementById('jumpscare').style.visibility='visible'" id="jumpscareButton"><img id="jumpscare1" src="images/easter.png"><span class="tooltiptext">Click and See, You'll Regret Me</span></div>
+	<div class="tooltip"><button onclick="jumpscare()" id="jumpscareButton"><img id="jumpscare1" src="images/easter.png"><span class="tooltiptext">Click and See, You'll Regret Me</span></div>
       </div>
       
       <nav>
@@ -136,5 +136,8 @@
   </div>
   <div id="jumpscare">
     <img src="images/muqqyduck.png" id="jumpscareImage">
+    <audio id="boomAudio" controls>
+      <source src="images/vine-boom.mp3" type="audio/mpeg">
+    </audio>
   </body>
 </html>
