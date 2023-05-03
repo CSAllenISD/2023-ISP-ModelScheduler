@@ -14,6 +14,10 @@ func routes(_ app: Application) throws {
         req.redirect(to: "./scheduler")
     }
 
+    app.get("tutorial.html") {req in
+        req.redirect(to: "./tutorial")
+    }
+
     app.get("classes.html") {req in
         req.redirect(to: "./classes")
     }
@@ -418,6 +422,10 @@ func routes(_ app: Application) throws {
     
     protected.get("FAQ") {req in
          req.view.render("FAQ.html")
+    }
+
+    protected.get("tutorial") {req in
+         req.view.render("tutorial.html")
     }
 
     protected.get("final") {req in
