@@ -59,10 +59,10 @@ struct DemandMigration: AsyncMigration {
                   ? possibleLookupData!
                   : LookupData(period: period, classCode: possibleLookupData!.classCode)
 
-                let masterCourseId = masterCourses[finalLookupData]?.id
+                let masterCourseCode = masterCourses[finalLookupData]?.code // migrate to courseCode instead of sectionId
 
                 //overwrite
-                code = masterCourseId
+                code = masterCourseCode
             }
             migrate(&schedule.periodZero, 0)
             migrate(&schedule.periodOne, 1)
