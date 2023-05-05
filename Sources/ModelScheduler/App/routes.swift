@@ -350,15 +350,15 @@ func routes(_ app: Application) throws {
         let possibleSchedules = try await UserSchedule.query(on: req.db)
           .filter(\.$semester ~~ filterCollection)
           .group(.or) { group in
-            group.filter(\.$periodZero == matchCourse.id)
-              .filter(\.$periodOne == matchCourse.id)
-              .filter(\.$periodTwo == matchCourse.id)
-              .filter(\.$periodThree == matchCourse.id)
-              .filter(\.$periodFour == matchCourse.id)
-              .filter(\.$periodFive == matchCourse.id)
-              .filter(\.$periodSix == matchCourse.id)
-              .filter(\.$periodSeven == matchCourse.id)
-              .filter(\.$periodEight == matchCourse.id)
+              group.filter(\.$periodZero == matchCourse.code)
+              .filter(\.$periodOne == matchCourse.code)
+              .filter(\.$periodTwo == matchCourse.code)
+              .filter(\.$periodThree == matchCourse.code)
+              .filter(\.$periodFour == matchCourse.code)
+              .filter(\.$periodFive == matchCourse.code)
+              .filter(\.$periodSix == matchCourse.code)
+              .filter(\.$periodSeven == matchCourse.code)
+              .filter(\.$periodEight == matchCourse.code)
         }.all()
 
         // group schedules by userId
@@ -390,7 +390,7 @@ func routes(_ app: Application) throws {
         for schedule in schedules {
             let userSchedule = userSchedules.filter{ $0.semester == schedule.term }.first
             let exists = userSchedule != nil
-            var newSchedule = userSchedule ?? UserSchedule(userId: user.id!, semester: schedule.term)
+            let newSchedule = userSchedule ?? UserSchedule(userId: user.id!, semester: schedule.term)
 
             newSchedule.periodZero = schedule.periodZero
             newSchedule.periodOne = schedule.periodOne
